@@ -1,6 +1,7 @@
 
 import UIKit
 import EngineKitiOS
+import SceneKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
@@ -9,7 +10,8 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 
 		let engine = EKEngine(languageEngine: EKJSCoreEngine())
-		engine.runScript(atFileNamed: "main.js")
+		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
+		engine.runScript(filename: "main.js")
 	}
 
 	override func didReceiveMemoryWarning() {

@@ -14,6 +14,7 @@ public class EKSceneKitAddon: EKAddon {
 
 	public init(sceneView: SCNView) {
 		self.sceneView = sceneView
+		self.sceneView.backgroundColor = OSFactory.yellowColor()
 	}
 
 	public func addFunctionalityToEngine(languageEngine: EKLanguageEngine) {
