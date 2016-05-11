@@ -3,4 +3,4 @@ disabled_rules:
 
 line_length:
   - 80  # warning
-  - 100 # error
+  - 80 # error

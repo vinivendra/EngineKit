@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		245236501CE2C58B008321E3 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 2452364F1CE2C58B008321E3 /* main.js */; };
 		2460C39F1CC1F8A6003B2C6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C39E1CC1F8A6003B2C6D /* AppDelegate.swift */; };
 		2460C3A11CC1F8A6003B2C6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C3A01CC1F8A6003B2C6D /* ViewController.swift */; };
 		2460C3A41CC1F8A6003B2C6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2460C3A21CC1F8A6003B2C6D /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2452364F1CE2C58B008321E3 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		2460C39B1CC1F8A6003B2C6D /* ExampleiOS-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleiOS-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2460C39E1CC1F8A6003B2C6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2460C3A01CC1F8A6003B2C6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				2460C39E1CC1F8A6003B2C6D /* AppDelegate.swift */,
 				2460C3A01CC1F8A6003B2C6D /* ViewController.swift */,
+				2452364F1CE2C58B008321E3 /* main.js */,
 				2460C3A21CC1F8A6003B2C6D /* Main.storyboard */,
 				2460C3A51CC1F8A6003B2C6D /* Assets.xcassets */,
 				2460C3A71CC1F8A6003B2C6D /* LaunchScreen.storyboard */,
@@ -233,6 +236,7 @@
 				2460C3A91CC1F8A6003B2C6D /* LaunchScreen.storyboard in Resources */,
 				2460C3A61CC1F8A6003B2C6D /* Assets.xcassets in Resources */,
 				2460C3A41CC1F8A6003B2C6D /* Main.storyboard in Resources */,
+				245236501CE2C58B008321E3 /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
