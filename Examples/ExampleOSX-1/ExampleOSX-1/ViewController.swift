@@ -18,13 +18,4 @@ class ViewController: NSViewController {
 		printOSInfo()
 		printCoreInfo()
 	}
-
-	override var representedObject: AnyObject? {
-		didSet {
-		// Update the view, if already loaded.
-		}
-	}
-
-
 }
-

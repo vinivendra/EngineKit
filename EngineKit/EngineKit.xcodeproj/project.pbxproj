@@ -19,6 +19,8 @@
 		2460C38D1CC1F7C8003B2C6D /* OSXHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38B1CC1F7C8003B2C6D /* OSXHandler.swift */; };
 		2460C38F1CC1F831003B2C6D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38E1CC1F831003B2C6D /* Core.swift */; };
 		2460C3901CC1F831003B2C6D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38E1CC1F831003B2C6D /* Core.swift */; };
+		246998911CE2B769004E24D1 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
+		246998921CE2B769004E24D1 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 		2460C3881CC1F781003B2C6D /* iOSHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSHandler.swift; sourceTree = "<group>"; };
 		2460C38B1CC1F7C8003B2C6D /* OSXHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSXHandler.swift; sourceTree = "<group>"; };
 		2460C38E1CC1F831003B2C6D /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Core.swift; path = EngineKitCore/Core.swift; sourceTree = SOURCE_ROOT; };
+		246998901CE2B769004E24D1 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEngine.swift; path = EngineKitCore/EKEngine.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				2460C38E1CC1F831003B2C6D /* Core.swift */,
+				246998901CE2B769004E24D1 /* EKEngine.swift */,
 			);
 			name = EngineKitCore;
 			path = EngineKitOSX;
@@ -190,6 +194,8 @@
 				2460C3501CC1F73A003B2C6D /* Frameworks */,
 				2460C3511CC1F73A003B2C6D /* Headers */,
 				2460C3521CC1F73A003B2C6D /* Resources */,
+				A5B39DD2503AAE98F60FEFBF /* Tailor */,
+				246998941CE2B899004E24D1 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -226,6 +232,8 @@
 				2460C36D1CC1F743003B2C6D /* Frameworks */,
 				2460C36E1CC1F743003B2C6D /* Headers */,
 				2460C36F1CC1F743003B2C6D /* Resources */,
+				246998931CE2B823004E24D1 /* Tailor */,
+				246998951CE2B8A9004E24D1 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -330,6 +338,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		246998931CE2B823004E24D1 /* Tailor */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Tailor;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if hash tailor 2>/dev/null; then\n    tailor\nelse\n    echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
+		246998941CE2B899004E24D1 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		246998951CE2B8A9004E24D1 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		A5B39DD2503AAE98F60FEFBF /* Tailor */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Tailor;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if hash tailor 2>/dev/null; then\n  tailor\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2460C34F1CC1F73A003B2C6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -337,6 +404,7 @@
 			files = (
 				2460C38F1CC1F831003B2C6D /* Core.swift in Sources */,
 				2460C3891CC1F781003B2C6D /* iOSHandler.swift in Sources */,
+				246998911CE2B769004E24D1 /* EKEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +423,7 @@
 			files = (
 				2460C3901CC1F831003B2C6D /* Core.swift in Sources */,
 				2460C38C1CC1F7C8003B2C6D /* OSXHandler.swift in Sources */,
+				246998921CE2B769004E24D1 /* EKEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

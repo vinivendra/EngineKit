@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ExampleOSX-1/../../EngineKit/EngineKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ExampleiOS-1/ExampleiOS-1.xcodeproj">
    </FileRef>
    <FileRef
