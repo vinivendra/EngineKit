@@ -1,5 +1,7 @@
 import Foundation
 
+var currentNSBundle = NSBundle.mainBundle()
+
 public class EKFoundationFileManager: EKFileManager {
 
 	// MARK: Public Functions
@@ -23,8 +25,7 @@ public class EKFoundationFileManager: EKFileManager {
 		let mainNameRange = NSRange(location: 0, length: (mainName as NSString).length)
 		let fileExtension = nsfilename.stringByReplacingCharactersInRange(mainNameRange, withString: "")
 
-		let bundle = NSBundle(forClass: EKFoundationFileManager.self)
-		return bundle.pathForResource(mainName, ofType: fileExtension)
+		return currentNSBundle.pathForResource(mainName, ofType: fileExtension)
 	}
 
 }

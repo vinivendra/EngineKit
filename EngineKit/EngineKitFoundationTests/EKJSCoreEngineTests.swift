@@ -11,6 +11,11 @@ class EKJSCoreEngineTests: XCTestCase {
 
 	let engine = EKJSCoreEngine()
 
+	override func setUp() {
+		super.setUp()
+		currentNSBundle = NSBundle(forClass: EKFoundationFileManagerTests.self)
+	}
+
 	func testOutput() {
 		// Tests only if these functions don't crash... :/
 		engine.context.evaluateScript("bla!")

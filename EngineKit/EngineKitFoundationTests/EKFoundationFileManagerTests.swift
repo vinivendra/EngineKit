@@ -12,6 +12,11 @@ class EKFoundationFileManagerTests: XCTestCase {
 	let testFilename = "test.txt"
 	let fileManager: EKFoundationFileManager = EKFoundationFileManager()
 
+	override func setUp() {
+		super.setUp()
+		currentNSBundle = NSBundle(forClass: EKFoundationFileManagerTests.self)
+	}
+
 	func testPathForFilename() {
 		let path = fileManager.pathForFilename(testFilename)
 
