@@ -12,6 +12,6 @@ class ViewController: NSViewController {
 
 		let engine = EKEngine(languageEngine: EKJSCoreEngine())
 		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
-		engine.runScript(filename: "main.js")
+		try! engine.runScript(filename: "main.js")
 	}
 }

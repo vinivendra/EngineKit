@@ -54,13 +54,25 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context["console"] = Console()
 	}
 
-	public func addClass<T: Scriptable>(class: T.Type) {
-		let className = T.description().componentsSeparatedByString(".").last!
+	public func addClass<T: Scriptable>(class: T.Type,
+	                     withName className: String?,
+	                              constructor: (() -> (T))? ) {
+		let className = className ?? T.description().componentsSeparatedByString(".").last!
 
-		let constructorClosure = {
-			// Attention! JavaScriptCore only supports NSObject subclasses
-			return T() as! NSObject // swiftlint:disable:this force_cast
-			} as @convention(block) () -> (NSObject)
+		let constructorClosure: (@convention(block) () -> (NSObject))?
+
+		if let constructor = constructor {
+			constructorClosure = {
+				// Attention! JavaScriptCore only supports NSObject subclasses
+				return constructor() as! NSObject // swiftlint:disable:this force_cast
+				} as @convention(block) () -> (NSObject)
+		} else {
+			constructorClosure = {
+				// Attention! JavaScriptCore only supports NSObject subclasses
+				return T() as! NSObject // swiftlint:disable:this force_cast
+				} as @convention(block) () -> (NSObject)
+		}
+
 		let constructorObject = unsafeBitCast(constructorClosure, AnyObject.self)
 
 		context[className] = constructorObject
