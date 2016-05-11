@@ -23,8 +23,6 @@ public class EKFoundationFileManager: EKFileManager {
 		let mainNameRange = NSRange(location: 0, length: (mainName as NSString).length)
 		let fileExtension = nsfilename.stringByReplacingCharactersInRange(mainNameRange, withString: "")
 
-		print("Name: \(mainName), extension: \(fileExtension)")
-
 		let bundle = NSBundle(forClass: EKFoundationFileManager.self)
 		return bundle.pathForResource(mainName, ofType: fileExtension)
 	}
