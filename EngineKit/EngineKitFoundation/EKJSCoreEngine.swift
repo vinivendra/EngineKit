@@ -4,7 +4,10 @@ import JavaScriptCore
 	func log(string: String)
 }
 
-class Console: NSObject, ConsoleExport {
+class Console: NSObject {
+}
+
+extension Console: ConsoleExport {
 	func log(string: String) {
 		print(string)
 	}
