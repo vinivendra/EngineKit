@@ -12,14 +12,6 @@ class EKFoundationFileManagerTests: XCTestCase {
 	let testFilename = "test.txt"
 	let fileManager: EKFoundationFileManager = EKFoundationFileManager()
 
-	override func setUp() {
-		super.setUp()
-	}
-
-	override func tearDown() {
-		super.tearDown()
-	}
-
 	func testPathForFilename() {
 		let path = fileManager.pathForFilename(testFilename)
 
