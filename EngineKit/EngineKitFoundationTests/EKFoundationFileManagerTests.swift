@@ -1,5 +1,11 @@
 import XCTest
-@testable import EngineKitOSX
+
+#if os(iOS)
+	@testable import EngineKitiOS
+#endif
+#if os(OSX)
+	@testable import EngineKitOSX
+#endif
 
 class EKFoundationFileManagerTests: XCTestCase {
 
@@ -21,6 +27,14 @@ class EKFoundationFileManagerTests: XCTestCase {
 		if let path = path {
 			XCTAssert(path.hasSuffix(testFilename))
 		}
+
+		let failPath = fileManager.pathForFilename("fail.txt")
+		XCTAssertNil(failPath)
+	}
+
+	func testGetContentsFromFile() {
+		let contents = fileManager.getContentsFromFile(testFilename)
+		XCTAssertEqual(contents, "file contents")
 	}
 
 }
