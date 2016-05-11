@@ -17,5 +17,10 @@ class ViewController: NSViewController {
 		// Do any additional setup after loading the view.
 		printOSInfo()
 		printCoreInfo()
+
+		let factory = OSFactory
+		let fileHandler = factory.createFileManager()
+		let fileContents = fileHandler.getContentsFromFile("main.js")
+		print(fileContents)
 	}
 }
