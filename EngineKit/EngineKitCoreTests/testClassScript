@@ -1,0 +1,3 @@
+
+var myTest = new JSTest();
+myTest.test();

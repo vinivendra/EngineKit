@@ -18,10 +18,13 @@ class EKJSCoreEngineTests: XCTestCase {
 
 	func testOutput() {
 		// Tests only if these functions don't crash... :/
-		engine.context.evaluateScript("bla!")
 		engine.context.evaluateScript("alert(\"alert!!\");")
 		engine.context.evaluateScript("print(\"print!!\");")
 		engine.context.evaluateScript("console.log(\"console.log!!\");")
+		XCTAssertFalse(engine.errorWasTriggered)
+
+		engine.context.evaluateScript("bla")
+		XCTAssert(engine.errorWasTriggered)
 	}
 
 }

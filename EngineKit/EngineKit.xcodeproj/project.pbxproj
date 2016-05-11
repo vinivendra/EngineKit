@@ -47,8 +47,6 @@
 		24FE17FF1CE3848200287B82 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FE17FE1CE3848200287B82 /* JavaScriptCore.framework */; };
 		24FE18071CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */; };
 		24FE18081CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */; };
-		24FE180A1CE38CAC00287B82 /* testScript in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18091CE38CAC00287B82 /* testScript */; };
-		24FE180B1CE38CAC00287B82 /* testScript in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18091CE38CAC00287B82 /* testScript */; };
 		24FE18141CE3A4BB00287B82 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FE18131CE3A4BB00287B82 /* SceneKit.framework */; };
 		24FE18161CE3A4C000287B82 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FE18151CE3A4C000287B82 /* SceneKit.framework */; };
 		24FE18181CE3A54000287B82 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18171CE3A54000287B82 /* EKAddon.swift */; };
@@ -67,6 +65,10 @@
 		24FE183F1CE3CA4000287B82 /* EKFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE183B1CE3CA4000287B82 /* EKFileManagerTests.swift */; };
 		24FE18421CE3CAE600287B82 /* EKLanguageEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18411CE3CAE600287B82 /* EKLanguageEngineTests.swift */; };
 		24FE18431CE3CAE600287B82 /* EKLanguageEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18411CE3CAE600287B82 /* EKLanguageEngineTests.swift */; };
+		24FE18451CE3CC1E00287B82 /* testClassScript in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18441CE3CC1E00287B82 /* testClassScript */; };
+		24FE18461CE3CC1E00287B82 /* testClassScript in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18441CE3CC1E00287B82 /* testClassScript */; };
+		24FE18481CE3CC3400287B82 /* testScript in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18471CE3CC3400287B82 /* testScript */; };
+		24FE18491CE3CC3400287B82 /* testScript in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18471CE3CC3400287B82 /* testScript */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +112,6 @@
 		24FE17FC1CE3847C00287B82 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		24FE17FE1CE3848200287B82 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSCoreEngineTests.swift; path = EngineKitFoundationTests/EKJSCoreEngineTests.swift; sourceTree = SOURCE_ROOT; };
-		24FE18091CE38CAC00287B82 /* testScript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testScript; path = EngineKitFoundationTests/testScript; sourceTree = SOURCE_ROOT; };
 		24FE18131CE3A4BB00287B82 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SceneKit.framework; sourceTree = DEVELOPER_DIR; };
 		24FE18151CE3A4C000287B82 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		24FE18171CE3A54000287B82 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = EngineKitCore/EKAddon.swift; sourceTree = SOURCE_ROOT; };
@@ -118,6 +119,8 @@
 		24FE18361CE3BC8500287B82 /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKColor.swift; path = EngineKitCore/EKColor.swift; sourceTree = SOURCE_ROOT; };
 		24FE183B1CE3CA4000287B82 /* EKFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManagerTests.swift; path = EngineKitCoreTests/EKFileManagerTests.swift; sourceTree = SOURCE_ROOT; };
 		24FE18411CE3CAE600287B82 /* EKLanguageEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLanguageEngineTests.swift; path = EngineKitCoreTests/EKLanguageEngineTests.swift; sourceTree = SOURCE_ROOT; };
+		24FE18441CE3CC1E00287B82 /* testClassScript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testClassScript; path = EngineKitCoreTests/testClassScript; sourceTree = SOURCE_ROOT; };
+		24FE18471CE3CC3400287B82 /* testScript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testScript; path = EngineKitCoreTests/testScript; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,7 +177,6 @@
 			children = (
 				245236631CE2CA7A008321E3 /* EKFoundationFileManagerTests.swift */,
 				24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */,
-				24FE18091CE38CAC00287B82 /* testScript */,
 				2452366C1CE2CBE0008321E3 /* test.txt */,
 			);
 			name = EngineKitFoundationTests;
@@ -274,6 +276,8 @@
 			children = (
 				24FE183B1CE3CA4000287B82 /* EKFileManagerTests.swift */,
 				24FE18411CE3CAE600287B82 /* EKLanguageEngineTests.swift */,
+				24FE18441CE3CC1E00287B82 /* testClassScript */,
+				24FE18471CE3CC3400287B82 /* testScript */,
 			);
 			name = EngineKitCoreTests;
 			path = EngineKitOSXTests;
@@ -435,7 +439,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2452366D1CE2CBE0008321E3 /* test.txt in Resources */,
-				24FE180A1CE38CAC00287B82 /* testScript in Resources */,
+				24FE18451CE3CC1E00287B82 /* testClassScript in Resources */,
+				24FE18481CE3CC3400287B82 /* testScript in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +456,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2452366E1CE2CBE0008321E3 /* test.txt in Resources */,
-				24FE180B1CE38CAC00287B82 /* testScript in Resources */,
+				24FE18461CE3CC1E00287B82 /* testClassScript in Resources */,
+				24FE18491CE3CC3400287B82 /* testScript in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

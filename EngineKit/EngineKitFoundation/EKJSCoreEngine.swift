@@ -6,7 +6,7 @@ extension NSObject: Scriptable {}
 @objc protocol ConsoleExport: JSExport {
 	func log(string: String)
 }
-class Console: NSObject {
+class Console: NSObject, ConsoleExport {
 	func log(string: String) {
 		print(string)
 	}
@@ -30,6 +30,7 @@ extension JSContext {
 // MARK: EKJSCoreEngine
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
+	var errorWasTriggered = false
 
 	public init() {
 		context.exceptionHandler = { context, value in
@@ -37,7 +38,10 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			let lineNumber = value["line"].toInt32()
 			let column = value["column"].toInt32()
 			let moreInfo = "in method \(stackTrace)\nLine number \(lineNumber), column \(column)"
+
 			print("JAVASCRIPT ERROR: \(value) \(moreInfo)")
+
+			self.errorWasTriggered = true
 		}
 
 		let printFunc = { (value: JSValue) in
@@ -62,10 +66,14 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context[className] = constructorObject
 	}
 
-	public func runScript(filename filename: String) {
+	public func runScript(filename filename: String) throws {
 		let fileManager = OSFactory.createFileManager()
 		let scriptContents = fileManager.getContentsFromFile(filename)
 		context.evaluateScript(scriptContents)
+
+		if errorWasTriggered {
+			throw EKScriptError.EvaluationError
+		}
 	}
 
 }
