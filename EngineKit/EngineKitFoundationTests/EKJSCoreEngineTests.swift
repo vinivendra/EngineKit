@@ -24,9 +24,4 @@ class EKJSCoreEngineTests: XCTestCase {
 		engine.context.evaluateScript("console.log(\"console.log!!\");")
 	}
 
-	func testRunScript() {
-		// Tests only if the function doesn't crash... :/
-		engine.runScript(filename: "test.js")
-	}
-
 }

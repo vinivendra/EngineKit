@@ -29,9 +29,4 @@ class EKFoundationFileManagerTests: XCTestCase {
 		XCTAssertNil(failPath)
 	}
 
-	func testGetContentsFromFile() {
-		let contents = fileManager.getContentsFromFile(testFilename)
-		XCTAssertEqual(contents, "file contents")
-	}
-
 }
