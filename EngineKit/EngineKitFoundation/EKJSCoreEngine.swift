@@ -1,5 +1,15 @@
 import JavaScriptCore
 
+@objc protocol ConsoleExport: JSExport {
+	func log(string: String)
+}
+
+class Console: NSObject, ConsoleExport {
+	func log(string: String) {
+		print(string)
+	}
+}
+
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
 
@@ -18,6 +28,9 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		let printObj = unsafeBitCast(printFunc, AnyObject.self)
 
 		context.setObject(printObj, forKeyedSubscript: "print")
+		context.setObject(printObj, forKeyedSubscript: "alert")
+
+		context.setObject(Console(), forKeyedSubscript: "console")
 	}
 
 	public func runScript(filename filename: String) {
