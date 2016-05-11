@@ -6,8 +6,12 @@ public class EKEngine {
 		self.languageEngine = languageEngine
 	}
 
-	public func runScript(atFileNamed filename: String) {
+	public func runScript(filename filename: String) {
 		self.languageEngine.runScript(filename: filename)
+	}
+
+	public func loadAddon(addon: EKAddon) {
+		addon.addFunctionalityToEngine(languageEngine)
 	}
 
 }

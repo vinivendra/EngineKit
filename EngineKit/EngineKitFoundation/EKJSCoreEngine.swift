@@ -47,8 +47,6 @@ public class EKJSCoreEngine: EKLanguageEngine {
 
 		context["print"] = printObj
 		context["alert"] = printObj
-
-		addClass(Console.self)
 		context["console"] = Console()
 	}
 

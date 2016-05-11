@@ -3,6 +3,7 @@ import UIKit
 import EngineKitiOS
 
 class ViewController: UIViewController {
+    @IBOutlet weak var sceneView: SCNView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
