@@ -17,12 +17,10 @@
 		2452364D1CE2C492008321E3 /* EKiOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2452364C1CE2C492008321E3 /* EKiOSFactory.swift */; };
 		245236571CE2C998008321E3 /* EKOSXFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236451CE2BFBE008321E3 /* EKOSXFactory.swift */; };
 		245236581CE2C99A008321E3 /* EKiOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2452364C1CE2C492008321E3 /* EKiOSFactory.swift */; };
-		245236591CE2C9A0008321E3 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38E1CC1F831003B2C6D /* Core.swift */; };
 		2452365A1CE2C9A0008321E3 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
 		2452365B1CE2C9A0008321E3 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236351CE2BA4B008321E3 /* EKLanguageEngine.swift */; };
 		2452365C1CE2C9A0008321E3 /* EKOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236381CE2BC73008321E3 /* EKOSFactory.swift */; };
 		2452365D1CE2C9A0008321E3 /* EKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2452363B1CE2BC95008321E3 /* EKFileManager.swift */; };
-		2452365E1CE2C9A1008321E3 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38E1CC1F831003B2C6D /* Core.swift */; };
 		2452365F1CE2C9A1008321E3 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
 		245236601CE2C9A1008321E3 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236351CE2BA4B008321E3 /* EKLanguageEngine.swift */; };
 		245236611CE2C9A1008321E3 /* EKOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236381CE2BC73008321E3 /* EKOSFactory.swift */; };
@@ -43,8 +41,6 @@
 		2460C38A1CC1F7B0003B2C6D /* iOSHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C3881CC1F781003B2C6D /* iOSHandler.swift */; };
 		2460C38C1CC1F7C8003B2C6D /* OSXHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38B1CC1F7C8003B2C6D /* OSXHandler.swift */; };
 		2460C38D1CC1F7C8003B2C6D /* OSXHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38B1CC1F7C8003B2C6D /* OSXHandler.swift */; };
-		2460C38F1CC1F831003B2C6D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38E1CC1F831003B2C6D /* Core.swift */; };
-		2460C3901CC1F831003B2C6D /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C38E1CC1F831003B2C6D /* Core.swift */; };
 		246998911CE2B769004E24D1 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
 		246998921CE2B769004E24D1 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
 		24FE17F81CE3846800287B82 /* EKJSCoreEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE17F71CE3846800287B82 /* EKJSCoreEngine.swift */; };
@@ -57,6 +53,16 @@
 		24FE18081CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */; };
 		24FE180A1CE38CAC00287B82 /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18091CE38CAC00287B82 /* test.js */; };
 		24FE180B1CE38CAC00287B82 /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18091CE38CAC00287B82 /* test.js */; };
+		24FE18141CE3A4BB00287B82 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FE18131CE3A4BB00287B82 /* SceneKit.framework */; };
+		24FE18161CE3A4C000287B82 /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FE18151CE3A4C000287B82 /* SceneKit.framework */; };
+		24FE18181CE3A54000287B82 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18171CE3A54000287B82 /* EKAddon.swift */; };
+		24FE18191CE3A54000287B82 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18171CE3A54000287B82 /* EKAddon.swift */; };
+		24FE181A1CE3A54000287B82 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18171CE3A54000287B82 /* EKAddon.swift */; };
+		24FE181B1CE3A54000287B82 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18171CE3A54000287B82 /* EKAddon.swift */; };
+		24FE181D1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE181C1CE3A56C00287B82 /* EKSceneKitAddon.swift */; };
+		24FE181E1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE181C1CE3A56C00287B82 /* EKSceneKitAddon.swift */; };
+		24FE181F1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE181C1CE3A56C00287B82 /* EKSceneKitAddon.swift */; };
+		24FE18201CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE181C1CE3A56C00287B82 /* EKSceneKitAddon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,13 +103,16 @@
 		2460C3811CC1F743003B2C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2460C3881CC1F781003B2C6D /* iOSHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSHandler.swift; sourceTree = "<group>"; };
 		2460C38B1CC1F7C8003B2C6D /* OSXHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSXHandler.swift; sourceTree = "<group>"; };
-		2460C38E1CC1F831003B2C6D /* Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Core.swift; path = EngineKitCore/Core.swift; sourceTree = SOURCE_ROOT; };
 		246998901CE2B769004E24D1 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEngine.swift; path = EngineKitCore/EKEngine.swift; sourceTree = SOURCE_ROOT; };
 		24FE17F71CE3846800287B82 /* EKJSCoreEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSCoreEngine.swift; path = EngineKitFoundation/EKJSCoreEngine.swift; sourceTree = SOURCE_ROOT; };
 		24FE17FC1CE3847C00287B82 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		24FE17FE1CE3848200287B82 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSCoreEngineTests.swift; path = EngineKitFoundationTests/EKJSCoreEngineTests.swift; sourceTree = SOURCE_ROOT; };
 		24FE18091CE38CAC00287B82 /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = test.js; path = EngineKitFoundationTests/test.js; sourceTree = SOURCE_ROOT; };
+		24FE18131CE3A4BB00287B82 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SceneKit.framework; sourceTree = DEVELOPER_DIR; };
+		24FE18151CE3A4C000287B82 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		24FE18171CE3A54000287B82 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = EngineKitCore/EKAddon.swift; sourceTree = SOURCE_ROOT; };
+		24FE181C1CE3A56C00287B82 /* EKSceneKitAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSceneKitAddon.swift; path = EngineKitFoundation/EKSceneKitAddon.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FE18141CE3A4BB00287B82 /* SceneKit.framework in Frameworks */,
 				24FE17FF1CE3848200287B82 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24FE18161CE3A4C000287B82 /* SceneKit.framework in Frameworks */,
 				24FE17FD1CE3847C00287B82 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +158,7 @@
 			children = (
 				245236651CE2CA92008321E3 /* EKFoundationFileManager.swift */,
 				24FE17F71CE3846800287B82 /* EKJSCoreEngine.swift */,
+				24FE181C1CE3A56C00287B82 /* EKSceneKitAddon.swift */,
 			);
 			name = EngineKitFoundation;
 			path = EngineKitOSX;
@@ -231,9 +243,9 @@
 		2460C3911CC1F836003B2C6D /* EngineKitCore */ = {
 			isa = PBXGroup;
 			children = (
-				2460C38E1CC1F831003B2C6D /* Core.swift */,
 				246998901CE2B769004E24D1 /* EKEngine.swift */,
 				245236351CE2BA4B008321E3 /* EKLanguageEngine.swift */,
+				24FE18171CE3A54000287B82 /* EKAddon.swift */,
 				245236381CE2BC73008321E3 /* EKOSFactory.swift */,
 				2452363B1CE2BC95008321E3 /* EKFileManager.swift */,
 			);
@@ -244,6 +256,8 @@
 		24FE18001CE3848700287B82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24FE18151CE3A4C000287B82 /* SceneKit.framework */,
+				24FE18131CE3A4BB00287B82 /* SceneKit.framework */,
 				24FE17FE1CE3848200287B82 /* JavaScriptCore.framework */,
 				24FE17FC1CE3847C00287B82 /* JavaScriptCore.framework */,
 			);
@@ -492,8 +506,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2460C38F1CC1F831003B2C6D /* Core.swift in Sources */,
+				24FE18181CE3A54000287B82 /* EKAddon.swift in Sources */,
 				245236391CE2BC73008321E3 /* EKOSFactory.swift in Sources */,
+				24FE181D1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
 				245236691CE2CA99008321E3 /* EKFoundationFileManager.swift in Sources */,
 				2452364D1CE2C492008321E3 /* EKiOSFactory.swift in Sources */,
 				2460C3891CC1F781003B2C6D /* iOSHandler.swift in Sources */,
@@ -512,10 +527,11 @@
 				24FE17F91CE3846800287B82 /* EKJSCoreEngine.swift in Sources */,
 				245236581CE2C99A008321E3 /* EKiOSFactory.swift in Sources */,
 				2460C38A1CC1F7B0003B2C6D /* iOSHandler.swift in Sources */,
+				24FE18191CE3A54000287B82 /* EKAddon.swift in Sources */,
 				245236681CE2CA97008321E3 /* EKFoundationFileManager.swift in Sources */,
-				245236591CE2C9A0008321E3 /* Core.swift in Sources */,
 				24FE18071CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */,
 				2452365D1CE2C9A0008321E3 /* EKFileManager.swift in Sources */,
+				24FE181E1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
 				2452365B1CE2C9A0008321E3 /* EKLanguageEngine.swift in Sources */,
 				2452365C1CE2C9A0008321E3 /* EKOSFactory.swift in Sources */,
 				2452365A1CE2C9A0008321E3 /* EKEngine.swift in Sources */,
@@ -526,8 +542,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2460C3901CC1F831003B2C6D /* Core.swift in Sources */,
+				24FE181A1CE3A54000287B82 /* EKAddon.swift in Sources */,
 				2452363A1CE2BC73008321E3 /* EKOSFactory.swift in Sources */,
+				24FE181F1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
 				245236671CE2CA97008321E3 /* EKFoundationFileManager.swift in Sources */,
 				2460C38C1CC1F7C8003B2C6D /* OSXHandler.swift in Sources */,
 				246998921CE2B769004E24D1 /* EKEngine.swift in Sources */,
@@ -546,10 +563,11 @@
 				24FE17FB1CE3846800287B82 /* EKJSCoreEngine.swift in Sources */,
 				245236641CE2CA7A008321E3 /* EKFoundationFileManagerTests.swift in Sources */,
 				2460C38D1CC1F7C8003B2C6D /* OSXHandler.swift in Sources */,
-				2452365E1CE2C9A1008321E3 /* Core.swift in Sources */,
+				24FE181B1CE3A54000287B82 /* EKAddon.swift in Sources */,
 				245236571CE2C998008321E3 /* EKOSXFactory.swift in Sources */,
 				24FE18081CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */,
 				245236621CE2C9A1008321E3 /* EKFileManager.swift in Sources */,
+				24FE18201CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
 				245236601CE2C9A1008321E3 /* EKLanguageEngine.swift in Sources */,
 				245236611CE2C9A1008321E3 /* EKOSFactory.swift in Sources */,
 				2452365F1CE2C9A1008321E3 /* EKEngine.swift in Sources */,

@@ -1,18 +1,18 @@
 import JavaScriptCore
 
+extension NSObject: Scriptable {}
+
+// MARK: Console class
 @objc protocol ConsoleExport: JSExport {
 	func log(string: String)
 }
-
 class Console: NSObject {
-}
-
-extension Console: ConsoleExport {
 	func log(string: String) {
 		print(string)
 	}
 }
 
+// MARK: JS Extensions
 extension JSValue {
 	@nonobjc subscript(name: String) -> AnyObject {
 		get { return self.objectForKeyedSubscript(name) }
@@ -27,6 +27,7 @@ extension JSContext {
 	}
 }
 
+// MARK: EKJSCoreEngine
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
 
@@ -47,7 +48,20 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context["print"] = printObj
 		context["alert"] = printObj
 
+		addClass(Console.self)
 		context["console"] = Console()
+	}
+
+	public func addClass<T: Scriptable>(class: T.Type) {
+		let className = T.description().componentsSeparatedByString(".").last!
+
+		let constructorClosure = {
+			// Attention! JavaScriptCore only supports NSObject subclasses
+			return T() as! NSObject // swiftlint:disable:this force_cast
+			} as @convention(block) () -> (NSObject)
+		let constructorObject = unsafeBitCast(constructorClosure, AnyObject.self)
+
+		context[className] = constructorObject
 	}
 
 	public func runScript(filename filename: String) {
