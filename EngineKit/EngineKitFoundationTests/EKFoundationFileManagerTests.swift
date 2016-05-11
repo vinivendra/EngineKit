@@ -10,7 +10,7 @@ import XCTest
 class EKFoundationFileManagerTests: XCTestCase {
 
 	let testFilename = "test.txt"
-	let fileManager: EKFoundationFileManager = EKFoundationFileManager()
+	let fileManager: EKFoundationFileManager = OSFactory.createFileManager()
 
 	override func setUp() {
 		super.setUp()

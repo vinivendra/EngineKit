@@ -7,7 +7,7 @@ extension NSColor: EKColor {}
 public class EKOSXFactory: EKOSFactory {
 
 	// MARK: Manager factory methods
-	public func createFileManager() -> EKFileManager {
+	public func createFileManager() -> EKFoundationFileManager {
 		return EKFoundationFileManager()
 	}
 

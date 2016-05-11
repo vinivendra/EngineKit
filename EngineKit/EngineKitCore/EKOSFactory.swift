@@ -1,7 +1,8 @@
 public protocol EKOSFactory {
 	associatedtype Color: EKColor
+	associatedtype FileManager: EKFileManager
 
-	func createFileManager() -> EKFileManager
+	func createFileManager() -> FileManager
 
 	func blackColor() -> Color
 	func darkGrayColor() -> Color
