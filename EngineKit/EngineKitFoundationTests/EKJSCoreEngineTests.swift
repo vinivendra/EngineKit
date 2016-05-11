@@ -18,7 +18,7 @@ class EKJSCoreEngineTests: XCTestCase {
 	}
 
 	func testRunScript() {
-		// Tests only if the functoin doesn't crash... :/
+		// Tests only if the function doesn't crash... :/
 		engine.runScript(filename: "test.js")
 	}
 
