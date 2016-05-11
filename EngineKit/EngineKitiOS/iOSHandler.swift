@@ -1,12 +1,4 @@
-//
-//  iOSHandler.swift
-//  EngineKit
-//
-//  Created by Vinicius Vendramini on 4/16/16.
-//
-//
-
-import Foundation
+public let OSFactory: EKOSFactory = EKiOSFactory()
 
 public func printOSInfo() {
 	print("Using EngineKit - iOS framework.")

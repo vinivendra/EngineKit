@@ -1,4 +1,4 @@
-public class EKOSXFileManager: EKFileManager {
+public class EKFoundationFileManager: EKFileManager {
 
 	// MARK: Public Functions
 	public func getContentsFromFile(filename: String) -> String? {

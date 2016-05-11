@@ -15,6 +15,8 @@
 		2452363D1CE2BC95008321E3 /* EKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2452363B1CE2BC95008321E3 /* EKFileManager.swift */; };
 		245236441CE2BCFB008321E3 /* EKOSXFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236431CE2BCFB008321E3 /* EKOSXFileManager.swift */; };
 		245236461CE2BFBE008321E3 /* EKOSXFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236451CE2BFBE008321E3 /* EKOSXFactory.swift */; };
+		2452364D1CE2C492008321E3 /* EKiOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2452364C1CE2C492008321E3 /* EKiOSFactory.swift */; };
+		2452364E1CE2C545008321E3 /* EKOSXFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236431CE2BCFB008321E3 /* EKOSXFileManager.swift */; };
 		2460C3581CC1F73A003B2C6D /* EngineKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 2460C3571CC1F73A003B2C6D /* EngineKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2460C35F1CC1F73A003B2C6D /* EngineKitiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2460C3541CC1F73A003B2C6D /* EngineKitiOS.framework */; };
 		2460C3641CC1F73A003B2C6D /* EngineKitiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C3631CC1F73A003B2C6D /* EngineKitiOSTests.swift */; };
@@ -54,6 +56,7 @@
 		2452363B1CE2BC95008321E3 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = EngineKitCore/EKFileManager.swift; sourceTree = SOURCE_ROOT; };
 		245236431CE2BCFB008321E3 /* EKOSXFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOSXFileManager.swift; sourceTree = "<group>"; };
 		245236451CE2BFBE008321E3 /* EKOSXFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOSXFactory.swift; sourceTree = "<group>"; };
+		2452364C1CE2C492008321E3 /* EKiOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKiOSFactory.swift; sourceTree = "<group>"; };
 		2460C3541CC1F73A003B2C6D /* EngineKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EngineKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2460C3571CC1F73A003B2C6D /* EngineKitiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EngineKitiOS.h; sourceTree = "<group>"; };
 		2460C3591CC1F73A003B2C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,12 +109,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		245236541CE2C5AB008321E3 /* EngineKitFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				245236431CE2BCFB008321E3 /* EKOSXFileManager.swift */,
+			);
+			name = EngineKitFoundation;
+			path = EngineKitOSX;
+			sourceTree = "<group>";
+		};
 		2460C3481CC1F730003B2C6D = {
 			isa = PBXGroup;
 			children = (
 				2460C3911CC1F836003B2C6D /* EngineKitCore */,
 				2460C3561CC1F73A003B2C6D /* EngineKitiOS */,
 				2460C3721CC1F743003B2C6D /* EngineKitOSX */,
+				245236541CE2C5AB008321E3 /* EngineKitFoundation */,
 				2460C37E1CC1F743003B2C6D /* EngineKitOSXTests */,
 				2460C3621CC1F73A003B2C6D /* EngineKitiOSTests */,
 				2460C3551CC1F73A003B2C6D /* Products */,
@@ -134,6 +147,7 @@
 			children = (
 				2460C3571CC1F73A003B2C6D /* EngineKitiOS.h */,
 				2460C3881CC1F781003B2C6D /* iOSHandler.swift */,
+				2452364C1CE2C492008321E3 /* EKiOSFactory.swift */,
 				2460C3591CC1F73A003B2C6D /* Info.plist */,
 			);
 			path = EngineKitiOS;
@@ -154,7 +168,6 @@
 				2460C3731CC1F743003B2C6D /* EngineKitOSX.h */,
 				2460C38B1CC1F7C8003B2C6D /* OSXHandler.swift */,
 				245236451CE2BFBE008321E3 /* EKOSXFactory.swift */,
-				245236431CE2BCFB008321E3 /* EKOSXFileManager.swift */,
 				2460C3751CC1F743003B2C6D /* Info.plist */,
 			);
 			path = EngineKitOSX;
@@ -422,9 +435,11 @@
 			files = (
 				2460C38F1CC1F831003B2C6D /* Core.swift in Sources */,
 				245236391CE2BC73008321E3 /* EKOSFactory.swift in Sources */,
+				2452364D1CE2C492008321E3 /* EKiOSFactory.swift in Sources */,
 				2460C3891CC1F781003B2C6D /* iOSHandler.swift in Sources */,
 				246998911CE2B769004E24D1 /* EKEngine.swift in Sources */,
 				245236361CE2BA4B008321E3 /* EKLanguageEngine.swift in Sources */,
+				2452364E1CE2C545008321E3 /* EKOSXFileManager.swift in Sources */,
 				2452363C1CE2BC95008321E3 /* EKFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

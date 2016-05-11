@@ -13,16 +13,19 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 
 		printOSInfo()
 		printCoreInfo()
+
+		let factory = OSFactory
+		let fileHandler = factory.createFileManager()
+		let fileContents = fileHandler.getContentsFromFile("main.js")
+		print(fileContents)
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
 
 }
