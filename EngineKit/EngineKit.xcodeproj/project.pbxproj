@@ -55,6 +55,8 @@
 		24FE17FF1CE3848200287B82 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FE17FE1CE3848200287B82 /* JavaScriptCore.framework */; };
 		24FE18071CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */; };
 		24FE18081CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */; };
+		24FE180A1CE38CAC00287B82 /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18091CE38CAC00287B82 /* test.js */; };
+		24FE180B1CE38CAC00287B82 /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 24FE18091CE38CAC00287B82 /* test.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,7 @@
 		24FE17FC1CE3847C00287B82 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		24FE17FE1CE3848200287B82 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSCoreEngineTests.swift; path = EngineKitFoundationTests/EKJSCoreEngineTests.swift; sourceTree = SOURCE_ROOT; };
+		24FE18091CE38CAC00287B82 /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = test.js; path = EngineKitFoundationTests/test.js; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,7 @@
 			children = (
 				245236631CE2CA7A008321E3 /* EKFoundationFileManagerTests.swift */,
 				24FE18061CE387A100287B82 /* EKJSCoreEngineTests.swift */,
+				24FE18091CE38CAC00287B82 /* test.js */,
 				2452366C1CE2CBE0008321E3 /* test.txt */,
 			);
 			name = EngineKitFoundationTests;
@@ -402,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2452366D1CE2CBE0008321E3 /* test.txt in Resources */,
+				24FE180A1CE38CAC00287B82 /* test.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2452366E1CE2CBE0008321E3 /* test.txt in Resources */,
+				24FE180B1CE38CAC00287B82 /* test.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,4 +17,9 @@ class EKJSCoreEngineTests: XCTestCase {
 		engine.context.evaluateScript("print(\"potato\");")
 	}
 
+	func testRunScript() {
+		// Tests only if the functoin doesn't crash... :/
+		engine.runScript(filename: "test.js")
+	}
+
 }

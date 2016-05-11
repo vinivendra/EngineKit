@@ -1,7 +1,7 @@
 import JavaScriptCore
 
 public class EKJSCoreEngine: EKLanguageEngine {
-	public let context = JSContext()
+	let context = JSContext()
 
 	public init() {
 		context.exceptionHandler = { context, value in
@@ -19,4 +19,11 @@ public class EKJSCoreEngine: EKLanguageEngine {
 
 		context.setObject(printObj, forKeyedSubscript: "print")
 	}
+
+	public func runScript(filename filename: String) {
+		let fileManager = OSFactory.createFileManager()
+		let scriptContents = fileManager.getContentsFromFile(filename)
+		context.evaluateScript(scriptContents)
+	}
+
 }
