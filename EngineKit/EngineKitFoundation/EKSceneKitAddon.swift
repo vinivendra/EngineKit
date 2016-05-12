@@ -45,6 +45,7 @@ public class EKShape: NSObject {
 	}
 }
 
+//
 public class EKSphere: EKShape, SphereExport {
 	var sphere: SCNSphere {
 		get {
