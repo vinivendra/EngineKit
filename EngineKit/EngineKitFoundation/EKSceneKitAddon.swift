@@ -1,5 +1,25 @@
 import SceneKit
 
+#if os(OSX)
+	typealias OSColor = NSColor
+#else
+	typealias OSColor = UIColor
+#endif
+
+extension EKColor {
+	func toObject() -> AnyObject {
+		if let object = self as? AnyObject {
+			return object
+		} else {
+			let rgba = self.components
+			return OSColor(red: CGFloat(rgba.red),
+			               green: CGFloat(rgba.green),
+			               blue: CGFloat(rgba.blue),
+			               alpha: CGFloat(rgba.alpha))
+		}
+	}
+}
+
 public class EKSceneKitAddon: EKAddon {
 
 	let sceneView: SCNView
@@ -23,7 +43,7 @@ public class EKSceneKitAddon: EKAddon {
 
 		//
 		self.scene = self.scene ?? SCNScene()
-		self.sceneView.backgroundColor = OSFactory.darkGrayColor()
+		self.sceneView.backgroundColor = OSColor.darkGrayColor()
 	}
 
 	public func addFunctionalityToEngine(engine: EKLanguageEngine) {
@@ -54,17 +74,20 @@ public class EKShape: NSObject {
 		get {
 			let contents = node.geometry?.materials.first?.ambient.contents
 			if let contents = contents {
-				return OSFactory.createColor(withObject: contents)
+				return OSColor.createColor(withObject: contents).toObject()
 			}
 
-			return OSFactory.whiteColor()
+			return OSColor.whiteColor()
 		}
 		set {
-			let color = OSFactory.createColor(withObject: newValue)
+			let color = OSColor.createColor(withObject: newValue)
 			let material = SCNMaterial()
-			material.ambient.contents = color
-			material.diffuse.contents = color
-			material.specular.contents = color
+
+			let colorObject = color.toObject()
+
+			material.ambient.contents = colorObject
+			material.diffuse.contents = colorObject
+			material.specular.contents = colorObject
 			node.geometry?.materials = [material]
 		}
 	}
