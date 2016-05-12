@@ -10,3 +10,4 @@ except:
     - constant-k-prefix
     - function-whitespace
     - leading-whitespace
+    - forced-type-cast

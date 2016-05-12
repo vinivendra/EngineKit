@@ -37,9 +37,9 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			let stackTrace = value["stack"].toString()
 			let lineNumber = value["line"].toInt32()
 			let column = value["column"].toInt32()
-			let moreInfo = "in method \(stackTrace)\nLine number \(lineNumber), column \(column)"
 
-			print("JAVASCRIPT ERROR: \(value) \(moreInfo)")
+			print("JAVASCRIPT ERROR: \(value) in method \(stackTrace)\n"
+				+ "Line number \(lineNumber), column \(column)")
 
 			self.errorWasTriggered = true
 		}
@@ -57,23 +57,25 @@ public class EKJSCoreEngine: EKLanguageEngine {
 	public func addClass<T: Scriptable>(class: T.Type,
 	                     withName className: String?,
 	                              constructor: (() -> (T))? ) {
-		let className = className ?? T.description().componentsSeparatedByString(".").last!
+		let fullClassName = T.description().componentsSeparatedByString(".")
+		let className = className ?? fullClassName.last!.toEKPrefixClassName()
 
 		let constructorClosure: (@convention(block) () -> (NSObject))?
 
 		if let constructor = constructor {
 			constructorClosure = {
 				// Attention! JavaScriptCore only supports NSObject subclasses
-				return constructor() as! NSObject // swiftlint:disable:this force_cast
+				return constructor() as! NSObject
 				} as @convention(block) () -> (NSObject)
 		} else {
 			constructorClosure = {
 				// Attention! JavaScriptCore only supports NSObject subclasses
-				return T() as! NSObject // swiftlint:disable:this force_cast
+				return T() as! NSObject
 				} as @convention(block) () -> (NSObject)
 		}
 
-		let constructorObject = unsafeBitCast(constructorClosure, AnyObject.self)
+		let constructorObject = unsafeBitCast(constructorClosure,
+		                                      AnyObject.self)
 
 		context[className] = constructorObject
 	}

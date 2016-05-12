@@ -11,12 +11,12 @@ class ViewController: UIViewController {
 
 		let engine = EKEngine(languageEngine: EKJSCoreEngine())
 		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
-		engine.runScript(filename: "main.js")
-	}
+		try! engine.runScript(filename: "main.js")
 
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		let lightnode = SCNNode()
+		let light = SCNLight()
+		lightnode.light = light
+		lightnode.position = SCNVector3(10, 10, 10)
+		sceneView.scene?.rootNode.addChildNode(lightnode)
 	}
-
 }

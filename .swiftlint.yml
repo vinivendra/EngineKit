@@ -1,5 +1,6 @@
 disabled_rules:
   - todo
+  - force_cast
 
 line_length:
   - 80 # warning

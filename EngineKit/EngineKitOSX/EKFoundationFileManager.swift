@@ -12,7 +12,8 @@ public class EKFoundationFileManager: EKFileManager {
 				return nil
 		}
 
-		let contents = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+		let contents = try? String(contentsOfFile: path,
+		                           encoding: NSUTF8StringEncoding)
 
 		return contents
 	}
@@ -22,8 +23,11 @@ public class EKFoundationFileManager: EKFileManager {
 		let nsfilename = filename as NSString
 		let mainName = nsfilename.stringByDeletingPathExtension
 
-		let mainNameRange = NSRange(location: 0, length: (mainName as NSString).length)
-		let fileExtension = nsfilename.stringByReplacingCharactersInRange(mainNameRange, withString: "")
+		let mainNameRange = NSRange(location: 0,
+		                            length: (mainName as NSString).length)
+		let fileExtension =
+			nsfilename.stringByReplacingCharactersInRange(mainNameRange,
+			                                              withString: "")
 
 		return currentNSBundle.pathForResource(mainName, ofType: fileExtension)
 	}

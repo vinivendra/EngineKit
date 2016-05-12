@@ -10,7 +10,8 @@ extension EKLanguageEngine {
 		addClass(T.self, withName: nil)
 	}
 
-	public func addClass<T: Scriptable>(class: T.Type, withName className: String?) {
+	public func addClass<T: Scriptable>(class: T.Type,
+	                     withName className: String?) {
 		addClass(T.self, withName: className, constructor: nil)
 	}
 }
@@ -22,6 +23,8 @@ public protocol Scriptable {
 
 extension String {
 	func toEKPrefixClassName() -> String {
+		guard !self.hasPrefix("EK") else { return self }
+
 		let uppercase = self.uppercaseString.utf8.dropFirst()
 		let normal = self.utf8.dropFirst()
 		var copy = self.utf8
@@ -34,6 +37,7 @@ extension String {
 			}
 		}
 
-		return "EK" + String(copy)
+		let result = "EK" + String(copy)
+		return result
 	}
 }
