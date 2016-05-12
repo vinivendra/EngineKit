@@ -30,6 +30,28 @@ extension EKOSFactory {
 		                   alpha: array[one: 3])
 	}
 
+	func createColor(withObject object: AnyObject) -> Color {
+		if let color = object as? Color {
+			return color
+		} else if let array = object as? [Double] {
+			return createColor(fromArray: array)
+		} else if let grayscale = object as? Double {
+			return createColor(grayscale: grayscale)
+		} else if let name = object as? String {
+			return createColor(named: name)
+		}
+
+		return clearColor()
+	}
+
+	func createColor(named name: String) -> Color {
+		if let object = EKColorDictionary[name] {
+			return createColor(withObject: object)
+		}
+
+		return clearColor()
+	}
+
 	func blackColor() -> Color {
 		return createColor(grayscale: 0)
 	}

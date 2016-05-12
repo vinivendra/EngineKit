@@ -43,6 +43,25 @@ public class EKShape: NSObject {
 			node.position = SCNVector3(newValue[0], newValue[1], newValue[2])
 		}
 	}
+
+	var color: AnyObject {
+		get {
+			let contents = node.geometry?.materials.first?.ambient.contents
+			if let contents = contents {
+				return OSFactory.createColor(withObject: contents)
+			}
+
+			return OSFactory.whiteColor()
+		}
+		set {
+			let color = OSFactory.createColor(withObject: newValue)
+			let material = SCNMaterial()
+			material.ambient.contents = color
+			material.diffuse.contents = color
+			material.specular.contents = color
+			node.geometry?.materials = [material]
+		}
+	}
 }
 
 //
@@ -66,4 +85,5 @@ public class EKSphere: EKShape, SphereExport {
 @objc protocol SphereExport: JSExport {
 	var radius: CGFloat { get set }
 	var position: [CGFloat] { get set }
+	var color: AnyObject { get set }
 }
