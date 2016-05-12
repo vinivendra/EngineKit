@@ -12,6 +12,12 @@ public class EKSceneKitAddon: EKAddon {
 		}
 	}
 
+	var physicsWorld: SCNPhysicsWorld? {
+		get {
+			return sceneView.scene?.physicsWorld
+		}
+	}
+
 	public init(sceneView: SCNView) {
 		self.sceneView = sceneView
 
@@ -62,6 +68,43 @@ public class EKShape: NSObject {
 			node.geometry?.materials = [material]
 		}
 	}
+
+	var physics: String {
+		get {
+			let type = node.physicsBody?.type
+
+			switch type {
+			case .Some(.Dynamic):
+				return "dynamic"
+			case .Some(.Kinematic):
+				return "kinematic"
+			case .Some(.Static):
+				return "static"
+			default:
+				return "none"
+			}
+		}
+		set {
+			let type: SCNPhysicsBodyType?
+			switch newValue.lowercaseString {
+			case "dynamic":
+				type = .Dynamic
+			case "kinematic":
+				type = .Kinematic
+			case "static":
+				type = .Static
+			default:
+				type = nil
+			}
+
+			if let type = type {
+				let shape = SCNPhysicsShape(node: node, options: nil)
+				node.physicsBody = SCNPhysicsBody(type: type, shape: shape)
+			} else {
+				node.physicsBody = nil
+			}
+		}
+	}
 }
 
 //
@@ -86,4 +129,5 @@ public class EKSphere: EKShape, SphereExport {
 	var radius: CGFloat { get set }
 	var position: [CGFloat] { get set }
 	var color: AnyObject { get set }
+	var physics: String { get set }
 }
