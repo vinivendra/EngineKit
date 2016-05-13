@@ -5,7 +5,7 @@ import SceneKit
 class ViewController: NSViewController {
 
 	@IBOutlet weak var sceneView: SCNView!
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
