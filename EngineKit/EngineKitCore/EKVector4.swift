@@ -44,7 +44,7 @@ extension EKVector4Type {
 
 @warn_unused_result
 public func == (lhs: EKVector4Type, rhs: EKVector4Type) -> Bool {
-	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w
+	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
 }
 
 @warn_unused_result

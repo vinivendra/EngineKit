@@ -39,12 +39,14 @@
 		2460C37B1CC1F743003B2C6D /* EngineKitOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2460C3711CC1F743003B2C6D /* EngineKitOSX.framework */; };
 		246998911CE2B769004E24D1 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
 		246998921CE2B769004E24D1 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246998901CE2B769004E24D1 /* EKEngine.swift */; };
-		24E140291CE66D27004C52B4 /* EKVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140281CE66D27004C52B4 /* EKVectorTests.swift */; };
-		24E1402A1CE66D27004C52B4 /* EKVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140281CE66D27004C52B4 /* EKVectorTests.swift */; };
+		24E140291CE66D27004C52B4 /* EKVector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140281CE66D27004C52B4 /* EKVector3Tests.swift */; };
+		24E1402A1CE66D27004C52B4 /* EKVector3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140281CE66D27004C52B4 /* EKVector3Tests.swift */; };
 		24E140361CE67E4D004C52B4 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140351CE67E4D004C52B4 /* EKVector4.swift */; };
 		24E140371CE67E4D004C52B4 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140351CE67E4D004C52B4 /* EKVector4.swift */; };
 		24E140381CE67E4D004C52B4 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140351CE67E4D004C52B4 /* EKVector4.swift */; };
 		24E140391CE67E4D004C52B4 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140351CE67E4D004C52B4 /* EKVector4.swift */; };
+		24E1403C1CE68398004C52B4 /* EKVector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */; };
+		24E1403E1CE68398004C52B4 /* EKVector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */; };
 		24E39E931CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */; };
 		24E39E941CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */; };
 		24E39E951CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */; };
@@ -122,8 +124,9 @@
 		2460C37A1CC1F743003B2C6D /* EngineKitOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineKitOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2460C3811CC1F743003B2C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		246998901CE2B769004E24D1 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEngine.swift; path = EngineKitCore/EKEngine.swift; sourceTree = SOURCE_ROOT; };
-		24E140281CE66D27004C52B4 /* EKVectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKVectorTests.swift; path = EngineKitCoreTests/EKVectorTests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		24E140281CE66D27004C52B4 /* EKVector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKVector3Tests.swift; path = EngineKitCoreTests/EKVector3Tests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		24E140351CE67E4D004C52B4 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = EngineKitCore/EKVector4.swift; sourceTree = SOURCE_ROOT; };
+		24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4Tests.swift; path = EngineKitCoreTests/EKVector4Tests.swift; sourceTree = SOURCE_ROOT; };
 		24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = EngineKitCore/EKSwiftExtensions.swift; sourceTree = SOURCE_ROOT; };
 		24E39E971CE5350B0096ADDF /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKVector3.swift; path = EngineKitCore/EKVector3.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		24FE17F71CE3846800287B82 /* EKJSCoreEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSCoreEngine.swift; path = EngineKitFoundation/EKJSCoreEngine.swift; sourceTree = SOURCE_ROOT; };
@@ -305,7 +308,8 @@
 			children = (
 				24FE183B1CE3CA4000287B82 /* EKFileManagerTests.swift */,
 				24FE18501CE3E9ED00287B82 /* EKLanguageEngineTests.swift */,
-				24E140281CE66D27004C52B4 /* EKVectorTests.swift */,
+				24E140281CE66D27004C52B4 /* EKVector3Tests.swift */,
+				24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */,
 				24FE18441CE3CC1E00287B82 /* testClassScript */,
 				24FE18471CE3CC3400287B82 /* testScript */,
 			);
@@ -596,11 +600,12 @@
 				24FE18191CE3A54000287B82 /* EKAddon.swift in Sources */,
 				245236681CE2CA97008321E3 /* EKFoundationFileManager.swift in Sources */,
 				24FE18071CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */,
-				24E140291CE66D27004C52B4 /* EKVectorTests.swift in Sources */,
+				24E140291CE66D27004C52B4 /* EKVector3Tests.swift in Sources */,
 				2452365D1CE2C9A0008321E3 /* EKFileManager.swift in Sources */,
 				24FE181E1CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
 				24E39E991CE5350B0096ADDF /* EKVector3.swift in Sources */,
 				2452365B1CE2C9A0008321E3 /* EKLanguageEngine.swift in Sources */,
+				24E1403C1CE68398004C52B4 /* EKVector4Tests.swift in Sources */,
 				2452365C1CE2C9A0008321E3 /* EKOSFactory.swift in Sources */,
 				2452365A1CE2C9A0008321E3 /* EKEngine.swift in Sources */,
 			);
@@ -641,11 +646,12 @@
 				24FE181B1CE3A54000287B82 /* EKAddon.swift in Sources */,
 				245236571CE2C998008321E3 /* EKOSXFactory.swift in Sources */,
 				24FE18081CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */,
-				24E1402A1CE66D27004C52B4 /* EKVectorTests.swift in Sources */,
+				24E1402A1CE66D27004C52B4 /* EKVector3Tests.swift in Sources */,
 				245236621CE2C9A1008321E3 /* EKFileManager.swift in Sources */,
 				24FE18201CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
 				24E39E9B1CE5350B0096ADDF /* EKVector3.swift in Sources */,
 				245236601CE2C9A1008321E3 /* EKLanguageEngine.swift in Sources */,
+				24E1403E1CE68398004C52B4 /* EKVector4Tests.swift in Sources */,
 				245236611CE2C9A1008321E3 /* EKOSFactory.swift in Sources */,
 				2452365F1CE2C9A1008321E3 /* EKEngine.swift in Sources */,
 			);
