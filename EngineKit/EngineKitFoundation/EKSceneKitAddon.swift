@@ -42,12 +42,12 @@ public class EKSceneKitAddon: EKAddon {
 
 }
 
-extension EKVectorType {
+extension EKVector3Type {
 	func toSCNVector3() -> SCNVector3 {
 		return SCNVector3(x, y, z)
 	}
 
-	static func createVector(SCNVector3 vector: SCNVector3) -> EKVectorType {
+	static func createVector(SCNVector3 vector: SCNVector3) -> EKVector3Type {
 		return Self.createVector(x: Double(vector.x),
 		                         y: Double(vector.y),
 		                         z: Double(vector.z))
@@ -59,10 +59,10 @@ public class EKShape: NSObject {
 
 	var position: AnyObject {
 		get {
-			return EKVector.createVector(SCNVector3: node.position)
+			return EKVector3.createVector(SCNVector3: node.position)
 		}
 		set {
-			let vector = EKVector.createVector(object: newValue)
+			let vector = EKVector3.createVector(object: newValue)
 			node.position = vector.toSCNVector3()
 		}
 	}
@@ -70,12 +70,12 @@ public class EKShape: NSObject {
 	var velocity: AnyObject {
 		get {
 			if let velocity = node.physicsBody?.velocity {
-				return EKVector.createVector(SCNVector3: velocity)
+				return EKVector3.createVector(SCNVector3: velocity)
 			}
-			return EKVector.origin()
+			return EKVector3.origin()
 		}
 		set {
-			let vector = EKVector.createVector(object: newValue)
+			let vector = EKVector3.createVector(object: newValue)
 			node.physicsBody?.velocity = vector.toSCNVector3()
 		}
 	}

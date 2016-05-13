@@ -7,19 +7,19 @@ import XCTest
 	@testable import EngineKitOSX
 #endif
 
-class EKVectorTests: XCTestCase {
+class EKVector3Tests: XCTestCase {
 
 	func testCreateAndEquals() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let equalVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let differentVector = EKVector.createVector(x: 4, y: 5, z: 6)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let equalVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let differentVector = EKVector3.createVector(x: 4, y: 5, z: 6)
 
 		XCTAssert(testVector == equalVector)
 		XCTAssert(testVector != differentVector)
 	}
 
 	func testGetters() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
 
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
@@ -27,8 +27,8 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testPlus() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let otherVector = EKVector.createVector(x: 2, y: 3, z: 1)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let otherVector = EKVector3.createVector(x: 2, y: 3, z: 1)
 
 		let resultVector = testVector.plus(otherVector)
 
@@ -38,8 +38,8 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testMinus() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let otherVector = EKVector.createVector(x: 2, y: 3, z: 1)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let otherVector = EKVector3.createVector(x: 2, y: 3, z: 1)
 
 		let resultVector = testVector.minus(otherVector)
 
@@ -49,7 +49,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testTimes() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
 
 		let resultVector = testVector.times(2)
 
@@ -59,7 +59,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testOver() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
 
 		let resultVector = testVector.over(2)
 
@@ -69,7 +69,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testOpposite() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
 
 		let resultVector = testVector.opposite()
 
@@ -79,8 +79,8 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testDot() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let otherVector = EKVector.createVector(x: 2, y: 3, z: 1)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let otherVector = EKVector3.createVector(x: 2, y: 3, z: 1)
 
 		let result = testVector.dot(otherVector)
 
@@ -88,7 +88,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testNormSquared() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
 
 		let result = testVector.normSquared()
 
@@ -96,7 +96,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testNorm() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
 
 		let result = testVector.norm()
 
@@ -104,7 +104,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testNormalize() {
-		let testVector = EKVector.createVector(x: 3, y: 3, z: -3)
+		let testVector = EKVector3.createVector(x: 3, y: 3, z: -3)
 
 		let resultVector = testVector.normalize()
 
@@ -114,8 +114,8 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testTranslate() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let otherVector = EKVector.createVector(x: 2, y: 3, z: 1)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let otherVector = EKVector3.createVector(x: 2, y: 3, z: 1)
 
 		let resultVector = testVector.translate(otherVector)
 
@@ -125,8 +125,8 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testScale() {
-		let testVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let otherVector = EKVector.createVector(x: 2, y: 3, z: 1)
+		let testVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let otherVector = EKVector3.createVector(x: 2, y: 3, z: 1)
 
 		let resultVector = testVector.scale(otherVector)
 
@@ -136,21 +136,21 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testNotZero() {
-		let nonZeroVector = EKVector.createVector(x: 1, y: 2, z: 3)
-		let zeroVector = EKVector.createVector(x: 0, y: 0, z: 0)
+		let nonZeroVector = EKVector3.createVector(x: 1, y: 2, z: 3)
+		let zeroVector = EKVector3.createVector(x: 0, y: 0, z: 0)
 
 		XCTAssert(nonZeroVector.notZero())
 		XCTAssertFalse(zeroVector.notZero())
 	}
 
 	func testOrigin() {
-		let originVector = EKVector.origin()
+		let originVector = EKVector3.origin()
 
 		XCTAssertFalse(originVector.notZero())
 	}
 
 	func testCreateWithXYZ() {
-		let testVector = EKVector.createVector(xyz: 3)
+		let testVector = EKVector3.createVector(xyz: 3)
 
 		XCTAssertEqual(testVector.x, 3)
 		XCTAssertEqual(testVector.y, 3)
@@ -158,7 +158,7 @@ class EKVectorTests: XCTestCase {
 	}
 
 	func testCreateWithArray() {
-		let testVector = EKVector.createVector(array: [1, 2, 3])
+		let testVector = EKVector3.createVector(array: [1, 2, 3])
 
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
@@ -172,7 +172,7 @@ class EKVectorTests: XCTestCase {
 			 ["X": 1, "Y": 2, "Z": 3]]
 
 		for dictionary in dictionaries {
-			let testVector = EKVector.createVector(dictionary: dictionary)
+			let testVector = EKVector3.createVector(dictionary: dictionary)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -184,7 +184,7 @@ class EKVectorTests: XCTestCase {
 		let strings: [String] = ["[1, 2, 3]", "1.0, 2, 3", "{{{1}{2}{3}}"]
 
 		for string in strings {
-			let testVector = EKVector.createVector(string: string)
+			let testVector = EKVector3.createVector(string: string)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -196,18 +196,18 @@ class EKVectorTests: XCTestCase {
 		let objects: [Any] = ["[1, 2, 3]",
 		                      ["0": 1.0, "1": 2.0, "2": 3.0],
 		                      [1.0, 2.0, 3.0],
-		                      EKVector.createVector(x: 1, y: 2, z: 3)]
+		                      EKVector3.createVector(x: 1, y: 2, z: 3)]
 
 		//
 		for object in objects {
-			let testVector = EKVector.createVector(object: object)
+			let testVector = EKVector3.createVector(object: object)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
 			XCTAssertEqual(testVector.z, 3)
 		}
 
-		let testVector = EKVector.createVector(object: 3.0)
+		let testVector = EKVector3.createVector(object: 3.0)
 
 		XCTAssertEqual(testVector.x, 3)
 		XCTAssertEqual(testVector.y, 3)
