@@ -31,3 +31,43 @@ extension Array where Element: IntegerLiteralConvertible {
 		}
 	}
 }
+
+extension Dictionary where Value: IntegerLiteralConvertible {
+	subscript(one index: Key) -> Value {
+		get {
+			return self[index] ?? 1
+		}
+	}
+
+	subscript(zero index: Key) -> Value {
+		get {
+			return self[index] ?? 0
+		}
+	}
+
+	subscript(one indexes: [Key]) -> Value {
+		get {
+			for index in indexes {
+				if let result = self[index] {
+					return result
+				}
+			}
+			return 1
+		}
+	}
+
+	subscript(zero indexes: [Key]) -> Value {
+		get {
+			for index in indexes {
+				if let result = self[index] {
+					return result
+				}
+			}
+			return 0
+		}
+	}
+
+	func zero(index: Key) -> Value {
+		return self[index] ?? 0
+	}
+}

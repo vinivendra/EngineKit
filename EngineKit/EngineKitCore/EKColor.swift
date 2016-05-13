@@ -18,8 +18,7 @@ let EKColorDictionary =
 	 "brown": [0.6, 0.4, 0.2],
 	 "clear": [0, 0, 0, 0]]
 
-
-public protocol EKColor {
+public protocol EKColor: class {
 	static func createColor(red red: Double,
 	                            green: Double,
 	                            blue: Double,

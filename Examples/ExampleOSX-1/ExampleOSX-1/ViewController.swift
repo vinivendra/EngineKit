@@ -1,4 +1,3 @@
-
 import Cocoa
 import EngineKitOSX
 import SceneKit
@@ -20,4 +19,5 @@ class ViewController: NSViewController {
 		lightnode.position = SCNVector3(10, 10, 10)
 		sceneView.scene?.rootNode.addChildNode(lightnode)
 	}
+
 }

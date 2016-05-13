@@ -6,20 +6,6 @@ import SceneKit
 	typealias OSColor = UIColor
 #endif
 
-extension EKColor {
-	func toObject() -> AnyObject {
-		if let object = self as? AnyObject {
-			return object
-		} else {
-			let rgba = self.components
-			return OSColor(red: CGFloat(rgba.red),
-			               green: CGFloat(rgba.green),
-			               blue: CGFloat(rgba.blue),
-			               alpha: CGFloat(rgba.alpha))
-		}
-	}
-}
-
 public class EKSceneKitAddon: EKAddon {
 
 	let sceneView: SCNView
@@ -56,17 +42,43 @@ public class EKSceneKitAddon: EKAddon {
 
 }
 
+//
+public class EKSCNVector: EKVector {
+	public let x: Double
+	public let y: Double
+	public let z: Double
+
+	init(x: Double, y: Double, z: Double) {
+		self.x = x
+		self.y = y
+		self.z = z
+	}
+
+	public static func createVector(x x: Double,
+	                                  y: Double,
+	                                  z: Double) -> EKVector {
+		return EKSCNVector(x: x, y: y, z: z)
+	}
+}
+
+extension EKVector {
+	func toSCNVector3() -> SCNVector3 {
+		return SCNVector3(x, y, z)
+	}
+}
+
 public class EKShape: NSObject {
 	let node = SCNNode(geometry: SCNSphere())
 
-	var position: [CGFloat] {
+	var position: AnyObject {
 		get {
 			return [CGFloat(node.position.x),
 			        CGFloat(node.position.y),
 			        CGFloat(node.position.z)]
 		}
 		set {
-			node.position = SCNVector3(newValue[0], newValue[1], newValue[2])
+			let vector = EKSCNVector.createVector(object: newValue)
+			node.position = vector.toSCNVector3()
 		}
 	}
 
@@ -74,7 +86,7 @@ public class EKShape: NSObject {
 		get {
 			let contents = node.geometry?.materials.first?.ambient.contents
 			if let contents = contents {
-				return OSColor.createColor(withObject: contents).toObject()
+				return OSColor.createColor(withObject: contents)
 			}
 
 			return OSColor.whiteColor()
@@ -83,7 +95,7 @@ public class EKShape: NSObject {
 			let color = OSColor.createColor(withObject: newValue)
 			let material = SCNMaterial()
 
-			let colorObject = color.toObject()
+			let colorObject = color
 
 			material.ambient.contents = colorObject
 			material.diffuse.contents = colorObject
@@ -150,7 +162,7 @@ public class EKSphere: EKShape, SphereExport {
 
 @objc protocol SphereExport: JSExport {
 	var radius: CGFloat { get set }
-	var position: [CGFloat] { get set }
+	var position: AnyObject { get set }
 	var color: AnyObject { get set }
 	var physics: String { get set }
 }
