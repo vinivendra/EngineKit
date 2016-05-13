@@ -65,6 +65,12 @@ extension EKVector {
 	func toSCNVector3() -> SCNVector3 {
 		return SCNVector3(x, y, z)
 	}
+
+	static func createVector(SCNVector3 vector: SCNVector3) -> EKVector {
+		return Self.createVector(x: Double(vector.x),
+		                         y: Double(vector.y),
+		                         z: Double(vector.z))
+	}
 }
 
 public class EKShape: NSObject {
@@ -72,13 +78,24 @@ public class EKShape: NSObject {
 
 	var position: AnyObject {
 		get {
-			return [CGFloat(node.position.x),
-			        CGFloat(node.position.y),
-			        CGFloat(node.position.z)]
+			return EKSCNVector.createVector(SCNVector3: node.position)
 		}
 		set {
 			let vector = EKSCNVector.createVector(object: newValue)
 			node.position = vector.toSCNVector3()
+		}
+	}
+
+	var velocity: AnyObject {
+		get {
+			if let velocity = node.physicsBody?.velocity {
+				return EKSCNVector.createVector(SCNVector3: velocity)
+			}
+			return EKSCNVector.origin()
+		}
+		set {
+			let vector = EKSCNVector.createVector(object: newValue)
+			node.physicsBody?.velocity = vector.toSCNVector3()
 		}
 	}
 
@@ -163,6 +180,7 @@ public class EKSphere: EKShape, SphereExport {
 @objc protocol SphereExport: JSExport {
 	var radius: CGFloat { get set }
 	var position: AnyObject { get set }
+	var velocity: AnyObject { get set }
 	var color: AnyObject { get set }
 	var physics: String { get set }
 }
