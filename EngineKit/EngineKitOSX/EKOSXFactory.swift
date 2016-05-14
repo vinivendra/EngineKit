@@ -2,12 +2,12 @@ import Cocoa
 
 let OSFactory = EKOSXFactory()
 
-extension NSColor: EKColor {
+extension NSColor: EKColorType {
 
 	public static func createColor(red red: Double,
 	                            green: Double,
 	                            blue: Double,
-	                            alpha: Double) -> EKColor {
+	                            alpha: Double) -> EKColorType {
 		return NSColor(red: CGFloat(red),
 		               green: CGFloat(green),
 		               blue: CGFloat(blue),

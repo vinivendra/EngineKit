@@ -84,13 +84,13 @@ public class EKShape: NSObject {
 		get {
 			let contents = node.geometry?.materials.first?.ambient.contents
 			if let contents = contents {
-				return OSColor.createColor(withObject: contents)
+				return OSColor.createColor(object: contents)
 			}
 
 			return OSColor.whiteColor()
 		}
 		set {
-			let color = OSColor.createColor(withObject: newValue)
+			let color = OSColor.createColor(object: newValue)
 			let material = SCNMaterial()
 
 			let colorObject = color
