@@ -27,9 +27,9 @@ extension EKVector4: EKColorType {
 	}
 
 	public var components: (red: Double,
-		green: Double,
-		blue: Double,
-		alpha: Double) {
+							green: Double,
+							blue: Double,
+							alpha: Double) {
 		get {
 			return (x, y, z, w)
 		}

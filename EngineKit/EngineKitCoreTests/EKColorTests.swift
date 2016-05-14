@@ -7,7 +7,7 @@ import XCTest
 	@testable import EngineKitOSX
 #endif
 
-class EKVector4ColorTests: EKColorTests {
+class EKVector4AsEKColorTests: EKColorTests {
 	func testAll() {
 		testAll(EKVector4)
 	}
@@ -45,9 +45,12 @@ class EKColorTests: XCTestCase {
 		                                                blue: 0.3,
 		                                                alpha: 1.0)
 
-		XCTAssert(testColor == equalColor)
-		XCTAssert(testColor != differentColor)
-		XCTAssert(testColor != otherDifferentColor)
+		XCTAssert(testColor == equalColor,
+		          errorMessageEqual(type, testColor, equalColor))
+		XCTAssert(testColor != differentColor,
+		          errorMessageNotEqual(type, testColor, differentColor))
+		XCTAssert(testColor != otherDifferentColor,
+		          errorMessageNotEqual(type, testColor, otherDifferentColor))
 	}
 
 	func testComponents<ColorType: EKColorType>(type: ColorType.Type) {
@@ -59,10 +62,10 @@ class EKColorTests: XCTestCase {
 		let r: Double, g: Double, b: Double, a: Double
 		(r, g, b, a) = testColor.components
 
-		XCTAssertEqual(r, 0.1)
-		XCTAssertEqual(g, 0.2)
-		XCTAssertEqual(b, 0.3)
-		XCTAssertEqual(a, 0.4)
+		XCTAssertEqual(r, 0.1, errorMessageEqual(type, r, 0.1))
+		XCTAssertEqual(g, 0.2, errorMessageEqual(type, g, 0.2))
+		XCTAssertEqual(b, 0.3, errorMessageEqual(type, b, 0.3))
+		XCTAssertEqual(a, 0.4, errorMessageEqual(type, a, 0.4))
 	}
 
 	func testCreate<ColorType: EKColorType>(type: ColorType.Type) {
@@ -72,10 +75,10 @@ class EKColorTests: XCTestCase {
 		let r: Double, g: Double, b: Double, a: Double
 		(r, g, b, a) = testColor.components
 
-		XCTAssertEqual(r, 0.1)
-		XCTAssertEqual(g, 0.2)
-		XCTAssertEqual(b, 0.3)
-		XCTAssertEqual(a, 1.0)
+		XCTAssertEqual(r, 0.1, errorMessageEqual(type, r, 0.1))
+		XCTAssertEqual(g, 0.2, errorMessageEqual(type, g, 0.2))
+		XCTAssertEqual(b, 0.3, errorMessageEqual(type, b, 0.3))
+		XCTAssertEqual(a, 1.0, errorMessageEqual(type, a, 1.0))
 	}
 
 	func testCreateGrayscale<ColorType: EKColorType>(type: ColorType.Type) {
@@ -83,10 +86,10 @@ class EKColorTests: XCTestCase {
 		let r: Double, g: Double, b: Double, a: Double
 		(r, g, b, a) = testColor.components
 
-		XCTAssertEqual(r, 0.32)
-		XCTAssertEqual(g, 0.32)
-		XCTAssertEqual(b, 0.32)
-		XCTAssertEqual(a, 1.0)
+		XCTAssertEqual(r, 0.32, errorMessageEqual(type, r, 0.32))
+		XCTAssertEqual(g, 0.32, errorMessageEqual(type, g, 0.32))
+		XCTAssertEqual(b, 0.32, errorMessageEqual(type, b, 0.32))
+		XCTAssertEqual(a, 1.0, errorMessageEqual(type, a, 1.0))
 	}
 
 	func testCreateArray<ColorType: EKColorType>(type: ColorType.Type) {
@@ -95,10 +98,10 @@ class EKColorTests: XCTestCase {
 		let r: Double, g: Double, b: Double, a: Double
 		(r, g, b, a) = testColor.components
 
-		XCTAssertEqual(r, 0.1)
-		XCTAssertEqual(g, 0.2)
-		XCTAssertEqual(b, 0.3)
-		XCTAssertEqual(a, 0.4)
+		XCTAssertEqual(r, 0.1, errorMessageEqual(type, r, 0.1))
+		XCTAssertEqual(g, 0.2, errorMessageEqual(type, g, 0.2))
+		XCTAssertEqual(b, 0.3, errorMessageEqual(type, b, 0.3))
+		XCTAssertEqual(a, 0.4, errorMessageEqual(type, a, 0.4))
 	}
 
 	func testCreateName<ColorType: EKColorType>(type: ColorType.Type) {
@@ -127,10 +130,10 @@ class EKColorTests: XCTestCase {
 			let r: Double, g: Double, b: Double, a: Double
 			(r, g, b, a) = testColor.components
 
-			XCTAssertEqual(r, values[0])
-			XCTAssertEqual(g, values[1])
-			XCTAssertEqual(b, values[2])
-			XCTAssertEqual(a, values[3])
+			XCTAssertEqual(r, values[0], errorMessageEqual(type, r, values[0]))
+			XCTAssertEqual(g, values[1], errorMessageEqual(type, g, values[1]))
+			XCTAssertEqual(b, values[2], errorMessageEqual(type, b, values[2]))
+			XCTAssertEqual(a, values[3], errorMessageEqual(type, a, values[3]))
 		}
 	}
 
@@ -171,10 +174,10 @@ class EKColorTests: XCTestCase {
 			let r: Double, g: Double, b: Double, a: Double
 			(r, g, b, a) = color.components
 
-			XCTAssertEqual(r, values[0])
-			XCTAssertEqual(g, values[1])
-			XCTAssertEqual(b, values[2])
-			XCTAssertEqual(a, values[3])
+			XCTAssertEqual(r, values[0], errorMessageEqual(type, r, values[0]))
+			XCTAssertEqual(g, values[1], errorMessageEqual(type, g, values[1]))
+			XCTAssertEqual(b, values[2], errorMessageEqual(type, b, values[2]))
+			XCTAssertEqual(a, values[3], errorMessageEqual(type, a, values[3]))
 		}
 	}
 
@@ -187,31 +190,31 @@ class EKColorTests: XCTestCase {
 
 		var color = ColorType.createColor(object: testColor)
 		(r, g, b, a) = color.components
-		XCTAssertEqual(r, 0.1)
-		XCTAssertEqual(g, 0.2)
-		XCTAssertEqual(b, 0.3)
-		XCTAssertEqual(a, 0.4)
+		XCTAssertEqual(r, 0.1, errorMessageEqual(type, r, 0.1))
+		XCTAssertEqual(g, 0.2, errorMessageEqual(type, g, 0.2))
+		XCTAssertEqual(b, 0.3, errorMessageEqual(type, b, 0.3))
+		XCTAssertEqual(a, 0.4, errorMessageEqual(type, a, 0.4))
 
 		color = ColorType.createColor(object: [0.1, 0.2, 0.3, 0.4])
 		(r, g, b, a) = color.components
-		XCTAssertEqual(r, 0.1)
-		XCTAssertEqual(g, 0.2)
-		XCTAssertEqual(b, 0.3)
-		XCTAssertEqual(a, 0.4)
+		XCTAssertEqual(r, 0.1, errorMessageEqual(type, r, 0.1))
+		XCTAssertEqual(g, 0.2, errorMessageEqual(type, g, 0.2))
+		XCTAssertEqual(b, 0.3, errorMessageEqual(type, b, 0.3))
+		XCTAssertEqual(a, 0.4, errorMessageEqual(type, a, 0.4))
 
 		color = ColorType.createColor(object: 0.23)
 		(r, g, b, a) = color.components
-		XCTAssertEqual(r, 0.23)
-		XCTAssertEqual(g, 0.23)
-		XCTAssertEqual(b, 0.23)
-		XCTAssertEqual(a, 1.0)
+		XCTAssertEqual(r, 0.23, errorMessageEqual(type, r, 0.23))
+		XCTAssertEqual(g, 0.23, errorMessageEqual(type, g, 0.23))
+		XCTAssertEqual(b, 0.23, errorMessageEqual(type, b, 0.23))
+		XCTAssertEqual(a, 1.0, errorMessageEqual(type, a, 1.0))
 
 		color = ColorType.createColor(object: "brown")
 		(r, g, b, a) = color.components
-		XCTAssertEqual(r, 0.6)
-		XCTAssertEqual(g, 0.4)
-		XCTAssertEqual(b, 0.2)
-		XCTAssertEqual(a, 1.0)
+		XCTAssertEqual(r, 0.6, errorMessageEqual(type, r, 0.6))
+		XCTAssertEqual(g, 0.4, errorMessageEqual(type, g, 0.4))
+		XCTAssertEqual(b, 0.2, errorMessageEqual(type, b, 0.2))
+		XCTAssertEqual(a, 1.0, errorMessageEqual(type, a, 1.0))
 	}
 
 }

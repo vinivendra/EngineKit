@@ -49,6 +49,10 @@
 		24E1403E1CE68398004C52B4 /* EKVector4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */; };
 		24E140401CE68E7B004C52B4 /* EKColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1403F1CE68E7B004C52B4 /* EKColorTests.swift */; };
 		24E140411CE68E7B004C52B4 /* EKColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E1403F1CE68E7B004C52B4 /* EKColorTests.swift */; };
+		24E140431CE799AD004C52B4 /* EKOSXProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140421CE799AD004C52B4 /* EKOSXProtocolTests.swift */; };
+		24E140451CE7A195004C52B4 /* EKTestsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140441CE7A195004C52B4 /* EKTestsExtension.swift */; };
+		24E140461CE7A195004C52B4 /* EKTestsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140441CE7A195004C52B4 /* EKTestsExtension.swift */; };
+		24E140481CE7A1CB004C52B4 /* EKiOSProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E140471CE7A1CB004C52B4 /* EKiOSProtocolTests.swift */; };
 		24E39E931CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */; };
 		24E39E941CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */; };
 		24E39E951CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */; };
@@ -130,6 +134,9 @@
 		24E140351CE67E4D004C52B4 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = EngineKitCore/EKVector4.swift; sourceTree = SOURCE_ROOT; };
 		24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4Tests.swift; path = EngineKitCoreTests/EKVector4Tests.swift; sourceTree = SOURCE_ROOT; };
 		24E1403F1CE68E7B004C52B4 /* EKColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKColorTests.swift; path = EngineKitCoreTests/EKColorTests.swift; sourceTree = SOURCE_ROOT; };
+		24E140421CE799AD004C52B4 /* EKOSXProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOSXProtocolTests.swift; sourceTree = "<group>"; };
+		24E140441CE7A195004C52B4 /* EKTestsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKTestsExtension.swift; path = EngineKitCoreTests/EKTestsExtension.swift; sourceTree = SOURCE_ROOT; };
+		24E140471CE7A1CB004C52B4 /* EKiOSProtocolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKiOSProtocolTests.swift; path = EngineKitiOSTests/EKiOSProtocolTests.swift; sourceTree = SOURCE_ROOT; };
 		24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = EngineKitCore/EKSwiftExtensions.swift; sourceTree = SOURCE_ROOT; };
 		24E39E971CE5350B0096ADDF /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKVector3.swift; path = EngineKitCore/EKVector3.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		24FE17F71CE3846800287B82 /* EKJSCoreEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSCoreEngine.swift; path = EngineKitFoundation/EKJSCoreEngine.swift; sourceTree = SOURCE_ROOT; };
@@ -247,6 +254,7 @@
 		2460C3621CC1F73A003B2C6D /* EngineKitiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				24E140471CE7A1CB004C52B4 /* EKiOSProtocolTests.swift */,
 				2460C3651CC1F73A003B2C6D /* Info.plist */,
 			);
 			path = EngineKitiOSTests;
@@ -265,6 +273,7 @@
 		2460C37E1CC1F743003B2C6D /* EngineKitOSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				24E140421CE799AD004C52B4 /* EKOSXProtocolTests.swift */,
 				2460C3811CC1F743003B2C6D /* Info.plist */,
 			);
 			path = EngineKitOSXTests;
@@ -314,6 +323,7 @@
 				24E140281CE66D27004C52B4 /* EKVector3Tests.swift */,
 				24E1403A1CE68398004C52B4 /* EKVector4Tests.swift */,
 				24E1403F1CE68E7B004C52B4 /* EKColorTests.swift */,
+				24E140441CE7A195004C52B4 /* EKTestsExtension.swift */,
 				24FE18441CE3CC1E00287B82 /* testClassScript */,
 				24FE18471CE3CC3400287B82 /* testScript */,
 			);
@@ -596,11 +606,13 @@
 				2452366B1CE2CB18008321E3 /* EKFoundationFileManagerTests.swift in Sources */,
 				24E39E941CE51B220096ADDF /* EKSwiftExtensions.swift in Sources */,
 				24FE183D1CE3CA4000287B82 /* EKFileManagerTests.swift in Sources */,
+				24E140481CE7A1CB004C52B4 /* EKiOSProtocolTests.swift in Sources */,
 				24E140371CE67E4D004C52B4 /* EKVector4.swift in Sources */,
 				24FE18511CE3E9ED00287B82 /* EKLanguageEngineTests.swift in Sources */,
 				24FE17F91CE3846800287B82 /* EKJSCoreEngine.swift in Sources */,
 				245236581CE2C99A008321E3 /* EKiOSFactory.swift in Sources */,
 				24FE18381CE3BC8500287B82 /* EKColor.swift in Sources */,
+				24E140451CE7A195004C52B4 /* EKTestsExtension.swift in Sources */,
 				24FE18191CE3A54000287B82 /* EKAddon.swift in Sources */,
 				245236681CE2CA97008321E3 /* EKFoundationFileManager.swift in Sources */,
 				24FE18071CE387A100287B82 /* EKJSCoreEngineTests.swift in Sources */,
@@ -657,7 +669,9 @@
 				24E39E9B1CE5350B0096ADDF /* EKVector3.swift in Sources */,
 				245236601CE2C9A1008321E3 /* EKLanguageEngine.swift in Sources */,
 				24E1403E1CE68398004C52B4 /* EKVector4Tests.swift in Sources */,
+				24E140431CE799AD004C52B4 /* EKOSXProtocolTests.swift in Sources */,
 				245236611CE2C9A1008321E3 /* EKOSFactory.swift in Sources */,
+				24E140461CE7A195004C52B4 /* EKTestsExtension.swift in Sources */,
 				2452365F1CE2C9A1008321E3 /* EKEngine.swift in Sources */,
 				24E140411CE68E7B004C52B4 /* EKColorTests.swift in Sources */,
 			);
