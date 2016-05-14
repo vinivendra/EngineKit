@@ -159,7 +159,6 @@ class EKVector3Tests: XCTestCase {
 
 	func testCreateWithArray() {
 		let testVector = EKVector3.createVector(array: [1, 2, 3])
-
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
 		XCTAssertEqual(testVector.z, 3)

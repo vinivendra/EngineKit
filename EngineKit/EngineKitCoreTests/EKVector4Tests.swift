@@ -169,21 +169,27 @@ class EKVector4Tests: XCTestCase {
 	}
 
 	func testCreateWithArray() {
-		let testVector = EKVector4.createVector(array: [1, 2, 3, 1])
-
+		var testVector = EKVector4.createVector(array: [1, 2, 3, 1])
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
 		XCTAssertEqual(testVector.z, 3)
 		XCTAssertEqual(testVector.w, 1)
+
+		testVector = EKVector4.createVector(array: [1, 2, 3])
+		XCTAssertEqual(testVector.x, 1)
+		XCTAssertEqual(testVector.y, 2)
+		XCTAssertEqual(testVector.z, 3)
+		XCTAssertEqual(testVector.w, 0)
 	}
 
 	func testCreateWithDictionary() {
 		let dictionaries: [[String: Double]] =
-			[["0": 1, "1": 2, "2": 3, "3": 1],
-			 ["x": 1, "y": 2, "z": 3, "w": 1],
-			 ["X": 1, "Y": 2, "Z": 3, "W": 1],
-			 ["x": 1, "y": 2, "z": 3, "a": 1],
-			 ["X": 1, "Y": 2, "Z": 3, "A": 1]]
+			[["0": 1, "1": 2, "2": 3, "3": 0],
+			 ["x": 1, "y": 2, "z": 3, "w": 0],
+			 ["X": 1, "Y": 2, "Z": 3, "W": 0],
+			 ["x": 1, "y": 2, "z": 3, "a": 0],
+			 ["X": 1, "Y": 2, "Z": 3, "A": 0],
+			 ["X": 1, "Y": 2, "Z": 3]]
 
 		for dictionary in dictionaries {
 			let testVector = EKVector4.createVector(dictionary: dictionary)
@@ -191,7 +197,7 @@ class EKVector4Tests: XCTestCase {
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
 			XCTAssertEqual(testVector.z, 3)
-			XCTAssertEqual(testVector.w, 1)
+			XCTAssertEqual(testVector.w, 0)
 		}
 	}
 
