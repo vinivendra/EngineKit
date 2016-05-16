@@ -5,6 +5,9 @@ enum EKScriptError: ErrorType {
 public class EKEngine {
 
 	let languageEngine: EKLanguageEngine
+	let eventCenter = EKEventCenter()
+
+	var addons = [EKAddon]()
 
 	public init(languageEngine: EKLanguageEngine) {
 		self.languageEngine = languageEngine
@@ -18,8 +21,23 @@ public class EKEngine {
 		}
 	}
 
-	public func loadAddon(addon: EKAddon) {
-		addon.addFunctionalityToEngine(languageEngine)
+	public func loadAddon(addon: EKAddon) throws {
+		do {
+			try addon.setup(onEngine: self)
+		} catch let error {
+			throw error
+		}
+
+		addons.append(addon)
 	}
+
+}
+
+//
+public protocol EKEvent: Hashable {
+
+}
+
+public class EKEventCenter {
 
 }

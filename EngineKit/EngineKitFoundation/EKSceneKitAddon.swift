@@ -6,7 +6,7 @@ import SceneKit
 	typealias OSColor = UIColor
 #endif
 
-public class EKSceneKitAddon: EKAddon {
+public class EKSceneKitAddon: EKLanguageAddon {
 
 	let sceneView: SCNView
 	var scene: SCNScene? {
