@@ -1,4 +1,5 @@
 import XCTest
+import JavaScriptCore
 
 #if os(iOS)
 	@testable import EngineKitiOS
@@ -6,6 +7,17 @@ import XCTest
 #if os(OSX)
 	@testable import EngineKitOSX
 #endif
+
+@objc protocol JSTestExport: JSExport {
+	func test()
+}
+@objc class JSTest: NSObject, JSTestExport {
+
+	func test() {
+		print("test successful!")
+	}
+
+}
 
 class EKJSCoreEngineTests: XCTestCase {
 
@@ -18,15 +30,30 @@ class EKJSCoreEngineTests: XCTestCase {
 
 	func testOutput() {
 		// Tests only if these functions don't crash... :/
-		engine.context.evaluateScript("bla!")
 		engine.context.evaluateScript("alert(\"alert!!\");")
-		engine.context.evaluateScript("print(\"potato\");")
-		engine.context.evaluateScript("console.log(\"potahto\");")
+		engine.context.evaluateScript("print(\"print!!\");")
+		engine.context.evaluateScript("console.log(\"console.log!!\");")
+		XCTAssertFalse(engine.errorWasTriggered)
+
+		engine.context.evaluateScript("bla")
+		XCTAssert(engine.errorWasTriggered)
 	}
 
 	func testRunScript() {
-		// Tests only if the function doesn't crash... :/
-		engine.runScript(filename: "test.js")
+		do {
+			try engine.runScript(filename: "testScript")
+		} catch {
+			XCTFail()
+		}
+	}
+
+	func testAddClass() {
+		do {
+			engine.addClass(JSTest)
+			try engine.runScript(filename: "testClassScript")
+		} catch {
+			XCTFail()
+		}
 	}
 
 }

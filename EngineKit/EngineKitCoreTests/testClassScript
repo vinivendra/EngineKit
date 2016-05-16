@@ -1,0 +1,3 @@
+
+var myTest = new EKTest();
+myTest.test();

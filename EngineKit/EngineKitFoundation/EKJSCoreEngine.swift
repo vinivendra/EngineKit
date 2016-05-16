@@ -1,18 +1,18 @@
 import JavaScriptCore
 
+extension NSObject: Scriptable {}
+
+// MARK: Console class
 @objc protocol ConsoleExport: JSExport {
 	func log(string: String)
 }
-
-class Console: NSObject {
-}
-
-extension Console: ConsoleExport {
+class Console: NSObject, ConsoleExport {
 	func log(string: String) {
 		print(string)
 	}
 }
 
+// MARK: JS Extensions
 extension JSValue {
 	@nonobjc subscript(name: String) -> AnyObject {
 		get { return self.objectForKeyedSubscript(name) }
@@ -27,16 +27,21 @@ extension JSContext {
 	}
 }
 
+// MARK: EKJSCoreEngine
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
+	var errorWasTriggered = false
 
 	public init() {
 		context.exceptionHandler = { context, value in
 			let stackTrace = value["stack"].toString()
 			let lineNumber = value["line"].toInt32()
 			let column = value["column"].toInt32()
-			let moreInfo = "in method \(stackTrace)\nLine number \(lineNumber), column \(column)"
-			print("JAVASCRIPT ERROR: \(value) \(moreInfo)")
+
+			print("JAVASCRIPT ERROR: \(value) in method \(stackTrace)\n"
+				+ "Line number \(lineNumber), column \(column)")
+
+			self.errorWasTriggered = true
 		}
 
 		let printFunc = { (value: JSValue) in
@@ -46,14 +51,43 @@ public class EKJSCoreEngine: EKLanguageEngine {
 
 		context["print"] = printObj
 		context["alert"] = printObj
-
 		context["console"] = Console()
 	}
 
-	public func runScript(filename filename: String) {
+	public func addClass<T: Scriptable>(class: T.Type,
+	                     withName className: String?,
+	                              constructor: (() -> (T))? ) {
+		let fullClassName = T.description().componentsSeparatedByString(".")
+		let className = className ?? fullClassName.last!.toEKPrefixClassName()
+
+		let constructorClosure: (@convention(block) () -> (NSObject))?
+
+		if let constructor = constructor {
+			constructorClosure = {
+				// Attention! JavaScriptCore only supports NSObject subclasses
+				return constructor() as! NSObject
+				} as @convention(block) () -> (NSObject)
+		} else {
+			constructorClosure = {
+				// Attention! JavaScriptCore only supports NSObject subclasses
+				return T() as! NSObject
+				} as @convention(block) () -> (NSObject)
+		}
+
+		let constructorObject = unsafeBitCast(constructorClosure,
+		                                      AnyObject.self)
+
+		context[className] = constructorObject
+	}
+
+	public func runScript(filename filename: String) throws {
 		let fileManager = OSFactory.createFileManager()
 		let scriptContents = fileManager.getContentsFromFile(filename)
 		context.evaluateScript(scriptContents)
+
+		if errorWasTriggered {
+			throw EKScriptError.EvaluationError
+		}
 	}
 
 }

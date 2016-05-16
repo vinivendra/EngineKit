@@ -1,3 +1,5 @@
 public protocol EKOSFactory {
-	func createFileManager() -> EKFileManager
+	associatedtype FileManager: EKFileManager
+
+	func createFileManager() -> FileManager
 }
