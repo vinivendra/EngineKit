@@ -38,6 +38,12 @@ public class EKSceneKitAddon: EKAddon {
 			self.scene?.rootNode.addChildNode(sphere.node)
 			return sphere
 		})
+
+		engine.addClass(EKBox.self, withName: nil, constructor: {
+			let box = EKBox()
+			self.scene?.rootNode.addChildNode(box.node)
+			return box
+		})
 	}
 
 }
@@ -54,8 +60,21 @@ extension EKVector3Type {
 	}
 }
 
+extension EKVector4Type {
+	func toSCNVector4() -> SCNVector4 {
+		return SCNVector4(x, y, z, w)
+	}
+
+	static func createVector(SCNVector4 vector: SCNVector4) -> EKVector4Type {
+		return Self.createVector(x: Double(vector.x),
+		                         y: Double(vector.y),
+		                         z: Double(vector.z),
+		                         w: Double(vector.w))
+	}
+}
+
 public class EKShape: NSObject {
-	let node = SCNNode(geometry: SCNSphere())
+	let node = SCNNode()
 
 	var position: AnyObject {
 		get {
@@ -64,6 +83,16 @@ public class EKShape: NSObject {
 		set {
 			let vector = EKVector3.createVector(object: newValue)
 			node.position = vector.toSCNVector3()
+		}
+	}
+
+	var rotation: AnyObject {
+		get {
+			return EKVector4.createVector(SCNVector4: node.rotation)
+		}
+		set {
+			let vector = EKVector4.createVector(object: newValue)
+			node.rotation = vector.toSCNVector4()
 		}
 	}
 
@@ -142,6 +171,11 @@ public class EKShape: NSObject {
 
 //
 public class EKSphere: EKShape, SphereExport {
+	override init() {
+		super.init()
+		node.geometry = SCNSphere()
+	}
+
 	var sphere: SCNSphere {
 		get {
 			return node.geometry as! SCNSphere
@@ -161,6 +195,59 @@ public class EKSphere: EKShape, SphereExport {
 @objc protocol SphereExport: JSExport {
 	var radius: CGFloat { get set }
 	var position: AnyObject { get set }
+	var rotation: AnyObject { get set }
+	var velocity: AnyObject { get set }
+	var color: AnyObject { get set }
+	var physics: String { get set }
+}
+
+//
+public class EKBox: EKShape, BoxExport {
+	override init() {
+		super.init()
+		node.geometry = SCNBox()
+	}
+
+	var box: SCNBox {
+		get {
+			return node.geometry as! SCNBox
+		}
+	}
+
+	var width: CGFloat {
+		get {
+			return box.width
+		}
+		set {
+			box.width = newValue
+		}
+	}
+
+	var length: CGFloat {
+		get {
+			return box.length
+		}
+		set {
+			box.length = newValue
+		}
+	}
+
+	var height: CGFloat {
+		get {
+			return box.height
+		}
+		set {
+			box.height = newValue
+		}
+	}
+}
+
+@objc protocol BoxExport: JSExport {
+	var width: CGFloat { get set }
+	var length: CGFloat { get set }
+	var height: CGFloat { get set }
+	var position: AnyObject { get set }
+	var rotation: AnyObject { get set }
 	var velocity: AnyObject { get set }
 	var color: AnyObject { get set }
 	var physics: String { get set }
