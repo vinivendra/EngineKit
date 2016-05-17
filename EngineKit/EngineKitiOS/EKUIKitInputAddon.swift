@@ -11,6 +11,12 @@ extension CGPoint {
 public class EKUIKitInputAddon: EKEventAddon {
 
 	weak public var eventCenter: EKEventCenter?
+	public var firesEventsOfTypes: [EKEvent.Type] {
+		get {
+			return [EKEventTap.self, EKEventPan.self, EKEventPinch.self,
+			        EKEventRotation.self, EKEventLongPress.self]
+		}
+	}
 
 	public let view: UIView
 
@@ -65,7 +71,7 @@ public class EKUIKitInputAddon: EKEventAddon {
 
 	@objc public func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventPinch(position: point.doubleTuple,
-			scale: nil, state: .Changed))
+		eventCenter?.fireEvent(EKEventLongPress(position: point.doubleTuple,
+			displacement: nil, state: .Changed))
 	}
 }

@@ -14,7 +14,11 @@ class ViewController: UIViewController, EKEventListener {
 		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
 		engine.loadAddon(EKUIKitInputAddon(view: sceneView))
 		try! engine.runScript(filename: "main.js")
-		engine.register(self, forEvent: EKEventTap.self)
+		try! engine.register(self, forEvent: EKEventTap.self)
+		try! engine.register(self, forEvent: EKEventPan.self)
+		try! engine.register(self, forEvent: EKEventPinch.self)
+		try! engine.register(self, forEvent: EKEventRotation.self)
+		try! engine.register(self, forEvent: EKEventLongPress.self)
 
 		let lightnode = SCNNode()
 		let light = SCNLight()
@@ -24,8 +28,16 @@ class ViewController: UIViewController, EKEventListener {
 	}
 
 	func respondToEvent(event: EKEvent) {
-		if let tapEvent = event as? EKEventTap {
-			print("tap \(tapEvent.position)")
+		if let event = event as? EKEventTap {
+			print("tap \(event.position)")
+		} else if let event = event as? EKEventPan {
+			print("pan \(event.position)")
+		} else if let event = event as? EKEventPinch {
+			print("pinch \(event.position)")
+		} else if let event = event as? EKEventRotation {
+			print("rotation \(event.position)")
+		} else if let event = event as? EKEventLongPress {
+			print("long press \(event.position)")
 		}
 	}
 }

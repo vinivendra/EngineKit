@@ -16,11 +16,20 @@ public class EKEventCenter {
 		}
 	}
 
+	func startSendingEvents(ofTypes types: [EKEvent.Type]) {
+		for type in types {
+			let className = "\(type.self)"
+			allListeners[className] = [EKEventListener]()
+		}
+	}
+
 	func register<Event: EKEvent>(listener: EKEventListener,
-	              forEvent event: Event.Type) {
+	              forEvent event: Event.Type) throws {
 		let className = "\(Event.self)"
 		if allListeners[className] == nil {
-			allListeners[className] = [EKEventListener]()
+			throw EKError.EventRegistryError(
+				message: "No addons have been registered to fire " + className +
+				" events")
 		}
 
 		allListeners[className]?.append(listener)
@@ -33,7 +42,7 @@ public enum EKEventInputState {
 	case Ended
 }
 
-////
+//
 public class EKEventScreenInput: EKEvent {
 	public let position: (x: Double, y: Double)?
 
@@ -89,5 +98,13 @@ public class EKEventRotation: EKEventScreenInputContinuous {
 	}
 }
 
-public class EKEventLongPress: EKEventPan {
+public class EKEventLongPress: EKEventScreenInputContinuous {
+	public let displacement: (x: Double, y: Double)?
+
+	public init(position: (x: Double, y: Double)? = nil,
+	            displacement: (x: Double, y: Double)? = nil,
+	            state: EKEventInputState) {
+		self.displacement = displacement
+		super.init(position: position, state: state)
+	}
 }

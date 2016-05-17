@@ -1,5 +1,6 @@
-enum EKScriptError: ErrorType {
-	case EvaluationError
+enum EKError: ErrorType {
+	case ScriptEvaluationError
+	case EventRegistryError(message: String)
 }
 
 public class EKEngine {
@@ -28,7 +29,11 @@ public class EKEngine {
 	}
 
 	public func register<Event: EKEvent>(listener: EKEventListener,
-	                     forEvent event: Event.Type) {
-		eventCenter.register(listener, forEvent: event)
+	                     forEvent event: Event.Type) throws {
+		do {
+			try eventCenter.register(listener, forEvent: event)
+		} catch let error {
+			throw error
+		}
 	}
 }

@@ -86,7 +86,7 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context.evaluateScript(scriptContents)
 
 		if errorWasTriggered {
-			throw EKScriptError.EvaluationError
+			throw EKError.ScriptEvaluationError
 		}
 	}
 
