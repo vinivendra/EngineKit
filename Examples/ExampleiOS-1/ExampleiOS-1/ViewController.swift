@@ -2,19 +2,19 @@ import UIKit
 import EngineKitiOS
 import SceneKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, EKEventListener {
     @IBOutlet weak var sceneView: SCNView!
 
-	var input: EKUIKitInputAddon?
+	var engine: EKEngine!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let engine = EKEngine(languageEngine: EKJSCoreEngine())
-		try! engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
-		input = EKUIKitInputAddon(view: sceneView)
-		try! engine.loadAddon(input!)
+		engine = EKEngine(languageEngine: EKJSCoreEngine())
+		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
+		engine.loadAddon(EKUIKitInputAddon(view: sceneView))
 		try! engine.runScript(filename: "main.js")
+		engine.register(self, forEvent: EKEventTap.self)
 
 		let lightnode = SCNNode()
 		let light = SCNLight()
@@ -23,4 +23,9 @@ class ViewController: UIViewController {
 		sceneView.scene?.rootNode.addChildNode(lightnode)
 	}
 
+	func respondToEvent(event: EKEvent) {
+		if let tapEvent = event as? EKEventTap {
+			print("tap \(tapEvent.position)")
+		}
+	}
 }

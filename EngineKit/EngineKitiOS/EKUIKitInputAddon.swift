@@ -1,5 +1,13 @@
 import UIKit
 
+extension CGPoint {
+	var doubleTuple: (x: Double, y: Double) {
+		get {
+			return (x: Double(self.x), y: Double(self.y))
+		}
+	}
+}
+
 public class EKUIKitInputAddon: EKEventAddon {
 
 	weak public var eventCenter: EKEventCenter?
@@ -32,27 +40,32 @@ public class EKUIKitInputAddon: EKEventAddon {
 		self.view.addGestureRecognizer(longPressGestureRecognizer)
 	}
 
-	public func setup(onEngine engine: EKEngine) throws {
-		self.eventCenter = engine.eventCenter
-	}
-
 	@objc public func handleTap(gestureRecognizer: UIGestureRecognizer) {
-		print("tap!")
+		let point = gestureRecognizer.locationInView(view)
+		eventCenter?.fireEvent(EKEventTap(position: point.doubleTuple))
 	}
 
 	@objc public func handlePan(gestureRecognizer: UIGestureRecognizer) {
-		print("pan!")
+		let point = gestureRecognizer.locationInView(view)
+		eventCenter?.fireEvent(EKEventPan(position: point.doubleTuple,
+			displacement: nil, state: .Changed))
 	}
 
 	@objc public func handlePinch(gestureRecognizer: UIGestureRecognizer) {
-		print("pinch!")
+		let point = gestureRecognizer.locationInView(view)
+		eventCenter?.fireEvent(EKEventPinch(position: point.doubleTuple,
+			scale: nil, state: .Changed))
 	}
 
 	@objc public func handleRotation(gestureRecognizer: UIGestureRecognizer) {
-		print("rotation!")
+		let point = gestureRecognizer.locationInView(view)
+		eventCenter?.fireEvent(EKEventRotation(position: point.doubleTuple,
+			angle: nil, state: .Changed))
 	}
 
 	@objc public func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
-		print("long press!")
+		let point = gestureRecognizer.locationInView(view)
+		eventCenter?.fireEvent(EKEventPinch(position: point.doubleTuple,
+			scale: nil, state: .Changed))
 	}
 }

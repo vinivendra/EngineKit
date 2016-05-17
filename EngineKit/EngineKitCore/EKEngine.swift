@@ -21,23 +21,14 @@ public class EKEngine {
 		}
 	}
 
-	public func loadAddon(addon: EKAddon) throws {
-		do {
-			try addon.setup(onEngine: self)
-		} catch let error {
-			throw error
-		}
+	public func loadAddon(addon: EKAddon) {
+		addon.setup(onEngine: self)
 
 		addons.append(addon)
 	}
 
-}
-
-//
-public protocol EKEvent: Hashable {
-
-}
-
-public class EKEventCenter {
-
+	public func register<Event: EKEvent>(listener: EKEventListener,
+	                     forEvent event: Event.Type) {
+		eventCenter.register(listener, forEvent: event)
+	}
 }

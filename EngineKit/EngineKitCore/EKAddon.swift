@@ -1,5 +1,5 @@
 public protocol EKAddon: class {
-	func setup(onEngine engine: EKEngine) throws
+	func setup(onEngine engine: EKEngine)
 }
 
 //
@@ -8,7 +8,7 @@ public protocol EKLanguageAddon: EKAddon {
 }
 
 extension EKLanguageAddon {
-	public func setup(onEngine engine: EKEngine) throws {
+	public func setup(onEngine engine: EKEngine) {
 		addFunctionalityToEngine(engine.languageEngine)
 	}
 }
@@ -19,7 +19,7 @@ public protocol EKEventAddon: EKAddon {
 }
 
 extension EKEventAddon {
-	public func setup(onEngine engine: EKEngine) throws {
+	public func setup(onEngine engine: EKEngine) {
 		self.eventCenter = engine.eventCenter
 	}
 }
