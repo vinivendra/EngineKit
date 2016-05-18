@@ -4,12 +4,12 @@ public protocol EKAddon: class {
 
 //
 public protocol EKLanguageAddon: EKAddon {
-	func addFunctionalityToEngine(languageEngine: EKLanguageEngine)
+	func addClasses(toEngine engine: EKEngine)
 }
 
 extension EKLanguageAddon {
 	public func setup(onEngine engine: EKEngine) {
-		addFunctionalityToEngine(engine.languageEngine)
+		addClasses(toEngine: engine)
 	}
 }
 

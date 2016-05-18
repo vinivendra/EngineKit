@@ -1,24 +1,19 @@
 public protocol EKLanguageEngine {
+	weak var engine: EKEngine? { get }
+
+	init(engine: EKEngine)
+
 	func runScript(filename filename: String) throws
 	func addClass<T: Scriptable>(class: T.Type,
-	              withName className: String?,
-	              constructor: (() -> (T))? )
+	              withName className: String,
+	                       constructor: (() -> (T)) )
 }
 
 extension EKLanguageEngine {
-	public func addClass<T: Scriptable>(class: T.Type) {
-		addClass(T.self, withName: nil)
+	public func addClass<T: Scriptable where T: Initable>(class: T.Type,
+	                     withName className: String) {
+		addClass(T.self, withName: className, constructor: T.init)
 	}
-
-	public func addClass<T: Scriptable>(class: T.Type,
-	                     withName className: String?) {
-		addClass(T.self, withName: className, constructor: nil)
-	}
-}
-
-public protocol Scriptable {
-	init()
-	static func description() -> String
 }
 
 extension String {

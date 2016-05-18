@@ -2,7 +2,7 @@ import UIKit
 import EngineKitiOS
 import SceneKit
 
-class ViewController: UIViewController, EKEventListener {
+class ViewController: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
 
 	var engine: EKEngine!
@@ -10,15 +10,22 @@ class ViewController: UIViewController, EKEventListener {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		engine = EKEngine(languageEngine: EKJSCoreEngine())
+		engine = EKEngine()
+
+		let javaScriptEngine = EKJSCoreEngine(engine: engine)
+		engine.languageEngine = javaScriptEngine
+
 		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
 		engine.loadAddon(EKUIKitInputAddon(view: sceneView))
+		try! engine.register(forEvent: EKEventTap.self,
+		                     target: self,
+		                     method: ViewController.respondToEvent(_:))
+//		try! engine.register(self, forEvent: EKEventTap.self)
+//		try! engine.register(self, forEvent: EKEventPan.self)
+//		try! engine.register(self, forEvent: EKEventPinch.self)
+//		try! engine.register(self, forEvent: EKEventRotation.self)
+//		try! engine.register(self, forEvent: EKEventLongPress.self)
 		try! engine.runScript(filename: "main.js")
-		try! engine.register(self, forEvent: EKEventTap.self)
-		try! engine.register(self, forEvent: EKEventPan.self)
-		try! engine.register(self, forEvent: EKEventPinch.self)
-		try! engine.register(self, forEvent: EKEventRotation.self)
-		try! engine.register(self, forEvent: EKEventLongPress.self)
 
 		let lightnode = SCNNode()
 		let light = SCNLight()
@@ -27,17 +34,7 @@ class ViewController: UIViewController, EKEventListener {
 		sceneView.scene?.rootNode.addChildNode(lightnode)
 	}
 
-	func respondToEvent(event: EKEvent) {
-		if let event = event as? EKEventTap {
-			print("tap \(event.position)")
-		} else if let event = event as? EKEventPan {
-			print("pan \(event.position)")
-		} else if let event = event as? EKEventPinch {
-			print("pinch \(event.position)")
-		} else if let event = event as? EKEventRotation {
-			print("rotation \(event.position)")
-		} else if let event = event as? EKEventLongPress {
-			print("long press \(event.position)")
-		}
+	func respondToEvent(event: EKEventTap) {
+		print("Responding to event \(event)")
 	}
 }

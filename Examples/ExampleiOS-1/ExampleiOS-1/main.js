@@ -20,3 +20,12 @@ ball2.position = [-5, -2, 4];
 ball2.velocity = [3 + Math.random() * 3,
 				  3 + Math.random() * 3,
 				  0];
+
+function myCallback(eventTap) {
+	print("I was called back!");
+	print(eventTap.position)
+}
+
+addCallbackForEvent(myCallback, "tap");
+
+

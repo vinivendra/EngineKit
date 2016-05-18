@@ -1,79 +1,63 @@
 import Darwin
 
-public final class EKVector4: EKVector4Type {
+public final class EKVector2: EKVector2Type {
 	public let x: Double
 	public let y: Double
-	public let z: Double
-	public let w: Double
 
-	init(x: Double, y: Double, z: Double, w: Double) {
+	init(x: Double, y: Double) {
 		self.x = x
 		self.y = y
-		self.z = z
-		self.w = w
 	}
 
 	public static func createVector(x x: Double,
-	                                  y: Double,
-	                                  z: Double,
-	                                  w: Double) -> EKVector4 {
-		return EKVector4(x: x, y: y, z: z, w: w)
+	                                  y: Double) -> EKVector2 {
+		return EKVector2(x: x, y: y)
 	}
 }
 
 //
-public protocol EKVector4Type: CustomDebugStringConvertible {
+public protocol EKVector2Type: CustomDebugStringConvertible {
 	static func createVector(x x: Double,
-	                           y: Double,
-	                           z: Double,
-	                           w: Double) -> Self
+	                           y: Double) -> Self
 
 	var x: Double { get }
 	var y: Double { get }
-	var z: Double { get }
-	var w: Double { get }
 }
 
-extension EKVector4Type {
+extension EKVector2Type {
 	public var debugDescription: String {
 		get {
-			return "x: \(x), y: \(y), z: \(z), w: \(w)"
+			return "x: \(x), y: \(y)"
 		}
 	}
 }
 
 @warn_unused_result
-public func == (lhs: EKVector4Type, rhs: EKVector4Type) -> Bool {
-	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
+public func == (lhs: EKVector2Type, rhs: EKVector2Type) -> Bool {
+	return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
 @warn_unused_result
-public func != (lhs: EKVector4Type, rhs: EKVector4Type) -> Bool {
+public func != (lhs: EKVector2Type, rhs: EKVector2Type) -> Bool {
 	return !(lhs == rhs)
 }
 
-extension EKVector4Type {
+extension EKVector2Type {
 	public func plus(object: Any) -> Self {
 		let vector = Self.createVector(object: object)
 		return Self.createVector(x: self.x + vector.x,
-		                         y: self.y + vector.y,
-		                         z: self.z + vector.z,
-		                         w: min(self.w + vector.w, 1))
+		                         y: self.y + vector.y)
 	}
 
 	public func minus(object: Any) -> Self {
 		let vector = Self.createVector(object: object)
 		return Self.createVector(x: self.x - vector.x,
-		                         y: self.y - vector.y,
-		                         z: self.z - vector.z,
-		                         w: max(self.w - vector.w, 0))
+		                         y: self.y - vector.y)
 	}
 
 	public func times(scalar: Double) -> Self {
 		return Self.createVector(x: self.x * scalar,
-		                         y: self.y * scalar,
-		                         z: self.z * scalar,
-		                         w: self.w)
+		                         y: self.y * scalar)
 	}
 
 	public func over(scalar: Double) -> Self {
@@ -82,14 +66,12 @@ extension EKVector4Type {
 
 	public func opposite() -> Self {
 		return Self.createVector(x: -self.x,
-		                         y: -self.y,
-		                         z: -self.z,
-								 w: self.w)
+		                         y: -self.y)
 	}
 
 	public func dot(object: Any) -> Double {
 		let vector = Self.createVector(object: object)
-		return self.x * vector.x + self.y * vector.y + self.z * vector.z
+		return self.x * vector.x + self.y * vector.y
 	}
 
 	public func normSquared() -> Double {
@@ -111,42 +93,34 @@ extension EKVector4Type {
 	public func scale(object: Any) -> Self {
 		let vector = Self.createVector(object: object)
 		return Self.createVector(x: self.x * vector.x,
-		                         y: self.y * vector.y,
-		                         z: self.z * vector.z,
-								 w: self.w)
+		                         y: self.y * vector.y)
 	}
 }
 
-extension EKVector4Type {
+extension EKVector2Type {
 	public func notZero() -> Bool {
-		return !(x == 0 && y == 0 && z == 0)
+		return !(x == 0 && y == 0)
 	}
 
 	public static func origin() -> Self {
-		return Self.createVector(x: 0, y: 0, z: 0, w: 1)
+		return Self.createVector(x: 0, y: 0)
 	}
 
-	public static func createVector(xyz xyz: Double) -> Self {
-		return Self.createVector(x: xyz,
-		                         y: xyz,
-		                         z: xyz,
-		                         w: 0)
+	public static func createVector(xy xy: Double) -> Self {
+		return Self.createVector(x: xy,
+		                         y: xy)
 	}
 
 	public static func createVector(array array: [Double]) -> Self {
 		return self.createVector(x: array[zero: 0],
-		                         y: array[zero: 1],
-		                         z: array[zero: 2],
-		                         w: array[zero: 3])
+		                         y: array[zero: 1])
 	}
 
 	public static func createVector(dictionary
 		dictionary: [String: Double]) -> Self {
 
 		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
-		                         y: dictionary[zero: ["1", "y", "Y"]],
-		                         z: dictionary[zero: ["2", "z", "Z"]],
-		                         w: dictionary[zero: ["3", "w", "W", "a", "A"]])
+		                         y: dictionary[zero: ["1", "y", "Y"]])
 	}
 
 	public static func createVector(string string: String) -> Self {
@@ -174,7 +148,7 @@ extension EKVector4Type {
 		} else if let dictionary = object as? [String: Double] {
 			return createVector(dictionary: dictionary)
 		} else if let number = object as? Double {
-			return createVector(xyz: number)
+			return createVector(xy: number)
 		}
 
 		return origin()

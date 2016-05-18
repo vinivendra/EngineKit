@@ -1,7 +1,5 @@
 import JavaScriptCore
 
-extension NSObject: Scriptable {}
-
 // MARK: Console class
 @objc protocol ConsoleExport: JSExport {
 	func log(string: String)
@@ -30,10 +28,14 @@ extension JSContext {
 // MARK: EKJSCoreEngine
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
-	var errorWasTriggered = false
+	var evaluationError: EKError?
 
-	public init() {
-		context.exceptionHandler = { context, value in
+	weak public var engine: EKEngine?
+
+	public required init(engine: EKEngine) {
+		self.engine = engine
+
+		context.exceptionHandler = {[unowned self] context, value in
 			let stackTrace = value["stack"].toString()
 			let lineNumber = value["line"].toInt32()
 			let column = value["column"].toInt32()
@@ -41,38 +43,59 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			print("JAVASCRIPT ERROR: \(value) in method \(stackTrace)\n"
 				+ "Line number \(lineNumber), column \(column)")
 
-			self.errorWasTriggered = true
+			self.evaluationError = EKError.ScriptEvaluationError
 		}
 
 		let printFunc = { (value: JSValue) in
 			print(value)
-		} as @convention(block) (JSValue)->()
+			} as @convention(block) (JSValue)->()
 		let printObj = unsafeBitCast(printFunc, AnyObject.self)
-
 		context["print"] = printObj
 		context["alert"] = printObj
 		context["console"] = Console()
+
+		let eventFunc = {[unowned self] (callback: JSValue, event: JSValue) in
+			print("Adding callback \(callback) for event \(event)")
+
+			do {
+				try engine.register(forEventNamed: event.toString()) {
+					if let tap = $0 as? EKEventTap {
+						callback.callWithArguments([tap])
+					}
+				}
+			} catch EKError.EventRegistryError(message: let message) {
+				let error = EKError.EventRegistryError(message: message)
+				self.evaluationError = error
+			} catch {
+				self.evaluationError = EKError.ScriptEvaluationError
+			}
+
+			} as @convention(block) (JSValue, JSValue)->()
+		let eventObj = unsafeBitCast(eventFunc, AnyObject.self)
+		context["addCallbackForEvent"] = eventObj
 	}
 
 	public func addClass<T: Scriptable>(class: T.Type,
-	                     withName className: String?,
-	                              constructor: (() -> (T))? ) {
-		let fullClassName = T.description().componentsSeparatedByString(".")
-		let className = className ?? fullClassName.last!.toEKPrefixClassName()
+	                     withName className: String,
+	                              constructor: (() -> (T)) ) {
+		var constructorClosure: (@convention(block) () -> (NSObject))?
 
-		let constructorClosure: (@convention(block) () -> (NSObject))?
+		constructorClosure = {[unowned self] in
+			do {
+				return try constructor().toNSObject()
+			} catch let error {
+				if let error = error as? EKError {
+					self.evaluationError = error
+				} else {
+					let message = "Error converting \(self.dynamicType) " +
+						"\(self) into an NSObject."
+					self.evaluationError = .ScriptConversionError(
+						message: message)
+				}
 
-		if let constructor = constructor {
-			constructorClosure = {
-				// Attention! JavaScriptCore only supports NSObject subclasses
-				return constructor() as! NSObject
-				} as @convention(block) () -> (NSObject)
-		} else {
-			constructorClosure = {
-				// Attention! JavaScriptCore only supports NSObject subclasses
-				return T() as! NSObject
-				} as @convention(block) () -> (NSObject)
-		}
+				return NSObject()
+			}
+		} as @convention(block) () -> (NSObject)
 
 		let constructorObject = unsafeBitCast(constructorClosure,
 		                                      AnyObject.self)
@@ -85,8 +108,11 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		let scriptContents = fileManager.getContentsFromFile(filename)
 		context.evaluateScript(scriptContents)
 
-		if errorWasTriggered {
-			throw EKError.ScriptEvaluationError
+		if let error = evaluationError {
+			defer {
+				evaluationError = nil
+			}
+			throw error
 		}
 	}
 

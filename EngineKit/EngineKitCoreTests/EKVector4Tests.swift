@@ -10,7 +10,9 @@ import XCTest
 class EKVector4Tests: XCTestCase {
 
 	func testCreateAndEquals() {
-		let testVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 1)
+		let testVector: EKVector4Type
+		testVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 1)
+
 		let equalVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 1)
 		let otherEqualVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 0)
 		let differentVector = EKVector4.createVector(x: 4, y: 5, z: 6, w: 1)

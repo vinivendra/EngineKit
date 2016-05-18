@@ -11,7 +11,11 @@ import JavaScriptCore
 @objc protocol JSTestExport: JSExport {
 	func test()
 }
-@objc class JSTest: NSObject, JSTestExport {
+@objc class JSTest: NSObject, JSTestExport, Scriptable, Initable {
+
+	override required init() {
+		super.init()
+	}
 
 	func test() {
 		print("test successful!")
@@ -21,10 +25,16 @@ import JavaScriptCore
 
 class EKJSCoreEngineTests: XCTestCase {
 
-	let engine = EKJSCoreEngine()
+	var engine: EKJSCoreEngine!
+	var ekEngine: EKEngine!
 
 	override func setUp() {
 		super.setUp()
+
+		ekEngine = EKEngine()
+		engine = EKJSCoreEngine(engine: ekEngine)
+		ekEngine.languageEngine = engine
+
 		currentNSBundle = NSBundle(forClass: EKFoundationFileManagerTests.self)
 	}
 
@@ -33,10 +43,10 @@ class EKJSCoreEngineTests: XCTestCase {
 		engine.context.evaluateScript("alert(\"alert!!\");")
 		engine.context.evaluateScript("print(\"print!!\");")
 		engine.context.evaluateScript("console.log(\"console.log!!\");")
-		XCTAssertFalse(engine.errorWasTriggered)
+		XCTAssertNil(engine.evaluationError)
 
 		engine.context.evaluateScript("bla")
-		XCTAssert(engine.errorWasTriggered)
+		XCTAssertNotNil(engine.evaluationError)
 	}
 
 	func testRunScript() {
@@ -49,7 +59,9 @@ class EKJSCoreEngineTests: XCTestCase {
 
 	func testAddClass() {
 		do {
-			engine.addClass(JSTest)
+			engine.addClass(JSTest.self,
+			                withName: "EKTest",
+			                constructor: JSTest.init)
 			try engine.runScript(filename: "testClassScript")
 		} catch {
 			XCTFail()

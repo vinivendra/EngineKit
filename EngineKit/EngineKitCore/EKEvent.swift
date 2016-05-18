@@ -1,48 +1,141 @@
-public class EKEvent {
+public protocol EKAction {
+	func callWithArgument(argument: Any?) throws -> Any?
 }
 
-public protocol EKEventListener {
-	func respondToEvent(event: EKEvent)
+public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
+	let closure: (ArgumentType) -> (ReturnType)
+
+	public func callWithArgument(argument: Any?) throws -> Any? {
+		if let typedArgument = argument as? ArgumentType {
+			return closure(typedArgument)
+		} else {
+			let message = "Expected argument of type \(ArgumentType.self) " +
+				"but received object \(argument) of type " +
+				"\(argument.dynamicType)."
+			throw EKError.InvalidArgumentTypeError(message: message)
+		}
+	}
+}
+
+public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
+	typealias Method = (ObjectType) -> (ArgumentType) -> (ReturnType)
+
+	let object: ObjectType
+	let method: Method
+
+	public func callWithArgument(argument: Any?) throws -> Any? {
+		if let typedArgument = argument as? ArgumentType {
+			return method(object)(typedArgument)
+		} else {
+			let message = "Expected argument of type \(ArgumentType.self) " +
+				"but received object \(argument) of type " +
+				"\(argument.dynamicType)."
+			throw EKError.InvalidArgumentTypeError(message: message)
+		}
+	}
 }
 
 public class EKEventCenter {
-	var allListeners = [String: [EKEventListener]]()
+	var allActions = [String: [EKAction]]()
 
-	func fireEvent(event: EKEvent) {
-		if let listeners = allListeners["\(event.dynamicType)"] {
-			for listener in listeners {
-				listener.respondToEvent(event)
+	public func fireEvent(event: EKEvent) {
+		let className = eventName(forEvent: event)
+		if let actions = allActions[className] {
+			for action in actions {
+				// swiftlint:disable:next force_try
+				try! action.callWithArgument(event)
 			}
 		}
 	}
 
-	func startSendingEvents(ofTypes types: [EKEvent.Type]) {
+	public func startSendingEvents(ofTypes types: [EKEvent.Type]) {
 		for type in types {
-			let className = "\(type.self)"
-			allListeners[className] = [EKEventListener]()
+			let className = eventName(forEventOfType: type.self)
+			allActions[className] = [EKAction]()
 		}
 	}
 
-	func register<Event: EKEvent>(listener: EKEventListener,
-	              forEvent event: Event.Type) throws {
-		let className = "\(Event.self)"
-		if allListeners[className] == nil {
+	public func register<T>(forEventNamed name: String,
+	                     target: T,
+	                     method: (T) -> (EKEvent) -> ()) throws {
+		do {
+			let callback = EKMethodAction(object: target, method: method)
+			let className = eventName(forExternalName: name)
+			try register(forEventNamed: className, action: callback)
+		} catch let error {
+			throw error
+		}
+	}
+
+	public func register<Event: EKEvent, T>(forEvent type: Event.Type,
+	                     target: T,
+	                     method: (T) -> (Event) -> ()) throws {
+		do {
+			let callback = EKMethodAction(object: target, method: method)
+			let className = eventName(forEventOfType: type.self)
+			try register(forEventNamed: className, action: callback)
+		} catch let error {
+			throw error
+		}
+	}
+
+	public func register(forEventNamed name: String,
+	                                   callback: (EKEvent) -> ()) throws {
+		do {
+			let callback = EKFunctionAction(closure: callback)
+			let className = eventName(forExternalName: name)
+			try register(forEventNamed: className, action: callback)
+		} catch let error {
+			throw error
+		}
+	}
+
+	public func register<Event: EKEvent>(forEvent type: Event.Type,
+	                     callback: (Event) -> ()) throws {
+		do {
+			let callback = EKFunctionAction(closure: callback)
+			let className = eventName(forEventOfType: type.self)
+			try register(forEventNamed: className, action: callback)
+		} catch let error {
+			throw error
+		}
+	}
+
+	func register(forEventNamed eventName: String,
+	                            action: EKAction) throws {
+		if allActions[eventName] == nil {
 			throw EKError.EventRegistryError(
-				message: "No addons have been registered to fire " + className +
+				message: "No addons have been registered to fire " + eventName +
 				" events")
 		}
 
-		allListeners[className]?.append(listener)
+		allActions[eventName]?.append(action)
+	}
+
+	func eventName(forExternalName name: String) -> String {
+		return "EKEvent" + name.localizedCapitalizedString
+	}
+
+	func eventName<Event: EKEvent>(forEventOfType type: Event.Type) -> String {
+		return "\(type.self)"
+	}
+
+	func eventName<Event: EKEvent>(forEvent event: Event) -> String {
+		return "\(event.dynamicType)"
 	}
 }
 
+//
+public class EKEvent {
+}
+
+//
 public enum EKEventInputState {
 	case Began
 	case Changed
 	case Ended
 }
 
-//
 public class EKEventScreenInput: EKEvent {
 	public let position: (x: Double, y: Double)?
 
@@ -61,7 +154,6 @@ public class EKEventScreenInputContinuous: EKEventScreenInput {
 	}
 }
 
-//
 public class EKEventTap: EKEventScreenInput {
 }
 
