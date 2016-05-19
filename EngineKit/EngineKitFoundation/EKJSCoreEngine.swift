@@ -28,7 +28,7 @@ extension JSContext {
 // MARK: EKJSCoreEngine
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
-	var evaluationError: EKError?
+	var evaluationError: ErrorType?
 
 	weak public var engine: EKEngine?
 
@@ -59,15 +59,16 @@ public class EKJSCoreEngine: EKLanguageEngine {
 
 			do {
 				try engine.register(forEventNamed: event.toString()) {
-					if let tap = $0 as? EKEventTap {
-						callback.callWithArguments([tap])
+					event in
+					do {
+						let object = try event.toNSObject()
+						callback.callWithArguments([object])
+					} catch let error {
+						self.evaluationError = error
 					}
 				}
-			} catch EKError.EventRegistryError(message: let message) {
-				let error = EKError.EventRegistryError(message: message)
+			} catch let error {
 				self.evaluationError = error
-			} catch {
-				self.evaluationError = EKError.ScriptEvaluationError
 			}
 
 			} as @convention(block) (JSValue, JSValue)->()
@@ -84,14 +85,7 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			do {
 				return try constructor().toNSObject()
 			} catch let error {
-				if let error = error as? EKError {
-					self.evaluationError = error
-				} else {
-					let message = "Error converting \(self.dynamicType) " +
-						"\(self) into an NSObject."
-					self.evaluationError = .ScriptConversionError(
-						message: message)
-				}
+				self.evaluationError = error
 
 				return NSObject()
 			}

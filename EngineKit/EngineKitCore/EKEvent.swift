@@ -126,7 +126,7 @@ public class EKEventCenter {
 }
 
 //
-public class EKEvent {
+public class EKEvent: Scriptable {
 }
 
 //
@@ -137,9 +137,9 @@ public enum EKEventInputState {
 }
 
 public class EKEventScreenInput: EKEvent {
-	public let position: (x: Double, y: Double)?
+	public let position: EKVector2Type?
 
-	public init(position: (x: Double, y: Double)? = nil) {
+	public init(position: EKVector2Type? = nil) {
 		self.position = position
 	}
 }
@@ -147,7 +147,7 @@ public class EKEventScreenInput: EKEvent {
 public class EKEventScreenInputContinuous: EKEventScreenInput {
 	public let state: EKEventInputState
 
-	public init(position: (x: Double, y: Double)? = nil,
+	public init(position: EKVector2Type? = nil,
 	            state: EKEventInputState) {
 		self.state = state
 		super.init(position: position)
@@ -158,10 +158,10 @@ public class EKEventTap: EKEventScreenInput {
 }
 
 public class EKEventPan: EKEventScreenInputContinuous {
-	public let displacement: (x: Double, y: Double)?
+	public let displacement: EKVector2Type?
 
-	public init(position: (x: Double, y: Double)? = nil,
-	            displacement: (x: Double, y: Double)? = nil,
+	public init(position: EKVector2Type? = nil,
+	            displacement: EKVector2Type? = nil,
 	            state: EKEventInputState) {
 		self.displacement = displacement
 		super.init(position: position, state: state)
@@ -171,7 +171,7 @@ public class EKEventPan: EKEventScreenInputContinuous {
 public class EKEventPinch: EKEventScreenInputContinuous {
 	public let scale: Double?
 
-	public init(position: (x: Double, y: Double)? = nil,
+	public init(position: EKVector2Type? = nil,
 	            scale: Double? = nil,
 	            state: EKEventInputState) {
 		self.scale = scale
@@ -182,7 +182,7 @@ public class EKEventPinch: EKEventScreenInputContinuous {
 public class EKEventRotation: EKEventScreenInputContinuous {
 	public let angle: Double?
 
-	public init(position: (x: Double, y: Double)? = nil,
+	public init(position: EKVector2Type? = nil,
 	            angle: Double? = nil,
 	            state: EKEventInputState) {
 		self.angle = angle
@@ -191,10 +191,10 @@ public class EKEventRotation: EKEventScreenInputContinuous {
 }
 
 public class EKEventLongPress: EKEventScreenInputContinuous {
-	public let displacement: (x: Double, y: Double)?
+	public let displacement: EKVector2Type?
 
-	public init(position: (x: Double, y: Double)? = nil,
-	            displacement: (x: Double, y: Double)? = nil,
+	public init(position: EKVector2Type? = nil,
+	            displacement: EKVector2Type? = nil,
 	            state: EKEventInputState) {
 		self.displacement = displacement
 		super.init(position: position, state: state)

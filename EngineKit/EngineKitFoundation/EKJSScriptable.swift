@@ -49,3 +49,13 @@ extension Scriptable where Self: NSObject {
 		return self
 	}
 }
+
+extension EKEvent {
+	public func toNSObject() throws -> NSObject {
+		do {
+			return try self.toReflectedNSObject()
+		} catch let error {
+			throw error
+		}
+	}
+}

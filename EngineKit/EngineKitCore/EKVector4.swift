@@ -22,7 +22,9 @@ public final class EKVector4: EKVector4Type {
 }
 
 //
-public protocol EKVector4Type: CustomDebugStringConvertible {
+public protocol EKVector4Type: CustomDebugStringConvertible,
+	CustomStringConvertible {
+
 	static func createVector(x x: Double,
 	                           y: Double,
 	                           z: Double,
@@ -38,6 +40,12 @@ extension EKVector4Type {
 	public var debugDescription: String {
 		get {
 			return "x: \(x), y: \(y), z: \(z), w: \(w)"
+		}
+	}
+
+	public var description: String {
+		get {
+			return debugDescription
 		}
 	}
 }

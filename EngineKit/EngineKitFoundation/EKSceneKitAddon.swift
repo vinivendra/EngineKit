@@ -7,46 +7,6 @@ import SceneKit
 #endif
 
 //
-public final class EKSCNVector3: NSObject, EKVector3Type, Scriptable {
-	public let x: Double
-	public let y: Double
-	public let z: Double
-
-	init(x: Double, y: Double, z: Double) {
-		self.x = x
-		self.y = y
-		self.z = z
-	}
-
-	public static func createVector(x x: Double,
-	                                  y: Double,
-	                                  z: Double) -> EKSCNVector3 {
-		return EKSCNVector3(x: x, y: y, z: z)
-	}
-}
-
-public final class EKSCNVector4: NSObject, EKVector4Type, Scriptable {
-	public let x: Double
-	public let y: Double
-	public let z: Double
-	public let w: Double
-
-	init(x: Double, y: Double, z: Double, w: Double) {
-		self.x = x
-		self.y = y
-		self.z = z
-		self.w = w
-	}
-
-	public static func createVector(x x: Double,
-	                                  y: Double,
-	                                  z: Double,
-	                                  w: Double) -> EKSCNVector4 {
-		return EKSCNVector4(x: x, y: y, z: z, w: w)
-	}
-}
-
-//
 public class EKSceneKitAddon: EKLanguageAddon {
 
 	let sceneView: SCNView
@@ -119,20 +79,20 @@ public class EKShape: NSObject {
 
 	var position: AnyObject {
 		get {
-			return EKSCNVector3.createVector(SCNVector3: node.position)
+			return EKNSVector3.createVector(SCNVector3: node.position)
 		}
 		set {
-			let vector = EKSCNVector3.createVector(object: newValue)
+			let vector = EKNSVector3.createVector(object: newValue)
 			node.position = vector.toSCNVector3()
 		}
 	}
 
 	var rotation: AnyObject {
 		get {
-			return EKSCNVector4.createVector(SCNVector4: node.rotation)
+			return EKNSVector4.createVector(SCNVector4: node.rotation)
 		}
 		set {
-			let vector = EKSCNVector4.createVector(object: newValue)
+			let vector = EKNSVector4.createVector(object: newValue)
 			node.rotation = vector.toSCNVector4()
 		}
 	}
@@ -140,12 +100,12 @@ public class EKShape: NSObject {
 	var velocity: AnyObject {
 		get {
 			if let velocity = node.physicsBody?.velocity {
-				return EKSCNVector3.createVector(SCNVector3: velocity)
+				return EKNSVector3.createVector(SCNVector3: velocity)
 			}
-			return EKSCNVector3.origin()
+			return EKNSVector3.origin()
 		}
 		set {
-			let vector = EKSCNVector3.createVector(object: newValue)
+			let vector = EKNSVector3.createVector(object: newValue)
 			node.physicsBody?.velocity = vector.toSCNVector3()
 		}
 	}

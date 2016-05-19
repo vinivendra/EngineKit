@@ -16,7 +16,9 @@ public final class EKVector2: EKVector2Type {
 }
 
 //
-public protocol EKVector2Type: CustomDebugStringConvertible {
+public protocol EKVector2Type: CustomDebugStringConvertible,
+	CustomStringConvertible {
+
 	static func createVector(x x: Double,
 	                           y: Double) -> Self
 
@@ -28,6 +30,12 @@ extension EKVector2Type {
 	public var debugDescription: String {
 		get {
 			return "x: \(x), y: \(y)"
+		}
+	}
+
+	public var description: String {
+		get {
+			return debugDescription
 		}
 	}
 }
