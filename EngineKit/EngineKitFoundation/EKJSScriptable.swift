@@ -22,18 +22,16 @@ extension Scriptable {
 
 			for child in currentMirror.children {
 				if let label = child.label {
-					if let value = child.value as? NSObject {
-						object[label] = value
-					} else if let value = child.value as? Scriptable {
+					if let value = child.value as? Scriptable {
 						do {
 							try object[label] = value.toNSObject()
 						} catch let error {
 							throw error
 						}
 					} else {
-						let message = "Error converting \(self.dynamicType) " +
-							"\(self): Unable to convert child \(child) into " +
-							"and NSObject."
+						let message = "Error converting \(self) " +
+							"(\(self.dynamicType)): Unable to convert child " +
+							"\(child) into an NSObject"
 						throw EKError.ScriptConversionError(message: message)
 					}
 				}
@@ -50,6 +48,20 @@ extension Scriptable where Self: NSObject {
 	}
 }
 
+//
+extension String: Scriptable {
+	public func toNSObject() throws -> NSObject {
+		return NSString(string: self)
+	}
+}
+
+extension Double: Scriptable {
+	public func toNSObject() throws -> NSObject {
+		return NSNumber(double: self)
+	}
+}
+
+//
 extension EKEvent {
 	public func toNSObject() throws -> NSObject {
 		do {
@@ -57,5 +69,36 @@ extension EKEvent {
 		} catch let error {
 			throw error
 		}
+	}
+}
+
+extension EKEventInputState {
+	public func toNSObject() throws -> NSObject {
+		return self.rawValue
+	}
+}
+
+//
+extension EKVector2Type {
+	public func toNSObject() throws -> NSObject {
+		return EKNSVector2(x: x, y: y)
+	}
+}
+
+extension EKVector3Type {
+	public func toNSObject() throws -> NSObject {
+		return EKNSVector3(x: x, y: y, z: z)
+	}
+}
+
+extension EKVector4Type {
+	public func toNSObject() throws -> NSObject {
+		return EKNSVector4(x: x, y: y, z: z, w: w)
+	}
+}
+
+extension Scriptable {
+	public func toNSObject() throws -> NSObject {
+		return NSObject()
 	}
 }

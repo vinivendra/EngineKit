@@ -40,10 +40,8 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			let lineNumber = value["line"].toInt32()
 			let column = value["column"].toInt32()
 
-			print("JAVASCRIPT ERROR: \(value) in method \(stackTrace)\n"
+			self.fail("JAVASCRIPT ERROR: \(value) in method \(stackTrace)\n"
 				+ "Line number \(lineNumber), column \(column)")
-
-			self.evaluationError = EKError.ScriptEvaluationError
 		}
 
 		let printFunc = { (value: JSValue) in
@@ -63,12 +61,17 @@ public class EKJSCoreEngine: EKLanguageEngine {
 					do {
 						let object = try event.toNSObject()
 						callback.callWithArguments([object])
-					} catch let error {
-						self.evaluationError = error
+					} catch EKError.ScriptConversionError(message:
+						let message) {
+							self.fail(message)
+					} catch {
+						self.fail()
 					}
 				}
-			} catch let error {
-				self.evaluationError = error
+			} catch EKError.EventRegistryError(message: let message) {
+				self.fail(message)
+			} catch {
+				self.fail()
 			}
 
 			} as @convention(block) (JSValue, JSValue)->()
@@ -84,12 +87,15 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		constructorClosure = {[unowned self] in
 			do {
 				return try constructor().toNSObject()
-			} catch let error {
-				self.evaluationError = error
-
-				return NSObject()
+			} catch EKError.ScriptConversionError(message:
+				let message) {
+					self.fail(message)
+					return NSObject() // never reached
+			} catch {
+				self.fail()
+				return NSObject() // never reached
 			}
-		} as @convention(block) () -> (NSObject)
+			} as @convention(block) () -> (NSObject)
 
 		let constructorObject = unsafeBitCast(constructorClosure,
 		                                      AnyObject.self)
@@ -110,4 +116,7 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		}
 	}
 
+	func fail(message: String = "") {
+		assertionFailure(message)
+	}
 }

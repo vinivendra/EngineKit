@@ -22,7 +22,7 @@ public final class EKVector4: EKVector4Type {
 }
 
 //
-public protocol EKVector4Type: CustomDebugStringConvertible,
+public protocol EKVector4Type: Scriptable, CustomDebugStringConvertible,
 	CustomStringConvertible {
 
 	static func createVector(x x: Double,

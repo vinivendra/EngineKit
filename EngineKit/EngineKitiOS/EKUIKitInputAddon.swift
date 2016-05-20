@@ -1,9 +1,21 @@
 import UIKit
 
-extension CGPoint {
-	var toEKVector2Type: EKVector2Type {
+extension CGPoint: EKVector2Type {
+	public static func createVector(x x: Double,
+	                                  y: Double) -> CGPoint {
+		return CGPoint(x: x, y: y)
+	}
+
+	public var x: Double {
 		get {
-			return EKNSVector2(x: Double(self.x), y: Double(self.y))
+			let float: CGFloat = self.x
+			return Double(float)
+		}
+	}
+	public var y: Double {
+		get {
+			let float: CGFloat = self.y
+			return Double(float)
 		}
 	}
 }
@@ -48,30 +60,30 @@ public class EKUIKitInputAddon: EKEventAddon {
 
 	@objc public func handleTap(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventTap(position: point.toEKVector2Type))
+		eventCenter?.fireEvent(EKEventTap(position: point))
 	}
 
 	@objc public func handlePan(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2Type,
-			displacement: nil, state: .Changed))
+		eventCenter?.fireEvent(EKEventPan(position: point,
+			displacement: CGPoint.origin(), state: .Changed))
 	}
 
 	@objc public func handlePinch(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2Type,
-			scale: nil, state: .Changed))
+		eventCenter?.fireEvent(EKEventPinch(position: point,
+			scale: 1, state: .Changed))
 	}
 
 	@objc public func handleRotation(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventRotation(position: point.toEKVector2Type,
-			angle: nil, state: .Changed))
+		eventCenter?.fireEvent(EKEventRotation(position: point,
+			angle: 0, state: .Changed))
 	}
 
 	@objc public func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventLongPress(position: point.toEKVector2Type,
-			displacement: nil, state: .Changed))
+		eventCenter?.fireEvent(EKEventLongPress(position: point,
+			displacement: CGPoint.origin(), state: .Changed))
 	}
 }

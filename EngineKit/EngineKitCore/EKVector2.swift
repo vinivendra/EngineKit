@@ -16,7 +16,7 @@ public final class EKVector2: EKVector2Type {
 }
 
 //
-public protocol EKVector2Type: CustomDebugStringConvertible,
+public protocol EKVector2Type: Scriptable, CustomDebugStringConvertible,
 	CustomStringConvertible {
 
 	static func createVector(x x: Double,
