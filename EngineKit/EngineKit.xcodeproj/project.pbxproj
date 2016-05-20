@@ -13,6 +13,8 @@
 		242EBAC41CEA7EBE001E5025 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EBAC21CEA7EBE001E5025 /* EKEvent.swift */; };
 		242EBAC51CEA7EBE001E5025 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EBAC21CEA7EBE001E5025 /* EKEvent.swift */; };
 		242EBAC61CEA7EBE001E5025 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EBAC21CEA7EBE001E5025 /* EKEvent.swift */; };
+		244FBF261CEF9B9100002FF1 /* testScriptFail in Resources */ = {isa = PBXBuildFile; fileRef = 244FBF231CEF9B5800002FF1 /* testScriptFail */; };
+		244FBF271CEF9B9200002FF1 /* testScriptFail in Resources */ = {isa = PBXBuildFile; fileRef = 244FBF231CEF9B5800002FF1 /* testScriptFail */; };
 		245236361CE2BA4B008321E3 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236351CE2BA4B008321E3 /* EKLanguageEngine.swift */; };
 		245236371CE2BA4B008321E3 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236351CE2BA4B008321E3 /* EKLanguageEngine.swift */; };
 		245236391CE2BC73008321E3 /* EKOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245236381CE2BC73008321E3 /* EKOSFactory.swift */; };
@@ -135,6 +137,7 @@
 /* Begin PBXFileReference section */
 		242EBABF1CEA4894001E5025 /* EKUIKitInputAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKUIKitInputAddon.swift; sourceTree = "<group>"; };
 		242EBAC21CEA7EBE001E5025 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEvent.swift; path = EngineKitCore/EKEvent.swift; sourceTree = SOURCE_ROOT; };
+		244FBF231CEF9B5800002FF1 /* testScriptFail */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testScriptFail; path = EngineKitCoreTests/testScriptFail; sourceTree = SOURCE_ROOT; };
 		245236351CE2BA4B008321E3 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLanguageEngine.swift; path = EngineKitCore/EKLanguageEngine.swift; sourceTree = SOURCE_ROOT; };
 		245236381CE2BC73008321E3 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = EngineKitCore/EKOSFactory.swift; sourceTree = SOURCE_ROOT; };
 		2452363B1CE2BC95008321E3 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = EngineKitCore/EKFileManager.swift; sourceTree = SOURCE_ROOT; };
@@ -370,6 +373,7 @@
 				24E140441CE7A195004C52B4 /* EKTestsExtension.swift */,
 				24FE18441CE3CC1E00287B82 /* testClassScript */,
 				24FE18471CE3CC3400287B82 /* testScript */,
+				244FBF231CEF9B5800002FF1 /* testScriptFail */,
 			);
 			name = EngineKitCoreTests;
 			path = EngineKitOSXTests;
@@ -533,6 +537,7 @@
 				2452366D1CE2CBE0008321E3 /* test.txt in Resources */,
 				24FE18451CE3CC1E00287B82 /* testClassScript in Resources */,
 				24FE18481CE3CC3400287B82 /* testScript in Resources */,
+				244FBF271CEF9B9200002FF1 /* testScriptFail in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +555,7 @@
 				2452366E1CE2CBE0008321E3 /* test.txt in Resources */,
 				24FE18461CE3CC1E00287B82 /* testClassScript in Resources */,
 				24FE18491CE3CC3400287B82 /* testScript in Resources */,
+				244FBF261CEF9B9100002FF1 /* testScriptFail in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

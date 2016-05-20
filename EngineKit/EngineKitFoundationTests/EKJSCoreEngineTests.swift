@@ -44,9 +44,6 @@ class EKJSCoreEngineTests: XCTestCase {
 		engine.context.evaluateScript("print(\"print!!\");")
 		engine.context.evaluateScript("console.log(\"console.log!!\");")
 		XCTAssertNil(engine.evaluationError)
-
-		engine.context.evaluateScript("bla")
-		XCTAssertNotNil(engine.evaluationError)
 	}
 
 	func testRunScript() {
@@ -55,6 +52,11 @@ class EKJSCoreEngineTests: XCTestCase {
 		} catch {
 			XCTFail()
 		}
+
+		do {
+			try engine.runScript(filename: "testScriptFail")
+			XCTFail()
+		} catch { }
 	}
 
 	func testAddClass() {

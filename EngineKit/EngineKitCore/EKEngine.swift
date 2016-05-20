@@ -1,5 +1,5 @@
 enum EKError: ErrorType {
-	case ScriptEvaluationError
+	case ScriptEvaluationError(message: String)
 	case ScriptConversionError(message: String)
 	case EventRegistryError(message: String)
 	case InvalidArgumentTypeError(message: String)

@@ -26,9 +26,16 @@ extension JSContext {
 }
 
 // MARK: EKJSCoreEngine
+enum EKJSCoreState {
+	case Running
+	case Callback
+}
+
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
 	var evaluationError: ErrorType?
+
+	var state: EKJSCoreState = .Callback
 
 	weak public var engine: EKEngine?
 
@@ -104,6 +111,8 @@ public class EKJSCoreEngine: EKLanguageEngine {
 	}
 
 	public func runScript(filename filename: String) throws {
+		state = .Running
+
 		let fileManager = OSFactory.createFileManager()
 		let scriptContents = fileManager.getContentsFromFile(filename)
 		context.evaluateScript(scriptContents)
@@ -114,9 +123,16 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			}
 			throw error
 		}
+
+		state = .Callback
 	}
 
 	func fail(message: String = "") {
-		assertionFailure(message)
+		switch state {
+		case .Callback:
+			assertionFailure(message)
+		case .Running:
+			evaluationError = EKError.ScriptEvaluationError(message: message)
+		}
 	}
 }
