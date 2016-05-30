@@ -48,22 +48,27 @@ public class EKUIKitInputAddon: EKEventAddon {
 
 	@objc public func handleTap(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
-		eventCenter?.fireEvent(EKEventTap(position: point.toEKVector2()))
+		eventCenter?.fireEvent(EKEventTap(position: point.toEKVector2(),
+			touches: gestureRecognizer.numberOfTouches()))
 	}
 
 	@objc public func handlePan(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
+		let numberOfTouches = gestureRecognizer.numberOfTouches()
 
 		switch gestureRecognizer.state {
 		case .Began:
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
+				touches: numberOfTouches,
 				displacement: EKVector2.origin(), state: .Began))
 		case .Ended:
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
+				touches: numberOfTouches,
 				displacement: point.toEKVector2().minus(previousPosition),
 					state: .Ended))
 		default:
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
+				touches: numberOfTouches,
 				displacement: point.toEKVector2().minus(previousPosition),
 				state: .Changed))
 		}
@@ -74,18 +79,21 @@ public class EKUIKitInputAddon: EKEventAddon {
 	@objc public func handlePinch(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
 		eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
+			touches: gestureRecognizer.numberOfTouches(),
 			scale: 1, state: .Changed))
 	}
 
 	@objc public func handleRotation(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
 		eventCenter?.fireEvent(EKEventRotation(position: point.toEKVector2(),
+			touches: gestureRecognizer.numberOfTouches(),
 			angle: 0, state: .Changed))
 	}
 
 	@objc public func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
 		eventCenter?.fireEvent(EKEventLongPress(position: point.toEKVector2(),
+			touches: gestureRecognizer.numberOfTouches(),
 			displacement: EKVector2.origin(), state: .Changed))
 	}
 }

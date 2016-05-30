@@ -61,6 +61,18 @@ extension Double: Scriptable {
 	}
 }
 
+extension Float: Scriptable {
+	public func toNSObject() throws -> NSObject {
+		return NSNumber(float: self)
+	}
+}
+
+extension Int: Scriptable {
+	public func toNSObject() throws -> NSObject {
+		return NSNumber(integer: self)
+	}
+}
+
 //
 extension EKEvent {
 	public func toNSObject() throws -> NSObject {

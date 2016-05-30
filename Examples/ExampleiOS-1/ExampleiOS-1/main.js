@@ -19,6 +19,8 @@ function updateCameraAxes() {
 }
 
 function myPanCallback(eventPan) {
+	print(eventPan.touches);
+
 	var resized = eventPan.displacement.times(0.01);
 
 	updateCameraAxes();
