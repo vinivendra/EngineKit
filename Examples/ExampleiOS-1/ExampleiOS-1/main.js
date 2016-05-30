@@ -19,6 +19,8 @@ function updateCameraAxes() {
 }
 
 function myPanCallback(eventPan) {
+	print(eventPan.touches)
+
 	if (eventPan.touches == 1) {
 		var resized = eventPan.displacement.times(0.01);
 
@@ -49,3 +51,13 @@ function myPinchCallback(eventPinch) {
 }
 
 addCallbackForEvent(myPinchCallback, "pinch");
+
+function myRotationCallback(eventRotation) {
+	updateCameraAxes();
+	var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
+							 eventRotation.angle);
+	ekCamera.rotateAround(rotZ, [0, 0, 0]);
+}
+
+addCallbackForEvent(myRotationCallback, "rotation");
+

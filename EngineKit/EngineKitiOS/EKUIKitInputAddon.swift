@@ -18,6 +18,8 @@ public class EKUIKitInputAddon: EKEventAddon {
 
 	var previousPosition = EKVector2.origin()
 	var previousScale: CGFloat = 1
+	var previousAngle: CGFloat = 0
+
 	var numberOfTouches: Int!
 
 	public let view: UIView
@@ -106,16 +108,35 @@ public class EKUIKitInputAddon: EKEventAddon {
 		previousScale = gestureRecognizer.scale
 	}
 
-	@objc public func handleRotation(gestureRecognizer: UIGestureRecognizer) {
+	@objc public func handleRotation(
+		gestureRecognizer: UIRotationGestureRecognizer) {
+
 		let point = gestureRecognizer.locationInView(view)
 
-		if gestureRecognizer.state == .Began {
+		switch gestureRecognizer.state {
+		case .Began:
 			numberOfTouches = gestureRecognizer.numberOfTouches()
+
+			eventCenter?.fireEvent(EKEventRotation(
+				position: point.toEKVector2(),
+				touches: numberOfTouches,
+				angle: 0,
+				state: .Began))
+		case .Ended:
+			eventCenter?.fireEvent(EKEventRotation(
+				position: point.toEKVector2(),
+				touches: numberOfTouches,
+				angle: Double(gestureRecognizer.rotation - previousAngle),
+				state: .Ended))
+		default:
+			eventCenter?.fireEvent(EKEventRotation(
+				position: point.toEKVector2(),
+				touches: numberOfTouches,
+				angle: Double(gestureRecognizer.rotation - previousAngle),
+				state: .Changed))
 		}
 
-		eventCenter?.fireEvent(EKEventRotation(position: point.toEKVector2(),
-			touches: gestureRecognizer.numberOfTouches(),
-			angle: 0, state: .Changed))
+		previousAngle = gestureRecognizer.rotation
 	}
 
 	@objc public func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
