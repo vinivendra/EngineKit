@@ -17,6 +17,7 @@ public class EKUIKitInputAddon: EKEventAddon {
 	}
 
 	var previousPosition = EKVector2.origin()
+	var previousScale: CGFloat = 1
 	var numberOfTouches: Int!
 
 	public let view: UIView
@@ -62,12 +63,13 @@ public class EKUIKitInputAddon: EKEventAddon {
 
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
 				touches: numberOfTouches,
-				displacement: EKVector2.origin(), state: .Began))
+				displacement: EKVector2.origin(),
+				state: .Began))
 		case .Ended:
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
 				touches: numberOfTouches,
 				displacement: point.toEKVector2().minus(previousPosition),
-					state: .Ended))
+				state: .Ended))
 		default:
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
 				touches: numberOfTouches,
@@ -78,16 +80,30 @@ public class EKUIKitInputAddon: EKEventAddon {
 		previousPosition = point.toEKVector2()
 	}
 
-	@objc public func handlePinch(gestureRecognizer: UIGestureRecognizer) {
+	@objc public func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
 		let point = gestureRecognizer.locationInView(view)
 
-		if gestureRecognizer.state == .Began {
+		switch gestureRecognizer.state {
+		case .Began:
 			numberOfTouches = gestureRecognizer.numberOfTouches()
+
+			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
+				touches: numberOfTouches,
+				scale: 1,
+				state: .Began))
+		case .Ended:
+			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
+				touches: numberOfTouches,
+				scale: Double(gestureRecognizer.scale / previousScale),
+				state: .Ended))
+		default:
+			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
+				touches: numberOfTouches,
+				scale: Double(gestureRecognizer.scale / previousScale),
+				state: .Changed))
 		}
 
-		eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
-			touches: gestureRecognizer.numberOfTouches(),
-			scale: 1, state: .Changed))
+		previousScale = gestureRecognizer.scale
 	}
 
 	@objc public func handleRotation(gestureRecognizer: UIGestureRecognizer) {

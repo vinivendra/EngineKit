@@ -19,25 +19,33 @@ function updateCameraAxes() {
 }
 
 function myPanCallback(eventPan) {
-	print(eventPan.state);
-	print(eventPan.touches);
+	if (eventPan.touches == 1) {
+		var resized = eventPan.displacement.times(0.01);
 
-	var resized = eventPan.displacement.times(0.01);
+		updateCameraAxes();
+		var axis = cameraX.times(resized.y)
+			.plus(cameraY.times(-resized.x));
 
-	updateCameraAxes();
-	var axis = cameraX.times(resized.y)
-		.plus(cameraY.times(-resized.x));
-
-	var rot = new EKVector4(axis.x, axis.y, axis.z, resized.normSquared());
-	ekCamera.rotateAround(rot.normalize(), [0, 0, 0]);
-
-//	var resized = eventPan.displacement.times(0.01);
-//
-//	updateCameraAxes();
-//	var translation = cameraX.times(-resized.x)
-//		.plus(cameraY.times(-resized.y));
-//
-//	ekCamera.position = ekCamera.position.plus(translation);
+		var rot = new EKVector4(axis.x, axis.y, axis.z, resized.normSquared());
+		ekCamera.rotateAround(rot.normalize(), [0, 0, 0]);
+	} else {
+		var resized = eventPan.displacement.times(0.01);
+	
+		updateCameraAxes();
+		var translation = cameraX.times(-resized.x)
+			.plus(cameraY.times(-resized.y));
+	
+		ekCamera.position = ekCamera.position.plus(translation);
+	}
 }
 
 addCallbackForEvent(myPanCallback, "pan");
+
+
+function myPinchCallback(eventPinch) {
+	updateCameraAxes();
+	var translation = cameraZ.times((1 - (eventPinch.scale)) * 5);
+	ekCamera.position = ekCamera.position.plus(translation);
+}
+
+addCallbackForEvent(myPinchCallback, "pinch");
