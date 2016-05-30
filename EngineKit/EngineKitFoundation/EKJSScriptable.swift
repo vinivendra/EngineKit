@@ -81,19 +81,19 @@ extension EKEventInputState {
 //
 extension EKVector2Type {
 	public func toNSObject() throws -> NSObject {
-		return EKNSVector2(x: x, y: y)
+		return EKVector2(x: x, y: y)
 	}
 }
 
 extension EKVector3Type {
 	public func toNSObject() throws -> NSObject {
-		return EKNSVector3(x: x, y: y, z: z)
+		return EKVector3(x: x, y: y, z: z)
 	}
 }
 
 extension EKVector4Type {
 	public func toNSObject() throws -> NSObject {
-		return EKNSVector4(x: x, y: y, z: z, w: w)
+		return EKVector4(x: x, y: y, z: z, w: w)
 	}
 }
 

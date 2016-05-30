@@ -1,5 +1,7 @@
 import JavaScriptCore
 
+let languageFactory = EKJSCoreFactory()
+
 // MARK: Console class
 @objc protocol ConsoleExport: JSExport {
 	func log(string: String)
@@ -60,7 +62,6 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context["console"] = Console()
 
 		let eventFunc = {[unowned self] (callback: JSValue, event: JSValue) in
-			print("Adding callback \(callback) for event \(event)")
 
 			do {
 				try engine.register(forEventNamed: event.toString()) {
@@ -84,6 +85,27 @@ public class EKJSCoreEngine: EKLanguageEngine {
 			} as @convention(block) (JSValue, JSValue)->()
 		let eventObj = unsafeBitCast(eventFunc, AnyObject.self)
 		context["addCallbackForEvent"] = eventObj
+
+		//
+		var constructorClosure: (@convention(block)
+			(NSNumber, NSNumber, NSNumber, NSNumber) -> (NSObject))?
+
+		constructorClosure = {
+			(x: NSNumber,
+			y: NSNumber,
+			z: NSNumber,
+			w: NSNumber) -> NSObject in
+
+			return EKVector4(x: x.doubleValue, y: y.doubleValue,
+			                 z: z.doubleValue, w: w.doubleValue)
+
+			} as (@convention(block)
+				(NSNumber, NSNumber, NSNumber, NSNumber) -> (NSObject))?
+
+		let constructorObject = unsafeBitCast(constructorClosure,
+		                                      AnyObject.self)
+
+		context["EKVector4"] = constructorObject
 	}
 
 	public func addClass<T: Scriptable>(class: T.Type,
@@ -110,6 +132,15 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context[className] = constructorObject
 	}
 
+	public func addObject<T: Scriptable>(object: T,
+	                      withName name: String) throws {
+		do {
+			try context[name] = object.toNSObject()
+		} catch let error {
+			throw error
+		}
+	}
+
 	public func runScript(filename filename: String) throws {
 		state = .Running
 
@@ -134,5 +165,20 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		case .Running:
 			evaluationError = EKError.ScriptEvaluationError(message: message)
 		}
+	}
+}
+
+public class EKJSCoreFactory: EKLanguageFactory {
+	public func createEKVector3(x x: Double,
+	                              y: Double,
+	                              z: Double) -> EKVector3 {
+		return EKVector3(x: x, y: y, z: z)
+	}
+
+	public func createEKVector4(x x: Double,
+	                              y: Double,
+	                              z: Double,
+	                              w: Double) -> EKVector4 {
+		return EKVector4(x: x, y: y, z: z, w: w)
 	}
 }

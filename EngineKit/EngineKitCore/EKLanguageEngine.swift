@@ -7,6 +7,7 @@ public protocol EKLanguageEngine {
 	func addClass<T: Scriptable>(class: T.Type,
 	              withName className: String,
 	                       constructor: (() -> (T)) )
+	func addObject<T: Scriptable>(object: T, withName name: String) throws
 }
 
 extension EKLanguageEngine {
@@ -14,6 +15,17 @@ extension EKLanguageEngine {
 	                     withName className: String) {
 		addClass(T.self, withName: className, constructor: T.init)
 	}
+}
+
+public protocol EKLanguageFactory {
+	associatedtype Vector3Type: EKVector3Type
+	associatedtype Vector4Type: EKVector4Type
+
+	func createEKVector3(x x: Double, y: Double, z: Double) -> Vector3Type
+	func createEKVector4(x x: Double,
+	                       y: Double,
+	                       z: Double,
+	                       w: Double) -> Vector4Type
 }
 
 extension String {

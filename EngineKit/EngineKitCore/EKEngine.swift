@@ -7,7 +7,7 @@ enum EKError: ErrorType {
 
 public class EKEngine {
 
-	public var languageEngine: EKLanguageEngine? = nil {
+	public var languageEngine: EKLanguageEngine! = nil {
 		willSet {
 			if languageEngine != nil {
 				assertionFailure("Language engine may not change!")
@@ -24,7 +24,7 @@ public class EKEngine {
 
 	public func runScript(filename filename: String) throws {
 		do {
-			try self.languageEngine?.runScript(filename: filename)
+			try self.languageEngine.runScript(filename: filename)
 		} catch let error {
 			throw error
 		}
@@ -84,9 +84,18 @@ public class EKEngine {
 	                              constructor: (() -> (T)) ) {
 		let className = className ?? "\(T.self)".toEKPrefixClassName()
 
-		languageEngine?.addClass(T.self,
+		languageEngine.addClass(T.self,
 		                         withName: className,
 		                         constructor: constructor)
+	}
+
+	public func addObject<T: Scriptable>(object: T,
+	                      withName name: String) throws {
+		do {
+			try languageEngine.addObject(object, withName: name)
+		} catch let error {
+			throw error
+		}
 	}
 }
 
@@ -97,6 +106,6 @@ extension EKEngine {
 
 	public func addClass<T: Scriptable where T: Initable>(class: T.Type,
 	                     withName className: String?) {
-		addClass(T.self, withName: className)
+		addClass(T.self, withName: className, constructor: T.init)
 	}
 }

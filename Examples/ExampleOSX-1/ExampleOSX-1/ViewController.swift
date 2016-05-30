@@ -9,7 +9,9 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let engine = EKEngine(languageEngine: EKJSCoreEngine())
+		let engine = EKEngine()
+		let javaScriptEngine = EKJSCoreEngine(engine: engine)
+		engine.languageEngine = javaScriptEngine
 		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
 		try! engine.runScript(filename: "main.js")
 

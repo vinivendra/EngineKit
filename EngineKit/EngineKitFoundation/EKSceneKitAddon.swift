@@ -2,8 +2,10 @@ import SceneKit
 
 #if os(OSX)
 	typealias OSColor = NSColor
+	typealias SCNNumber = CGFloat
 #else
 	typealias OSColor = UIColor
+	typealias SCNNumber = Float
 #endif
 
 //
@@ -25,15 +27,19 @@ public class EKSceneKitAddon: EKLanguageAddon {
 		}
 	}
 
+	let camera = EKCamera()
+
 	public init(sceneView: SCNView) {
 		self.sceneView = sceneView
 
 		//
 		self.scene = self.scene ?? SCNScene()
 		self.sceneView.backgroundColor = OSColor.darkGrayColor()
+
+		self.scene?.rootNode.addChildNode(camera.node)
 	}
 
-	public func addClasses(toEngine engine: EKEngine) {
+	public func addFunctionality(toEngine engine: EKEngine) {
 		engine.addClass(EKSphere.self, withName: nil, constructor: {
 			let sphere = EKSphere()
 			self.scene?.rootNode.addChildNode(sphere.node)
@@ -45,19 +51,21 @@ public class EKSceneKitAddon: EKLanguageAddon {
 			self.scene?.rootNode.addChildNode(box.node)
 			return box
 		})
+
+		try! engine.addObject(camera, withName: "ekCamera")
 	}
 
 }
 
-extension EKVector3Type {
+extension EKVector3 {
 	func toSCNVector3() -> SCNVector3 {
 		return SCNVector3(x, y, z)
 	}
 
-	static func createVector(SCNVector3 vector: SCNVector3) -> Self {
-		return Self.createVector(x: Double(vector.x),
-		                         y: Double(vector.y),
-		                         z: Double(vector.z))
+	static func createVector(SCNVector3 vector: SCNVector3) -> EKVector3 {
+		return EKVector3.createVector(x: Double(vector.x),
+		                              y: Double(vector.y),
+		                              z: Double(vector.z))
 	}
 }
 
@@ -66,50 +74,99 @@ extension EKVector4Type {
 		return SCNVector4(x, y, z, w)
 	}
 
-	static func createVector(SCNVector4 vector: SCNVector4) -> Self {
-		return Self.createVector(x: Double(vector.x),
-		                         y: Double(vector.y),
-		                         z: Double(vector.z),
-		                         w: Double(vector.w))
+	func toSCNVector3() -> SCNVector3 {
+		return SCNVector3(x, y, z)
+	}
+
+	static func createVector(SCNVector4 vector: SCNVector4) -> EKVector4 {
+		return EKVector4.createVector(x: Double(vector.x),
+		                              y: Double(vector.y),
+		                              z: Double(vector.z),
+		                              w: Double(vector.w))
 	}
 }
 
-public class EKShape: NSObject {
+extension EKMatrix {
+	func toSCNMatrix4() -> SCNMatrix4 {
+		return SCNMatrix4(m11: SCNNumber(m11), m12: SCNNumber(m12),
+		                  m13: SCNNumber(m13), m14: SCNNumber(m14),
+		                  m21: SCNNumber(m21), m22: SCNNumber(m22),
+		                  m23: SCNNumber(m23), m24: SCNNumber(m24),
+		                  m31: SCNNumber(m31), m32: SCNNumber(m32),
+		                  m33: SCNNumber(m33), m34: SCNNumber(m34),
+		                  m41: SCNNumber(m41), m42: SCNNumber(m42),
+		                  m43: SCNNumber(m43), m44: SCNNumber(m44))
+	}
+
+	static func createMatrix(SCNMatrix4 m: SCNMatrix4) -> EKMatrix {
+		return EKMatrix(m11: Double(m.m11), m12: Double(m.m12),
+		                m13: Double(m.m13), m14: Double(m.m14),
+		                m21: Double(m.m21), m22: Double(m.m22),
+		                m23: Double(m.m23), m24: Double(m.m24),
+		                m31: Double(m.m31), m32: Double(m.m32),
+		                m33: Double(m.m33), m34: Double(m.m34),
+		                m41: Double(m.m41), m42: Double(m.m42),
+		                m43: Double(m.m43), m44: Double(m.m44))
+	}
+}
+
+public class EKNode: NSObject {
 	let node = SCNNode()
 
 	var position: AnyObject {
 		get {
-			return EKNSVector3.createVector(SCNVector3: node.position)
+			return EKVector3.createVector(SCNVector3: node.position)
 		}
 		set {
-			let vector = EKNSVector3.createVector(object: newValue)
+			let vector = EKVector3.createVector(object: newValue)
 			node.position = vector.toSCNVector3()
 		}
 	}
 
 	var rotation: AnyObject {
 		get {
-			return EKNSVector4.createVector(SCNVector4: node.rotation)
+			return EKVector4.createVector(SCNVector4: node.rotation)
 		}
 		set {
-			let vector = EKNSVector4.createVector(object: newValue)
+			let vector = EKVector4.createVector(object: newValue)
 			node.rotation = vector.toSCNVector4()
 		}
 	}
 
-	var velocity: AnyObject {
-		get {
-			if let velocity = node.physicsBody?.velocity {
-				return EKNSVector3.createVector(SCNVector3: velocity)
-			}
-			return EKNSVector3.origin()
-		}
-		set {
-			let vector = EKNSVector3.createVector(object: newValue)
-			node.physicsBody?.velocity = vector.toSCNVector3()
-		}
-	}
+	func rotate(rotation: AnyObject, around anchorPoint: AnyObject) {
+		let position = EKVector3.createVector(SCNVector3: node.position)
+		let orientation = EKVector4.createVector(SCNVector4: node.orientation)
 
+		let rotation = EKVector4.createVector(object: rotation)
+		let quaternion = rotation.rotationToQuaternion().unitQuaternion()
+
+		let newPosition = quaternion.conjugate(vector: position)
+		let newOrientation = quaternion.multiplyAsQuaternion(
+			quaternion: orientation)
+
+		node.position = newPosition.toSCNVector3()
+		node.orientation = newOrientation.toSCNVector4()
+	}
+}
+
+//
+public class EKCamera: EKNode, CameraExport, Scriptable {
+	let camera = SCNCamera()
+
+	override init() {
+		super.init()
+		self.node.camera = self.camera
+	}
+}
+
+@objc protocol CameraExport: JSExport {
+	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
+	var position: AnyObject { get set }
+	var rotation: AnyObject { get set }
+}
+
+//
+public class EKShape: EKNode {
 	var color: AnyObject {
 		get {
 			let contents = node.geometry?.materials.first?.ambient.contents
@@ -168,6 +225,19 @@ public class EKShape: NSObject {
 			}
 		}
 	}
+
+	var velocity: AnyObject {
+		get {
+			if let velocity = node.physicsBody?.velocity {
+				return EKVector3.createVector(SCNVector3: velocity)
+			}
+			return EKVector3.origin()
+		}
+		set {
+			let vector = EKVector3.createVector(object: newValue)
+			node.physicsBody?.velocity = vector.toSCNVector3()
+		}
+	}
 }
 
 //
@@ -194,6 +264,7 @@ public class EKSphere: EKShape, SphereExport, Scriptable {
 }
 
 @objc protocol SphereExport: JSExport {
+	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
 	var radius: CGFloat { get set }
 	var position: AnyObject { get set }
 	var rotation: AnyObject { get set }
@@ -244,6 +315,7 @@ public class EKBox: EKShape, BoxExport, Scriptable {
 }
 
 @objc protocol BoxExport: JSExport {
+	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
 	var width: CGFloat { get set }
 	var length: CGFloat { get set }
 	var height: CGFloat { get set }

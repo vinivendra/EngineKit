@@ -1,17 +1,17 @@
-class EKNSVector2AsEKVector2TypeTests: EKVector2TypeTests {
+class EKVector2AsEKVector2TypeTests: EKVector2TypeTests {
 	func testAll() {
-		testAll(EKNSVector2)
+		testAll(EKVector2)
 	}
 }
 
-class EKNSVector3AsEKVector3TypeTests: EKVector3TypeTests {
+class EKVector3AsEKVector3TypeTests: EKVector3TypeTests {
 	func testAll() {
-		testAll(EKNSVector3)
+		testAll(EKVector3)
 	}
 }
 
-class EKNSVector4AsEKVector4TypeTests: EKVector4TypeTests {
+class EKVector4AsEKVector4TypeTests: EKVector4TypeTests {
 	func testAll() {
-		testAll(EKNSVector4)
+		testAll(EKVector4)
 	}
 }
