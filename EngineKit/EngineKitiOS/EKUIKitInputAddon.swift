@@ -6,6 +6,12 @@ extension CGPoint {
 	}
 }
 
+extension EKVector2 {
+	func toCGPoint() -> CGPoint {
+		return CGPoint(x: self.x, y: -self.y)
+	}
+}
+
 public class EKUIKitInputAddon: EKEventAddon {
 
 	weak public var eventCenter: EKEventCenter?

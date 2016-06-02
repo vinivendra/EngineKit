@@ -53,11 +53,140 @@ function myPinchCallback(eventPinch) {
 addCallbackForEvent(myPinchCallback, "pinch");
 
 function myRotationCallback(eventRotation) {
-	updateCameraAxes();
-	var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
-							 eventRotation.angle);
-	ekCamera.rotateAround(rotZ, [0, 0, 0]);
+	var nodes = ekScene.objectsInCoordinate(eventRotation.position);
+
+	if (typeof nodes[0] != 'undefined') {
+		var item = nodes[0];
+		updateCameraAxes();
+		item.rotate([cameraZ.x, cameraZ.y, cameraZ.z, -eventRotation.angle]);
+	}
+//	updateCameraAxes();
+//	var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
+//							 eventRotation.angle);
+//	ekCamera.rotateAround(rotZ, [0, 0, 0]);
 }
 
 addCallbackForEvent(myRotationCallback, "rotation");
 
+
+
+
+
+
+
+
+
+
+
+
+//function itemTranslationAction(items, translation) {
+//	if (typeof items[0] != 'undefined') {
+//		var item = itemForActions(items[0]);
+//
+//		var resized = translation.times(0.01);
+//
+//		updateCameraAxes();
+//		var translation = cameraX.times(resized.x)
+//			.plus(cameraY.times(resized.y));
+//
+//		var distance = item.position.minus(Camera.position);
+//		var ratio = distance.norm() / 7.5;
+//
+//		var resizedTranslation = translation.times(ratio);
+//
+//		item.position = item.position.plus(resizedTranslation);
+//	}
+//}
+//TriggerManager.registerAction(itemTranslationAction);
+//
+//function itemTranslationActionSnappedToAxes(items, translation) {
+//	if (typeof items[0] != 'undefined') {
+//
+//		var item = itemForActions(items[0]);
+//
+//		updateCameraAxes();
+//
+//		var resized = translation.times(0.01);
+//		var translation = cameraX.times(resized.x)
+//			.plus(cameraY.times(resized.y));
+//
+//		var xDot = Math.abs(cameraZ.dot(x));
+//		var yDot = Math.abs(cameraZ.dot(y));
+//		var zDot = Math.abs(cameraZ.dot(z));
+//
+//		var projection;
+//
+//		if (xDot >  yDot && xDot > zDot) {
+//			projection = translation.setNewX(0);
+//		}
+//		else if (yDot > zDot) {
+//			projection = translation.setNewY(0);
+//		}
+//		else {
+//			projection = translation.setNewZ(0);
+//		}
+//
+//		var distance = item.position.minus(Camera.position);
+//		var ratio = distance.norm() / 7.5;
+//
+//		var resizedProjection = projection.times(ratio);
+//
+//		item.position = item.position.plus(resizedProjection);
+//	}
+//}
+//TriggerManager.registerAction(itemTranslationActionSnappedToAxes);
+//
+//function itemScaleAction(items, scale) {
+//	if (typeof items[0] != 'undefined') {
+//		var item = itemForActions(items[0]);
+//		item.scale = item.scale.times(scale);
+//	}
+//}
+//TriggerManager.registerAction(itemScaleAction);
+//
+//function zoomCameraAction(items, scale) {
+//	updateCameraAxes();
+//	var translation = cameraZ.times((1 - (scale)) * 5);
+//	Camera.position = Camera.position.plus(translation);
+//}
+//TriggerManager.registerAction(zoomCameraAction);
+//
+//function itemRotationAction(items, angle) {
+//	if (typeof items[0] != 'undefined') {
+//		var item = itemForActions(items[0]);
+//		updateCameraAxes();
+//		item.rotate({"axis":cameraZ, "a":angle});
+//	}
+//}
+//TriggerManager.registerAction(itemRotationAction);
+//
+//function sceneRotationAction(items, angle) {
+//	updateCameraAxes();
+//	var rotZ = Rotation.create([cameraZ, -angle]);
+//	Camera.rotateAround(rotZ, origin);
+//}
+//TriggerManager.registerAction(sceneRotationAction);
+//
+//////////////////////////////////////////////////////////////////////////////////
+//
+//function itemIdentity(item) {
+//	return item;
+//}
+//
+//function topItem(item) {
+//	while (item != item.parent && typeof item.parent != 'undefined') {
+//		item = item.parent;
+//	}
+//	return item;
+//}
+//
+//function templateBase(item) {
+//	while (!item.isTemplateBase && typeof item.parent != 'undefined') {
+//		item = item.parent;
+//	}
+//	return item;
+//}
+//
+//var itemForActions = itemIdentity;
+//
+//
