@@ -22,15 +22,37 @@ function myPanCallback(eventPan) {
 	print(eventPan.touches)
 
 	if (eventPan.touches == 1) {
-		var resized = eventPan.displacement.times(0.01);
+//		// Trackball
+//		var resized = eventPan.displacement.times(0.01);
+//
+//		updateCameraAxes();
+//		var axis = cameraX.times(resized.y)
+//			.plus(cameraY.times(-resized.x));
+//
+//		var rot = new EKVector4(axis.x, axis.y, axis.z, resized.normSquared());
+//		ekCamera.rotateAround(rot.normalize(), [0, 0, 0]);
 
-		updateCameraAxes();
-		var axis = cameraX.times(resized.y)
-			.plus(cameraY.times(-resized.x));
+		// Object translation
+		var nodes = ekScene.objectsInCoordinate(eventPan.position);
 
-		var rot = new EKVector4(axis.x, axis.y, axis.z, resized.normSquared());
-		ekCamera.rotateAround(rot.normalize(), [0, 0, 0]);
+		if (typeof nodes[0] != 'undefined') {
+			var object = nodes[0];
+
+			var resized = eventPan.displacement.times(0.01);
+
+			updateCameraAxes();
+			var translation = cameraX.times(resized.x)
+				.plus(cameraY.times(resized.y));
+
+			var distance = object.position.minus(ekCamera.position);
+			var ratio = distance.norm() / 7.5;
+
+			var resizedTranslation = translation.times(ratio);
+
+			object.position = object.position.plus(resizedTranslation);
+		}
 	} else {
+		// Camera translation
 		var resized = eventPan.displacement.times(0.01);
 	
 		updateCameraAxes();
@@ -68,37 +90,6 @@ function myRotationCallback(eventRotation) {
 
 addCallbackForEvent(myRotationCallback, "rotation");
 
-
-
-
-
-
-
-
-
-
-
-
-//function itemTranslationAction(items, translation) {
-//	if (typeof items[0] != 'undefined') {
-//		var item = itemForActions(items[0]);
-//
-//		var resized = translation.times(0.01);
-//
-//		updateCameraAxes();
-//		var translation = cameraX.times(resized.x)
-//			.plus(cameraY.times(resized.y));
-//
-//		var distance = item.position.minus(Camera.position);
-//		var ratio = distance.norm() / 7.5;
-//
-//		var resizedTranslation = translation.times(ratio);
-//
-//		item.position = item.position.plus(resizedTranslation);
-//	}
-//}
-//TriggerManager.registerAction(itemTranslationAction);
-//
 //function itemTranslationActionSnappedToAxes(items, translation) {
 //	if (typeof items[0] != 'undefined') {
 //
