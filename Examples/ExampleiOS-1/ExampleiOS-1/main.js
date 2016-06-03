@@ -22,34 +22,73 @@ function myPanCallback(eventPan) {
 	print(eventPan.touches)
 
 	if (eventPan.touches == 1) {
-//		// Trackball
-//		var resized = eventPan.displacement.times(0.01);
+//		// Object translation
+//		var nodes = ekScene.objectsInCoordinate(eventPan.position);
 //
-//		updateCameraAxes();
-//		var axis = cameraX.times(resized.y)
-//			.plus(cameraY.times(-resized.x));
+//		if (typeof nodes[0] != 'undefined') {
+//			var object = nodes[0];
 //
-//		var rot = new EKVector4(axis.x, axis.y, axis.z, resized.normSquared());
-//		ekCamera.rotateAround(rot.normalize(), [0, 0, 0]);
+//			var resized = eventPan.displacement.times(0.01);
+//
+//			updateCameraAxes();
+//			var translation = cameraX.times(resized.x)
+//				.plus(cameraY.times(resized.y));
+//
+//			var distance = object.position.minus(ekCamera.position);
+//			var ratio = distance.norm() / 7.5;
+//
+//			var resizedTranslation = translation.times(ratio);
+//
+//			object.position = object.position.plus(resizedTranslation);
+//		}
 
-		// Object translation
+		// Object translation snapped to axes
+
 		var nodes = ekScene.objectsInCoordinate(eventPan.position);
 
 		if (typeof nodes[0] != 'undefined') {
-			var object = nodes[0];
 
-			var resized = eventPan.displacement.times(0.01);
+			var item = nodes[0];
 
 			updateCameraAxes();
+
+			var resized = eventPan.displacement.times(0.01);
 			var translation = cameraX.times(resized.x)
 				.plus(cameraY.times(resized.y));
 
-			var distance = object.position.minus(ekCamera.position);
+			var xDot = Math.abs(cameraZ.dot(x));
+			var yDot = Math.abs(cameraZ.dot(y));
+			var zDot = Math.abs(cameraZ.dot(z));
+
+			var projection;
+
+			if (xDot >  yDot && xDot > zDot) {
+				projection = EKVector3(0, translation.y, translation.z);
+			}
+			else if (yDot > zDot) {
+				projection = EKVector3(translation.x, 0, translation.z);
+			}
+			else {
+				projection = EKVector3(translation.x, translation.y, 0);
+			}
+
+			var distance = item.position.minus(ekCamera.position);
 			var ratio = distance.norm() / 7.5;
 
-			var resizedTranslation = translation.times(ratio);
+			var resizedProjection = projection.times(ratio);
 
-			object.position = object.position.plus(resizedTranslation);
+			item.position = item.position.plus(resizedProjection);
+		}
+		else {
+			// Trackball
+			var resized = eventPan.displacement.times(0.01);
+
+			updateCameraAxes();
+			var axis = cameraX.times(resized.y)
+			.plus(cameraY.times(-resized.x));
+
+			var rot = new EKVector4(axis.x, axis.y, axis.z, resized.normSquared());
+			ekCamera.rotateAround(rot.normalize(), [0, 0, 0]);
 		}
 	} else {
 		// Camera translation
@@ -67,9 +106,17 @@ addCallbackForEvent(myPanCallback, "pan");
 
 
 function myPinchCallback(eventPinch) {
-	updateCameraAxes();
-	var translation = cameraZ.times((1 - (eventPinch.scale)) * 5);
-	ekCamera.position = ekCamera.position.plus(translation);
+	var nodes = ekScene.objectsInCoordinate(eventPinch.position);
+
+	if (typeof nodes[0] != 'undefined') {
+		var item = nodes[0];
+		item.scale = item.scale.times(eventPinch.scale);
+	}
+	else {
+		updateCameraAxes();
+		var translation = cameraZ.times((1 - (eventPinch.scale)) * 5);
+		ekCamera.position = ekCamera.position.plus(translation);
+	}
 }
 
 addCallbackForEvent(myPinchCallback, "pinch");
@@ -90,43 +137,7 @@ function myRotationCallback(eventRotation) {
 
 addCallbackForEvent(myRotationCallback, "rotation");
 
-//function itemTranslationActionSnappedToAxes(items, translation) {
-//	if (typeof items[0] != 'undefined') {
-//
-//		var item = itemForActions(items[0]);
-//
-//		updateCameraAxes();
-//
-//		var resized = translation.times(0.01);
-//		var translation = cameraX.times(resized.x)
-//			.plus(cameraY.times(resized.y));
-//
-//		var xDot = Math.abs(cameraZ.dot(x));
-//		var yDot = Math.abs(cameraZ.dot(y));
-//		var zDot = Math.abs(cameraZ.dot(z));
-//
-//		var projection;
-//
-//		if (xDot >  yDot && xDot > zDot) {
-//			projection = translation.setNewX(0);
-//		}
-//		else if (yDot > zDot) {
-//			projection = translation.setNewY(0);
-//		}
-//		else {
-//			projection = translation.setNewZ(0);
-//		}
-//
-//		var distance = item.position.minus(Camera.position);
-//		var ratio = distance.norm() / 7.5;
-//
-//		var resizedProjection = projection.times(ratio);
-//
-//		item.position = item.position.plus(resizedProjection);
-//	}
-//}
-//TriggerManager.registerAction(itemTranslationActionSnappedToAxes);
-//
+
 //function itemScaleAction(items, scale) {
 //	if (typeof items[0] != 'undefined') {
 //		var item = itemForActions(items[0]);

@@ -87,25 +87,48 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context["addCallbackForEvent"] = eventObj
 
 		//
-		var constructorClosure: (@convention(block)
+		var constructorClosure3: (@convention(block)
+		(NSNumber, NSNumber, NSNumber) -> (NSObject))?
+
+		constructorClosure3 = {
+			(x: NSNumber,
+			y: NSNumber,
+			z: NSNumber) -> NSObject in
+
+			return EKVector3(x: x.doubleValue,
+			                 y: y.doubleValue,
+			                 z: z.doubleValue)
+
+			} as (@convention(block)
+				(NSNumber, NSNumber, NSNumber) -> (NSObject))?
+
+		let constructorObject3 = unsafeBitCast(constructorClosure3,
+		                                      AnyObject.self)
+
+		context["EKVector3"] = constructorObject3
+
+		//
+		var constructorClosure4: (@convention(block)
 			(NSNumber, NSNumber, NSNumber, NSNumber) -> (NSObject))?
 
-		constructorClosure = {
+		constructorClosure4 = {
 			(x: NSNumber,
 			y: NSNumber,
 			z: NSNumber,
 			w: NSNumber) -> NSObject in
 
-			return EKVector4(x: x.doubleValue, y: y.doubleValue,
-			                 z: z.doubleValue, w: w.doubleValue)
+			return EKVector4(x: x.doubleValue,
+			                 y: y.doubleValue,
+			                 z: z.doubleValue,
+			                 w: w.doubleValue)
 
 			} as (@convention(block)
 				(NSNumber, NSNumber, NSNumber, NSNumber) -> (NSObject))?
 
-		let constructorObject = unsafeBitCast(constructorClosure,
+		let constructorObject4 = unsafeBitCast(constructorClosure4,
 		                                      AnyObject.self)
 
-		context["EKVector4"] = constructorObject
+		context["EKVector4"] = constructorObject4
 	}
 
 	public func addClass<T: Scriptable>(class: T.Type,

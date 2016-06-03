@@ -145,6 +145,7 @@ extension EKMatrix {
 
 @objc protocol NodeExport: JSExport {
 	var position: AnyObject { get set }
+	var scale: AnyObject { get set }
 	var rotation: AnyObject { get set }
 	func rotate(rotation: AnyObject)
 	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
@@ -164,6 +165,16 @@ public class EKNode: NSObject, NodeExport {
 		set {
 			let vector = EKVector3.createVector(object: newValue)
 			node.position = vector.toSCNVector3()
+		}
+	}
+
+	var scale: AnyObject {
+		get {
+			return EKVector3.createVector(SCNVector3: node.scale)
+		}
+		set {
+			let vector = EKVector3.createVector(object: newValue)
+			node.scale = vector.toSCNVector3()
 		}
 	}
 
@@ -218,6 +229,7 @@ public class EKCamera: EKNode, CameraExport, Scriptable {
 
 @objc protocol CameraExport: JSExport {
 	var position: AnyObject { get set }
+	var scale: AnyObject { get set }
 	var rotation: AnyObject { get set }
 	func rotate(rotation: AnyObject)
 	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
@@ -324,6 +336,7 @@ public class EKSphere: EKShape, SphereExport, Scriptable {
 @objc protocol SphereExport: JSExport {
 	var radius: CGFloat { get set }
 	var position: AnyObject { get set }
+	var scale: AnyObject { get set }
 	var rotation: AnyObject { get set }
 	var velocity: AnyObject { get set }
 	var color: AnyObject { get set }
@@ -378,6 +391,7 @@ public class EKBox: EKShape, BoxExport, Scriptable {
 	var length: CGFloat { get set }
 	var height: CGFloat { get set }
 	var position: AnyObject { get set }
+	var scale: AnyObject { get set }
 	var rotation: AnyObject { get set }
 	var velocity: AnyObject { get set }
 	var color: AnyObject { get set }
