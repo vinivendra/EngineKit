@@ -128,67 +128,13 @@ function myRotationCallback(eventRotation) {
 		var item = nodes[0];
 		updateCameraAxes();
 		item.rotate([cameraZ.x, cameraZ.y, cameraZ.z, -eventRotation.angle]);
+	} else {
+		updateCameraAxes();
+		var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
+								 eventRotation.angle);
+		ekCamera.rotateAround(rotZ, [0, 0, 0]);
 	}
-//	updateCameraAxes();
-//	var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
-//							 eventRotation.angle);
-//	ekCamera.rotateAround(rotZ, [0, 0, 0]);
 }
 
 addCallbackForEvent(myRotationCallback, "rotation");
 
-
-//function itemScaleAction(items, scale) {
-//	if (typeof items[0] != 'undefined') {
-//		var item = itemForActions(items[0]);
-//		item.scale = item.scale.times(scale);
-//	}
-//}
-//TriggerManager.registerAction(itemScaleAction);
-//
-//function zoomCameraAction(items, scale) {
-//	updateCameraAxes();
-//	var translation = cameraZ.times((1 - (scale)) * 5);
-//	Camera.position = Camera.position.plus(translation);
-//}
-//TriggerManager.registerAction(zoomCameraAction);
-//
-//function itemRotationAction(items, angle) {
-//	if (typeof items[0] != 'undefined') {
-//		var item = itemForActions(items[0]);
-//		updateCameraAxes();
-//		item.rotate({"axis":cameraZ, "a":angle});
-//	}
-//}
-//TriggerManager.registerAction(itemRotationAction);
-//
-//function sceneRotationAction(items, angle) {
-//	updateCameraAxes();
-//	var rotZ = Rotation.create([cameraZ, -angle]);
-//	Camera.rotateAround(rotZ, origin);
-//}
-//TriggerManager.registerAction(sceneRotationAction);
-//
-//////////////////////////////////////////////////////////////////////////////////
-//
-//function itemIdentity(item) {
-//	return item;
-//}
-//
-//function topItem(item) {
-//	while (item != item.parent && typeof item.parent != 'undefined') {
-//		item = item.parent;
-//	}
-//	return item;
-//}
-//
-//function templateBase(item) {
-//	while (!item.isTemplateBase && typeof item.parent != 'undefined') {
-//		item = item.parent;
-//	}
-//	return item;
-//}
-//
-//var itemForActions = itemIdentity;
-//
-//
