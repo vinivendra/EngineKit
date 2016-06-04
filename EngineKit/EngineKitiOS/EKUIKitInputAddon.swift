@@ -1,12 +1,12 @@
 import UIKit
 
-extension CGPoint {
+private extension CGPoint {
 	func toEKVector2() -> EKVector2 {
 		return EKVector2(x: Double(self.x), y: Double(-self.y))
 	}
 }
 
-extension EKVector2 {
+private extension EKVector2 {
 	func toCGPoint() -> CGPoint {
 		return CGPoint(x: self.x, y: -self.y)
 	}
@@ -28,7 +28,7 @@ public class EKUIKitInputAddon: EKEventAddon {
 
 	var numberOfTouches: Int!
 
-	public let view: UIView
+	let view: UIView
 
 	public init(view: UIView) {
 		self.view = view

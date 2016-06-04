@@ -8,6 +8,18 @@ import SceneKit
 	typealias SCNNumber = Float
 #endif
 
+private extension CGPoint {
+	func toEKVector2() -> EKVector2 {
+		return EKVector2(x: Double(self.x), y: Double(-self.y))
+	}
+}
+
+private extension EKVector2 {
+	func toCGPoint() -> CGPoint {
+		return CGPoint(x: self.x, y: -self.y)
+	}
+}
+
 //
 public class EKSceneKitAddon: EKLanguageAddon {
 

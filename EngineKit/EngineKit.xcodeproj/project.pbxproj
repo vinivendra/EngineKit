@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2418DF0E1D01F5EC00473C0B /* EKAppKitInputAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418DF0B1D01F5EC00473C0B /* EKAppKitInputAddon.swift */; };
+		2418DF0F1D01F5EC00473C0B /* EKAppKitInputAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418DF0B1D01F5EC00473C0B /* EKAppKitInputAddon.swift */; };
 		242EBAC01CEA4894001E5025 /* EKUIKitInputAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EBABF1CEA4894001E5025 /* EKUIKitInputAddon.swift */; };
 		242EBAC11CEA4894001E5025 /* EKUIKitInputAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EBABF1CEA4894001E5025 /* EKUIKitInputAddon.swift */; };
 		242EBAC31CEA7EBE001E5025 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242EBAC21CEA7EBE001E5025 /* EKEvent.swift */; };
@@ -143,6 +145,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2418DF0B1D01F5EC00473C0B /* EKAppKitInputAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAppKitInputAddon.swift; sourceTree = "<group>"; };
 		242EBABF1CEA4894001E5025 /* EKUIKitInputAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKUIKitInputAddon.swift; sourceTree = "<group>"; };
 		242EBAC21CEA7EBE001E5025 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEvent.swift; path = EngineKitCore/EKEvent.swift; sourceTree = SOURCE_ROOT; };
 		244FBF231CEF9B5800002FF1 /* testScriptFail */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testScriptFail; path = EngineKitCoreTests/testScriptFail; sourceTree = SOURCE_ROOT; };
@@ -320,6 +323,7 @@
 			children = (
 				2460C3731CC1F743003B2C6D /* EngineKitOSX.h */,
 				245236451CE2BFBE008321E3 /* EKOSXFactory.swift */,
+				2418DF0B1D01F5EC00473C0B /* EKAppKitInputAddon.swift */,
 				2460C3751CC1F743003B2C6D /* Info.plist */,
 			);
 			path = EngineKitOSX;
@@ -712,6 +716,7 @@
 				24E39E9A1CE5350B0096ADDF /* EKVector3.swift in Sources */,
 				245236671CE2CA97008321E3 /* EKFoundationFileManager.swift in Sources */,
 				246998921CE2B769004E24D1 /* EKEngine.swift in Sources */,
+				2418DF0E1D01F5EC00473C0B /* EKAppKitInputAddon.swift in Sources */,
 				245236371CE2BA4B008321E3 /* EKLanguageEngine.swift in Sources */,
 				242EBAC51CEA7EBE001E5025 /* EKEvent.swift in Sources */,
 				24FE17FA1CE3846800287B82 /* EKJSCoreEngine.swift in Sources */,
@@ -747,6 +752,7 @@
 				249D54831CED0E0800D27F5B /* EKVector2.swift in Sources */,
 				245236621CE2C9A1008321E3 /* EKFileManager.swift in Sources */,
 				24FE18201CE3A56C00287B82 /* EKSceneKitAddon.swift in Sources */,
+				2418DF0F1D01F5EC00473C0B /* EKAppKitInputAddon.swift in Sources */,
 				242EBAC61CEA7EBE001E5025 /* EKEvent.swift in Sources */,
 				24E39E9B1CE5350B0096ADDF /* EKVector3.swift in Sources */,
 				245236601CE2C9A1008321E3 /* EKLanguageEngine.swift in Sources */,
