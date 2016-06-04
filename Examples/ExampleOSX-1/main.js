@@ -118,21 +118,20 @@ function myPinchCallback(eventPinch) {
 }
 
 addCallbackForEvent(myPinchCallback, "pinch");
-//
-//function myRotationCallback(eventRotation) {
-//	var nodes = ekScene.objectsInCoordinate(eventRotation.position);
-//
-//	if (typeof nodes[0] != 'undefined') {
-//		var item = nodes[0];
-//		updateCameraAxes();
-//		item.rotate([cameraZ.x, cameraZ.y, cameraZ.z, -eventRotation.angle]);
-//	} else {
-//		updateCameraAxes();
-//		var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
-//								 eventRotation.angle);
-//		ekCamera.rotateAround(rotZ, [0, 0, 0]);
-//	}
-//}
-//
-//addCallbackForEvent(myRotationCallback, "rotation");
 
+function myRotationCallback(eventRotation) {
+	var nodes = ekScene.objectsInCoordinate(eventRotation.position);
+
+	if (typeof nodes[0] != 'undefined') {
+		var item = nodes[0];
+		updateCameraAxes();
+		item.rotate([cameraZ.x, cameraZ.y, cameraZ.z, -eventRotation.angle]);
+	} else {
+		updateCameraAxes();
+		var rotZ = new EKVector4(cameraZ.x, cameraZ.y, cameraZ.z,
+								 eventRotation.angle);
+		ekCamera.rotateAround(rotZ, [0, 0, 0]);
+	}
+}
+
+addCallbackForEvent(myRotationCallback, "rotation");

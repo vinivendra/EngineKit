@@ -68,6 +68,7 @@ public final class EKAppKitInputView: EKView {
 	var tapIsPossible = true
 	var panIsBeggining = false
 	var pinchIsHappening = false
+	var rotationIsHappening = false
 
 	override public func mouseUp(event: NSEvent) {
 		if tapIsPossible {
@@ -112,29 +113,50 @@ public final class EKAppKitInputView: EKView {
 	}
 
 	override public func magnifyWithEvent(event: NSEvent) {
+		let position = NSEvent.mouseLocation().toEKVector2()
+		let scale = Double(1 + event.magnification)
+
+		let state: EKEventInputState
+
 		if !pinchIsHappening {
 			pinchIsHappening = true
-
-			eventCenter?.fireEvent(EKEventPinch(
-				position: NSEvent.mouseLocation().toEKVector2(),
-				touches: 1,
-				scale: 1,
-				state: .Began))
+			state = .Began
 		} else if event.magnification == 0.0 {
 			pinchIsHappening = false
-
-			eventCenter?.fireEvent(EKEventPinch(
-				position: NSEvent.mouseLocation().toEKVector2(),
-				touches: 1,
-				scale: 1,
-				state: .Ended))
+			state = .Ended
 		} else {
-			eventCenter?.fireEvent(EKEventPinch(
-				position: NSEvent.mouseLocation().toEKVector2(),
-				touches: 1,
-				scale: Double(1 + event.magnification),
-				state: .Changed))
+			state = .Changed
 		}
+
+		eventCenter?.fireEvent(EKEventPinch(
+			position: position,
+			touches: 1,
+			scale: scale,
+			state: state))
+	}
+
+	override public func rotateWithEvent(event: NSEvent) {
+		let position = NSEvent.mouseLocation().toEKVector2()
+		let rotation = Double(event.rotation)
+		let angle = -rotation / 180 * M_PI
+
+		let state: EKEventInputState
+
+		if !rotationIsHappening {
+			rotationIsHappening = true
+			state = .Began
+		} else if event.rotation == 0.0 {
+			rotationIsHappening = false
+			state = .Ended
+		} else {
+			state = .Changed
+		}
+
+		eventCenter?.fireEvent(EKEventRotation(
+			position: position,
+			touches: 1,
+			angle: angle,
+			state: state))
 	}
 }
 
