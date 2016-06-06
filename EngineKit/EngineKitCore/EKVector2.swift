@@ -1,4 +1,8 @@
-import Darwin
+#if os(Linux)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 public protocol EKVector2Type: class, Scriptable, CustomDebugStringConvertible,
 	CustomStringConvertible {
@@ -109,28 +113,28 @@ extension EKVector2 {
 		                         y: dictionary[zero: ["1", "y", "Y"]])
 	}
 
-	public static func createVector(string string: String) -> EKVector2 {
-		var strings = [string]
+	// public static func createVector(string string: String) -> EKVector2 {
+	// 	var strings = [string]
 
-		let separators = [",", " ", "[", "]", "{", "}"]
-		for separator in separators {
-			strings = strings.flatMap({
-				$0.componentsSeparatedByString(separator)
-			})
-		}
+	// 	let separators = [",", " ", "[", "]", "{", "}"]
+	// 	for separator in separators {
+	// 		strings = strings.flatMap({
+	// 			$0.componentsSeparatedByString(separator)
+	// 		})
+	// 	}
 
-		let doubles = strings.flatMap(Double.init)
+	// 	let doubles = strings.flatMap(Double.init)
 
-		return createVector(array: doubles)
-	}
+	// 	return createVector(array: doubles)
+	// }
 
 	public static func createVector(object object: AnyObject) -> EKVector2 {
 		if let vector = object as? EKVector2 {
 			return vector
 		} else if let array = object as? [Double] {
 			return createVector(array: array)
-		} else if let string = object as? String {
-			return createVector(string: string)
+		// } else if let string = object as? String {
+		// 	return createVector(string: string)
 		} else if let dictionary = object as? [String: Double] {
 			return createVector(dictionary: dictionary)
 		} else if let number = object as? Double {
