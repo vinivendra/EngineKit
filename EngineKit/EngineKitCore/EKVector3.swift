@@ -14,12 +14,12 @@ public protocol EKVector3Type: class, Scriptable, CustomDebugStringConvertible,
 
 //
 @warn_unused_result
-public func == (lhs: EKVector3Type, rhs: EKVector3Type) -> Bool {
+public func == (lhs: EKVector3, rhs: EKVector3) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
 }
 
 @warn_unused_result
-public func != (lhs: EKVector3Type, rhs: EKVector3Type) -> Bool {
+public func != (lhs: EKVector3, rhs: EKVector3) -> Bool {
 	return !(lhs == rhs)
 }
 
