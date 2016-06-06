@@ -11,6 +11,7 @@ class EKVector4Tests: XCTestCase {
 
 	func testCreateAndEquals() {
 		let testVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 1)
+
 		let equalVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 1)
 		let otherEqualVector = EKVector4.createVector(x: 1, y: 2, z: 3, w: 0)
 		let differentVector = EKVector4.createVector(x: 4, y: 5, z: 6, w: 1)
@@ -217,10 +218,11 @@ class EKVector4Tests: XCTestCase {
 	}
 
 	func testCreateWithObject() {
-		let objects: [Any] = ["[1, 2, 3, 1]",
-		                      ["0": 1.0, "1": 2.0, "2": 3.0, "3": 1.0],
-		                      [1.0, 2.0, 3.0, 1.0],
-		                      EKVector4.createVector(x: 1, y: 2, z: 3, w: 1)]
+		let objects: [AnyObject] = ["[1, 2, 3, 1]",
+		                            ["0": 1.0, "1": 2.0, "2": 3.0, "3": 1.0],
+		                            [1.0, 2.0, 3.0, 1.0],
+		                            EKVector4.createVector(
+										x: 1, y: 2, z: 3, w: 1)]
 
 		//
 		for object in objects {
