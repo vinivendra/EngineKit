@@ -145,7 +145,9 @@ public class EKUIKitInputAddon: EKEventAddon {
 		previousAngle = gestureRecognizer.rotation
 	}
 
-	@objc public func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
+	@objc public func handleLongPress(
+		gestureRecognizer: UILongPressGestureRecognizer) {
+
 		let point = gestureRecognizer.locationInView(view)
 
 		if gestureRecognizer.state == .Began {

@@ -65,50 +65,108 @@ extension NSView {
 public final class EKAppKitInputView: EKView {
 	weak public var eventCenter: EKEventCenter?
 
-	var tapIsPossible = true
-	var panIsBeggining = false
+	var longPressTriggered = false
 	var pinchIsHappening = false
 	var rotationIsHappening = false
 
-	override public func mouseUp(event: NSEvent) {
-		if tapIsPossible {
-			eventCenter?.fireEvent(EKEventTap(
-				position: event.position,
-				touches: 1))
-		} else {
-			eventCenter?.fireEvent(EKEventPan(
-				position: event.position,
-				touches: 1,
-				displacement: EKVector2.origin(),
-				state: .Ended))
+	enum GestureRecognizerState {
+		case Standby
+		case Detected
+		case DetectedTolerance
+		case PerformingLongGesture
+	}
+
+	var state = GestureRecognizerState.Standby
+
+	func longPressDelayExpired() {
+		switch state {
+		case .PerformingLongGesture:
+			break
+		default:
+			longPressTriggered = true
 		}
+	}
+
+	override public func mouseUp(event: NSEvent) {
+		let eventToFire: EKEvent
+
+		switch state {
+		case .PerformingLongGesture:
+			if longPressTriggered {
+				eventToFire = EKEventLongPress(
+					position: event.position,
+					touches: 1,
+					displacement: EKVector2.origin(),
+					state: .Ended)
+			} else {
+				eventToFire = EKEventPan(
+					position: event.position,
+					touches: 1,
+					displacement: EKVector2.origin(),
+					state: .Ended)
+			}
+		default:
+			eventToFire = EKEventTap(
+				position: event.position,
+				touches: 1)
+		}
+
+		eventCenter?.fireEvent(eventToFire)
+
+		state = .Standby
 	}
 
 	override public func mouseDown(event: NSEvent) {
 		window?.acceptsMouseMovedEvents = true
 
-		tapIsPossible = true
-		panIsBeggining = false
+		Swift.print("Mouse down")
+
+		state = .Detected
+
+		longPressTriggered = false
+
+		NSTimer.scheduledTimerWithTimeInterval(
+			0.5,
+			target: self,
+			selector: #selector(longPressDelayExpired),
+			userInfo: nil,
+			repeats: false)
 	}
 
 	override public func mouseDragged(event: NSEvent) {
-		if panIsBeggining {
-			panIsBeggining = false
-			tapIsPossible = false
+		var stateOfEventToFire: EKEventInputState? = nil
 
-			eventCenter?.fireEvent(EKEventPan(
-				position: event.position,
-				touches: 1,
-				displacement: event.displacement,
-				state: .Began))
-		} else if tapIsPossible {
-			panIsBeggining = true
-		} else {
-			eventCenter?.fireEvent(EKEventPan(
-				position: event.position,
-				touches: 1,
-				displacement: event.displacement,
-				state: .Changed))
+		switch state {
+		case .Detected:
+			state = .DetectedTolerance
+		case .DetectedTolerance:
+			state = .PerformingLongGesture
+			stateOfEventToFire = .Began
+		case .PerformingLongGesture:
+			stateOfEventToFire = .Changed
+		default: break
+		}
+
+		Swift.print("\(stateOfEventToFire)")
+
+		if let stateOfEventToFire = stateOfEventToFire {
+			let eventToFire: EKEvent
+
+			if longPressTriggered {
+				eventToFire = EKEventLongPress(
+					position: event.position,
+					touches: 1,
+					displacement: event.displacement,
+					state: stateOfEventToFire)
+			} else {
+				eventToFire = EKEventPan(
+					position: event.position,
+					touches: 1,
+					displacement: event.displacement,
+					state: stateOfEventToFire)
+			}
+
+			eventCenter?.fireEvent(eventToFire)
 		}
 	}
 
