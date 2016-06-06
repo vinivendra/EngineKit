@@ -18,10 +18,15 @@ function updateCameraAxes() {
 	cameraZ = ekCamera.rotation.rotate(z);
 }
 
-function myPanCallback(eventPan) {
-	print("Pan callback")
-	print(eventPan)
+function someCallback(event) {
+	print(event)
+}
 
+addCallbackForEvent(someCallback, "screen input");
+addCallbackForEvent(someCallback, "screen input continuous");
+
+
+function myPanCallback(eventPan) {
 	if (eventPan.touches == 1) {
 		//		// Object translation
 		//		var nodes = ekScene.objectsInCoordinate(eventPan.position);
@@ -103,7 +108,7 @@ function myPanCallback(eventPan) {
 	}
 }
 
-addCallbackForEvent(myPanCallback, "long press");
+addCallbackForEvent(myPanCallback, "pan");
 
 
 function myPinchCallback(eventPinch) {

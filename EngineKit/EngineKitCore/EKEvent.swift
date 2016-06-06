@@ -46,6 +46,10 @@ public class EKEventCenter {
 				try! action.callWithArgument(event)
 			}
 		}
+
+		if let superEvent = event.createSuperclassEvent() {
+			fireEvent(superEvent)
+		}
 	}
 
 	public func startSendingEvents(ofTypes types: [EKEvent.Type]) {
@@ -130,6 +134,9 @@ public class EKEventCenter {
 
 //
 public class EKEvent: Scriptable {
+	public func createSuperclassEvent() -> EKEvent? {
+		return nil
+	}
 }
 
 //
@@ -150,6 +157,11 @@ public class EKEventScreenInput: EKEvent {
 }
 
 public class EKEventScreenInputContinuous: EKEventScreenInput {
+	override public func createSuperclassEvent() -> EKEvent? {
+		return EKEventScreenInput(position: position,
+		                                    touches: touches)
+	}
+
 	public let state: EKEventInputState
 
 	public init(position: EKVector2Type,
@@ -161,9 +173,19 @@ public class EKEventScreenInputContinuous: EKEventScreenInput {
 }
 
 public class EKEventTap: EKEventScreenInput {
+	override public func createSuperclassEvent() -> EKEvent? {
+		return EKEventScreenInput(position: position,
+		                                    touches: touches)
+	}
 }
 
 public class EKEventPan: EKEventScreenInputContinuous {
+	override public func createSuperclassEvent() -> EKEvent? {
+		return EKEventScreenInputContinuous(position: position,
+		                                              touches: touches,
+		                                              state: state)
+	}
+
 	public let displacement: EKVector2Type
 
 	public init(position: EKVector2Type,
@@ -176,6 +198,12 @@ public class EKEventPan: EKEventScreenInputContinuous {
 }
 
 public class EKEventPinch: EKEventScreenInputContinuous {
+	override public func createSuperclassEvent() -> EKEvent? {
+		return EKEventScreenInputContinuous(position: position,
+		                                              touches: touches,
+		                                              state: state)
+	}
+
 	public let scale: Double
 
 	public init(position: EKVector2Type,
@@ -188,6 +216,12 @@ public class EKEventPinch: EKEventScreenInputContinuous {
 }
 
 public class EKEventRotation: EKEventScreenInputContinuous {
+	override public func createSuperclassEvent() -> EKEvent? {
+		return EKEventScreenInputContinuous(position: position,
+		                                              touches: touches,
+		                                              state: state)
+	}
+
 	public let angle: Double
 
 	public init(position: EKVector2Type,
@@ -200,6 +234,12 @@ public class EKEventRotation: EKEventScreenInputContinuous {
 }
 
 public class EKEventLongPress: EKEventScreenInputContinuous {
+	override public func createSuperclassEvent() -> EKEvent? {
+		return EKEventScreenInputContinuous(position: position,
+		                                              touches: touches,
+		                                              state: state)
+	}
+
 	public let displacement: EKVector2Type
 
 	public init(position: EKVector2Type,

@@ -231,7 +231,8 @@ public class EKAppKitInputAddon: EKEventAddon {
 
 	public var firesEventsOfTypes: [EKEvent.Type] {
 		get {
-			return [EKEventTap.self, EKEventPan.self, EKEventPinch.self,
+			return [EKEventScreenInput.self, EKEventScreenInputContinuous.self,
+			        EKEventTap.self, EKEventPan.self, EKEventPinch.self,
 			        EKEventRotation.self, EKEventLongPress.self]
 		}
 	}
