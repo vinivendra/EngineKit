@@ -1,0 +1,1 @@
+swiftc main.swift EKLinuxDataClasses.swift ../../EngineKit/EngineKitCore/EKVector2.swift ../../EngineKit/EngineKitCore/EKSwiftExtensions.swift
