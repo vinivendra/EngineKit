@@ -18,14 +18,6 @@ function updateCameraAxes() {
 	cameraZ = ekCamera.rotation.rotate(z);
 }
 
-function someCallback(event) {
-	print(event)
-}
-
-addCallbackForEvent(someCallback, "screen input");
-addCallbackForEvent(someCallback, "screen input continuous");
-
-
 function myPanCallback(eventPan) {
 	if (eventPan.touches == 1) {
 		//		// Object translation

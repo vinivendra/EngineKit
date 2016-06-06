@@ -119,8 +119,6 @@ public final class EKAppKitInputView: EKView {
 	override public func mouseDown(event: NSEvent) {
 		window?.acceptsMouseMovedEvents = true
 
-		Swift.print("Mouse down")
-
 		state = .Detected
 
 		longPressTriggered = false
@@ -146,8 +144,6 @@ public final class EKAppKitInputView: EKView {
 			stateOfEventToFire = .Changed
 		default: break
 		}
-
-		Swift.print("\(stateOfEventToFire)")
 
 		if let stateOfEventToFire = stateOfEventToFire {
 			let eventToFire: EKEvent
@@ -257,73 +253,4 @@ public class EKAppKitInputAddon: EKEventAddon {
 
 		view.addSubviewAndFill(inputView)
 	}
-
-//	@objc public func handlePinch(gestureRecognizer: NSPinchGestureRecognizer) {
-//		let point = gestureRecognizer.locationInView(view)
-//
-//		switch gestureRecognizer.state {
-//		case .Began:
-//			numberOfTouches = gestureRecognizer.numberOfTouches()
-//
-//			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
-//				touches: numberOfTouches,
-//				scale: 1,
-//				state: .Began))
-//		case .Ended:
-//			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
-//				touches: numberOfTouches,
-//				scale: Double(gestureRecognizer.scale / previousScale),
-//				state: .Ended))
-//		default:
-//			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
-//				touches: numberOfTouches,
-//				scale: Double(gestureRecognizer.scale / previousScale),
-//				state: .Changed))
-//		}
-//
-//		previousScale = gestureRecognizer.scale
-//	}
-//
-//	@objc public func handleRotation(
-//		gestureRecognizer: NSRotationGestureRecognizer) {
-//
-//		let point = gestureRecognizer.locationInView(view)
-//
-//		switch gestureRecognizer.state {
-//		case .Began:
-//			numberOfTouches = gestureRecognizer.numberOfTouches()
-//
-//			eventCenter?.fireEvent(EKEventRotation(
-//				position: point.toEKVector2(),
-//				touches: numberOfTouches,
-//				angle: 0,
-//				state: .Began))
-//		case .Ended:
-//			eventCenter?.fireEvent(EKEventRotation(
-//				position: point.toEKVector2(),
-//				touches: numberOfTouches,
-//				angle: Double(gestureRecognizer.rotation - previousAngle),
-//				state: .Ended))
-//		default:
-//			eventCenter?.fireEvent(EKEventRotation(
-//				position: point.toEKVector2(),
-//				touches: numberOfTouches,
-//				angle: Double(gestureRecognizer.rotation - previousAngle),
-//				state: .Changed))
-//		}
-//
-//		previousAngle = gestureRecognizer.rotation
-//	}
-//
-//	@objc public func handleLongPress(gestureRecognizer: NSGestureRecognizer) {
-//		let point = gestureRecognizer.locationInView(view)
-//
-//		if gestureRecognizer.state == .Began {
-//			numberOfTouches = gestureRecognizer.numberOfTouches()
-//		}
-//
-//		eventCenter?.fireEvent(EKEventLongPress(position: point.toEKVector2(),
-//			touches: gestureRecognizer.numberOfTouches(),
-//			displacement: EKVector2.origin(), state: .Changed))
-//	}
 }

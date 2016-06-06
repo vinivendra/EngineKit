@@ -19,8 +19,6 @@ function updateCameraAxes() {
 }
 
 function myPanCallback(eventPan) {
-	print(eventPan.touches)
-
 	if (eventPan.touches == 1) {
 //		// Object translation
 //		var nodes = ekScene.objectsInCoordinate(eventPan.position);
