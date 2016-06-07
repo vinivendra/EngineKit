@@ -126,4 +126,18 @@ extension String {
 		
 		return array
 	}
+
+	func ekHasPrefix(prefix: String) -> Bool {
+		guard self.unicodeScalars.count >= prefix.unicodeScalars.count else {
+			return false
+		}
+
+		for (a, b) in zip(self.unicodeScalars, prefix.unicodeScalars) {
+			if a != b {
+				return false
+			}
+		}
+
+		return true
+	}
 }
