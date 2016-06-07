@@ -1,9 +1,5 @@
 import Foundation
 
-public protocol Initable {
-	init()
-}
-
 public protocol Scriptable {
 	func toNSObject() throws -> NSObject
 }

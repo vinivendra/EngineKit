@@ -5,6 +5,10 @@ enum EKError: ErrorType {
 	case InvalidArgumentTypeError(message: String)
 }
 
+public protocol Initable {
+	init()
+}
+
 public class EKEngine {
 
 	public var languageEngine: EKLanguageEngine! = nil {

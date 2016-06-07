@@ -1,4 +1,4 @@
-let EKColorDictionary =
+let EKColorDictionary: [String: Any] =
 	["black": 0.0,
 	 "darkGray": 0.333,
 	 "lightGray": 0.667,
