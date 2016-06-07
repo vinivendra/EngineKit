@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		245236481CE2C16C008321E3 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 245236471CE2C16C008321E3 /* main.js */; };
+		2414B75E1D074BB500CFFC2B /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 2414B75D1D074BB500CFFC2B /* main.js */; };
 		2460C3D11CC1FADD003B2C6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C3D01CC1FADD003B2C6D /* AppDelegate.swift */; };
 		2460C3D31CC1FADD003B2C6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2460C3D21CC1FADD003B2C6D /* ViewController.swift */; };
 		2460C3D51CC1FADD003B2C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2460C3D41CC1FADD003B2C6D /* Assets.xcassets */; };
@@ -69,7 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		245236471CE2C16C008321E3 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = ../main.js; sourceTree = "<group>"; };
+		2414B75D1D074BB500CFFC2B /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		2460C3CD1CC1FADD003B2C6D /* ExampleOSX-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleOSX-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2460C3D01CC1FADD003B2C6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2460C3D21CC1FADD003B2C6D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			children = (
 				2460C3D01CC1FADD003B2C6D /* AppDelegate.swift */,
 				2460C3D21CC1FADD003B2C6D /* ViewController.swift */,
-				245236471CE2C16C008321E3 /* main.js */,
+				2414B75D1D074BB500CFFC2B /* main.js */,
 				2460C3D41CC1FADD003B2C6D /* Assets.xcassets */,
 				2460C3D61CC1FADD003B2C6D /* Main.storyboard */,
 				2460C3D91CC1FADD003B2C6D /* Info.plist */,
@@ -230,7 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				245236481CE2C16C008321E3 /* main.js in Resources */,
+				2414B75E1D074BB500CFFC2B /* main.js in Resources */,
 				2460C3D51CC1FADD003B2C6D /* Assets.xcassets in Resources */,
 				2460C3D81CC1FADD003B2C6D /* Main.storyboard in Resources */,
 			);

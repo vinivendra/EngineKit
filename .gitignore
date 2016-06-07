@@ -1,13 +1,18 @@
 .DS_Store
 
+
 EngineKit/EngineKit.xcodeproj/project.xcworkspace/xcuserdata/
 EngineKit/EngineKit.xcodeproj/xcuserdata/
 
+
 Examples/Examples.xcworkspace/xcuserdata/
+
 Examples/ExampleOSX-1/ExampleOSX-1.xcodeproj/project.xcworkspace/xcuserdata/
 Examples/ExampleOSX-1/ExampleOSX-1.xcodeproj/xcuserdata/
 Examples/ExampleiOS-1/ExampleiOS-1.xcodeproj/project.xcworkspace/xcuserdata/
 Examples/ExampleiOS-1/ExampleiOS-1.xcodeproj/xcuserdata/
+Examples/ExampleUnix-1/ExampleUnix-1.xcodeproj/project.xcworkspace/xcuserdata/
+Examples/ExampleUnix-1/ExampleUnix-1.xcodeproj/xcuserdata/
 
-Examples/ExampleLinux-1/main
+Examples/ExampleUnix-1/main
 
