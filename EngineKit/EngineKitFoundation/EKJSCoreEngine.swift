@@ -1,7 +1,5 @@
 import JavaScriptCore
 
-let languageFactory = EKJSCoreFactory()
-
 // MARK: Console class
 @objc protocol ConsoleExport: JSExport {
 	func log(string: String)
@@ -173,20 +171,5 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		case .Running:
 			evaluationError = EKError.ScriptEvaluationError(message: message)
 		}
-	}
-}
-
-public class EKJSCoreFactory: EKLanguageFactory {
-	public func createEKVector3(x x: Double,
-	                              y: Double,
-	                              z: Double) -> EKVector3 {
-		return EKVector3(x: x, y: y, z: z)
-	}
-
-	public func createEKVector4(x x: Double,
-	                              y: Double,
-	                              z: Double,
-	                              w: Double) -> EKVector4 {
-		return EKVector4(x: x, y: y, z: z, w: w)
 	}
 }

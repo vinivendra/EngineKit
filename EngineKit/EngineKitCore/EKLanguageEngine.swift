@@ -17,17 +17,6 @@ extension EKLanguageEngine {
 	}
 }
 
-public protocol EKLanguageFactory {
-	associatedtype Vector3Type: EKVector3Type
-	associatedtype Vector4Type: EKVector4Type
-
-	func createEKVector3(x x: Double, y: Double, z: Double) -> Vector3Type
-	func createEKVector4(x x: Double,
-	                       y: Double,
-	                       z: Double,
-	                       w: Double) -> Vector4Type
-}
-
 extension String {
 	func toEKPrefixClassName() -> String {
 		guard !self.ekHasPrefix("EK") else { return self }

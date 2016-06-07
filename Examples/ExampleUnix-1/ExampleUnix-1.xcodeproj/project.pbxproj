@@ -21,6 +21,7 @@
 		24B14F0F1D0750AE00B38098 /* EKVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F031D0750AE00B38098 /* EKVector3.swift */; };
 		24B14F101D0750AE00B38098 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F041D0750AE00B38098 /* EKVector4.swift */; };
 		24B14F131D0750DF00B38098 /* EKLinuxDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */; };
+		24B14F171D0753DF00B38098 /* EKUnixSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F161D0753DF00B38098 /* EKUnixSwiftExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		24B14F031D0750AE00B38098 /* EKVector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = ../../EngineKit/EngineKitCore/EKVector3.swift; sourceTree = "<group>"; };
 		24B14F041D0750AE00B38098 /* EKVector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = ../../EngineKit/EngineKitCore/EKVector4.swift; sourceTree = "<group>"; };
 		24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLinuxDataClasses.swift; sourceTree = "<group>"; };
+		24B14F161D0753DF00B38098 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = ../../EngineKit/EngineKitUnix/EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +151,18 @@
 				24B14F021D0750AE00B38098 /* EKVector2.swift */,
 				24B14F031D0750AE00B38098 /* EKVector3.swift */,
 				24B14F041D0750AE00B38098 /* EKVector4.swift */,
+				24B14F181D0753E500B38098 /* EngineKitUnix */,
 			);
 			name = EngineKitSources;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		24B14F181D0753E500B38098 /* EngineKitUnix */ = {
+			isa = PBXGroup;
+			children = (
+				24B14F161D0753DF00B38098 /* EKUnixSwiftExtensions.swift */,
+			);
+			name = EngineKitUnix;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +261,7 @@
 			files = (
 				24B14F051D0750AE00B38098 /* EKAddon.swift in Sources */,
 				24B14F061D0750AE00B38098 /* EKColor.swift in Sources */,
+				24B14F171D0753DF00B38098 /* EKUnixSwiftExtensions.swift in Sources */,
 				24B14F071D0750AE00B38098 /* EKEngine.swift in Sources */,
 				24B14F081D0750AE00B38098 /* EKEvent.swift in Sources */,
 				24B14F091D0750AE00B38098 /* EKFileManager.swift in Sources */,
