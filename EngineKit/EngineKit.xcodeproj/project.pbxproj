@@ -167,6 +167,7 @@
 		249D547A1CECF8C400D27F5B /* EKJSScriptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSScriptable.swift; path = EngineKitFoundation/EKJSScriptable.swift; sourceTree = SOURCE_ROOT; };
 		249D547F1CED0E0800D27F5B /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = EngineKitCore/EKVector2.swift; sourceTree = SOURCE_ROOT; };
 		249D54841CED0F3D00D27F5B /* EKVector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2Tests.swift; path = EngineKitCoreTests/EKVector2Tests.swift; sourceTree = SOURCE_ROOT; };
+		24B14F141D0751CD00B38098 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = EngineKitUnix/EKUnixSwiftExtensions.swift; sourceTree = SOURCE_ROOT; };
 		24BCCF5E1D01173400837E86 /* EKSCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSCNNode.swift; path = ../EngineKitFoundation/EKSCNNode.swift; sourceTree = "<group>"; };
 		24CF9CDE1CED91A000D8218E /* EKJSDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSDataClasses.swift; path = EngineKitFoundation/EKJSDataClasses.swift; sourceTree = SOURCE_ROOT; };
 		24E140281CE66D27004C52B4 /* EKVector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKVector3Tests.swift; path = EngineKitCoreTests/EKVector3Tests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -273,6 +274,7 @@
 				245236541CE2C5AB008321E3 /* EngineKitFoundation */,
 				2460C3561CC1F73A003B2C6D /* EngineKitiOS */,
 				2460C3721CC1F743003B2C6D /* EngineKitOSX */,
+				24B14F151D0751D100B38098 /* EngineKitUnix */,
 				242EBABE1CEA42BD001E5025 /* Tests */,
 				2460C3551CC1F73A003B2C6D /* Products */,
 				24FE18001CE3848700287B82 /* Frameworks */,
@@ -343,6 +345,15 @@
 				24E39E9C1CE535110096ADDF /* Data Protocols */,
 			);
 			name = EngineKitCore;
+			path = EngineKitOSX;
+			sourceTree = "<group>";
+		};
+		24B14F151D0751D100B38098 /* EngineKitUnix */ = {
+			isa = PBXGroup;
+			children = (
+				24B14F141D0751CD00B38098 /* EKUnixSwiftExtensions.swift */,
+			);
+			name = EngineKitUnix;
 			path = EngineKitOSX;
 			sourceTree = "<group>";
 		};

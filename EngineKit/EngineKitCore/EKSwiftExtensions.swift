@@ -121,20 +121,6 @@ extension String {
 	}
 }
 
-extension UnicodeScalar: StringLiteralConvertible {
-	public init(stringLiteral value: StringLiteralType) {
-		self.init(value.unicodeScalars.first!)
-	}
-
-	public init(extendedGraphemeClusterLiteral value: String) {
-		self.init(value.unicodeScalars.first!)
-	}
-
-	init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-		self.init(value)
-	}
-}
-
 extension String {
 	func split(character separator: UnicodeScalar) -> [String] {
 		var array = [String]()
