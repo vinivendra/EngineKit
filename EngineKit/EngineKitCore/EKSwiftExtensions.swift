@@ -72,19 +72,47 @@ extension Dictionary where Value: IntegerLiteralConvertible {
 	}
 }
 
+extension UnicodeScalar {
+	var capitalized: UnicodeScalar {
+		get {
+			switch value {
+			case 97...122:
+				return UnicodeScalar(value - 32)
+			default:
+				return self
+			}
+		}
+	}
+
+	var isLetter: Bool {
+		get {
+			switch value {
+			case 97...122, 65...90:
+				return true
+			default:
+				return false
+			}
+		}
+	}
+}
+
 extension String {
 	var capitalizedString: String {
 		get {
 			var result = ""
+			var shouldCapitalizeNextChar = true
 
 			for char in self.unicodeScalars {
-				print(char.value)
-
-				if char.value >= 97 && char.value <= 122 {
-					let newChar = UnicodeScalar(char.value - 32)
-					result = result + "\(newChar)"
+				if shouldCapitalizeNextChar {
+					result = result + "\(char.capitalized)"
 				} else {
 					result = result + "\(char)"
+				}
+
+				if !char.isLetter {
+					shouldCapitalizeNextChar = true
+				} else {
+					shouldCapitalizeNextChar = false
 				}
 			}
 
