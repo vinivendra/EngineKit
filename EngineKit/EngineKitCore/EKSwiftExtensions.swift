@@ -123,7 +123,7 @@ extension String {
 
 		array.append(string)
 		string = ""
-		
+
 		return array
 	}
 
