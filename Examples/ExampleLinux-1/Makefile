@@ -1,5 +1,14 @@
+OS := $(shell uname)
+ifeq ($(OS), Darwin)
+	# Run MacOS commands
+	SWIFT = xcrun -sdk macosx swiftc
+else
+	# check for Linux and run other commands
+	SWIFT = sudo swiftc
+endif
+
 all:
-	sudo swiftc main.swift\
+	$(SWIFT) main.swift\
 		EKLinuxDataClasses.swift\
 		../../EngineKit/EngineKitCore/EKVector3.swift \
 		../../EngineKit/EngineKitCore/EKVector4.swift \
