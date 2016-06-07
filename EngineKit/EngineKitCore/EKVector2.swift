@@ -140,7 +140,7 @@ extension EKVector2 {
 		} else if let number = object as? Double {
 			return createVector(xy: number)
 		}
-		
+
 		return origin()
 	}
 }

@@ -4,7 +4,6 @@ var currentNSBundle = NSBundle.mainBundle()
 
 public class EKFoundationFileManager: EKFileManager {
 
-	// MARK: Public Functions
 	public func getContentsFromFile(filename: String) -> String? {
 		guard
 			let path = self.pathForFilename(filename)
@@ -18,7 +17,6 @@ public class EKFoundationFileManager: EKFileManager {
 		return contents
 	}
 
-	// MARK: Private Functions
 	func pathForFilename(filename: String) -> String? {
 		let nsfilename = filename as NSString
 		let mainName = nsfilename.stringByDeletingPathExtension
