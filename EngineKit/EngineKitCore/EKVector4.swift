@@ -133,7 +133,7 @@ extension EKVector4 {
 	public static func createVector(string string: String) -> EKVector4 {
 		var strings = [string]
 
-		let separators = [",", " ", "[", "]", "{", "}"]
+		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
 		for separator in separators {
 			strings = strings.flatMap({
 				$0.split(character: separator)
