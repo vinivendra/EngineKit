@@ -4,8 +4,10 @@
 	import Darwin
 #endif
 
-public protocol EKVector2Type: class, Scriptable, CustomDebugStringConvertible,
-CustomStringConvertible {
+public protocol EKVector2Type: class,
+	EKLanguageCompatible,
+	CustomDebugStringConvertible,
+	CustomStringConvertible {
 
 	static func createVector(x x: Double,
 	                           y: Double) -> EKVector2

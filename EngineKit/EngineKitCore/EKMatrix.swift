@@ -1,4 +1,6 @@
-public protocol EKMatrixType: class, Scriptable, CustomDebugStringConvertible,
+public protocol EKMatrixType: class,
+	EKLanguageCompatible,
+	CustomDebugStringConvertible,
 	CustomStringConvertible {
 
 	static func createMatrix(
@@ -51,5 +53,5 @@ public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {
 	return EKVector4(x: v.x * m.m11 + v.y * m.m21 + v.z * m.m31 + v.w * m.m41,
 	                 y: v.x * m.m12 + v.y * m.m22 + v.z * m.m32 + v.w * m.m42,
 	                 z: v.x * m.m13 + v.y * m.m23 + v.z * m.m33 + v.w * m.m43,
-					 w: v.x * m.m14 + v.y * m.m24 + v.z * m.m34 + v.w * m.m44)
+	                 w: v.x * m.m14 + v.y * m.m24 + v.z * m.m34 + v.w * m.m44)
 }

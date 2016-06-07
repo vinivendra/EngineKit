@@ -3,11 +3,11 @@ public protocol EKAddon: class {
 }
 
 //
-public protocol EKLanguageAddon: EKAddon {
+public protocol EKScriptAddon: EKAddon {
 	func addFunctionality(toEngine engine: EKEngine)
 }
 
-extension EKLanguageAddon {
+extension EKScriptAddon {
 	public func setup(onEngine engine: EKEngine) {
 		addFunctionality(toEngine: engine)
 	}

@@ -11,7 +11,7 @@ import JavaScriptCore
 @objc protocol JSTestExport: JSExport {
 	func test()
 }
-@objc class JSTest: NSObject, JSTestExport, Scriptable, Initable {
+@objc class JSTest: NSObject, JSTestExport, EKLanguageCompatible, Initable {
 
 	override required init() {
 		super.init()

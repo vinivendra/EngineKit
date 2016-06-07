@@ -75,7 +75,7 @@ public class EKNode: NSObject, NodeExport {
 }
 
 //
-public class EKCamera: EKNode, CameraExport, Scriptable {
+public class EKCamera: EKNode, CameraExport, EKLanguageCompatible {
 	let camera = SCNCamera()
 
 	override init(node: SCNNode? = nil) {
@@ -168,7 +168,7 @@ public class EKShape: EKNode {
 }
 
 //
-public class EKSphere: EKShape, SphereExport, Scriptable {
+public class EKSphere: EKShape, SphereExport, EKLanguageCompatible {
 	public required init() {
 		super.init()
 		node.geometry = SCNSphere()
@@ -203,7 +203,7 @@ public class EKSphere: EKShape, SphereExport, Scriptable {
 }
 
 //
-public class EKBox: EKShape, BoxExport, Scriptable {
+public class EKBox: EKShape, BoxExport, EKLanguageCompatible {
 	required public init() {
 		super.init()
 		node.geometry = SCNBox()

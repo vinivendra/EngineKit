@@ -31,7 +31,7 @@ enum EKJSCoreState {
 	case Callback
 }
 
-public class EKJSCoreEngine: EKLanguageEngine {
+public class EKJSCoreEngine: EKScriptEngine {
 	let context = JSContext()
 	var evaluationError: ErrorType?
 
@@ -114,7 +114,7 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		                                     AnyObject.self)
 	}
 
-	public func addClass<T: Scriptable>(class: T.Type,
+	public func addClass<T: EKLanguageCompatible>(class: T.Type,
 	                     withName className: String,
 	                              constructor: (() -> (T)) ) {
 		var constructorClosure: (@convention(block) () -> (NSObject))?
@@ -138,7 +138,7 @@ public class EKJSCoreEngine: EKLanguageEngine {
 		context[className] = constructorObject
 	}
 
-	public func addObject<T: Scriptable>(object: T,
+	public func addObject<T: EKLanguageCompatible>(object: T,
 	                      withName name: String) throws {
 		do {
 			try context[name] = object.toNSObject()

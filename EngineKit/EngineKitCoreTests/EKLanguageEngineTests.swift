@@ -7,7 +7,7 @@ import XCTest
 	@testable import EngineKitOSX
 #endif
 
-class EKLanguageEngineTests: XCTestCase {
+class EKScriptEngineTests: XCTestCase {
 
 	func testToEKPrefixClassName() {
 		XCTAssertEqual("SCNSphere".toEKPrefixClassName(), "EKSphere")

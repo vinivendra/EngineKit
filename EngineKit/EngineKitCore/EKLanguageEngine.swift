@@ -1,18 +1,21 @@
-public protocol EKLanguageEngine {
+public protocol EKScriptEngine {
 	weak var engine: EKEngine? { get }
 
 	init(engine: EKEngine)
 
 	func runScript(filename filename: String) throws
-	func addClass<T: Scriptable>(class: T.Type,
+	func addClass<T: EKLanguageCompatible>(class: T.Type,
 	              withName className: String,
 	                       constructor: (() -> (T)) )
-	func addObject<T: Scriptable>(object: T, withName name: String) throws
+	func addObject<T: EKLanguageCompatible>(object: T,
+	               withName name: String) throws
 }
 
-extension EKLanguageEngine {
-	public func addClass<T: Scriptable where T: Initable>(class: T.Type,
-	                     withName className: String) {
+extension EKScriptEngine {
+	public func addClass<T: EKLanguageCompatible where T: Initable>(
+		class: T.Type,
+		withName className: String) {
+
 		addClass(T.self, withName: className, constructor: T.init)
 	}
 }

@@ -11,10 +11,10 @@ public protocol Initable {
 
 public class EKEngine {
 
-	public var languageEngine: EKLanguageEngine! = nil {
+	public var languageEngine: EKScriptEngine! = nil {
 		willSet {
 			if languageEngine != nil {
-				assertionFailure("Language engine may not change!")
+				assertionFailure("Script engine may not change!")
 			}
 		}
 	}
@@ -83,7 +83,7 @@ public class EKEngine {
 		}
 	}
 
-	public func addClass<T: Scriptable>(class: T.Type,
+	public func addClass<T: EKLanguageCompatible>(class: T.Type,
 	                     withName className: String?,
 	                              constructor: (() -> (T)) ) {
 		let className = className ?? "\(T.self)".toEKPrefixClassName()
@@ -93,7 +93,7 @@ public class EKEngine {
 		                         constructor: constructor)
 	}
 
-	public func addObject<T: Scriptable>(object: T,
+	public func addObject<T: EKLanguageCompatible>(object: T,
 	                      withName name: String) throws {
 		do {
 			try languageEngine.addObject(object, withName: name)
@@ -104,11 +104,15 @@ public class EKEngine {
 }
 
 extension EKEngine {
-	public func addClass<T: Scriptable where T: Initable>(class: T.Type) {
+	public func addClass<T: EKLanguageCompatible
+		where T: Initable>(class: T.Type) {
+
 		addClass(T.self, withName: nil)
 	}
 
-	public func addClass<T: Scriptable where T: Initable>(class: T.Type,
+	public func addClass<T: EKLanguageCompatible
+		where T: Initable>(class: T.Type,
+
 	                     withName className: String?) {
 		addClass(T.self, withName: className, constructor: T.init)
 	}

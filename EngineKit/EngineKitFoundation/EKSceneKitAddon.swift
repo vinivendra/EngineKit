@@ -21,7 +21,7 @@ private extension EKVector2 {
 }
 
 //
-public class EKSceneKitAddon: EKLanguageAddon {
+public class EKSceneKitAddon: EKScriptAddon {
 
 	let ekScene: EKScene
 
@@ -76,7 +76,7 @@ public class EKSceneKitAddon: EKLanguageAddon {
 	func objects(inCoordinate coordinate: AnyObject) -> [AnyObject]
 }
 
-public class EKScene: NSObject, Scriptable, SceneExport {
+public class EKScene: NSObject, EKLanguageCompatible, SceneExport {
 	let sceneView: SCNView
 	var scene: SCNScene? {
 		get {

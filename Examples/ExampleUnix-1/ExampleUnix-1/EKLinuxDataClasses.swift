@@ -1,6 +1,6 @@
-public protocol Scriptable {}
+public protocol EKLanguageCompatible {}
 
-public final class EKVector2: EKVector2Type, Scriptable {
+public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -28,7 +28,7 @@ public final class EKVector2: EKVector2Type, Scriptable {
 	}
 }
 
-public final class EKVector3: EKVector3Type, Scriptable {
+public final class EKVector3: EKVector3Type, EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -59,7 +59,7 @@ public final class EKVector3: EKVector3Type, Scriptable {
 	}
 }
 
-public final class EKVector4: EKVector4Type, Scriptable {
+public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 	public let x: Double
 	public let y: Double
 	public let z: Double
@@ -92,7 +92,7 @@ public final class EKVector4: EKVector4Type, Scriptable {
 	}
 }
 
-public class EKMatrix: EKMatrixType, Scriptable {
+public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 	public static func createMatrix(
 		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,

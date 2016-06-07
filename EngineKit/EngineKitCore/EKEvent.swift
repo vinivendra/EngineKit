@@ -133,14 +133,14 @@ public class EKEventCenter {
 }
 
 //
-public class EKEvent: Scriptable {
+public class EKEvent: EKLanguageCompatible {
 	public func createSuperclassEvent() -> EKEvent? {
 		return nil
 	}
 }
 
 //
-public enum EKEventInputState: String, RawRepresentable, Scriptable {
+public enum EKEventInputState: String, RawRepresentable, EKLanguageCompatible {
 	case Began = "Began"
 	case Changed = "Changed"
 	case Ended = "Ended"

@@ -18,7 +18,7 @@ import JavaScriptCore
 }
 
 @objc public final class EKVector2: NSObject, EKVector2Type, EKVector2Export,
-	Scriptable {
+	EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -66,7 +66,7 @@ import JavaScriptCore
 }
 
 @objc public final class EKVector3: NSObject, EKVector3Type, EKVector3Export,
-	Scriptable {
+	EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -123,7 +123,7 @@ import JavaScriptCore
 }
 
 @objc public final class EKVector4: NSObject, EKVector4Type, EKVector4Export,
-	Scriptable {
+	EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -157,7 +157,7 @@ import JavaScriptCore
 	}
 }
 
-@objc public class EKMatrix: NSObject, EKMatrixType, Scriptable {
+@objc public class EKMatrix: NSObject, EKMatrixType, EKLanguageCompatible {
 	public static func createMatrix(
 		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,

@@ -1,11 +1,11 @@
 import Foundation
 
-public protocol Scriptable {
+public protocol EKLanguageCompatible {
 	func toNSObject() throws -> NSObject
 }
 
 //
-extension Scriptable {
+extension EKLanguageCompatible {
 	public func toReflectedNSObject() throws -> NSObject {
 		var mirror: Mirror? = Mirror(reflecting: self)
 
@@ -18,7 +18,7 @@ extension Scriptable {
 
 			for child in currentMirror.children {
 				if let label = child.label {
-					if let value = child.value as? Scriptable {
+					if let value = child.value as? EKLanguageCompatible {
 						do {
 							try object[label] = value.toNSObject()
 						} catch let error {
@@ -38,32 +38,32 @@ extension Scriptable {
 	}
 }
 
-extension Scriptable where Self: NSObject {
+extension EKLanguageCompatible where Self: NSObject {
 	public func toNSObject() throws -> NSObject {
 		return self
 	}
 }
 
 //
-extension String: Scriptable {
+extension String: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
 		return NSString(string: self)
 	}
 }
 
-extension Double: Scriptable {
+extension Double: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
 		return NSNumber(double: self)
 	}
 }
 
-extension Float: Scriptable {
+extension Float: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
 		return NSNumber(float: self)
 	}
 }
 
-extension Int: Scriptable {
+extension Int: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
 		return NSNumber(integer: self)
 	}
@@ -102,11 +102,5 @@ extension EKVector3Type {
 extension EKVector4Type {
 	public func toNSObject() throws -> NSObject {
 		return EKVector4(x: x, y: y, z: z, w: w)
-	}
-}
-
-extension Scriptable {
-	public func toNSObject() throws -> NSObject {
-		return NSObject()
 	}
 }
