@@ -1,4 +1,8 @@
-import Darwin
+#if os(Linux)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 public protocol EKVector4Type: Scriptable, CustomDebugStringConvertible,
 	CustomStringConvertible {
@@ -126,28 +130,28 @@ extension EKVector4 {
 		                         w: dictionary[zero: ["3", "w", "W", "a", "A"]])
 	}
 
-	public static func createVector(string string: String) -> EKVector4 {
-		var strings = [string]
+	// public static func createVector(string string: String) -> EKVector4 {
+	// 	var strings = [string]
 
-		let separators = [",", " ", "[", "]", "{", "}"]
-		for separator in separators {
-			strings = strings.flatMap({
-				$0.componentsSeparatedByString(separator)
-			})
-		}
+	// 	let separators = [",", " ", "[", "]", "{", "}"]
+	// 	for separator in separators {
+	// 		strings = strings.flatMap({
+	// 			$0.componentsSeparatedByString(separator)
+	// 		})
+	// 	}
 
-		let doubles = strings.flatMap(Double.init)
+	// 	let doubles = strings.flatMap(Double.init)
 
-		return createVector(array: doubles)
-	}
+	// 	return createVector(array: doubles)
+	// }
 
 	public static func createVector(object object: AnyObject) -> EKVector4 {
 		if let vector = object as? EKVector4 {
 			return vector
 		} else if let array = object as? [Double] {
 			return createVector(array: array)
-		} else if let string = object as? String {
-			return createVector(string: string)
+		// } else if let string = object as? String {
+		// 	return createVector(string: string)
 		} else if let dictionary = object as? [String: Double] {
 			return createVector(dictionary: dictionary)
 		} else if let number = object as? Double {
@@ -163,10 +167,10 @@ extension EKVector4 {
 		let halfAngle = w / 2
 		let cosine = cos(halfAngle)
 		let sine = sin(halfAngle)
-		return languageFactory.createEKVector4(x: sine * x,
-		                                       y: sine * y,
-		                                       z: sine * z,
-		                                       w: cosine)
+		return EKVector4(x: sine * x,
+		                 y: sine * y,
+		                 z: sine * z,
+		                 w: cosine)
 	}
 
 	public func quaternionToMatrix() -> EKMatrix {
@@ -198,7 +202,7 @@ extension EKVector4 {
 		                  z: q.w * v.z + q.x * v.y - q.y * v.x,
 		                  w: -q.x * v.x - q.y * v.y - q.z * v.z)
 		let o = q.opposite()
-		let result = languageFactory.createEKVector3(
+		let result = EKVector3(
 			x: p.w * o.x + p.x * o.w + p.y * o.z - p.z * o.y,
 			y: p.w * o.y - p.x * o.z + p.y * o.w + p.z * o.x,
 			z: p.w * o.z + p.x * o.y - p.y * o.x + p.z * o.w)
