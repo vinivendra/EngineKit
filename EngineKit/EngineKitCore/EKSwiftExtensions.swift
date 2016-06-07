@@ -71,3 +71,59 @@ extension Dictionary where Value: IntegerLiteralConvertible {
 		return self[index] ?? 0
 	}
 }
+
+extension String {
+	var capitalizedString: String {
+		get {
+			var result = ""
+
+			for char in self.unicodeScalars {
+				print(char.value)
+
+				if char.value >= 97 && char.value <= 122 {
+					let newChar = UnicodeScalar(char.value - 32)
+					result = result + "\(newChar)"
+				} else {
+					result = result + "\(char)"
+				}
+			}
+
+			return result
+		}
+	}
+}
+
+extension UnicodeScalar: StringLiteralConvertible {
+	public init(stringLiteral value: StringLiteralType) {
+		self.init(value.unicodeScalars.first!)
+	}
+
+	public init(extendedGraphemeClusterLiteral value: String) {
+		self.init(value.unicodeScalars.first!)
+	}
+
+	init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+		self.init(value)
+	}
+}
+
+extension String {
+	func split(character separator: UnicodeScalar) -> [String] {
+		var array = [String]()
+		var string = ""
+
+		for char in self.unicodeScalars {
+			if char == separator {
+				array.append(string)
+				string = ""
+			} else {
+				string.append(char)
+			}
+		}
+
+		array.append(string)
+		string = ""
+		
+		return array
+	}
+}

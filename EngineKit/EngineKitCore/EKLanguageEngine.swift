@@ -30,23 +30,21 @@ public protocol EKLanguageFactory {
 
 extension String {
 	func toEKPrefixClassName() -> String {
-		// guard !self.hasPrefix("EK") else { return self }
+		guard !self.hasPrefix("EK") else { return self }
 
-		// let uppercase = self.uppercaseString.utf8.dropFirst()
-		// let normal = self.utf8.dropFirst()
-		// var copy = self.utf8
+		let uppercase = self.uppercaseString.utf8.dropFirst()
+		let normal = self.utf8.dropFirst()
+		var copy = self.utf8
 
-		// for (upper, char) in zip(uppercase, normal) {
-		// 	if upper == char {
-		// 		copy = copy.dropFirst()
-		// 	} else {
-		// 		break
-		// 	}
-		// }
+		for (upper, char) in zip(uppercase, normal) {
+			if upper == char {
+				copy = copy.dropFirst()
+			} else {
+				break
+			}
+		}
 
-		// let result = "EK" + String(copy)
-		// return result
-
-		return self
+		let result = "EK" + String(copy)
+		return result
 	}
 }

@@ -1,0 +1,10 @@
+disabled_rules:
+  - todo
+  - force_cast
+  - force_try
+  - variable_name
+  - function_parameter_count
+
+line_length:
+  - 80 # warning
+  - 80 # error

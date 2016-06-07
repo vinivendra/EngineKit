@@ -117,11 +117,10 @@ public class EKEventCenter {
 	}
 
 	func eventName(forExternalName name: String) -> String {
-		// let capitalized = name.localizedCapitalizedString
-		// let components = capitalized.componentsSeparatedByString(" ")
-		// let camelCase = components.reduce("", combine: +)
-		// return "EKEvent" + camelCase
-		return "EKEvent" + name
+		let capitalized = name.capitalizedString
+		let components = capitalized.split(character: " ")
+		let camelCase = components.reduce("", combine: +)
+		return "EKEvent" + camelCase
 	}
 
 	func eventName<Event: EKEvent>(forEventOfType type: Event.Type) -> String {

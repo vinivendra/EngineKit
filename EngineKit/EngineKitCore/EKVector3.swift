@@ -5,7 +5,7 @@
 #endif
 
 public protocol EKVector3Type: class, Scriptable, CustomDebugStringConvertible,
-	CustomStringConvertible {
+CustomStringConvertible {
 
 	static func createVector(x x: Double,
 	                           y: Double,
@@ -32,21 +32,21 @@ extension EKVector3 {
 	public func plus(object: AnyObject) -> EKVector3 {
 		let vector = EKVector3.createVector(object: object)
 		return EKVector3.createVector(x: self.x + vector.x,
-		                         y: self.y + vector.y,
-		                         z: self.z + vector.z)
+		                              y: self.y + vector.y,
+		                              z: self.z + vector.z)
 	}
 
 	public func minus(object: AnyObject) -> EKVector3 {
 		let vector = EKVector3.createVector(object: object)
 		return EKVector3.createVector(x: self.x - vector.x,
-		                         y: self.y - vector.y,
-		                         z: self.z - vector.z)
+		                              y: self.y - vector.y,
+		                              z: self.z - vector.z)
 	}
 
 	public func times(scalar: Double) -> EKVector3 {
 		return EKVector3.createVector(x: self.x * scalar,
-		                         y: self.y * scalar,
-		                         z: self.z * scalar)
+		                              y: self.y * scalar,
+		                              z: self.z * scalar)
 	}
 
 	public func over(scalar: Double) -> EKVector3 {
@@ -55,8 +55,8 @@ extension EKVector3 {
 
 	public func opposite() -> EKVector3 {
 		return EKVector3.createVector(x: -self.x,
-		                         y: -self.y,
-		                         z: -self.z)
+		                              y: -self.y,
+		                              z: -self.z)
 	}
 
 	public func dot(object: AnyObject) -> Double {
@@ -88,8 +88,8 @@ extension EKVector3 {
 	public func scale(object: AnyObject) -> EKVector3 {
 		let vector = EKVector3.createVector(object: object)
 		return EKVector3.createVector(x: self.x * vector.x,
-		                         y: self.y * vector.y,
-		                         z: self.z * vector.z)
+		                              y: self.y * vector.y,
+		                              z: self.z * vector.z)
 	}
 }
 
@@ -104,8 +104,8 @@ extension EKVector3 {
 
 	public static func createVector(xyz xyz: Double) -> EKVector3 {
 		return EKVector3.createVector(x: xyz,
-		                         y: xyz,
-		                         z: xyz)
+		                              y: xyz,
+		                              z: xyz)
 	}
 
 	public static func createVector(array array: [Double]) -> EKVector3 {
@@ -122,28 +122,28 @@ extension EKVector3 {
 		                         z: dictionary[zero: ["2", "z", "Z"]])
 	}
 
-	// public static func createVector(string string: String) -> EKVector3 {
-	// 	var strings = [string]
+	public static func createVector(string string: String) -> EKVector3 {
+		var strings = [string]
 
-	// 	let separators = [",", " ", "[", "]", "{", "}"]
-	// 	for separator in separators {
-	// 		strings = strings.flatMap({
-	// 			$0.componentsSeparatedByString(separator)
-	// 		})
-	// 	}
+		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
+		for separator in separators {
+			strings = strings.flatMap({
+				$0.split(character: separator)
+			})
+		}
 
-	// 	let doubles = strings.flatMap(Double.init)
+		let doubles = strings.flatMap(Double.init)
 
-	// 	return createVector(array: doubles)
-	// }
+		return createVector(array: doubles)
+	}
 
 	public static func createVector(object object: AnyObject) -> EKVector3 {
 		if let vector = object as? EKVector3 {
 			return vector
 		} else if let array = object as? [Double] {
 			return createVector(array: array)
-		// } else if let string = object as? String {
-		// 	return createVector(string: string)
+		} else if let string = object as? String {
+			return createVector(string: string)
 		} else if let dictionary = object as? [String: Double] {
 			return createVector(dictionary: dictionary)
 		} else if let number = object as? Double {

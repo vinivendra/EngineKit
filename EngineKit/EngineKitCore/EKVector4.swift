@@ -5,7 +5,7 @@
 #endif
 
 public protocol EKVector4Type: Scriptable, CustomDebugStringConvertible,
-	CustomStringConvertible {
+CustomStringConvertible {
 
 	static func createVector(x x: Double,
 	                           y: Double,
@@ -32,24 +32,24 @@ extension EKVector4 {
 	public func plus(object: AnyObject) -> EKVector4 {
 		let vector = EKVector4.createVector(object: object)
 		return EKVector4.createVector(x: self.x + vector.x,
-		                         y: self.y + vector.y,
-		                         z: self.z + vector.z,
-		                         w: min(self.w + vector.w, 1))
+		                              y: self.y + vector.y,
+		                              z: self.z + vector.z,
+		                              w: min(self.w + vector.w, 1))
 	}
 
 	public func minus(object: AnyObject) -> EKVector4 {
 		let vector = EKVector4.createVector(object: object)
 		return EKVector4.createVector(x: self.x - vector.x,
-		                         y: self.y - vector.y,
-		                         z: self.z - vector.z,
-		                         w: max(self.w - vector.w, 0))
+		                              y: self.y - vector.y,
+		                              z: self.z - vector.z,
+		                              w: max(self.w - vector.w, 0))
 	}
 
 	public func times(scalar: Double) -> EKVector4 {
 		return EKVector4.createVector(x: self.x * scalar,
-		                         y: self.y * scalar,
-		                         z: self.z * scalar,
-		                         w: self.w)
+		                              y: self.y * scalar,
+		                              z: self.z * scalar,
+		                              w: self.w)
 	}
 
 	public func over(scalar: Double) -> EKVector4 {
@@ -58,9 +58,9 @@ extension EKVector4 {
 
 	public func opposite() -> EKVector4 {
 		return EKVector4.createVector(x: -self.x,
-		                         y: -self.y,
-		                         z: -self.z,
-								 w: self.w)
+		                              y: -self.y,
+		                              z: -self.z,
+		                              w: self.w)
 	}
 
 	public func dot(object: AnyObject) -> Double {
@@ -92,9 +92,9 @@ extension EKVector4 {
 	public func scale(object: AnyObject) -> EKVector4 {
 		let vector = EKVector4.createVector(object: object)
 		return EKVector4.createVector(x: self.x * vector.x,
-		                         y: self.y * vector.y,
-		                         z: self.z * vector.z,
-								 w: self.w)
+		                              y: self.y * vector.y,
+		                              z: self.z * vector.z,
+		                              w: self.w)
 	}
 }
 
@@ -109,9 +109,9 @@ extension EKVector4 {
 
 	public static func createVector(xyz xyz: Double) -> EKVector4 {
 		return EKVector4.createVector(x: xyz,
-		                         y: xyz,
-		                         z: xyz,
-		                         w: 0)
+		                              y: xyz,
+		                              z: xyz,
+		                              w: 0)
 	}
 
 	public static func createVector(array array: [Double]) -> EKVector4 {
@@ -130,28 +130,28 @@ extension EKVector4 {
 		                         w: dictionary[zero: ["3", "w", "W", "a", "A"]])
 	}
 
-	// public static func createVector(string string: String) -> EKVector4 {
-	// 	var strings = [string]
+	public static func createVector(string string: String) -> EKVector4 {
+		var strings = [string]
 
-	// 	let separators = [",", " ", "[", "]", "{", "}"]
-	// 	for separator in separators {
-	// 		strings = strings.flatMap({
-	// 			$0.componentsSeparatedByString(separator)
-	// 		})
-	// 	}
+		let separators = [",", " ", "[", "]", "{", "}"]
+		for separator in separators {
+			strings = strings.flatMap({
+				$0.split(character: separator)
+			})
+		}
 
-	// 	let doubles = strings.flatMap(Double.init)
+		let doubles = strings.flatMap(Double.init)
 
-	// 	return createVector(array: doubles)
-	// }
+		return createVector(array: doubles)
+	}
 
 	public static func createVector(object object: AnyObject) -> EKVector4 {
 		if let vector = object as? EKVector4 {
 			return vector
 		} else if let array = object as? [Double] {
 			return createVector(array: array)
-		// } else if let string = object as? String {
-		// 	return createVector(string: string)
+		} else if let string = object as? String {
+			return createVector(string: string)
 		} else if let dictionary = object as? [String: Double] {
 			return createVector(dictionary: dictionary)
 		} else if let number = object as? Double {
@@ -226,7 +226,7 @@ extension EKVector4 {
 
 	func multiplyAsQuaternion(quaternion q: EKVector4) -> EKVector4 {
 		return EKVector4(x: self.w * q.x + self.x * q.w + self.y * q.z -
-							self.z * q.y,
+			self.z * q.y,
 		                 y: self.w * q.y + self.y * q.w - self.x * q.z +
 							self.z * q.x,
 		                 z: self.w * q.z + self.z * q.w + self.x * q.y -
