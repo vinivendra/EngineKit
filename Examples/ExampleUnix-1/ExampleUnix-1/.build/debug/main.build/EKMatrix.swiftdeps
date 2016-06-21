@@ -1,0 +1,309 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "EKUsesOpenGLOrientedMath"
+- "EKMatrixType"
+- "*"
+- "*"
+- "*"
+provides-nominal:
+- "P4main12EKMatrixType"
+provides-member:
+- ["P4main12EKMatrixType", ""]
+- ["C4main8EKMatrix", ""]
+- ["C4main8EKMatrix", "identity"]
+- ["C4main8EKMatrix", "times"]
+- ["C4main8EKMatrix", "createScale"]
+- ["C4main8EKMatrix", "createTranslation"]
+- ["C4main8EKMatrix", "createPerspective"]
+- ["C4main8EKMatrix", "createLookAt"]
+- ["C4main8EKMatrix", "transpose"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- "IntegerLiteralType"
+- "EKVector4"
+- "FloatLiteralType"
+- !private "tan"
+- "EKMatrix"
+- "BooleanLiteralType"
+- "EKMatrixType"
+- "EKUsesOpenGLOrientedMath"
+- "EKLanguageCompatible"
+- !private "StringLiteralType"
+- "EKVector3"
+- !private "assert"
+- !private "-"
+- "*"
+- !private "!="
+- !private "/"
+- "Double"
+depends-member:
+- !private ["Ps16AbsoluteValuable", "IntegerLiteralType"]
+- !private ["Ps16AbsoluteValuable", "Stride"]
+- ["Ps9AnyObject", "EKMatrix"]
+- !private ["Ps9AnyObject", "EKUsesOpenGLOrientedMath"]
+- !private ["Ps9AnyObject", "assert"]
+- ["Ps9AnyObject", "createMatrix"]
+- !private ["Ps9AnyObject", "cross"]
+- !private ["Ps9AnyObject", "dot"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "m11"]
+- !private ["Ps9AnyObject", "m12"]
+- !private ["Ps9AnyObject", "m13"]
+- !private ["Ps9AnyObject", "m14"]
+- !private ["Ps9AnyObject", "m21"]
+- !private ["Ps9AnyObject", "m22"]
+- !private ["Ps9AnyObject", "m23"]
+- !private ["Ps9AnyObject", "m24"]
+- !private ["Ps9AnyObject", "m31"]
+- !private ["Ps9AnyObject", "m32"]
+- !private ["Ps9AnyObject", "m33"]
+- !private ["Ps9AnyObject", "m34"]
+- !private ["Ps9AnyObject", "m41"]
+- !private ["Ps9AnyObject", "m42"]
+- !private ["Ps9AnyObject", "m43"]
+- !private ["Ps9AnyObject", "m44"]
+- !private ["Ps9AnyObject", "minus"]
+- !private ["Ps9AnyObject", "normalize"]
+- !private ["Ps9AnyObject", "tan"]
+- !private ["Ps9AnyObject", "times"]
+- !private ["Ps9AnyObject", "transpose"]
+- !private ["Ps9AnyObject", "w"]
+- !private ["Ps9AnyObject", "x"]
+- !private ["Ps9AnyObject", "y"]
+- !private ["Ps9AnyObject", "z"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["Ps11CVarArgType", "IntegerLiteralType"]
+- !private ["Ps11CVarArgType", "Stride"]
+- !private ["Ps10Comparable", "IntegerLiteralType"]
+- !private ["Ps10Comparable", "Stride"]
+- !private ["Ps28CustomDebugStringConvertible", "IntegerLiteralType"]
+- !private ["Ps28CustomDebugStringConvertible", "Stride"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "w"]
+- !private ["Ps28CustomDebugStringConvertible", "x"]
+- !private ["Ps28CustomDebugStringConvertible", "y"]
+- !private ["Ps28CustomDebugStringConvertible", "z"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "IntegerLiteralType"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "Stride"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "IntegerLiteralType"]
+- !private ["Ps17CustomReflectable", "Stride"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "IntegerLiteralType"]
+- !private ["Ps23CustomStringConvertible", "Stride"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "w"]
+- !private ["Ps23CustomStringConvertible", "x"]
+- !private ["Ps23CustomStringConvertible", "y"]
+- !private ["Ps23CustomStringConvertible", "z"]
+- !private ["Sd", "IntegerLiteralType"]
+- !private ["Sd", "Stride"]
+- !private ["Sd", "deinit"]
+- !private ["P4main11EKColorType", "init"]
+- !private ["P4main11EKColorType", "w"]
+- !private ["P4main11EKColorType", "x"]
+- !private ["P4main11EKColorType", "y"]
+- !private ["P4main11EKColorType", "z"]
+- ["P4main20EKLanguageCompatible", "Double"]
+- ["P4main20EKLanguageCompatible", "EKMatrix"]
+- !private ["P4main20EKLanguageCompatible", "EKUsesOpenGLOrientedMath"]
+- !private ["P4main20EKLanguageCompatible", "assert"]
+- ["P4main20EKLanguageCompatible", "createMatrix"]
+- !private ["P4main20EKLanguageCompatible", "cross"]
+- !private ["P4main20EKLanguageCompatible", "dot"]
+- !private ["P4main20EKLanguageCompatible", "init"]
+- !private ["P4main20EKLanguageCompatible", "m11"]
+- !private ["P4main20EKLanguageCompatible", "m12"]
+- !private ["P4main20EKLanguageCompatible", "m13"]
+- !private ["P4main20EKLanguageCompatible", "m14"]
+- !private ["P4main20EKLanguageCompatible", "m21"]
+- !private ["P4main20EKLanguageCompatible", "m22"]
+- !private ["P4main20EKLanguageCompatible", "m23"]
+- !private ["P4main20EKLanguageCompatible", "m24"]
+- !private ["P4main20EKLanguageCompatible", "m31"]
+- !private ["P4main20EKLanguageCompatible", "m32"]
+- !private ["P4main20EKLanguageCompatible", "m33"]
+- !private ["P4main20EKLanguageCompatible", "m34"]
+- !private ["P4main20EKLanguageCompatible", "m41"]
+- !private ["P4main20EKLanguageCompatible", "m42"]
+- !private ["P4main20EKLanguageCompatible", "m43"]
+- !private ["P4main20EKLanguageCompatible", "m44"]
+- !private ["P4main20EKLanguageCompatible", "minus"]
+- !private ["P4main20EKLanguageCompatible", "normalize"]
+- !private ["P4main20EKLanguageCompatible", "tan"]
+- !private ["P4main20EKLanguageCompatible", "times"]
+- !private ["P4main20EKLanguageCompatible", "transpose"]
+- !private ["P4main20EKLanguageCompatible", "w"]
+- !private ["P4main20EKLanguageCompatible", "x"]
+- !private ["P4main20EKLanguageCompatible", "y"]
+- !private ["P4main20EKLanguageCompatible", "z"]
+- ["P4main20EKLanguageCompatible", ""]
+- ["C4main8EKMatrix", "Double"]
+- ["C4main8EKMatrix", "EKMatrix"]
+- !private ["C4main8EKMatrix", "EKUsesOpenGLOrientedMath"]
+- ["C4main8EKMatrix", "EKVector3"]
+- !private ["C4main8EKMatrix", "assert"]
+- ["C4main8EKMatrix", "createLookAt"]
+- ["C4main8EKMatrix", "createMatrix"]
+- ["C4main8EKMatrix", "createPerspective"]
+- ["C4main8EKMatrix", "createScale"]
+- ["C4main8EKMatrix", "createTranslation"]
+- !private ["C4main8EKMatrix", "deinit"]
+- ["C4main8EKMatrix", "identity"]
+- !private ["C4main8EKMatrix", "init"]
+- !private ["C4main8EKMatrix", "m11"]
+- !private ["C4main8EKMatrix", "m12"]
+- !private ["C4main8EKMatrix", "m13"]
+- !private ["C4main8EKMatrix", "m14"]
+- !private ["C4main8EKMatrix", "m21"]
+- !private ["C4main8EKMatrix", "m22"]
+- !private ["C4main8EKMatrix", "m23"]
+- !private ["C4main8EKMatrix", "m24"]
+- !private ["C4main8EKMatrix", "m31"]
+- !private ["C4main8EKMatrix", "m32"]
+- !private ["C4main8EKMatrix", "m33"]
+- !private ["C4main8EKMatrix", "m34"]
+- !private ["C4main8EKMatrix", "m41"]
+- !private ["C4main8EKMatrix", "m42"]
+- !private ["C4main8EKMatrix", "m43"]
+- !private ["C4main8EKMatrix", "m44"]
+- !private ["C4main8EKMatrix", "tan"]
+- ["C4main8EKMatrix", "times"]
+- ["C4main8EKMatrix", "transpose"]
+- ["P4main12EKMatrixType", "Double"]
+- ["P4main12EKMatrixType", "EKMatrix"]
+- !private ["P4main12EKMatrixType", "EKUsesOpenGLOrientedMath"]
+- !private ["P4main12EKMatrixType", "assert"]
+- ["P4main12EKMatrixType", "createMatrix"]
+- !private ["P4main12EKMatrixType", "init"]
+- ["P4main12EKMatrixType", "m11"]
+- ["P4main12EKMatrixType", "m12"]
+- ["P4main12EKMatrixType", "m13"]
+- ["P4main12EKMatrixType", "m14"]
+- ["P4main12EKMatrixType", "m21"]
+- ["P4main12EKMatrixType", "m22"]
+- ["P4main12EKMatrixType", "m23"]
+- ["P4main12EKMatrixType", "m24"]
+- ["P4main12EKMatrixType", "m31"]
+- ["P4main12EKMatrixType", "m32"]
+- ["P4main12EKMatrixType", "m33"]
+- ["P4main12EKMatrixType", "m34"]
+- ["P4main12EKMatrixType", "m41"]
+- ["P4main12EKMatrixType", "m42"]
+- ["P4main12EKMatrixType", "m43"]
+- ["P4main12EKMatrixType", "m44"]
+- !private ["P4main12EKMatrixType", "tan"]
+- !private ["P4main12EKMatrixType", "times"]
+- !private ["P4main12EKMatrixType", "transpose"]
+- !private ["C4main9EKVector3", "cross"]
+- !private ["C4main9EKVector3", "deinit"]
+- !private ["C4main9EKVector3", "dot"]
+- !private ["C4main9EKVector3", "minus"]
+- !private ["C4main9EKVector3", "normalize"]
+- !private ["C4main9EKVector3", "x"]
+- !private ["C4main9EKVector3", "y"]
+- !private ["C4main9EKVector3", "z"]
+- !private ["P4main13EKVector3Type", "cross"]
+- !private ["P4main13EKVector3Type", "dot"]
+- !private ["P4main13EKVector3Type", "minus"]
+- !private ["P4main13EKVector3Type", "normalize"]
+- !private ["P4main13EKVector3Type", "x"]
+- !private ["P4main13EKVector3Type", "y"]
+- !private ["P4main13EKVector3Type", "z"]
+- !private ["C4main9EKVector4", "deinit"]
+- !private ["C4main9EKVector4", "init"]
+- !private ["C4main9EKVector4", "w"]
+- !private ["C4main9EKVector4", "x"]
+- !private ["C4main9EKVector4", "y"]
+- !private ["C4main9EKVector4", "z"]
+- !private ["P4main13EKVector4Type", "init"]
+- !private ["P4main13EKVector4Type", "w"]
+- !private ["P4main13EKVector4Type", "x"]
+- !private ["P4main13EKVector4Type", "y"]
+- !private ["P4main13EKVector4Type", "z"]
+- !private ["Ps9Equatable", "IntegerLiteralType"]
+- !private ["Ps9Equatable", "Stride"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Sf", "deinit"]
+- !private ["Ps23FloatLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps23FloatLiteralConvertible", "Stride"]
+- !private ["Ps17FloatingPointType", "IntegerLiteralType"]
+- !private ["Ps17FloatingPointType", "Stride"]
+- !private ["Ps8Hashable", "IntegerLiteralType"]
+- !private ["Ps8Hashable", "Stride"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps25IntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps25IntegerLiteralConvertible", "Stride"]
+- !private ["Ps16SignedNumberType", "IntegerLiteralType"]
+- !private ["Ps16SignedNumberType", "Stride"]
+- !private ["Vs12StaticString", "deinit"]
+- !private ["Ps10Strideable", "IntegerLiteralType"]
+- !private ["Ps10Strideable", "Stride"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps31_BuiltinFloatLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps31_BuiltinFloatLiteralConvertible", "Stride"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "Stride"]
+- !private ["Ps19_CVarArgAlignedType", "IntegerLiteralType"]
+- !private ["Ps19_CVarArgAlignedType", "Stride"]
+- !private ["Ps22_CVarArgPassedAsDouble", "IntegerLiteralType"]
+- !private ["Ps22_CVarArgPassedAsDouble", "Stride"]
+depends-nominal:
+- !private "Ps16AbsoluteValuable"
+- "Ps9AnyObject"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "Ps11CVarArgType"
+- !private "Ps10Comparable"
+- !private "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- !private "Ps23CustomStringConvertible"
+- !private "Sd"
+- !private "P4main11EKColorType"
+- "P4main20EKLanguageCompatible"
+- "C4main8EKMatrix"
+- "P4main12EKMatrixType"
+- !private "C4main9EKVector3"
+- !private "P4main13EKVector3Type"
+- !private "C4main9EKVector4"
+- !private "P4main13EKVector4Type"
+- !private "Ps9Equatable"
+- !private "Sf"
+- !private "Ps23FloatLiteralConvertible"
+- !private "Ps17FloatingPointType"
+- !private "Ps8Hashable"
+- !private "Ps25IntegerLiteralConvertible"
+- !private "Ps16SignedNumberType"
+- !private "Vs12StaticString"
+- !private "Ps10Strideable"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps31_BuiltinFloatLiteralConvertible"
+- !private "Ps33_BuiltinIntegerLiteralConvertible"
+- !private "Ps19_CVarArgAlignedType"
+- !private "Ps22_CVarArgPassedAsDouble"
+depends-dynamic-lookup:
+depends-external:
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/Visibility.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/UnicodeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/RuntimeStubs.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/SwiftStdint.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/SwiftStddef.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/RuntimeShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/LibcShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/RefCount.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/HeapObject.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/GlobalObjects.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/FoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/CoreFoundationShims.h"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/shims/module.map"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLOpenGL.swiftmodule"
+interface-hash: "70517a0fdbea39e0f4d859f776dbbca3"

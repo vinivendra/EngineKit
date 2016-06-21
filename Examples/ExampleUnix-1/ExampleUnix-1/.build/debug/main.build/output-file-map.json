@@ -1,0 +1,107 @@
+{
+  "": {
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/master.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKAddon.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKAddon.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKAddon.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKAddon~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKAddon.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKColor.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKColor.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKColor.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKColor~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKColor.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKEngine.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEngine.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEngine.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEngine.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKEvent.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEvent.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEvent.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEvent~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKEvent.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKFileManager.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKFileManager.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKFileManager.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKFileManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKFileManager.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKLanguageEngine.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLanguageEngine.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLanguageEngine.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLanguageEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLanguageEngine.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKLinuxDataClasses.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLinuxDataClasses.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLinuxDataClasses.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLinuxDataClasses~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKLinuxDataClasses.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKMatrix.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKMatrix.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKMatrix.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKMatrix~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKMatrix.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKOpenGLAddon.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOpenGLAddon.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOpenGLAddon.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOpenGLAddon~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOpenGLAddon.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKOSFactory.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOSFactory.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOSFactory.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOSFactory~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKOSFactory.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKSwiftEngine.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftEngine.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftEngine.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftEngine.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKSwiftExtensions.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftExtensions.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftExtensions.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKSwiftExtensions.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKUnixSwiftExtensions.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKUnixSwiftExtensions.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKUnixSwiftExtensions.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKUnixSwiftExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKUnixSwiftExtensions.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKVector2.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector2.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector2.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector2~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector2.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKVector3.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector3.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector3.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector3~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector3.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/EKVector4.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector4.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector4.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector4~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/EKVector4.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/main.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/main.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/main.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/main.build/main.swiftdeps"
+  }
+}

@@ -1,5 +1,3 @@
-public protocol EKLanguageCompatible {}
-
 public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 
 	public let x: Double
@@ -94,7 +92,7 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 
 public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 	public static func createMatrix(
-		m11: Double, m12: Double, m13: Double, m14: Double,
+		m11 m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,
 		m31: Double, m32: Double, m33: Double, m34: Double,
 		m41: Double, m42: Double, m43: Double, m44: Double) -> EKMatrix {

@@ -1,0 +1,10 @@
+version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
+options: "7cade658500f25afaccb188ce3b33384"
+build_time: [519844965, 963798000]
+inputs:
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLImage-1.0.1/Sources/Image.swift": [519780203, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLImage-1.0.1/Sources/ImageBMP.swift": [519780203, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLImage-1.0.1/Sources/ImageGIF.swift": [519780203, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLImage-1.0.1/Sources/ImageLoader.swift": [519780203, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLImage-1.0.1/Sources/ImagePNG.swift": [519780203, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLImage-1.0.1/Sources/Inflate.swift": [519780203, 0]

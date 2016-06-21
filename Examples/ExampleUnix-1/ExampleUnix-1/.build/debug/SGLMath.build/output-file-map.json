@@ -1,0 +1,143 @@
+{
+  "": {
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/master.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Complex.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Complex.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Complex.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Complex~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Complex.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/glm.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glm.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glm.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glm~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glm.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/glsl.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glsl.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glsl.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glsl~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/glsl.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Internal.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Internal.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Internal.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Internal~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Internal.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix2x2.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x2.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x2.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x2~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x2.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix2x3.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x3.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x3.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x3~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x3.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix2x4.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x4.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x4.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x4~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix2x4.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix3x2.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x2.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x2.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x2~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x2.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix3x3.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x3.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x3.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x3~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x3.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix3x4.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x4.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x4.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x4~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix3x4.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix4x2.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x2.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x2.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x2~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x2.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix4x3.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x3.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x3.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x3~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x3.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Matrix4x4.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x4.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x4.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x4~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Matrix4x4.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Operators.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Operators.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Operators.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Operators~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Operators.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Protocols.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Protocols.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Protocols.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Protocols~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Protocols.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Quaternion.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Quaternion.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Quaternion.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Quaternion~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Quaternion.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Swizzle.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Swizzle.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Swizzle.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Swizzle~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Swizzle.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Vector2.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Vector2b.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2b.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2b.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2b~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector2b.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Vector3.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Vector3b.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3b.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3b.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3b~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector3b.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Vector4.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4.swiftdeps"
+  },
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLMath-1.0.3/Sources/Vector4b.swift": {
+    "dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4b.d",
+    "object": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4b.swift.o",
+    "swiftmodule": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4b~partial.swiftmodule",
+    "swift-dependencies": "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/.build/debug/SGLMath.build/Vector4b.swiftdeps"
+  }
+}

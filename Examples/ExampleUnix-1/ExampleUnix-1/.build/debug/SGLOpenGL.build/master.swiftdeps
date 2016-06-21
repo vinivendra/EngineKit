@@ -1,0 +1,8 @@
+version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
+options: "ba3179ce177c4a769123a0db5571e57c"
+build_time: [519844965, 963775000]
+inputs:
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLOpenGL-1.0.1/Sources/Commands.swift": [519780201, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLOpenGL-1.0.1/Sources/Constants.swift": [519780201, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLOpenGL-1.0.1/Sources/Loaders.swift": [519780201, 0]
+  "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1/Packages/SGLOpenGL-1.0.1/Sources/SwiftGL.swift": [519780201, 0]
