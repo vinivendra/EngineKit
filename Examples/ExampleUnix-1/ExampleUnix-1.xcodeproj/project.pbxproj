@@ -6,22 +6,72 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		24CFC7DD1D18B2280025C437 /* ExampleUnix-1SPM */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 24CFC7DE1D18B2280025C437 /* Build configuration list for PBXAggregateTarget "ExampleUnix-1SPM" */;
+			buildPhases = (
+				24CFC7E11D18B22D0025C437 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "ExampleUnix-1SPM";
+			productName = "ExampleUnix-1SPM";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2414B7541D074B8800CFFC2B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414B7531D074B8800CFFC2B /* main.swift */; };
-		24B14F051D0750AE00B38098 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EF91D0750AE00B38098 /* EKAddon.swift */; };
-		24B14F061D0750AE00B38098 /* EKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EFA1D0750AE00B38098 /* EKColor.swift */; };
-		24B14F071D0750AE00B38098 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EFB1D0750AE00B38098 /* EKEngine.swift */; };
-		24B14F081D0750AE00B38098 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EFC1D0750AE00B38098 /* EKEvent.swift */; };
-		24B14F091D0750AE00B38098 /* EKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EFD1D0750AE00B38098 /* EKFileManager.swift */; };
-		24B14F0A1D0750AE00B38098 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EFE1D0750AE00B38098 /* EKLanguageEngine.swift */; };
-		24B14F0B1D0750AE00B38098 /* EKMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14EFF1D0750AE00B38098 /* EKMatrix.swift */; };
-		24B14F0C1D0750AE00B38098 /* EKOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F001D0750AE00B38098 /* EKOSFactory.swift */; };
-		24B14F0D1D0750AE00B38098 /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F011D0750AE00B38098 /* EKSwiftExtensions.swift */; };
-		24B14F0E1D0750AE00B38098 /* EKVector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F021D0750AE00B38098 /* EKVector2.swift */; };
-		24B14F0F1D0750AE00B38098 /* EKVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F031D0750AE00B38098 /* EKVector3.swift */; };
-		24B14F101D0750AE00B38098 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F041D0750AE00B38098 /* EKVector4.swift */; };
 		24B14F131D0750DF00B38098 /* EKLinuxDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */; };
-		24B14F171D0753DF00B38098 /* EKUnixSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F161D0753DF00B38098 /* EKUnixSwiftExtensions.swift */; };
+		24CFC7F21D18B4F60025C437 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E21D18B4F60025C437 /* EKAddon.swift */; };
+		24CFC7F31D18B4F60025C437 /* EKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E31D18B4F60025C437 /* EKColor.swift */; };
+		24CFC7F41D18B4F60025C437 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E41D18B4F60025C437 /* EKEngine.swift */; };
+		24CFC7F51D18B4F60025C437 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E51D18B4F60025C437 /* EKEvent.swift */; };
+		24CFC7F61D18B4F60025C437 /* EKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E61D18B4F60025C437 /* EKFileManager.swift */; };
+		24CFC7F71D18B4F60025C437 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */; };
+		24CFC7F81D18B4F60025C437 /* EKLinuxDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */; };
+		24CFC7F91D18B4F60025C437 /* EKMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E91D18B4F60025C437 /* EKMatrix.swift */; };
+		24CFC7FA1D18B4F60025C437 /* EKOpenGLAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */; };
+		24CFC7FB1D18B4F60025C437 /* EKOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */; };
+		24CFC7FC1D18B4F60025C437 /* EKSwiftEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */; };
+		24CFC7FD1D18B4F60025C437 /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */; };
+		24CFC7FE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */; };
+		24CFC7FF1D18B4F60025C437 /* EKVector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EF1D18B4F60025C437 /* EKVector2.swift */; };
+		24CFC8001D18B4F60025C437 /* EKVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7F01D18B4F60025C437 /* EKVector3.swift */; };
+		24CFC8011D18B4F60025C437 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7F11D18B4F60025C437 /* EKVector4.swift */; };
+		24CFC8281D18D2060025C437 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8211D18D0D40025C437 /* Image.swift */; };
+		24CFC8291D18D2060025C437 /* ImageBMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8221D18D0D40025C437 /* ImageBMP.swift */; };
+		24CFC82A1D18D2060025C437 /* ImageGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8231D18D0D40025C437 /* ImageGIF.swift */; };
+		24CFC82B1D18D2060025C437 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8241D18D0D40025C437 /* ImageLoader.swift */; };
+		24CFC82C1D18D2060025C437 /* ImagePNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8251D18D0D40025C437 /* ImagePNG.swift */; };
+		24CFC82D1D18D2060025C437 /* Inflate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8261D18D0D40025C437 /* Inflate.swift */; };
+		24CFC82E1D18D2060025C437 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8091D18D00A0025C437 /* Complex.swift */; };
+		24CFC82F1D18D2060025C437 /* glm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80A1D18D00A0025C437 /* glm.swift */; };
+		24CFC8301D18D2060025C437 /* glsl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80B1D18D00A0025C437 /* glsl.swift */; };
+		24CFC8311D18D2060025C437 /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80C1D18D00A0025C437 /* Internal.swift */; };
+		24CFC8321D18D2060025C437 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80D1D18D00A0025C437 /* Matrix2x2.swift */; };
+		24CFC8331D18D2060025C437 /* Matrix2x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80E1D18D00A0025C437 /* Matrix2x3.swift */; };
+		24CFC8341D18D2060025C437 /* Matrix2x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80F1D18D00A0025C437 /* Matrix2x4.swift */; };
+		24CFC8351D18D2060025C437 /* Matrix3x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8101D18D00A0025C437 /* Matrix3x2.swift */; };
+		24CFC8361D18D2060025C437 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8111D18D00A0025C437 /* Matrix3x3.swift */; };
+		24CFC8371D18D2060025C437 /* Matrix3x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8121D18D00A0025C437 /* Matrix3x4.swift */; };
+		24CFC8381D18D2060025C437 /* Matrix4x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8131D18D00A0025C437 /* Matrix4x2.swift */; };
+		24CFC8391D18D2060025C437 /* Matrix4x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8141D18D00A0025C437 /* Matrix4x3.swift */; };
+		24CFC83A1D18D2060025C437 /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8151D18D00A0025C437 /* Matrix4x4.swift */; };
+		24CFC83B1D18D2060025C437 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8161D18D00A0025C437 /* Operators.swift */; };
+		24CFC83C1D18D2060025C437 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8171D18D00A0025C437 /* Protocols.swift */; };
+		24CFC83D1D18D2060025C437 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8181D18D00A0025C437 /* Quaternion.swift */; };
+		24CFC83E1D18D2060025C437 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8191D18D00A0025C437 /* Swizzle.swift */; };
+		24CFC83F1D18D2060025C437 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81A1D18D00A0025C437 /* Vector2.swift */; };
+		24CFC8401D18D2060025C437 /* Vector2b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81B1D18D00A0025C437 /* Vector2b.swift */; };
+		24CFC8411D18D2060025C437 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81C1D18D00A0025C437 /* Vector3.swift */; };
+		24CFC8421D18D2060025C437 /* Vector3b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81D1D18D00A0025C437 /* Vector3b.swift */; };
+		24CFC8431D18D2060025C437 /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81E1D18D00A0025C437 /* Vector4.swift */; };
+		24CFC8441D18D2060025C437 /* Vector4b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81F1D18D00A0025C437 /* Vector4b.swift */; };
+		24CFC8451D18D2060025C437 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8041D18CFD70025C437 /* Commands.swift */; };
+		24CFC8461D18D2060025C437 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8051D18CFD70025C437 /* Constants.swift */; };
+		24CFC8471D18D2060025C437 /* Loaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8061D18CFD70025C437 /* Loaders.swift */; };
+		24CFC8481D18D2060025C437 /* SwiftGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8071D18CFD70025C437 /* SwiftGL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,20 +121,58 @@
 		2414B7501D074B8800CFFC2B /* ExampleUnix-1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ExampleUnix-1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414B7531D074B8800CFFC2B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2414B75F1D074BCB00CFFC2B /* EngineKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EngineKit.xcodeproj; path = "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleOSX-1/../../EngineKit/EngineKit.xcodeproj"; sourceTree = "<absolute>"; };
-		24B14EF91D0750AE00B38098 /* EKAddon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKAddon.swift; path = ../../EngineKit/EngineKitCore/EKAddon.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		24B14EFA1D0750AE00B38098 /* EKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKColor.swift; path = ../../EngineKit/EngineKitCore/EKColor.swift; sourceTree = "<group>"; };
-		24B14EFB1D0750AE00B38098 /* EKEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKEngine.swift; path = ../../EngineKit/EngineKitCore/EKEngine.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		24B14EFC1D0750AE00B38098 /* EKEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKEvent.swift; path = ../../EngineKit/EngineKitCore/EKEvent.swift; sourceTree = "<group>"; };
-		24B14EFD1D0750AE00B38098 /* EKFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = ../../EngineKit/EngineKitCore/EKFileManager.swift; sourceTree = "<group>"; };
-		24B14EFE1D0750AE00B38098 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKLanguageEngine.swift; path = ../../EngineKit/EngineKitCore/EKLanguageEngine.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		24B14EFF1D0750AE00B38098 /* EKMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKMatrix.swift; path = ../../EngineKit/EngineKitCore/EKMatrix.swift; sourceTree = "<group>"; };
-		24B14F001D0750AE00B38098 /* EKOSFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = ../../EngineKit/EngineKitCore/EKOSFactory.swift; sourceTree = "<group>"; };
-		24B14F011D0750AE00B38098 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = ../../EngineKit/EngineKitCore/EKSwiftExtensions.swift; sourceTree = "<group>"; };
-		24B14F021D0750AE00B38098 /* EKVector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = ../../EngineKit/EngineKitCore/EKVector2.swift; sourceTree = "<group>"; };
-		24B14F031D0750AE00B38098 /* EKVector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = ../../EngineKit/EngineKitCore/EKVector3.swift; sourceTree = "<group>"; };
-		24B14F041D0750AE00B38098 /* EKVector4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = ../../EngineKit/EngineKitCore/EKVector4.swift; sourceTree = "<group>"; };
 		24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLinuxDataClasses.swift; sourceTree = "<group>"; };
-		24B14F161D0753DF00B38098 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = ../../EngineKit/EngineKitUnix/EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
+		24CFC7E21D18B4F60025C437 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAddon.swift; sourceTree = "<group>"; };
+		24CFC7E31D18B4F60025C437 /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKColor.swift; sourceTree = "<group>"; };
+		24CFC7E41D18B4F60025C437 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKEngine.swift; sourceTree = "<group>"; };
+		24CFC7E51D18B4F60025C437 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKEvent.swift; sourceTree = "<group>"; };
+		24CFC7E61D18B4F60025C437 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKFileManager.swift; sourceTree = "<group>"; };
+		24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLanguageEngine.swift; sourceTree = "<group>"; };
+		24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLinuxDataClasses.swift; sourceTree = "<group>"; };
+		24CFC7E91D18B4F60025C437 /* EKMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKMatrix.swift; sourceTree = "<group>"; };
+		24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOpenGLAddon.swift; sourceTree = "<group>"; };
+		24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOSFactory.swift; sourceTree = "<group>"; };
+		24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKSwiftEngine.swift; sourceTree = "<group>"; };
+		24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKSwiftExtensions.swift; sourceTree = "<group>"; };
+		24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
+		24CFC7EF1D18B4F60025C437 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVector2.swift; sourceTree = "<group>"; };
+		24CFC7F01D18B4F60025C437 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVector3.swift; sourceTree = "<group>"; };
+		24CFC7F11D18B4F60025C437 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVector4.swift; sourceTree = "<group>"; };
+		24CFC8021D18B6BE0025C437 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
+		24CFC8031D18B6BE0025C437 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
+		24CFC8041D18CFD70025C437 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commands.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/Commands.swift"; sourceTree = "<group>"; };
+		24CFC8051D18CFD70025C437 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/Constants.swift"; sourceTree = "<group>"; };
+		24CFC8061D18CFD70025C437 /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loaders.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/Loaders.swift"; sourceTree = "<group>"; };
+		24CFC8071D18CFD70025C437 /* SwiftGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftGL.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/SwiftGL.swift"; sourceTree = "<group>"; };
+		24CFC8091D18D00A0025C437 /* Complex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Complex.swift; path = "Packages/SGLMath-1.0.3/Sources/Complex.swift"; sourceTree = "<group>"; };
+		24CFC80A1D18D00A0025C437 /* glm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = glm.swift; path = "Packages/SGLMath-1.0.3/Sources/glm.swift"; sourceTree = "<group>"; };
+		24CFC80B1D18D00A0025C437 /* glsl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = glsl.swift; path = "Packages/SGLMath-1.0.3/Sources/glsl.swift"; sourceTree = "<group>"; };
+		24CFC80C1D18D00A0025C437 /* Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Internal.swift; path = "Packages/SGLMath-1.0.3/Sources/Internal.swift"; sourceTree = "<group>"; };
+		24CFC80D1D18D00A0025C437 /* Matrix2x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix2x2.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix2x2.swift"; sourceTree = "<group>"; };
+		24CFC80E1D18D00A0025C437 /* Matrix2x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix2x3.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix2x3.swift"; sourceTree = "<group>"; };
+		24CFC80F1D18D00A0025C437 /* Matrix2x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix2x4.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix2x4.swift"; sourceTree = "<group>"; };
+		24CFC8101D18D00A0025C437 /* Matrix3x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix3x2.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix3x2.swift"; sourceTree = "<group>"; };
+		24CFC8111D18D00A0025C437 /* Matrix3x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix3x3.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix3x3.swift"; sourceTree = "<group>"; };
+		24CFC8121D18D00A0025C437 /* Matrix3x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix3x4.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix3x4.swift"; sourceTree = "<group>"; };
+		24CFC8131D18D00A0025C437 /* Matrix4x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix4x2.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix4x2.swift"; sourceTree = "<group>"; };
+		24CFC8141D18D00A0025C437 /* Matrix4x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix4x3.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix4x3.swift"; sourceTree = "<group>"; };
+		24CFC8151D18D00A0025C437 /* Matrix4x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix4x4.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix4x4.swift"; sourceTree = "<group>"; };
+		24CFC8161D18D00A0025C437 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = "Packages/SGLMath-1.0.3/Sources/Operators.swift"; sourceTree = "<group>"; };
+		24CFC8171D18D00A0025C437 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = "Packages/SGLMath-1.0.3/Sources/Protocols.swift"; sourceTree = "<group>"; };
+		24CFC8181D18D00A0025C437 /* Quaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quaternion.swift; path = "Packages/SGLMath-1.0.3/Sources/Quaternion.swift"; sourceTree = "<group>"; };
+		24CFC8191D18D00A0025C437 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = "Packages/SGLMath-1.0.3/Sources/Swizzle.swift"; sourceTree = "<group>"; };
+		24CFC81A1D18D00A0025C437 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector2.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector2.swift"; sourceTree = "<group>"; };
+		24CFC81B1D18D00A0025C437 /* Vector2b.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector2b.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector2b.swift"; sourceTree = "<group>"; };
+		24CFC81C1D18D00A0025C437 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector3.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector3.swift"; sourceTree = "<group>"; };
+		24CFC81D1D18D00A0025C437 /* Vector3b.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector3b.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector3b.swift"; sourceTree = "<group>"; };
+		24CFC81E1D18D00A0025C437 /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector4.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector4.swift"; sourceTree = "<group>"; };
+		24CFC81F1D18D00A0025C437 /* Vector4b.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector4b.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector4b.swift"; sourceTree = "<group>"; };
+		24CFC8211D18D0D40025C437 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = "Packages/SGLImage-1.0.1/Sources/Image.swift"; sourceTree = "<group>"; };
+		24CFC8221D18D0D40025C437 /* ImageBMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBMP.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageBMP.swift"; sourceTree = "<group>"; };
+		24CFC8231D18D0D40025C437 /* ImageGIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageGIF.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageGIF.swift"; sourceTree = "<group>"; };
+		24CFC8241D18D0D40025C437 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageLoader.swift"; sourceTree = "<group>"; };
+		24CFC8251D18D0D40025C437 /* ImagePNG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePNG.swift; path = "Packages/SGLImage-1.0.1/Sources/ImagePNG.swift"; sourceTree = "<group>"; };
+		24CFC8261D18D0D40025C437 /* Inflate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Inflate.swift; path = "Packages/SGLImage-1.0.1/Sources/Inflate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +206,30 @@
 		2414B7521D074B8800CFFC2B /* ExampleUnix-1 */ = {
 			isa = PBXGroup;
 			children = (
+				24CFC7E21D18B4F60025C437 /* EKAddon.swift */,
+				24CFC7E31D18B4F60025C437 /* EKColor.swift */,
+				24CFC7E41D18B4F60025C437 /* EKEngine.swift */,
+				24CFC7E51D18B4F60025C437 /* EKEvent.swift */,
+				24CFC7E61D18B4F60025C437 /* EKFileManager.swift */,
+				24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */,
+				24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */,
+				24CFC7E91D18B4F60025C437 /* EKMatrix.swift */,
+				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
+				24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */,
+				24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */,
+				24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */,
+				24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */,
+				24CFC7EF1D18B4F60025C437 /* EKVector2.swift */,
+				24CFC7F01D18B4F60025C437 /* EKVector3.swift */,
+				24CFC7F11D18B4F60025C437 /* EKVector4.swift */,
+				24CFC8271D18D0DC0025C437 /* SGLImage */,
+				24CFC8201D18D03A0025C437 /* SGLMath */,
+				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
 				24B14F111D0750B700B38098 /* EngineKitSources */,
 				2414B7531D074B8800CFFC2B /* main.swift */,
 				24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */,
+				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
+				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
 			);
 			path = "ExampleUnix-1";
 			sourceTree = "<group>";
@@ -139,33 +248,83 @@
 		24B14F111D0750B700B38098 /* EngineKitSources */ = {
 			isa = PBXGroup;
 			children = (
-				24B14EF91D0750AE00B38098 /* EKAddon.swift */,
-				24B14EFA1D0750AE00B38098 /* EKColor.swift */,
-				24B14EFB1D0750AE00B38098 /* EKEngine.swift */,
-				24B14EFC1D0750AE00B38098 /* EKEvent.swift */,
-				24B14EFD1D0750AE00B38098 /* EKFileManager.swift */,
-				24B14EFE1D0750AE00B38098 /* EKLanguageEngine.swift */,
-				24B14EFF1D0750AE00B38098 /* EKMatrix.swift */,
-				24B14F001D0750AE00B38098 /* EKOSFactory.swift */,
-				24B14F011D0750AE00B38098 /* EKSwiftExtensions.swift */,
-				24B14F021D0750AE00B38098 /* EKVector2.swift */,
-				24B14F031D0750AE00B38098 /* EKVector3.swift */,
-				24B14F041D0750AE00B38098 /* EKVector4.swift */,
-				24B14F181D0753E500B38098 /* EngineKitUnix */,
 			);
 			name = EngineKitSources;
 			path = ..;
 			sourceTree = "<group>";
 		};
-		24B14F181D0753E500B38098 /* EngineKitUnix */ = {
+		24CFC8081D18CFF70025C437 /* SGLOpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				24B14F161D0753DF00B38098 /* EKUnixSwiftExtensions.swift */,
+				24CFC8041D18CFD70025C437 /* Commands.swift */,
+				24CFC8051D18CFD70025C437 /* Constants.swift */,
+				24CFC8061D18CFD70025C437 /* Loaders.swift */,
+				24CFC8071D18CFD70025C437 /* SwiftGL.swift */,
 			);
-			name = EngineKitUnix;
+			name = SGLOpenGL;
+			sourceTree = "<group>";
+		};
+		24CFC8201D18D03A0025C437 /* SGLMath */ = {
+			isa = PBXGroup;
+			children = (
+				24CFC8091D18D00A0025C437 /* Complex.swift */,
+				24CFC80A1D18D00A0025C437 /* glm.swift */,
+				24CFC80B1D18D00A0025C437 /* glsl.swift */,
+				24CFC80C1D18D00A0025C437 /* Internal.swift */,
+				24CFC80D1D18D00A0025C437 /* Matrix2x2.swift */,
+				24CFC80E1D18D00A0025C437 /* Matrix2x3.swift */,
+				24CFC80F1D18D00A0025C437 /* Matrix2x4.swift */,
+				24CFC8101D18D00A0025C437 /* Matrix3x2.swift */,
+				24CFC8111D18D00A0025C437 /* Matrix3x3.swift */,
+				24CFC8121D18D00A0025C437 /* Matrix3x4.swift */,
+				24CFC8131D18D00A0025C437 /* Matrix4x2.swift */,
+				24CFC8141D18D00A0025C437 /* Matrix4x3.swift */,
+				24CFC8151D18D00A0025C437 /* Matrix4x4.swift */,
+				24CFC8161D18D00A0025C437 /* Operators.swift */,
+				24CFC8171D18D00A0025C437 /* Protocols.swift */,
+				24CFC8181D18D00A0025C437 /* Quaternion.swift */,
+				24CFC8191D18D00A0025C437 /* Swizzle.swift */,
+				24CFC81A1D18D00A0025C437 /* Vector2.swift */,
+				24CFC81B1D18D00A0025C437 /* Vector2b.swift */,
+				24CFC81C1D18D00A0025C437 /* Vector3.swift */,
+				24CFC81D1D18D00A0025C437 /* Vector3b.swift */,
+				24CFC81E1D18D00A0025C437 /* Vector4.swift */,
+				24CFC81F1D18D00A0025C437 /* Vector4b.swift */,
+			);
+			name = SGLMath;
+			sourceTree = "<group>";
+		};
+		24CFC8271D18D0DC0025C437 /* SGLImage */ = {
+			isa = PBXGroup;
+			children = (
+				24CFC8211D18D0D40025C437 /* Image.swift */,
+				24CFC8221D18D0D40025C437 /* ImageBMP.swift */,
+				24CFC8231D18D0D40025C437 /* ImageGIF.swift */,
+				24CFC8241D18D0D40025C437 /* ImageLoader.swift */,
+				24CFC8251D18D0D40025C437 /* ImagePNG.swift */,
+				24CFC8261D18D0D40025C437 /* Inflate.swift */,
+			);
+			name = SGLImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		24CFC7D91D18B0E40025C437 /* ExampleUnix-1-SPM */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 24CFC7DA1D18B0E40025C437 /* Build configuration list for PBXLegacyTarget "ExampleUnix-1-SPM" */;
+			buildPhases = (
+			);
+			buildToolPath = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift";
+			buildWorkingDirectory = "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1";
+			dependencies = (
+			);
+			name = "ExampleUnix-1-SPM";
+			passBuildSettingsInEnvironment = 1;
+			productName = "ExampleUnix-1-SPM";
+		};
+/* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
 		2414B74F1D074B8800CFFC2B /* ExampleUnix-1 */ = {
@@ -198,6 +357,12 @@
 					2414B74F1D074B8800CFFC2B = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
+					24CFC7D91D18B0E40025C437 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					24CFC7DD1D18B2280025C437 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 2414B74B1D074B8800CFFC2B /* Build configuration list for PBXProject "ExampleUnix-1" */;
@@ -219,6 +384,8 @@
 			projectRoot = "";
 			targets = (
 				2414B74F1D074B8800CFFC2B /* ExampleUnix-1 */,
+				24CFC7D91D18B0E40025C437 /* ExampleUnix-1-SPM */,
+				24CFC7DD1D18B2280025C437 /* ExampleUnix-1SPM */,
 			);
 		};
 /* End PBXProject section */
@@ -254,26 +421,78 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24CFC7E11D18B22D0025C437 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib --chdir $SRCROOT/$PROJECT_NAME";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2414B74C1D074B8800CFFC2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24B14F051D0750AE00B38098 /* EKAddon.swift in Sources */,
-				24B14F061D0750AE00B38098 /* EKColor.swift in Sources */,
-				24B14F171D0753DF00B38098 /* EKUnixSwiftExtensions.swift in Sources */,
-				24B14F071D0750AE00B38098 /* EKEngine.swift in Sources */,
-				24B14F081D0750AE00B38098 /* EKEvent.swift in Sources */,
-				24B14F091D0750AE00B38098 /* EKFileManager.swift in Sources */,
-				24B14F0A1D0750AE00B38098 /* EKLanguageEngine.swift in Sources */,
-				24B14F0B1D0750AE00B38098 /* EKMatrix.swift in Sources */,
-				24B14F0C1D0750AE00B38098 /* EKOSFactory.swift in Sources */,
-				24B14F0D1D0750AE00B38098 /* EKSwiftExtensions.swift in Sources */,
-				24B14F0E1D0750AE00B38098 /* EKVector2.swift in Sources */,
-				24B14F0F1D0750AE00B38098 /* EKVector3.swift in Sources */,
+				24CFC8321D18D2060025C437 /* Matrix2x2.swift in Sources */,
+				24CFC82F1D18D2060025C437 /* glm.swift in Sources */,
+				24CFC8001D18B4F60025C437 /* EKVector3.swift in Sources */,
+				24CFC8421D18D2060025C437 /* Vector3b.swift in Sources */,
+				24CFC7F61D18B4F60025C437 /* EKFileManager.swift in Sources */,
+				24CFC82A1D18D2060025C437 /* ImageGIF.swift in Sources */,
+				24CFC82D1D18D2060025C437 /* Inflate.swift in Sources */,
+				24CFC7F51D18B4F60025C437 /* EKEvent.swift in Sources */,
+				24CFC82C1D18D2060025C437 /* ImagePNG.swift in Sources */,
+				24CFC8361D18D2060025C437 /* Matrix3x3.swift in Sources */,
+				24CFC83C1D18D2060025C437 /* Protocols.swift in Sources */,
+				24CFC8011D18B4F60025C437 /* EKVector4.swift in Sources */,
+				24CFC83E1D18D2060025C437 /* Swizzle.swift in Sources */,
+				24CFC8391D18D2060025C437 /* Matrix4x3.swift in Sources */,
+				24CFC7FE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift in Sources */,
+				24CFC7FB1D18B4F60025C437 /* EKOSFactory.swift in Sources */,
+				24CFC7F81D18B4F60025C437 /* EKLinuxDataClasses.swift in Sources */,
+				24CFC8331D18D2060025C437 /* Matrix2x3.swift in Sources */,
+				24CFC83A1D18D2060025C437 /* Matrix4x4.swift in Sources */,
+				24CFC7F21D18B4F60025C437 /* EKAddon.swift in Sources */,
+				24CFC7F71D18B4F60025C437 /* EKLanguageEngine.swift in Sources */,
+				24CFC7FC1D18B4F60025C437 /* EKSwiftEngine.swift in Sources */,
 				24B14F131D0750DF00B38098 /* EKLinuxDataClasses.swift in Sources */,
-				24B14F101D0750AE00B38098 /* EKVector4.swift in Sources */,
+				24CFC8411D18D2060025C437 /* Vector3.swift in Sources */,
+				24CFC8371D18D2060025C437 /* Matrix3x4.swift in Sources */,
+				24CFC7FA1D18B4F60025C437 /* EKOpenGLAddon.swift in Sources */,
+				24CFC7FD1D18B4F60025C437 /* EKSwiftExtensions.swift in Sources */,
+				24CFC8341D18D2060025C437 /* Matrix2x4.swift in Sources */,
+				24CFC83D1D18D2060025C437 /* Quaternion.swift in Sources */,
+				24CFC8281D18D2060025C437 /* Image.swift in Sources */,
+				24CFC83B1D18D2060025C437 /* Operators.swift in Sources */,
+				24CFC8311D18D2060025C437 /* Internal.swift in Sources */,
+				24CFC7F41D18B4F60025C437 /* EKEngine.swift in Sources */,
+				24CFC8401D18D2060025C437 /* Vector2b.swift in Sources */,
+				24CFC82B1D18D2060025C437 /* ImageLoader.swift in Sources */,
+				24CFC8381D18D2060025C437 /* Matrix4x2.swift in Sources */,
+				24CFC8291D18D2060025C437 /* ImageBMP.swift in Sources */,
+				24CFC8431D18D2060025C437 /* Vector4.swift in Sources */,
+				24CFC8471D18D2060025C437 /* Loaders.swift in Sources */,
+				24CFC8301D18D2060025C437 /* glsl.swift in Sources */,
+				24CFC8481D18D2060025C437 /* SwiftGL.swift in Sources */,
 				2414B7541D074B8800CFFC2B /* main.swift in Sources */,
+				24CFC7F91D18B4F60025C437 /* EKMatrix.swift in Sources */,
+				24CFC83F1D18D2060025C437 /* Vector2.swift in Sources */,
+				24CFC8441D18D2060025C437 /* Vector4b.swift in Sources */,
+				24CFC8451D18D2060025C437 /* Commands.swift in Sources */,
+				24CFC8351D18D2060025C437 /* Matrix3x2.swift in Sources */,
+				24CFC7F31D18B4F60025C437 /* EKColor.swift in Sources */,
+				24CFC8461D18D2060025C437 /* Constants.swift in Sources */,
+				24CFC82E1D18D2060025C437 /* Complex.swift in Sources */,
+				24CFC7FF1D18B4F60025C437 /* EKVector2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,13 +584,59 @@
 		2414B7581D074B8800CFFC2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
 			};
 			name = Debug;
 		};
 		2414B7591D074B8800CFFC2B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+			};
+			name = Release;
+		};
+		24CFC7DB1D18B0E40025C437 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		24CFC7DC1D18B0E40025C437 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		24CFC7DF1D18B2280025C437 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		24CFC7E01D18B2280025C437 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -396,6 +661,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		24CFC7DA1D18B0E40025C437 /* Build configuration list for PBXLegacyTarget "ExampleUnix-1-SPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24CFC7DB1D18B0E40025C437 /* Debug */,
+				24CFC7DC1D18B0E40025C437 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		24CFC7DE1D18B2280025C437 /* Build configuration list for PBXAggregateTarget "ExampleUnix-1SPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24CFC7DF1D18B2280025C437 /* Debug */,
+				24CFC7E01D18B2280025C437 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

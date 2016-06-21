@@ -31,7 +31,7 @@ enum EKJSCoreState {
 	case Callback
 }
 
-public class EKJSCoreEngine: EKScriptEngine {
+public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()
 	var evaluationError: ErrorType?
 

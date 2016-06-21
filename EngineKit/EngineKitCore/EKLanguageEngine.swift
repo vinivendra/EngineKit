@@ -1,9 +1,8 @@
-public protocol EKScriptEngine {
+public protocol EKLanguageEngine {
 	weak var engine: EKEngine? { get }
 
 	init(engine: EKEngine)
 
-	func runScript(filename filename: String) throws
 	func addClass<T: EKLanguageCompatible>(class: T.Type,
 	              withName className: String,
 	                       constructor: (() -> (T)) )
@@ -11,7 +10,7 @@ public protocol EKScriptEngine {
 	               withName name: String) throws
 }
 
-extension EKScriptEngine {
+extension EKLanguageEngine {
 	public func addClass<T: EKLanguageCompatible where T: Initable>(
 		class: T.Type,
 		withName className: String) {

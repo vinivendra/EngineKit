@@ -61,6 +61,7 @@
 		249D54831CED0E0800D27F5B /* EKVector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249D547F1CED0E0800D27F5B /* EKVector2.swift */; };
 		249D54851CED0F3D00D27F5B /* EKVector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249D54841CED0F3D00D27F5B /* EKVector2Tests.swift */; };
 		249D54861CED0F3D00D27F5B /* EKVector2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249D54841CED0F3D00D27F5B /* EKVector2Tests.swift */; };
+		249E4BEC1D18A465002BEA0D /* EKOpenGLAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249E4BEB1D18A465002BEA0D /* EKOpenGLAddon.swift */; };
 		24BCCF5F1D01173400837E86 /* EKSCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BCCF5E1D01173400837E86 /* EKSCNNode.swift */; };
 		24BCCF601D01173400837E86 /* EKSCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BCCF5E1D01173400837E86 /* EKSCNNode.swift */; };
 		24BCCF611D01173400837E86 /* EKSCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BCCF5E1D01173400837E86 /* EKSCNNode.swift */; };
@@ -167,7 +168,9 @@
 		249D547A1CECF8C400D27F5B /* EKJSScriptable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSScriptable.swift; path = EngineKitFoundation/EKJSScriptable.swift; sourceTree = SOURCE_ROOT; };
 		249D547F1CED0E0800D27F5B /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = EngineKitCore/EKVector2.swift; sourceTree = SOURCE_ROOT; };
 		249D54841CED0F3D00D27F5B /* EKVector2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2Tests.swift; path = EngineKitCoreTests/EKVector2Tests.swift; sourceTree = SOURCE_ROOT; };
+		249E4BEB1D18A465002BEA0D /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = EngineKitUnix/EKOpenGLAddon.swift; sourceTree = SOURCE_ROOT; };
 		24B14F141D0751CD00B38098 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = EngineKitUnix/EKUnixSwiftExtensions.swift; sourceTree = SOURCE_ROOT; };
+		24B14F1F1D07D6D300B38098 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftEngine.swift; path = EngineKitCore/EKSwiftEngine.swift; sourceTree = SOURCE_ROOT; };
 		24BCCF5E1D01173400837E86 /* EKSCNNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSCNNode.swift; path = ../EngineKitFoundation/EKSCNNode.swift; sourceTree = "<group>"; };
 		24CF9CDE1CED91A000D8218E /* EKJSDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSDataClasses.swift; path = EngineKitFoundation/EKJSDataClasses.swift; sourceTree = SOURCE_ROOT; };
 		24E140281CE66D27004C52B4 /* EKVector3Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = EKVector3Tests.swift; path = EngineKitCoreTests/EKVector3Tests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -342,6 +345,7 @@
 				245236381CE2BC73008321E3 /* EKOSFactory.swift */,
 				2452363B1CE2BC95008321E3 /* EKFileManager.swift */,
 				24E39E921CE51B220096ADDF /* EKSwiftExtensions.swift */,
+				24B14F241D07D6E400B38098 /*  Default Implementations */,
 				24E39E9C1CE535110096ADDF /* Data Protocols */,
 			);
 			name = EngineKitCore;
@@ -352,9 +356,18 @@
 			isa = PBXGroup;
 			children = (
 				24B14F141D0751CD00B38098 /* EKUnixSwiftExtensions.swift */,
+				249E4BEB1D18A465002BEA0D /* EKOpenGLAddon.swift */,
 			);
 			name = EngineKitUnix;
 			path = EngineKitOSX;
+			sourceTree = "<group>";
+		};
+		24B14F241D07D6E400B38098 /*  Default Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				24B14F1F1D07D6D300B38098 /* EKSwiftEngine.swift */,
+			);
+			name = " Default Implementations";
 			sourceTree = "<group>";
 		};
 		24E39E9C1CE535110096ADDF /* Data Protocols */ = {
@@ -647,6 +660,7 @@
 				242EBAC31CEA7EBE001E5025 /* EKEvent.swift in Sources */,
 				242EBAC01CEA4894001E5025 /* EKUIKitInputAddon.swift in Sources */,
 				24FE18181CE3A54000287B82 /* EKAddon.swift in Sources */,
+				249E4BEC1D18A465002BEA0D /* EKOpenGLAddon.swift in Sources */,
 				24FE18371CE3BC8500287B82 /* EKColor.swift in Sources */,
 				24BCCF5F1D01173400837E86 /* EKSCNNode.swift in Sources */,
 				24CF9CDF1CED91A000D8218E /* EKJSDataClasses.swift in Sources */,

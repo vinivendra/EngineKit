@@ -11,7 +11,7 @@ public protocol Initable {
 
 public class EKEngine {
 
-	public var languageEngine: EKScriptEngine! = nil {
+	public var languageEngine: EKLanguageEngine! = nil {
 		willSet {
 			if languageEngine != nil {
 				assertionFailure("Script engine may not change!")
@@ -25,14 +25,6 @@ public class EKEngine {
 
 
 	public init() {}
-
-	public func runScript(filename filename: String) throws {
-		do {
-			try self.languageEngine.runScript(filename: filename)
-		} catch let error {
-			throw error
-		}
-	}
 
 	public func loadAddon(addon: EKAddon) {
 		addon.setup(onEngine: self)

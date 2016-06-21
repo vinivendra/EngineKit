@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A70062EF31B8BC5B2AA1C60D96D1BB7CEBABC148",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "609906054A5713C42BD379809D427EC3E3DD7E10" : 0,
+    "DF7050CA8C360A45F4B0790469F3164173B04DE8" : 0,
+    "A70062EF31B8BC5B2AA1C60D96D1BB7CEBABC148" : 0,
+    "A4659BB836710452ECCF7709274F56A7E54AB03F" : 0,
+    "343B4A17FCD3D5C4463317786AF4B1C728327C01" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6BD8B513-11B2-40F8-9F8C-1596A673293C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "609906054A5713C42BD379809D427EC3E3DD7E10" : "EngineKit\/Examples\/ExampleUnix-1\/ExampleUnix-1\/Packages\/SGLOpenGL-1.0.1\/",
+    "DF7050CA8C360A45F4B0790469F3164173B04DE8" : "EngineKit\/Examples\/ExampleUnix-1\/ExampleUnix-1\/Packages\/SGLImage-1.0.1\/",
+    "A70062EF31B8BC5B2AA1C60D96D1BB7CEBABC148" : "EngineKit\/",
+    "A4659BB836710452ECCF7709274F56A7E54AB03F" : "EngineKit\/Examples\/ExampleUnix-1\/ExampleUnix-1\/Packages\/CGLFW3-1.0.2\/",
+    "343B4A17FCD3D5C4463317786AF4B1C728327C01" : "EngineKit\/Examples\/ExampleUnix-1\/ExampleUnix-1\/Packages\/SGLMath-1.0.3\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Examples",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Examples\/Examples.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftGL\/Math.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "343B4A17FCD3D5C4463317786AF4B1C728327C01"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftGL\/OpenGL.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "609906054A5713C42BD379809D427EC3E3DD7E10"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/vini\/Documents\/Projects\/EngineKit\/Examples\/ExampleUnix-1\/CGLFW3",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A4659BB836710452ECCF7709274F56A7E54AB03F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:vinivendra\/EngineKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A70062EF31B8BC5B2AA1C60D96D1BB7CEBABC148"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SwiftGL\/Image.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DF7050CA8C360A45F4B0790469F3164173B04DE8"
+    }
+  ]
+}
