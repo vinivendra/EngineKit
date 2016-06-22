@@ -14,5 +14,6 @@ Examples/ExampleiOS-1/ExampleiOS-1.xcodeproj/xcuserdata/
 Examples/ExampleUnix-1/ExampleUnix-1.xcodeproj/project.xcworkspace/xcuserdata/
 Examples/ExampleUnix-1/ExampleUnix-1.xcodeproj/xcuserdata/
 
-Examples/ExampleUnix-1/main
+Examples/ExampleUnix-1/ExampleUnix-1/.build
+Examples/ExampleUnix-1/ExampleUnix-1/Packages
 

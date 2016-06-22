@@ -126,94 +126,67 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 	return programID
 }
 
-class EKGLObject {
-	static var mvpMatrixID: GLint! = nil
-	static var projectionViewMatrix = EKMatrix.identity
+var EKGLMVPMatrixID: GLint! = nil
+var EKGLProjectionViewMatrix = EKMatrix.identity
 
-	let verticesBuffer: [GLfloat] =
-		[
-			-1.0,-1.0,-1.0,
-			-1.0,-1.0, 1.0,
-			-1.0, 1.0, 1.0,
-			1.0, 1.0,-1.0,
-			-1.0,-1.0,-1.0,
-			-1.0, 1.0,-1.0,
-			1.0,-1.0, 1.0,
-			-1.0,-1.0,-1.0,
-			1.0,-1.0,-1.0,
-			1.0, 1.0,-1.0,
-			1.0,-1.0,-1.0,
-			-1.0,-1.0,-1.0,
-			-1.0,-1.0,-1.0,
-			-1.0, 1.0, 1.0,
-			-1.0, 1.0,-1.0,
-			1.0,-1.0, 1.0,
-			-1.0,-1.0, 1.0,
-			-1.0,-1.0,-1.0,
-			-1.0, 1.0, 1.0,
-			-1.0,-1.0, 1.0,
-			1.0,-1.0, 1.0,
-			1.0, 1.0, 1.0,
-			1.0,-1.0,-1.0,
-			1.0, 1.0,-1.0,
-			1.0,-1.0,-1.0,
-			1.0, 1.0, 1.0,
-			1.0,-1.0, 1.0,
-			1.0, 1.0, 1.0,
-			1.0, 1.0,-1.0,
-			-1.0, 1.0,-1.0,
-			1.0, 1.0, 1.0,
-			-1.0, 1.0,-1.0,
-			-1.0, 1.0, 1.0,
-			1.0, 1.0, 1.0,
-			-1.0, 1.0, 1.0,
-			1.0,-1.0, 1.0
-	]
+protocol EKGLObject {
+	static var geometryWasInitialized: Bool { get set }
+	var modelMatrix: EKMatrix { get set }
 
-	let colorsBuffer: [GLfloat]
+	static var vertexBuffer: [GLfloat]! { get }
 
-	private(set) var numberOfVertices: GLsizei
+	static var numberOfVertices: GLsizei! { get set }
+	static var vertexBufferID: GLuint! { get set }
+	static var colorBufferID: GLuint! { get set }
+}
 
-	var modelMatrix = EKMatrix.identity
+extension EKGLObject {
+	static func initializeGeometry() {
+		if !Self.geometryWasInitialized {
+			Self.geometryWasInitialized = true
 
-	let colorBufferID: GLuint
-	let vertexBufferID: GLuint
+			let vertexBuffer = Self.vertexBuffer
+
+			let colorsBuffer = vertexBuffer.map {
+				return ($0 + 1) / 2
+			}
+
+			Self.numberOfVertices = GLsizei(vertexBuffer.count) / 3
+
+			var vertexID: GLuint = 0
+			glGenBuffers(n: 1, buffers: &vertexID)
+			glBindBuffer(target: GL_ARRAY_BUFFER, buffer: vertexID)
+			glBufferData(target: GL_ARRAY_BUFFER,
+			             size: sizeof([GLfloat]) * vertexBuffer.count,
+			             data: vertexBuffer,
+			             usage: GL_DYNAMIC_DRAW)
+
+			var colorID: GLuint = 0
+			glGenBuffers(n: 1, buffers: &colorID)
+			glBindBuffer(target: GL_ARRAY_BUFFER, buffer: colorID)
+			glBufferData(target: GL_ARRAY_BUFFER,
+			             size: sizeof([GLfloat]) * colorsBuffer.count,
+			             data: colorsBuffer,
+			             usage: GL_DYNAMIC_DRAW)
+
+			Self.colorBufferID = colorID
+			Self.vertexBufferID = vertexID
+		}
+	}
 
 	init() {
-		self.numberOfVertices = GLsizei(verticesBuffer.count) / 3
-
-		self.colorsBuffer = self.verticesBuffer.map {
-			return ($0 + 1) / 2
-		}
-
-		var vertexBufferID: GLuint = 0
-		glGenBuffers(n: 1, buffers: &vertexBufferID)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: vertexBufferID)
-		glBufferData(target: GL_ARRAY_BUFFER,
-		             size: sizeof([GLfloat]) * self.verticesBuffer.count,
-		             data: self.verticesBuffer,
-		             usage: GL_DYNAMIC_DRAW)
-
-		var colorBufferID: GLuint = 0
-		glGenBuffers(n: 1, buffers: &colorBufferID)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: colorBufferID)
-		glBufferData(target: GL_ARRAY_BUFFER,
-		             size: sizeof([GLfloat]) * self.colorsBuffer.count,
-		             data: self.colorsBuffer,
-		             usage: GL_DYNAMIC_DRAW)
-
-		self.colorBufferID = colorBufferID
-		self.vertexBufferID = vertexBufferID
+		Self.initializeGeometry()
+		self.init()
 	}
 
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
 		var projectionViewMatrix = projectionViewMatrix
 		if projectionViewMatrix == nil {
-			projectionViewMatrix = EKGLObject.projectionViewMatrix
+			projectionViewMatrix = EKGLProjectionViewMatrix
 		}
 
 		glEnableVertexAttribArray(0)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: vertexBufferID)
+		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: Self.vertexBufferID)
 		glVertexAttribPointer(
 			index: 0, // Matching shader
 			size: 3,
@@ -223,7 +196,7 @@ class EKGLObject {
 			pointer: nil) // offset
 
 		glEnableVertexAttribArray(1)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: colorBufferID)
+		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: Self.colorBufferID)
 		glVertexAttribPointer(
 			index: 1, // Matching shader
 			size: 3,
@@ -236,7 +209,7 @@ class EKGLObject {
 		let mvp = projectionViewMatrix * modelMatrix
 
 		mvp.withGLFloatArray {
-			glUniformMatrix4fv(location: EKGLObject.mvpMatrixID,
+			glUniformMatrix4fv(location: EKGLMVPMatrixID,
 			                   count: 1,
 			                   transpose: false,
 			                   value: $0)
@@ -245,9 +218,66 @@ class EKGLObject {
 		//
 		glDrawArrays(mode: GL_TRIANGLES,
 		             first: 0,
-		             count: numberOfVertices)
+		             count: Self.numberOfVertices)
 		glDisableVertexAttribArray(0)
 		glDisableVertexAttribArray(1)
+	}
+}
+
+class EKGLCube: EKGLObject {
+	static var geometryWasInitialized = false
+
+	var modelMatrix = EKMatrix.identity
+
+	static var numberOfVertices: GLsizei! = nil
+	static var vertexBufferID: GLuint! = nil
+	static var colorBufferID: GLuint! = nil
+
+	static var vertexBuffer: [GLfloat]! {
+		get {
+			return [
+			       	-1.0,-1.0,-1.0,
+			       	-1.0,-1.0, 1.0,
+			       	-1.0, 1.0, 1.0,
+			       	1.0, 1.0,-1.0,
+			       	-1.0,-1.0,-1.0,
+			       	-1.0, 1.0,-1.0,
+			       	1.0,-1.0, 1.0,
+			       	-1.0,-1.0,-1.0,
+			       	1.0,-1.0,-1.0,
+			       	1.0, 1.0,-1.0,
+			       	1.0,-1.0,-1.0,
+			       	-1.0,-1.0,-1.0,
+			       	-1.0,-1.0,-1.0,
+			       	-1.0, 1.0, 1.0,
+			       	-1.0, 1.0,-1.0,
+			       	1.0,-1.0, 1.0,
+			       	-1.0,-1.0, 1.0,
+			       	-1.0,-1.0,-1.0,
+			       	-1.0, 1.0, 1.0,
+			       	-1.0,-1.0, 1.0,
+			       	1.0,-1.0, 1.0,
+			       	1.0, 1.0, 1.0,
+			       	1.0,-1.0,-1.0,
+			       	1.0, 1.0,-1.0,
+			       	1.0,-1.0,-1.0,
+			       	1.0, 1.0, 1.0,
+			       	1.0,-1.0, 1.0,
+			       	1.0, 1.0, 1.0,
+			       	1.0, 1.0,-1.0,
+			       	-1.0, 1.0,-1.0,
+			       	1.0, 1.0, 1.0,
+			       	-1.0, 1.0,-1.0,
+			       	-1.0, 1.0, 1.0,
+			       	1.0, 1.0, 1.0,
+			       	-1.0, 1.0, 1.0,
+			       	1.0,-1.0, 1.0
+			] as [GLfloat]
+		}
+	}
+
+	init() {
+		EKGLCube.initializeGeometry()
 	}
 }
 
@@ -295,10 +325,10 @@ class MyEngine: EKSwiftEngine {
 		let matrixID = glGetUniformLocation(program: programID, name: "MVP")
 
 		//
-		EKGLObject.mvpMatrixID = matrixID
+		EKGLMVPMatrixID = matrixID
 
-		let object = EKGLObject()
-		let object2 = EKGLObject()
+		let object = EKGLCube()
+		let object2 = EKGLCube()
 		object.modelMatrix = EKMatrix.createTranslation(x: 0, y: 0, z: -1)
 		object2.modelMatrix = EKMatrix.createTranslation(x: 0, y: 0, z: 1)
 
@@ -314,7 +344,7 @@ class MyEngine: EKSwiftEngine {
 			center: EKVector3(x: 0, y: 0, z: 0),
 			up: EKVector3(x: 0, y: 1, z: 0))
 
-		EKGLObject.projectionViewMatrix = projection * view
+		EKGLProjectionViewMatrix = projection * view
 
 		/////////////////////
 		repeat {

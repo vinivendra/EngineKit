@@ -122,22 +122,22 @@
 		2414B7531D074B8800CFFC2B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2414B75F1D074BCB00CFFC2B /* EngineKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EngineKit.xcodeproj; path = "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleOSX-1/../../EngineKit/EngineKit.xcodeproj"; sourceTree = "<absolute>"; };
 		24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLinuxDataClasses.swift; sourceTree = "<group>"; };
-		24CFC7E21D18B4F60025C437 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAddon.swift; sourceTree = "<group>"; };
-		24CFC7E31D18B4F60025C437 /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKColor.swift; sourceTree = "<group>"; };
-		24CFC7E41D18B4F60025C437 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKEngine.swift; sourceTree = "<group>"; };
-		24CFC7E51D18B4F60025C437 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKEvent.swift; sourceTree = "<group>"; };
-		24CFC7E61D18B4F60025C437 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKFileManager.swift; sourceTree = "<group>"; };
-		24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLanguageEngine.swift; sourceTree = "<group>"; };
-		24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLinuxDataClasses.swift; sourceTree = "<group>"; };
-		24CFC7E91D18B4F60025C437 /* EKMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKMatrix.swift; sourceTree = "<group>"; };
-		24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOpenGLAddon.swift; sourceTree = "<group>"; };
-		24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOSFactory.swift; sourceTree = "<group>"; };
-		24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKSwiftEngine.swift; sourceTree = "<group>"; };
-		24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKSwiftExtensions.swift; sourceTree = "<group>"; };
-		24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
-		24CFC7EF1D18B4F60025C437 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVector2.swift; sourceTree = "<group>"; };
-		24CFC7F01D18B4F60025C437 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVector3.swift; sourceTree = "<group>"; };
-		24CFC7F11D18B4F60025C437 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKVector4.swift; sourceTree = "<group>"; };
+		24CFC7E21D18B4F60025C437 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = "ExampleUnix-1/EKAddon.swift"; sourceTree = "<group>"; };
+		24CFC7E31D18B4F60025C437 /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKColor.swift; path = "ExampleUnix-1/EKColor.swift"; sourceTree = "<group>"; };
+		24CFC7E41D18B4F60025C437 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEngine.swift; path = "ExampleUnix-1/EKEngine.swift"; sourceTree = "<group>"; };
+		24CFC7E51D18B4F60025C437 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEvent.swift; path = "ExampleUnix-1/EKEvent.swift"; sourceTree = "<group>"; };
+		24CFC7E61D18B4F60025C437 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = "ExampleUnix-1/EKFileManager.swift"; sourceTree = "<group>"; };
+		24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLanguageEngine.swift; path = "ExampleUnix-1/EKLanguageEngine.swift"; sourceTree = "<group>"; };
+		24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLinuxDataClasses.swift; path = "ExampleUnix-1/EKLinuxDataClasses.swift"; sourceTree = "<group>"; };
+		24CFC7E91D18B4F60025C437 /* EKMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMatrix.swift; path = "ExampleUnix-1/EKMatrix.swift"; sourceTree = "<group>"; };
+		24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = "ExampleUnix-1/EKOpenGLAddon.swift"; sourceTree = "<group>"; };
+		24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = "ExampleUnix-1/EKOSFactory.swift"; sourceTree = "<group>"; };
+		24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftEngine.swift; path = "ExampleUnix-1/EKSwiftEngine.swift"; sourceTree = "<group>"; };
+		24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = "ExampleUnix-1/EKSwiftExtensions.swift"; sourceTree = "<group>"; };
+		24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = "ExampleUnix-1/EKUnixSwiftExtensions.swift"; sourceTree = "<group>"; };
+		24CFC7EF1D18B4F60025C437 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = "ExampleUnix-1/EKVector2.swift"; sourceTree = "<group>"; };
+		24CFC7F01D18B4F60025C437 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = "ExampleUnix-1/EKVector3.swift"; sourceTree = "<group>"; };
+		24CFC7F11D18B4F60025C437 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = "ExampleUnix-1/EKVector4.swift"; sourceTree = "<group>"; };
 		24CFC8021D18B6BE0025C437 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 		24CFC8031D18B6BE0025C437 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 		24CFC8041D18CFD70025C437 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commands.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/Commands.swift"; sourceTree = "<group>"; };
@@ -206,22 +206,6 @@
 		2414B7521D074B8800CFFC2B /* ExampleUnix-1 */ = {
 			isa = PBXGroup;
 			children = (
-				24CFC7E21D18B4F60025C437 /* EKAddon.swift */,
-				24CFC7E31D18B4F60025C437 /* EKColor.swift */,
-				24CFC7E41D18B4F60025C437 /* EKEngine.swift */,
-				24CFC7E51D18B4F60025C437 /* EKEvent.swift */,
-				24CFC7E61D18B4F60025C437 /* EKFileManager.swift */,
-				24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */,
-				24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */,
-				24CFC7E91D18B4F60025C437 /* EKMatrix.swift */,
-				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
-				24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */,
-				24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */,
-				24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */,
-				24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */,
-				24CFC7EF1D18B4F60025C437 /* EKVector2.swift */,
-				24CFC7F01D18B4F60025C437 /* EKVector3.swift */,
-				24CFC7F11D18B4F60025C437 /* EKVector4.swift */,
 				24CFC8271D18D0DC0025C437 /* SGLImage */,
 				24CFC8201D18D03A0025C437 /* SGLMath */,
 				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
@@ -248,6 +232,22 @@
 		24B14F111D0750B700B38098 /* EngineKitSources */ = {
 			isa = PBXGroup;
 			children = (
+				24CFC7E21D18B4F60025C437 /* EKAddon.swift */,
+				24CFC7E31D18B4F60025C437 /* EKColor.swift */,
+				24CFC7E41D18B4F60025C437 /* EKEngine.swift */,
+				24CFC7E51D18B4F60025C437 /* EKEvent.swift */,
+				24CFC7E61D18B4F60025C437 /* EKFileManager.swift */,
+				24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */,
+				24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */,
+				24CFC7E91D18B4F60025C437 /* EKMatrix.swift */,
+				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
+				24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */,
+				24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */,
+				24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */,
+				24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */,
+				24CFC7EF1D18B4F60025C437 /* EKVector2.swift */,
+				24CFC7F01D18B4F60025C437 /* EKVector3.swift */,
+				24CFC7F11D18B4F60025C437 /* EKVector4.swift */,
 			);
 			name = EngineKitSources;
 			path = ..;
@@ -433,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib --chdir $SRCROOT/$PROJECT_NAME";
+			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -669,6 +669,7 @@
 				24CFC7DC1D18B0E40025C437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24CFC7DE1D18B2280025C437 /* Build configuration list for PBXAggregateTarget "ExampleUnix-1SPM" */ = {
 			isa = XCConfigurationList;
@@ -677,6 +678,7 @@
 				24CFC7E01D18B2280025C437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
