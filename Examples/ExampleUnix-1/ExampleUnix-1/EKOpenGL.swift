@@ -177,8 +177,9 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 	let vertexShaderID = glCreateShader(GL_VERTEX_SHADER)
 	let fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER)
 
-	let vertexShaderCode = String(contentsOfFileAtPath: vertexFilePath)!
-	let fragmentShaderCode = String(contentsOfFileAtPath: fragmentFilePath)!
+	let fileManager = OSFactory.createFileManager()
+	let vertexShaderCode = fileManager.getContentsFromFile(vertexFilePath)!
+	let fragmentShaderCode = fileManager.getContentsFromFile(fragmentFilePath)!
 
 	//	var result: GLint = GL_FALSE
 	//	var infoLogLength: GLint = 0

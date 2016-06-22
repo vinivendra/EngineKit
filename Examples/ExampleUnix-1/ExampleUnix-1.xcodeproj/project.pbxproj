@@ -66,7 +66,7 @@
 		24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = "ExampleUnix-1/EKOSFactory.swift"; sourceTree = "<group>"; };
 		24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftEngine.swift; path = "ExampleUnix-1/EKSwiftEngine.swift"; sourceTree = "<group>"; };
 		24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = "ExampleUnix-1/EKSwiftExtensions.swift"; sourceTree = "<group>"; };
-		24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = "ExampleUnix-1/EKUnixSwiftExtensions.swift"; sourceTree = "<group>"; };
+		24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
 		24CFC7EF1D18B4F60025C437 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = "ExampleUnix-1/EKVector2.swift"; sourceTree = "<group>"; };
 		24CFC7F01D18B4F60025C437 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = "ExampleUnix-1/EKVector3.swift"; sourceTree = "<group>"; };
 		24CFC7F11D18B4F60025C437 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = "ExampleUnix-1/EKVector4.swift"; sourceTree = "<group>"; };
@@ -108,6 +108,8 @@
 		24D2971A1D1B04250093E04D /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOpenGL.swift; sourceTree = "<group>"; };
 		24D2971F1D1B048C0093E04D /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKCBridging.swift; sourceTree = "<group>"; };
 		24D297211D1B04D50093E04D /* EKMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMath.swift; sourceTree = "<group>"; };
+		24D297221D1B05C80093E04D /* EKUnixFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUnixFileManager.swift; sourceTree = "<group>"; };
+		24D297241D1B06580093E04D /* EKUnixFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUnixFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -138,7 +140,10 @@
 				24D297211D1B04D50093E04D /* EKMath.swift */,
 				24D2971F1D1B048C0093E04D /* EKCBridging.swift */,
 				24D2971A1D1B04250093E04D /* EKOpenGL.swift */,
+				24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */,
 				24B14F121D0750DF00B38098 /* EKUnixDataClasses.swift */,
+				24D297221D1B05C80093E04D /* EKUnixFileManager.swift */,
+				24D297241D1B06580093E04D /* EKUnixFactory.swift */,
 				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
 				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
 			);
@@ -170,7 +175,6 @@
 				24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */,
 				24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */,
 				24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */,
-				24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */,
 				24CFC7EF1D18B4F60025C437 /* EKVector2.swift */,
 				24CFC7F01D18B4F60025C437 /* EKVector3.swift */,
 				24CFC7F11D18B4F60025C437 /* EKVector4.swift */,
