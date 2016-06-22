@@ -20,60 +20,6 @@
 		};
 /* End PBXAggregateTarget section */
 
-/* Begin PBXBuildFile section */
-		2414B7541D074B8800CFFC2B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414B7531D074B8800CFFC2B /* main.swift */; };
-		24B14F131D0750DF00B38098 /* EKLinuxDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */; };
-		24CFC7F21D18B4F60025C437 /* EKAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E21D18B4F60025C437 /* EKAddon.swift */; };
-		24CFC7F31D18B4F60025C437 /* EKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E31D18B4F60025C437 /* EKColor.swift */; };
-		24CFC7F41D18B4F60025C437 /* EKEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E41D18B4F60025C437 /* EKEngine.swift */; };
-		24CFC7F51D18B4F60025C437 /* EKEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E51D18B4F60025C437 /* EKEvent.swift */; };
-		24CFC7F61D18B4F60025C437 /* EKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E61D18B4F60025C437 /* EKFileManager.swift */; };
-		24CFC7F71D18B4F60025C437 /* EKLanguageEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */; };
-		24CFC7F81D18B4F60025C437 /* EKLinuxDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */; };
-		24CFC7F91D18B4F60025C437 /* EKMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7E91D18B4F60025C437 /* EKMatrix.swift */; };
-		24CFC7FA1D18B4F60025C437 /* EKOpenGLAddon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */; };
-		24CFC7FB1D18B4F60025C437 /* EKOSFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */; };
-		24CFC7FC1D18B4F60025C437 /* EKSwiftEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */; };
-		24CFC7FD1D18B4F60025C437 /* EKSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */; };
-		24CFC7FE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift */; };
-		24CFC7FF1D18B4F60025C437 /* EKVector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7EF1D18B4F60025C437 /* EKVector2.swift */; };
-		24CFC8001D18B4F60025C437 /* EKVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7F01D18B4F60025C437 /* EKVector3.swift */; };
-		24CFC8011D18B4F60025C437 /* EKVector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC7F11D18B4F60025C437 /* EKVector4.swift */; };
-		24CFC8281D18D2060025C437 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8211D18D0D40025C437 /* Image.swift */; };
-		24CFC8291D18D2060025C437 /* ImageBMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8221D18D0D40025C437 /* ImageBMP.swift */; };
-		24CFC82A1D18D2060025C437 /* ImageGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8231D18D0D40025C437 /* ImageGIF.swift */; };
-		24CFC82B1D18D2060025C437 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8241D18D0D40025C437 /* ImageLoader.swift */; };
-		24CFC82C1D18D2060025C437 /* ImagePNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8251D18D0D40025C437 /* ImagePNG.swift */; };
-		24CFC82D1D18D2060025C437 /* Inflate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8261D18D0D40025C437 /* Inflate.swift */; };
-		24CFC82E1D18D2060025C437 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8091D18D00A0025C437 /* Complex.swift */; };
-		24CFC82F1D18D2060025C437 /* glm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80A1D18D00A0025C437 /* glm.swift */; };
-		24CFC8301D18D2060025C437 /* glsl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80B1D18D00A0025C437 /* glsl.swift */; };
-		24CFC8311D18D2060025C437 /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80C1D18D00A0025C437 /* Internal.swift */; };
-		24CFC8321D18D2060025C437 /* Matrix2x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80D1D18D00A0025C437 /* Matrix2x2.swift */; };
-		24CFC8331D18D2060025C437 /* Matrix2x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80E1D18D00A0025C437 /* Matrix2x3.swift */; };
-		24CFC8341D18D2060025C437 /* Matrix2x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC80F1D18D00A0025C437 /* Matrix2x4.swift */; };
-		24CFC8351D18D2060025C437 /* Matrix3x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8101D18D00A0025C437 /* Matrix3x2.swift */; };
-		24CFC8361D18D2060025C437 /* Matrix3x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8111D18D00A0025C437 /* Matrix3x3.swift */; };
-		24CFC8371D18D2060025C437 /* Matrix3x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8121D18D00A0025C437 /* Matrix3x4.swift */; };
-		24CFC8381D18D2060025C437 /* Matrix4x2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8131D18D00A0025C437 /* Matrix4x2.swift */; };
-		24CFC8391D18D2060025C437 /* Matrix4x3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8141D18D00A0025C437 /* Matrix4x3.swift */; };
-		24CFC83A1D18D2060025C437 /* Matrix4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8151D18D00A0025C437 /* Matrix4x4.swift */; };
-		24CFC83B1D18D2060025C437 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8161D18D00A0025C437 /* Operators.swift */; };
-		24CFC83C1D18D2060025C437 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8171D18D00A0025C437 /* Protocols.swift */; };
-		24CFC83D1D18D2060025C437 /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8181D18D00A0025C437 /* Quaternion.swift */; };
-		24CFC83E1D18D2060025C437 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8191D18D00A0025C437 /* Swizzle.swift */; };
-		24CFC83F1D18D2060025C437 /* Vector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81A1D18D00A0025C437 /* Vector2.swift */; };
-		24CFC8401D18D2060025C437 /* Vector2b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81B1D18D00A0025C437 /* Vector2b.swift */; };
-		24CFC8411D18D2060025C437 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81C1D18D00A0025C437 /* Vector3.swift */; };
-		24CFC8421D18D2060025C437 /* Vector3b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81D1D18D00A0025C437 /* Vector3b.swift */; };
-		24CFC8431D18D2060025C437 /* Vector4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81E1D18D00A0025C437 /* Vector4.swift */; };
-		24CFC8441D18D2060025C437 /* Vector4b.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC81F1D18D00A0025C437 /* Vector4b.swift */; };
-		24CFC8451D18D2060025C437 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8041D18CFD70025C437 /* Commands.swift */; };
-		24CFC8461D18D2060025C437 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8051D18CFD70025C437 /* Constants.swift */; };
-		24CFC8471D18D2060025C437 /* Loaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8061D18CFD70025C437 /* Loaders.swift */; };
-		24CFC8481D18D2060025C437 /* SwiftGL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CFC8071D18CFD70025C437 /* SwiftGL.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		2414B7661D074BCB00CFFC2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -105,30 +51,16 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2414B74E1D074B8800CFFC2B /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		2414B7501D074B8800CFFC2B /* ExampleUnix-1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ExampleUnix-1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414B7531D074B8800CFFC2B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2414B75F1D074BCB00CFFC2B /* EngineKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EngineKit.xcodeproj; path = "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleOSX-1/../../EngineKit/EngineKit.xcodeproj"; sourceTree = "<absolute>"; };
-		24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKLinuxDataClasses.swift; sourceTree = "<group>"; };
+		24B14F121D0750DF00B38098 /* EKUnixDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKUnixDataClasses.swift; sourceTree = "<group>"; };
 		24CFC7E21D18B4F60025C437 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = "ExampleUnix-1/EKAddon.swift"; sourceTree = "<group>"; };
 		24CFC7E31D18B4F60025C437 /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKColor.swift; path = "ExampleUnix-1/EKColor.swift"; sourceTree = "<group>"; };
 		24CFC7E41D18B4F60025C437 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEngine.swift; path = "ExampleUnix-1/EKEngine.swift"; sourceTree = "<group>"; };
 		24CFC7E51D18B4F60025C437 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEvent.swift; path = "ExampleUnix-1/EKEvent.swift"; sourceTree = "<group>"; };
 		24CFC7E61D18B4F60025C437 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = "ExampleUnix-1/EKFileManager.swift"; sourceTree = "<group>"; };
 		24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLanguageEngine.swift; path = "ExampleUnix-1/EKLanguageEngine.swift"; sourceTree = "<group>"; };
-		24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLinuxDataClasses.swift; path = "ExampleUnix-1/EKLinuxDataClasses.swift"; sourceTree = "<group>"; };
 		24CFC7E91D18B4F60025C437 /* EKMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMatrix.swift; path = "ExampleUnix-1/EKMatrix.swift"; sourceTree = "<group>"; };
 		24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = "ExampleUnix-1/EKOpenGLAddon.swift"; sourceTree = "<group>"; };
 		24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = "ExampleUnix-1/EKOSFactory.swift"; sourceTree = "<group>"; };
@@ -173,17 +105,10 @@
 		24CFC8241D18D0D40025C437 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageLoader.swift"; sourceTree = "<group>"; };
 		24CFC8251D18D0D40025C437 /* ImagePNG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePNG.swift; path = "Packages/SGLImage-1.0.1/Sources/ImagePNG.swift"; sourceTree = "<group>"; };
 		24CFC8261D18D0D40025C437 /* Inflate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Inflate.swift; path = "Packages/SGLImage-1.0.1/Sources/Inflate.swift"; sourceTree = "<group>"; };
+		24D2971A1D1B04250093E04D /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOpenGL.swift; sourceTree = "<group>"; };
+		24D2971F1D1B048C0093E04D /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKCBridging.swift; sourceTree = "<group>"; };
+		24D297211D1B04D50093E04D /* EKMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		2414B74D1D074B8800CFFC2B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2414B7471D074B8800CFFC2B = {
@@ -198,7 +123,6 @@
 		2414B7511D074B8800CFFC2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2414B7501D074B8800CFFC2B /* ExampleUnix-1 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,7 +135,10 @@
 				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
 				24B14F111D0750B700B38098 /* EngineKitSources */,
 				2414B7531D074B8800CFFC2B /* main.swift */,
-				24B14F121D0750DF00B38098 /* EKLinuxDataClasses.swift */,
+				24D297211D1B04D50093E04D /* EKMath.swift */,
+				24D2971F1D1B048C0093E04D /* EKCBridging.swift */,
+				24D2971A1D1B04250093E04D /* EKOpenGL.swift */,
+				24B14F121D0750DF00B38098 /* EKUnixDataClasses.swift */,
 				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
 				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
 			);
@@ -238,7 +165,6 @@
 				24CFC7E51D18B4F60025C437 /* EKEvent.swift */,
 				24CFC7E61D18B4F60025C437 /* EKFileManager.swift */,
 				24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */,
-				24CFC7E81D18B4F60025C437 /* EKLinuxDataClasses.swift */,
 				24CFC7E91D18B4F60025C437 /* EKMatrix.swift */,
 				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
 				24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */,
@@ -309,43 +235,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		24CFC7D91D18B0E40025C437 /* ExampleUnix-1-SPM */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 24CFC7DA1D18B0E40025C437 /* Build configuration list for PBXLegacyTarget "ExampleUnix-1-SPM" */;
-			buildPhases = (
-			);
-			buildToolPath = "/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift";
-			buildWorkingDirectory = "/Users/vini/Documents/Projects/EngineKit/Examples/ExampleUnix-1/ExampleUnix-1";
-			dependencies = (
-			);
-			name = "ExampleUnix-1-SPM";
-			passBuildSettingsInEnvironment = 1;
-			productName = "ExampleUnix-1-SPM";
-		};
-/* End PBXLegacyTarget section */
-
-/* Begin PBXNativeTarget section */
-		2414B74F1D074B8800CFFC2B /* ExampleUnix-1 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2414B7571D074B8800CFFC2B /* Build configuration list for PBXNativeTarget "ExampleUnix-1" */;
-			buildPhases = (
-				2414B74C1D074B8800CFFC2B /* Sources */,
-				2414B74D1D074B8800CFFC2B /* Frameworks */,
-				2414B74E1D074B8800CFFC2B /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ExampleUnix-1";
-			productName = "ExampleUnix-1";
-			productReference = 2414B7501D074B8800CFFC2B /* ExampleUnix-1 */;
-			productType = "com.apple.product-type.tool";
-		};
-/* End PBXNativeTarget section */
-
 /* Begin PBXProject section */
 		2414B7481D074B8800CFFC2B /* Project object */ = {
 			isa = PBXProject;
@@ -354,12 +243,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Vinicius Vendramini";
 				TargetAttributes = {
-					2414B74F1D074B8800CFFC2B = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
-					24CFC7D91D18B0E40025C437 = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
 					24CFC7DD1D18B2280025C437 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -383,8 +266,6 @@
 			);
 			projectRoot = "";
 			targets = (
-				2414B74F1D074B8800CFFC2B /* ExampleUnix-1 */,
-				24CFC7D91D18B0E40025C437 /* ExampleUnix-1-SPM */,
 				24CFC7DD1D18B2280025C437 /* ExampleUnix-1SPM */,
 			);
 		};
@@ -436,67 +317,6 @@
 			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
 		};
 /* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		2414B74C1D074B8800CFFC2B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				24CFC8321D18D2060025C437 /* Matrix2x2.swift in Sources */,
-				24CFC82F1D18D2060025C437 /* glm.swift in Sources */,
-				24CFC8001D18B4F60025C437 /* EKVector3.swift in Sources */,
-				24CFC8421D18D2060025C437 /* Vector3b.swift in Sources */,
-				24CFC7F61D18B4F60025C437 /* EKFileManager.swift in Sources */,
-				24CFC82A1D18D2060025C437 /* ImageGIF.swift in Sources */,
-				24CFC82D1D18D2060025C437 /* Inflate.swift in Sources */,
-				24CFC7F51D18B4F60025C437 /* EKEvent.swift in Sources */,
-				24CFC82C1D18D2060025C437 /* ImagePNG.swift in Sources */,
-				24CFC8361D18D2060025C437 /* Matrix3x3.swift in Sources */,
-				24CFC83C1D18D2060025C437 /* Protocols.swift in Sources */,
-				24CFC8011D18B4F60025C437 /* EKVector4.swift in Sources */,
-				24CFC83E1D18D2060025C437 /* Swizzle.swift in Sources */,
-				24CFC8391D18D2060025C437 /* Matrix4x3.swift in Sources */,
-				24CFC7FE1D18B4F60025C437 /* EKUnixSwiftExtensions.swift in Sources */,
-				24CFC7FB1D18B4F60025C437 /* EKOSFactory.swift in Sources */,
-				24CFC7F81D18B4F60025C437 /* EKLinuxDataClasses.swift in Sources */,
-				24CFC8331D18D2060025C437 /* Matrix2x3.swift in Sources */,
-				24CFC83A1D18D2060025C437 /* Matrix4x4.swift in Sources */,
-				24CFC7F21D18B4F60025C437 /* EKAddon.swift in Sources */,
-				24CFC7F71D18B4F60025C437 /* EKLanguageEngine.swift in Sources */,
-				24CFC7FC1D18B4F60025C437 /* EKSwiftEngine.swift in Sources */,
-				24B14F131D0750DF00B38098 /* EKLinuxDataClasses.swift in Sources */,
-				24CFC8411D18D2060025C437 /* Vector3.swift in Sources */,
-				24CFC8371D18D2060025C437 /* Matrix3x4.swift in Sources */,
-				24CFC7FA1D18B4F60025C437 /* EKOpenGLAddon.swift in Sources */,
-				24CFC7FD1D18B4F60025C437 /* EKSwiftExtensions.swift in Sources */,
-				24CFC8341D18D2060025C437 /* Matrix2x4.swift in Sources */,
-				24CFC83D1D18D2060025C437 /* Quaternion.swift in Sources */,
-				24CFC8281D18D2060025C437 /* Image.swift in Sources */,
-				24CFC83B1D18D2060025C437 /* Operators.swift in Sources */,
-				24CFC8311D18D2060025C437 /* Internal.swift in Sources */,
-				24CFC7F41D18B4F60025C437 /* EKEngine.swift in Sources */,
-				24CFC8401D18D2060025C437 /* Vector2b.swift in Sources */,
-				24CFC82B1D18D2060025C437 /* ImageLoader.swift in Sources */,
-				24CFC8381D18D2060025C437 /* Matrix4x2.swift in Sources */,
-				24CFC8291D18D2060025C437 /* ImageBMP.swift in Sources */,
-				24CFC8431D18D2060025C437 /* Vector4.swift in Sources */,
-				24CFC8471D18D2060025C437 /* Loaders.swift in Sources */,
-				24CFC8301D18D2060025C437 /* glsl.swift in Sources */,
-				24CFC8481D18D2060025C437 /* SwiftGL.swift in Sources */,
-				2414B7541D074B8800CFFC2B /* main.swift in Sources */,
-				24CFC7F91D18B4F60025C437 /* EKMatrix.swift in Sources */,
-				24CFC83F1D18D2060025C437 /* Vector2.swift in Sources */,
-				24CFC8441D18D2060025C437 /* Vector4b.swift in Sources */,
-				24CFC8451D18D2060025C437 /* Commands.swift in Sources */,
-				24CFC8351D18D2060025C437 /* Matrix3x2.swift in Sources */,
-				24CFC7F31D18B4F60025C437 /* EKColor.swift in Sources */,
-				24CFC8461D18D2060025C437 /* Constants.swift in Sources */,
-				24CFC82E1D18D2060025C437 /* Complex.swift in Sources */,
-				24CFC7FF1D18B4F60025C437 /* EKVector2.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		2414B7551D074B8800CFFC2B /* Debug */ = {
@@ -581,47 +401,6 @@
 			};
 			name = Release;
 		};
-		2414B7581D074B8800CFFC2B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INCLUDE_PATHS = "";
-			};
-			name = Debug;
-		};
-		2414B7591D074B8800CFFC2B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INCLUDE_PATHS = "";
-			};
-			name = Release;
-		};
-		24CFC7DB1D18B0E40025C437 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		24CFC7DC1D18B0E40025C437 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		24CFC7DF1D18B2280025C437 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -649,24 +428,6 @@
 			buildConfigurations = (
 				2414B7551D074B8800CFFC2B /* Debug */,
 				2414B7561D074B8800CFFC2B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2414B7571D074B8800CFFC2B /* Build configuration list for PBXNativeTarget "ExampleUnix-1" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2414B7581D074B8800CFFC2B /* Debug */,
-				2414B7591D074B8800CFFC2B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		24CFC7DA1D18B0E40025C437 /* Build configuration list for PBXLegacyTarget "ExampleUnix-1-SPM" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				24CFC7DB1D18B0E40025C437 /* Debug */,
-				24CFC7DC1D18B0E40025C437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
