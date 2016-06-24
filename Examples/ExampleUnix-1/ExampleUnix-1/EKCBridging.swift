@@ -12,6 +12,13 @@ class CString {
 		}
 	}
 
+	init(emptyStringWithlength length: Int) {
+		_len = length + 1
+		buffer = UnsafeMutablePointer<Int8>.alloc(_len)
+		buffer[0] = 0
+		buffer[length] = 0
+	}
+
 	deinit {
 		buffer.dealloc(_len)
 	}

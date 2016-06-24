@@ -1,20 +1,33 @@
 import SGLOpenGL
 
 var EKGLMVPMatrixID: GLint! = nil
+var EKGLColorID: GLint! = nil
 var EKGLProjectionViewMatrix = EKMatrix.identity
 
 protocol EKGLObject {
 	static var geometryWasInitialized: Bool { get set }
-	var modelMatrix: EKMatrix { get set }
+
+	var color: EKColorType { get set }
+
+	var position: EKVector3 { get set }
+	var scale: EKVector3 { get set }
+	var rotation: EKVector4 { get set }
 
 	static var vertexBuffer: [GLfloat]! { get }
 
 	static var numberOfVertices: GLsizei! { get set }
 	static var vertexBufferID: GLuint! { get set }
-	static var colorBufferID: GLuint! { get set }
 }
 
 extension EKGLObject {
+	var modelMatrix: EKMatrix {
+		get {
+			return position.translationToMatrix() *
+				   scale.scaleToMatrix() *
+				   rotation.rotationToMatrix()
+		}
+	}
+
 	static func initializeGeometry() {
 		if !Self.geometryWasInitialized {
 			Self.geometryWasInitialized = true
@@ -35,15 +48,6 @@ extension EKGLObject {
 			             data: vertexBuffer,
 			             usage: GL_DYNAMIC_DRAW)
 
-			var colorID: GLuint = 0
-			glGenBuffers(n: 1, buffers: &colorID)
-			glBindBuffer(target: GL_ARRAY_BUFFER, buffer: colorID)
-			glBufferData(target: GL_ARRAY_BUFFER,
-			             size: sizeof([GLfloat]) * colorsBuffer.count,
-			             data: colorsBuffer,
-			             usage: GL_DYNAMIC_DRAW)
-
-			Self.colorBufferID = colorID
 			Self.vertexBufferID = vertexID
 		}
 	}
@@ -69,16 +73,6 @@ extension EKGLObject {
 			stride: 0,
 			pointer: nil) // offset
 
-		glEnableVertexAttribArray(1)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: Self.colorBufferID)
-		glVertexAttribPointer(
-			index: 1, // Matching shader
-			size: 3,
-			type: GL_FLOAT,
-			normalized: false,
-			stride: 0,
-			pointer: nil) // offset
-
 		//
 		let mvp = projectionViewMatrix * modelMatrix
 
@@ -89,23 +83,31 @@ extension EKGLObject {
 			                   value: $0)
 		}
 
+		color.withGLFloatArray {
+			glUniform3fv(location: EKGLColorID,
+						 count: 1,
+						 value: $0)
+		}
+
 		//
 		glDrawArrays(mode: GL_TRIANGLES,
 		             first: 0,
 		             count: Self.numberOfVertices)
 		glDisableVertexAttribArray(0)
-		glDisableVertexAttribArray(1)
 	}
 }
 
 class EKGLCube: EKGLObject {
-	static var geometryWasInitialized = false
+	var position = EKVector3.origin()
+	var scale = EKVector3(x: 1, y: 1, z: 1)
+	var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0)
 
-	var modelMatrix = EKMatrix.identity
+	var color = EKVector4.whiteColor()
+
+	static var geometryWasInitialized = false
 
 	static var numberOfVertices: GLsizei! = nil
 	static var vertexBufferID: GLuint! = nil
-	static var colorBufferID: GLuint! = nil
 
 	static var vertexBuffer: [GLfloat]! {
 		get {
@@ -171,6 +173,22 @@ extension EKMatrix {
 	}
 }
 
+extension EKColorType {
+	public func withGLFloatArray<ReturnType>(
+		closure: (UnsafePointer<GLfloat>) -> ReturnType) -> ReturnType {
+
+		let components = self.components
+
+		let array: [GLfloat] =
+			[GLfloat(components.red),
+			 GLfloat(components.green),
+			 GLfloat(components.blue)]
+		return array.withUnsafeBufferPointer {
+			return closure($0.baseAddress)
+		}
+	}
+}
+
 //
 func loadShaders(vertexFilePath vertexFilePath: String,
                  fragmentFilePath: String) -> GLuint {
@@ -181,8 +199,8 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 	let vertexShaderCode = fileManager.getContentsFromFile(vertexFilePath)!
 	let fragmentShaderCode = fileManager.getContentsFromFile(fragmentFilePath)!
 
-	//	var result: GLint = GL_FALSE
-	//	var infoLogLength: GLint = 0
+		var result: GLint = GL_FALSE
+		var infoLogLength: GLint = 0
 
 	print("Compiling shader: \(vertexFilePath)")
 	vertexShaderCode.withCStringPointer {
@@ -194,6 +212,16 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 
 	glCompileShader(vertexShaderID)
 
+	//
+	glGetShaderiv(vertexShaderID, GL_COMPILE_STATUS, &result)
+	glGetShaderiv(vertexShaderID, GL_INFO_LOG_LENGTH, &infoLogLength)
+	if infoLogLength > 0 {
+		let string = CString(emptyStringWithlength: Int(infoLogLength))
+		glGetShaderInfoLog(vertexShaderID, infoLogLength, nil, string.buffer)
+		print(String.fromCString(string.buffer))
+	}
+
+	//
 	print("Compiling shader: \(fragmentFilePath)")
 	let fragmentShaderCString = CString(fragmentShaderCode)
 	withUnsafePointer(&(fragmentShaderCString.buffer)) {
@@ -207,12 +235,32 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 
 	glCompileShader(fragmentShaderID)
 
+	//
+	glGetShaderiv(fragmentShaderID, GL_COMPILE_STATUS, &result)
+	glGetShaderiv(fragmentShaderID, GL_INFO_LOG_LENGTH, &infoLogLength)
+	if infoLogLength > 0 {
+		let string = CString(emptyStringWithlength: Int(infoLogLength))
+		glGetShaderInfoLog(fragmentShaderID, infoLogLength, nil, string.buffer)
+		print(String.fromCString(string.buffer))
+	}
+
+	//
 	print("Linking program")
 	let programID = glCreateProgram()
 	glAttachShader(programID, vertexShaderID)
 	glAttachShader(programID, fragmentShaderID)
 	glLinkProgram(programID)
 
+	//
+	glGetShaderiv(programID, GL_LINK_STATUS, &result)
+	glGetShaderiv(programID, GL_INFO_LOG_LENGTH, &infoLogLength)
+	if infoLogLength > 0 {
+		let string = CString(emptyStringWithlength: Int(infoLogLength))
+		glGetShaderInfoLog(programID, infoLogLength, nil, string.buffer)
+		print(String.fromCString(string.buffer))
+	}
+
+	//
 	glDetachShader(programID, vertexShaderID)
 	glDetachShader(programID, fragmentShaderID)
 

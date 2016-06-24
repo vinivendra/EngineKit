@@ -80,12 +80,20 @@ extension EKMatrix {
 }
 
 extension EKMatrix {
+	public static func createScale(vector: EKVector3) -> EKMatrix {
+		return createScale(x: vector.x, y: vector.y, z: vector.z)
+	}
+
 	public static func createScale(x x: Double, y: Double, z: Double)
 		-> EKMatrix {
 			return EKMatrix.createMatrix(m11: x, m12: 0, m13: 0, m14: 0,
 			                             m21: 0, m22: y, m23: 0, m24: 0,
 			                             m31: 0, m32: 0, m33: z, m34: 0,
 			                             m41: 0, m42: 0, m43: 0, m44: 1)
+	}
+
+	public static func createTranslation(vector: EKVector3) -> EKMatrix {
+		return createTranslation(x: vector.x, y: vector.y, z: vector.z)
 	}
 
 	public static func createTranslation(x x: Double, y: Double, z: Double)

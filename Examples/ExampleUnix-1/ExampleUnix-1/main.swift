@@ -49,14 +49,23 @@ class MyEngine: EKSwiftEngine {
 
 		//
 		let matrixID = glGetUniformLocation(program: programID, name: "MVP")
+		let colorID = glGetUniformLocation(program: programID, name: "color")
 
 		//
 		EKGLMVPMatrixID = matrixID
+		EKGLColorID = colorID
 
 		let object = EKGLCube()
 		let object2 = EKGLCube()
-		object.modelMatrix = EKMatrix.createTranslation(x: 0, y: 0, z: -1)
-		object2.modelMatrix = EKMatrix.createTranslation(x: 0, y: 0, z: 1)
+		object.position = EKVector3(x: 0, y: 0, z: -1)
+		object2.position = EKVector3(x: 0, y: 0, z: 1)
+
+		object.rotation = EKVector4(x: 0, y: 0, z: 1, w: 0.3)
+		object2.scale = EKVector3(x: 0.5, y: 0.5, z: 0.5)
+		object2.rotation = EKVector4(x: 0, y: 0, z: 1, w: -0.3)
+
+		object.color = EKVector4.purpleColor()
+		object2.color = EKVector4.orangeColor()
 
 		//
 		let projection = EKMatrix.createPerspective(

@@ -164,6 +164,10 @@ extension EKVector4 {
 }
 
 extension EKVector4 {
+	public func toEKVector3() -> EKVector3 {
+		return EKVector3(x: x, y: y, z: z)
+	}
+
 	public func rotationToQuaternion() -> EKVector4 {
 		let halfAngle = w / 2
 		let cosine = cos(halfAngle)
@@ -198,10 +202,11 @@ extension EKVector4 {
 	public func rotate(vector: AnyObject) -> EKVector3 {
 		let v = EKVector3.createVector(object: vector)
 		let q = self.rotationToQuaternion()
-		let p = EKVector4(x: q.w * v.x + q.y * v.z - q.z * v.y,
-		                  y: q.w * v.y - q.x * v.z + q.z * v.x,
-		                  z: q.w * v.z + q.x * v.y - q.y * v.x,
-		                  w: -q.x * v.x - q.y * v.y - q.z * v.z)
+		let p = EKVector4(
+			x: q.w * v.x + q.y * v.z - q.z * v.y,
+			y: q.w * v.y - q.x * v.z + q.z * v.x,
+			z: q.w * v.z + q.x * v.y - q.y * v.x,
+			w: -q.x * v.x - q.y * v.y - q.z * v.z)
 		let o = q.opposite()
 		let result = EKVector3(
 			x: p.w * o.x + p.x * o.w + p.y * o.z - p.z * o.y,
@@ -215,10 +220,7 @@ extension EKVector4 {
 	}
 
 	public func translationToMatrix() -> EKMatrix {
-		return EKMatrix(m11: 1, m12: 0, m13: 0, m14: 0,
-		                m21: 0, m22: 1, m23: 0, m24: 0,
-		                m31: 0, m32: 0, m33: 1, m34: 0,
-		                m41: x, m42: y, m43: z, m44: 1)
+		return EKMatrix.createTranslation(self.toEKVector3())
 	}
 
 	func multiplyAsQuaternion(vector vector: EKVector3) -> EKVector4 {
