@@ -4,6 +4,8 @@ var EKGLMVPMatrixID: GLint! = nil
 var EKGLColorID: GLint! = nil
 var EKGLProjectionViewMatrix = EKMatrix.identity
 
+var EKGLObjects: [EKGLObject] = []
+
 protocol EKGLObject {
 	static var geometryWasInitialized: Bool { get set }
 
@@ -28,15 +30,11 @@ extension EKGLObject {
 		}
 	}
 
-	static func initializeGeometry() {
+	func commonInit() {
 		if !Self.geometryWasInitialized {
 			Self.geometryWasInitialized = true
 
 			let vertexBuffer = Self.vertexBuffer
-
-			let colorsBuffer = vertexBuffer.map {
-				return ($0 + 1) / 2
-			}
 
 			Self.numberOfVertices = GLsizei(vertexBuffer.count) / 3
 
@@ -50,11 +48,8 @@ extension EKGLObject {
 
 			Self.vertexBufferID = vertexID
 		}
-	}
 
-	init() {
-		Self.initializeGeometry()
-		self.init()
+		EKGLObjects.append(self)
 	}
 
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
@@ -107,8 +102,6 @@ class EKGLCamera {
 			let oldCenter = EKVector3(x: 0, y: 0, z: -1)
 			let center = rotation.rotate(oldCenter).plus(position)
 			let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-			print(center.debugDescription)
-			print(up.debugDescription)
 			return EKMatrix.createLookAt(eye: position, center: center, up: up)
 		}
 	}
@@ -170,7 +163,7 @@ class EKGLCube: EKGLObject {
 	}
 
 	init() {
-		EKGLCube.initializeGeometry()
+		self.commonInit()
 	}
 }
 

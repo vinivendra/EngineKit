@@ -84,8 +84,9 @@ class MyEngine: EKSwiftEngine {
 		repeat {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-			object.draw()
-			object2.draw()
+			for object in EKGLObjects {
+				object.draw()
+			}
 
 			glfwSwapBuffers(window)
 			glfwPollEvents()
