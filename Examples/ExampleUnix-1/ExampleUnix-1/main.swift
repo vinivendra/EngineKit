@@ -74,10 +74,9 @@ class MyEngine: EKSwiftEngine {
 			zNear: 0.1,
 			zFar: 100)
 
-		let view = EKMatrix.createLookAt(
-			eye: EKVector3(x: 4, y: 3, z: 3),
-			center: EKVector3(x: 0, y: 0, z: 0),
-			up: EKVector3(x: 0, y: 1, z: 0))
+		EKGLCamera.position = EKVector3(x: 0, y: 0, z: 10)
+		EKGLCamera.rotation = EKVector4(x: 1, y: 1, z: 1, w: 0.1)
+		let view = EKGLCamera.viewMatrix
 
 		EKGLProjectionViewMatrix = projection * view
 

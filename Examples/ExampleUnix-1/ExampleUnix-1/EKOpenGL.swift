@@ -97,6 +97,23 @@ extension EKGLObject {
 	}
 }
 
+class EKGLCamera {
+	static var position = EKVector3.origin()
+	static var scale = EKVector3(x: 1, y: 1, z: 1)
+	static var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0)
+
+	static var viewMatrix: EKMatrix {
+		get {
+			let oldCenter = EKVector3(x: 0, y: 0, z: -1)
+			let center = rotation.rotate(oldCenter).plus(position)
+			let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
+			print(center.debugDescription)
+			print(up.debugDescription)
+			return EKMatrix.createLookAt(eye: position, center: center, up: up)
+		}
+	}
+}
+
 class EKGLCube: EKGLObject {
 	var position = EKVector3.origin()
 	var scale = EKVector3(x: 1, y: 1, z: 1)
