@@ -8,12 +8,19 @@ let width: GLfloat = 800
 let height: GLfloat = 600
 
 class MyEngine: EKSwiftEngine {
-	override func runProgram() {
+	let projection = EKMatrix.createPerspective(
+		fieldOfViewY: EKToRadians(45),
+		aspect: Double(width / height),
+		zNear: 0.1,
+		zFar: 100)
+
+	var window: COpaquePointer! = nil
+
+	func setupOpenGL() {
 		if glfwInit() == 0 {
 			print("Error: glfwInit")
 			return
 		}
-		defer { glfwTerminate() }
 
 		// Set all the required options for GLFW
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3)
@@ -22,12 +29,12 @@ class MyEngine: EKSwiftEngine {
 		glfwWindowHint(GLFW_RESIZABLE, GL_FALSE)
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE)
 
-		let window = glfwCreateWindow(1024, 768, "Tutorial 01", nil, nil)
+		window = glfwCreateWindow(1024, 768, "Tutorial 01", nil, nil)
 		if window == nil {
 			print("Error: glfwCreateWindow")
+			glfwTerminate()
 			return
 		}
-		defer { glfwDestroyWindow(window) }
 
 		glfwMakeContextCurrent(window)
 
@@ -51,10 +58,36 @@ class MyEngine: EKSwiftEngine {
 		let matrixID = glGetUniformLocation(program: programID, name: "MVP")
 		let colorID = glGetUniformLocation(program: programID, name: "color")
 
-		//
 		EKGLMVPMatrixID = matrixID
 		EKGLColorID = colorID
+	}
 
+	func loopOpenGL(){
+		repeat {
+			EKGLProjectionViewMatrix = projection * EKGLCamera.viewMatrix
+
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+			for object in EKGLObjects {
+				object.draw()
+			}
+
+			glfwSwapBuffers(window)
+			glfwPollEvents()
+		} while glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
+			glfwWindowShouldClose(window) == 0
+
+		glfwTerminate()
+		glfwDestroyWindow(window)
+	}
+
+	override func runProgram() {
+		setupOpenGL()
+		main()
+		loopOpenGL()
+	}
+
+	func main() {
 		let object = EKGLCube()
 		let object2 = EKGLCube()
 		object.position = EKVector3(x: 0, y: 0, z: -1)
@@ -67,31 +100,8 @@ class MyEngine: EKSwiftEngine {
 		object.color = EKVector4.purpleColor()
 		object2.color = EKVector4.orangeColor()
 
-		//
-		let projection = EKMatrix.createPerspective(
-			fieldOfViewY: EKToRadians(45),
-			aspect: Double(width / height),
-			zNear: 0.1,
-			zFar: 100)
-
 		EKGLCamera.position = EKVector3(x: 0, y: 0, z: 10)
 		EKGLCamera.rotation = EKVector4(x: 1, y: 1, z: 1, w: 0.1)
-		let view = EKGLCamera.viewMatrix
-
-		EKGLProjectionViewMatrix = projection * view
-
-		/////////////////////
-		repeat {
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-			for object in EKGLObjects {
-				object.draw()
-			}
-
-			glfwSwapBuffers(window)
-			glfwPollEvents()
-		} while glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
-			glfwWindowShouldClose(window) == 0
 	}
 }
 
