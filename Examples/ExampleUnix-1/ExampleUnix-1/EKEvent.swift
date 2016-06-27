@@ -2,6 +2,14 @@ public protocol EKAction {
 	func callWithArgument(argument: Any?) throws -> Any?
 }
 
+public struct EKFunctionVoidAction<ReturnType>: EKAction {
+	let closure: () -> (ReturnType)
+
+	public func callWithArgument(argument: Any?) throws -> Any? {
+		return closure()
+	}
+}
+
 public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
 	let closure: (ArgumentType) -> (ReturnType)
 

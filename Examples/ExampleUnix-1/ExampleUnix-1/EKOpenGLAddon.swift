@@ -67,7 +67,11 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	}
 
 	func loopOpenGL(){
+		var oldTime = glfwGetTime()
 		repeat {
+			let newTime = glfwGetTime()
+			let deltaTime = newTime - oldTime
+			EKTimer.updateTimers(deltaTime: deltaTime)
 			inputHandler?.update()
 
 			EKGLProjectionViewMatrix = projection * EKGLCamera.viewMatrix
@@ -80,6 +84,8 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 			glfwSwapBuffers(window)
 			glfwPollEvents()
+
+			oldTime = newTime
 		} while glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 			glfwWindowShouldClose(window) == 0
 

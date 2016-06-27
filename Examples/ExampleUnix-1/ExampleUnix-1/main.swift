@@ -1,5 +1,4 @@
 class MyEngine: EKSwiftEngine {
-
 	var openGL: EKOpenGLAddon! = nil
 
 	override func runProgram() {
