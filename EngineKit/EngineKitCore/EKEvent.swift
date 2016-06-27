@@ -148,9 +148,9 @@ public enum EKEventInputState: String, RawRepresentable, EKLanguageCompatible {
 
 public class EKEventScreenInput: EKEvent {
 	public let touches: Int
-	public let position: EKVector2Type
+	public let position: EKVector2
 
-	public init(position: EKVector2Type, touches: Int) {
+	public init(position: EKVector2, touches: Int) {
 		self.position = position
 		self.touches = touches
 	}
@@ -164,7 +164,7 @@ public class EKEventScreenInputContinuous: EKEventScreenInput {
 
 	public let state: EKEventInputState
 
-	public init(position: EKVector2Type,
+	public init(position: EKVector2,
 	            touches: Int,
 	            state: EKEventInputState) {
 		self.state = state
@@ -186,11 +186,11 @@ public class EKEventPan: EKEventScreenInputContinuous {
 		                                              state: state)
 	}
 
-	public let displacement: EKVector2Type
+	public let displacement: EKVector2
 
-	public init(position: EKVector2Type,
+	public init(position: EKVector2,
 	            touches: Int,
-	            displacement: EKVector2Type,
+	            displacement: EKVector2,
 	            state: EKEventInputState) {
 		self.displacement = displacement
 		super.init(position: position, touches: touches, state: state)
@@ -206,7 +206,7 @@ public class EKEventPinch: EKEventScreenInputContinuous {
 
 	public let scale: Double
 
-	public init(position: EKVector2Type,
+	public init(position: EKVector2,
 	            touches: Int,
 	            scale: Double,
 	            state: EKEventInputState) {
@@ -224,7 +224,7 @@ public class EKEventRotation: EKEventScreenInputContinuous {
 
 	public let angle: Double
 
-	public init(position: EKVector2Type,
+	public init(position: EKVector2,
 	            touches: Int,
 	            angle: Double,
 	            state: EKEventInputState) {
@@ -240,11 +240,11 @@ public class EKEventLongPress: EKEventScreenInputContinuous {
 		                                              state: state)
 	}
 
-	public let displacement: EKVector2Type
+	public let displacement: EKVector2
 
-	public init(position: EKVector2Type,
+	public init(position: EKVector2,
 	            touches: Int,
-	            displacement: EKVector2Type,
+	            displacement: EKVector2,
 	            state: EKEventInputState) {
 		self.displacement = displacement
 		super.init(position: position, touches: touches, state: state)

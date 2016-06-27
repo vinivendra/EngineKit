@@ -4,6 +4,9 @@ public final class EKUnixInputAddon: EKEventAddon {
 	let handler = EKScreenInputHandler()
 	let window: COpaquePointer
 
+	var width: CInt = 0
+	var height: CInt = 0
+
 	weak public var eventCenter: EKEventCenter? {
 		get {
 			return handler.eventCenter
@@ -28,10 +31,13 @@ public final class EKUnixInputAddon: EKEventAddon {
 	}
 
 	public func update() {
+		glfwGetWindowSize(window, &width, &height)
+
 		var xPosition: CDouble = 0
 		var yPosition: CDouble = 0
 		glfwGetCursorPos(window, &xPosition, &yPosition)
-		let newMousePosition = EKVector2(x: xPosition, y: yPosition)
+		let newMousePosition = EKVector2(x: xPosition,
+		                                 y: CDouble(height) - yPosition)
 		let newMouseButtonState = glfwGetMouseButton(window,
 		                                             GLFW_MOUSE_BUTTON_LEFT)
 

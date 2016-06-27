@@ -178,6 +178,18 @@ extension EKVector4 {
 		                 w: cosine)
 	}
 
+	public func quaternionToRotation() -> EKVector4 {
+		let s = sqrt(1 - w * w)
+		if s < 0.0001 {
+			return EKVector4(x: 1, y: 1, z: 1, w: 0)
+		} else {
+			return EKVector4(x: x / s,
+			                 y: y / s,
+			                 z: z / s,
+			                 w: 2 * acos(w))
+		}
+	}
+
 	public func quaternionToMatrix() -> EKMatrix {
 		return EKMatrix(m11: 1 - 2*y*y - 2*z*z,
 		                m12: 2*x*y - 2*z*w,

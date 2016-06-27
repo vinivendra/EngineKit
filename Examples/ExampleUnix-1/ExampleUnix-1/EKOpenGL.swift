@@ -105,6 +105,54 @@ class EKGLCamera {
 			return EKMatrix.createLookAt(eye: position, center: center, up: up)
 		}
 	}
+
+	static var xAxis: EKVector3 {
+		get {
+			return rotation.rotate(EKVector3(x: 1, y: 0, z: 0))
+		}
+	}
+
+	static var yAxis: EKVector3 {
+		get {
+			return rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
+		}
+	}
+
+	static var zAxis: EKVector3 {
+		get {
+			return rotation.rotate(EKVector3(x: 0, y: 0, z: 1))
+		}
+	}
+
+	static func rotate(rotationObject: AnyObject,
+	            around anchorPoint: AnyObject) {
+		// TODO: This doesn't rotate around the anchor
+		let orientation = rotation.rotationToQuaternion()
+
+		let rotationOperation = EKVector4.createVector(object: rotationObject)
+		let quaternion = rotationOperation.rotationToQuaternion()
+			.unitQuaternion()
+
+		let newPosition = quaternion.conjugate(vector: position)
+		let newOrientation = quaternion.multiplyAsQuaternion(
+			quaternion: orientation)
+
+		position = newPosition.toEKVector3()
+		rotation = newOrientation.quaternionToRotation()
+	}
+
+	static func rotate(rotationObject: AnyObject) {
+		let orientation = rotation.rotationToQuaternion()
+
+		let rotationOperation = EKVector4.createVector(object: rotationObject)
+		let quaternion = rotationOperation.rotationToQuaternion()
+			.unitQuaternion()
+
+		let newOrientation = quaternion.multiplyAsQuaternion(
+			quaternion: orientation)
+
+		rotation = newOrientation.quaternionToRotation()
+	}
 }
 
 class EKGLCube: EKGLObject {
