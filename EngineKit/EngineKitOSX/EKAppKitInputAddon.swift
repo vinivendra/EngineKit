@@ -233,12 +233,6 @@ public class EKAppKitInputAddon: EKEventAddon {
 		}
 	}
 
-	var previousPosition = EKVector2.origin()
-	var previousScale: CGFloat = 1
-	var previousAngle: CGFloat = 0
-
-	var numberOfTouches: Int!
-
 	let view: NSView
 	let inputView: EKAppKitInputView
 
