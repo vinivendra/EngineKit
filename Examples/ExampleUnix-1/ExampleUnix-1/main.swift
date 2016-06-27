@@ -19,9 +19,6 @@ let engine = EKEngine()
 let swiftEngine = MyEngine(engine: engine)
 engine.languageEngine = swiftEngine
 engine.loadAddon(EKOpenGLAddon())
-try! engine.register(forEvent: EKEventTap.self) { (event: EKEventTap) in
-	print("Tap!!")
-}
 try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	let resized = eventPan.displacement.times(0.01)
 
@@ -30,9 +27,5 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	let rot = EKVector4(x: axis.x, y: axis.y, z: axis.z,
 	                    w: resized.normSquared())
 	EKGLCamera.rotate(rot.normalize(), around: EKVector3.origin())
-}
-try! engine.register(forEvent: EKEventLongPress.self) {
- (event: EKEventLongPress) in
-	print("Long!!")
 }
 swiftEngine.runProgram()

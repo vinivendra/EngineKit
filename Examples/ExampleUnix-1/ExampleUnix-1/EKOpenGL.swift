@@ -260,7 +260,6 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 		var result: GLint = GL_FALSE
 		var infoLogLength: GLint = 0
 
-	print("Compiling shader: \(vertexFilePath)")
 	vertexShaderCode.withCStringPointer {
 		glShaderSource(vertexShaderID,
 		               1,
@@ -280,7 +279,6 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 	}
 
 	//
-	print("Compiling shader: \(fragmentFilePath)")
 	let fragmentShaderCString = CString(fragmentShaderCode)
 	withUnsafePointer(&(fragmentShaderCString.buffer)) {
 		(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>) -> Void in
@@ -303,7 +301,6 @@ func loadShaders(vertexFilePath vertexFilePath: String,
 	}
 
 	//
-	print("Linking program")
 	let programID = glCreateProgram()
 	glAttachShader(programID, vertexShaderID)
 	glAttachShader(programID, fragmentShaderID)
