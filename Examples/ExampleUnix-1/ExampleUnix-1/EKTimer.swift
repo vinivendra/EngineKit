@@ -3,11 +3,29 @@ public final class EKTimer {
 	private var poolIndex: Int? = nil
 
 	private let argument: Any?
-	private let action: EKAction
+	private let action: EKAction?
 
 	private var elapsedTime: Double = 0
 	private let duration: Double
 	private let repeats: Bool
+
+	public weak var delegate: EKTimerDelegate? = nil
+
+	//
+	public static func updateTimers(deltaTime dt: Double) {
+		for timer in pool {
+			timer.update(deltaTime: dt)
+		}
+	}
+
+	//
+	public init(duration: Double,
+	            repeats: Bool = false) {
+		self.argument = nil
+		self.action = nil
+		self.duration = duration
+		self.repeats = repeats
+	}
 
 	public init(duration: Double,
 	            repeats: Bool = false,
@@ -49,6 +67,7 @@ public final class EKTimer {
 		self.repeats = repeats
 	}
 
+	//
 	public func start() {
 		if poolIndex == nil {
 			poolIndex = EKTimer.pool.addResourceAndGetIndex(self)
@@ -59,34 +78,49 @@ public final class EKTimer {
 		elapsedTime = 0
 	}
 
-	public static func updateTimers(deltaTime dt: Double) {
-		for timer in pool {
-			timer.update(deltaTime: dt)
-		}
-	}
-
 	public func invalidate() {
 		if let poolIndex = poolIndex {
 			EKTimer.pool.deleteResource(atIndex: poolIndex)
 		}
+
+		delegate?.timerHasFinished(self)
 	}
 }
 
 extension EKTimer {
 	private func update(deltaTime dt: Double) {
 		elapsedTime = elapsedTime + dt
-		if elapsedTime > duration {
+		if elapsedTime < duration {
+			delegate?.timerHasUpdated(self,
+			                         currentTime: elapsedTime,
+			                         deltaTime: dt)
+		} else {
+			delegate?.timerHasUpdated(self,
+			                         currentTime: duration,
+			                         deltaTime: dt)
+
 			do {
-				try action.callWithArgument(argument)
+				try action?.callWithArgument(argument)
 			} catch {
 				assertionFailure()
 			}
 
 			if repeats {
 				elapsedTime = elapsedTime - duration
+				delegate?.timerWillRepeat(self)
 			} else {
 				self.invalidate()
 			}
 		}
 	}
+}
+
+public protocol EKTimerDelegate: class {
+	func timerHasUpdated(timer: EKTimer,
+	                     currentTime: Double,
+	                     deltaTime: Double)
+
+	func timerHasFinished(timer: EKTimer)
+
+	func timerWillRepeat(timer: EKTimer)
 }
