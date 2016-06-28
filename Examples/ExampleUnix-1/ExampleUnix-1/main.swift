@@ -27,4 +27,5 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	                    w: resized.normSquared())
 	EKGLCamera.rotate(rot.normalize(), around: EKVector3.origin())
 }
+
 swiftEngine.runProgram()

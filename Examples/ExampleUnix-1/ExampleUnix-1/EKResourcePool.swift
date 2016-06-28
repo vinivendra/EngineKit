@@ -25,8 +25,8 @@ public struct EKResourcePool<T>: SequenceType {
 		var index = 1
 		return AnyGenerator {
 			while index < self.arrayCapacity {
+				defer { index = index + 1 }
 				if let value = self.resources[index].value {
-					defer { index = index + 1 }
 					return value
 				}
 			}

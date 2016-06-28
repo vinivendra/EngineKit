@@ -1,6 +1,6 @@
 public final class EKTimer {
 	private static var pool = EKResourcePool<EKTimer>()
-	private var poolIndex: Int = 0
+	private var poolIndex: Int? = nil
 
 	private let argument: Any?
 	private let action: EKAction
@@ -16,7 +16,6 @@ public final class EKTimer {
 		self.action = EKFunctionVoidAction(closure: action)
 		self.duration = duration
 		self.repeats = repeats
-		self.poolIndex = EKTimer.pool.addResourceAndGetIndex(self)
 	}
 
 	public init<Argument>(duration: Double,
@@ -27,7 +26,6 @@ public final class EKTimer {
 		self.action = EKFunctionAction(closure: action)
 		self.duration = duration
 		self.repeats = repeats
-		self.poolIndex = EKTimer.pool.addResourceAndGetIndex(self)
 	}
 
 	public init<Argument, Target>(duration: Double,
@@ -39,7 +37,16 @@ public final class EKTimer {
 		self.action = EKMethodAction(object: target, method: action)
 		self.duration = duration
 		self.repeats = repeats
-		self.poolIndex = EKTimer.pool.addResourceAndGetIndex(self)
+	}
+
+	public func start() {
+		if poolIndex == nil {
+			poolIndex = EKTimer.pool.addResourceAndGetIndex(self)
+		}
+	}
+
+	public func reset() {
+		elapsedTime = 0
 	}
 
 	public static func updateTimers(deltaTime dt: Double) {
@@ -48,6 +55,14 @@ public final class EKTimer {
 		}
 	}
 
+	public func invalidate() {
+		if let poolIndex = poolIndex {
+			EKTimer.pool.deleteResource(atIndex: poolIndex)
+		}
+	}
+}
+
+extension EKTimer {
 	private func update(deltaTime dt: Double) {
 		elapsedTime = elapsedTime + dt
 		if elapsedTime > duration {
@@ -60,7 +75,7 @@ public final class EKTimer {
 			if repeats {
 				elapsedTime = elapsedTime - duration
 			} else {
-				EKTimer.pool.deleteResource(atIndex: poolIndex)
+				self.invalidate()
 			}
 		}
 	}
