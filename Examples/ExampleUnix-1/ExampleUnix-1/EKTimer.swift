@@ -39,6 +39,16 @@ public final class EKTimer {
 		self.repeats = repeats
 	}
 
+	public init<Target>(duration: Double,
+	            repeats: Bool = false,
+	            target: Target,
+	            action: (Target) -> () -> ()) {
+		self.argument = nil
+		self.action = EKMethodVoidAction(object: target, method: action)
+		self.duration = duration
+		self.repeats = repeats
+	}
+
 	public func start() {
 		if poolIndex == nil {
 			poolIndex = EKTimer.pool.addResourceAndGetIndex(self)

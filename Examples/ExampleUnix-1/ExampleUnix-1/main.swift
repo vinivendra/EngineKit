@@ -1,6 +1,10 @@
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil
 
+	func printHello() {
+		print("hello!")
+	}
+
 	override func runProgram() {
 		openGL = objects["OpenGL"] as! EKOpenGLAddon
 

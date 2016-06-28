@@ -25,6 +25,17 @@ public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
 	}
 }
 
+public struct EKMethodVoidAction<ObjectType, ReturnType>: EKAction {
+	typealias Method = (ObjectType) -> () -> (ReturnType)
+
+	let object: ObjectType
+	let method: Method
+
+	public func callWithArgument(argument: Any?) throws -> Any? {
+		return method(object)()
+	}
+}
+
 public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
 	typealias Method = (ObjectType) -> (ArgumentType) -> (ReturnType)
 
