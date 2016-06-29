@@ -12,6 +12,38 @@ extension Double: Interpolable {
 	}
 }
 
+extension Float: Interpolable {
+	public static func interpolate(start start: Float,
+	                               end: Float,
+	                               interpolatedValue: Double) -> Float {
+		return start + (end - start) * Float(interpolatedValue)
+	}
+}
+
+extension EKVector2: Interpolable {
+	public static func interpolate(start start: EKVector2,
+	                               end: EKVector2,
+	                               interpolatedValue: Double) -> EKVector2 {
+		return start.plus( ( end.minus(start) ).times(interpolatedValue) )
+	}
+}
+
+extension EKVector3: Interpolable {
+	public static func interpolate(start start: EKVector3,
+	                               end: EKVector3,
+	                               interpolatedValue: Double) -> EKVector3 {
+		return start.plus( ( end.minus(start) ).times(interpolatedValue) )
+	}
+}
+
+extension EKVector4: Interpolable {
+	public static func interpolate(start start: EKVector4,
+	                               end: EKVector4,
+	                               interpolatedValue: Double) -> EKVector4 {
+		return start.plus( ( end.minus(start) ).times(interpolatedValue) )
+	}
+}
+
 //
 public enum EKTimingFunction {
 	case Linear

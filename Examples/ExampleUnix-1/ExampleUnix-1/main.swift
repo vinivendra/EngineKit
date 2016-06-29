@@ -14,12 +14,11 @@ class MyEngine: EKSwiftEngine {
 		EKGLCamera.position = EKVector3(x: 0, y: 0, z: 10)
 
 		let animation = EKAnimation(duration: 1.0,
-		            startValue: 0.0,
-		            endValue: 1.0,
+		            startValue: EKVector3.origin(),
+		            endValue: EKVector3(x: 2.0, y: 0.0, z: 0.0),
 		            repeats: true,
-		            timingFunction: .Other({$0 * $0}),
 		            autoreverses: true) {
-			ball.position = EKVector3(x: $0, y: 0, z: 0)
+			ball.position = $0
 		}
 		animation.start()
 
