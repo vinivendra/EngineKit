@@ -142,8 +142,8 @@ public final class EKAnimation
 		do {
 			let interpolatedValue = currentTime / duration
 			let reversedValue = isReversed ?
-				interpolatedValue :
-				1.0 - interpolatedValue
+				1.0 - interpolatedValue :
+				interpolatedValue
 			let animationValue = timingFunction(reversedValue)
 			try action.callWithArgument(InterpolatedType.interpolate(
 				start: startValue,
