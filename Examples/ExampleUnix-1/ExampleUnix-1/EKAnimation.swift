@@ -12,6 +12,47 @@ extension Double: Interpolable {
 	}
 }
 
+//
+public enum EKTimingFunction {
+	case Linear
+	case EaseIn
+	case EaseOut
+	case EaseInOut
+	case Other(Double -> Double)
+
+	private static let linear = { (x: Double) -> Double in
+		return x
+	}
+
+	private static let easeInOut = { (x: Double) -> Double in
+		return (x * x * x * (x * (x * 6 - 15) + 10))
+	}
+
+	private static let easeIn = { (x: Double) -> Double in
+		return x * x
+	}
+
+	private static let easeOut = { (x: Double) -> Double in
+		return 1 - ((1 - x) * (1 - x))
+	}
+
+	public func getFunction() -> (Double -> Double) {
+		switch self {
+		case .Linear:
+			return EKTimingFunction.linear
+		case .EaseIn:
+			return EKTimingFunction.easeIn
+		case .EaseOut:
+			return EKTimingFunction.easeOut
+		case .EaseInOut:
+			return EKTimingFunction.easeInOut
+		case .Other(let function):
+			return function
+		}
+	}
+}
+
+//
 private var EKAnimationPool = EKResourcePool<Any>()
 
 public final class EKAnimation
@@ -19,8 +60,10 @@ public final class EKAnimation
 
 	private var poolIndex: Int? = nil
 
+	private var isReversed = false
 	private let timer: EKTimer
 	private let action: EKAction
+	private let timingFunction: (Double -> Double)
 
 	public let duration: Double
 	public let startValue: InterpolatedType
@@ -28,20 +71,20 @@ public final class EKAnimation
 	public let repeats: Bool
 	public let autoreverses: Bool
 
-	private var isReversed = false
-
 	//
 	public init(duration: Double,
 	            startValue: InterpolatedType,
 	            endValue: InterpolatedType,
 	            repeats: Bool = false,
 	            autoreverses: Bool = false,
+	            timingFunction: EKTimingFunction = .EaseInOut,
 	            action: (InterpolatedType) -> ()) {
 		self.duration = duration
 		self.startValue = startValue
 		self.endValue = endValue
 		self.repeats = repeats
 		self.autoreverses = autoreverses
+		self.timingFunction = timingFunction.getFunction()
 		self.action = EKFunctionAction(closure: action)
 		self.timer = EKTimer(duration: duration, repeats: repeats)
 		timer.delegate = self
@@ -66,9 +109,10 @@ public final class EKAnimation
 	                     deltaTime: Double) {
 		do {
 			let interpolatedValue = currentTime / duration
-			let animationValue = isReversed ?
+			let reversedValue = isReversed ?
 				interpolatedValue :
 				1.0 - interpolatedValue
+			let animationValue = timingFunction(reversedValue)
 			try action.callWithArgument(InterpolatedType.interpolate(
 				start: startValue,
 				end: endValue,

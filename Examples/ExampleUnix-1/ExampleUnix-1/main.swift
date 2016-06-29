@@ -17,6 +17,7 @@ class MyEngine: EKSwiftEngine {
 		            startValue: 0.0,
 		            endValue: 1.0,
 		            repeats: true,
+		            timingFunction: .Other({$0 * $0}),
 		            autoreverses: true) {
 			ball.position = EKVector3(x: $0, y: 0, z: 0)
 		}
