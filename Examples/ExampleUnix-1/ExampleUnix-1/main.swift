@@ -13,6 +13,19 @@ class MyEngine: EKSwiftEngine {
 		ball.color = EKVector4.purpleColor()
 		EKGLCamera.position = EKVector3(x: 0, y: 0, z: 10)
 
+		let animation = EKAnimation(duration: 1.0,
+		            startValue: 0.0,
+		            endValue: 1.0,
+		            repeats: true,
+		            autoreverses: true) {
+			ball.position = EKVector3(x: $0, y: 0, z: 0)
+		}
+		animation.start()
+
+		EKTimer(duration: 5.0) {
+			animation.stop()
+		}.start()
+
 		//
 		openGL.loopOpenGL()
 	}
