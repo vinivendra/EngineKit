@@ -21,6 +21,13 @@ public struct EKResourcePool<T>: SequenceType {
 		}
 	}
 
+	public subscript(index: Int) -> T? {
+		get {
+			return resources[index].value
+		}
+	}
+
+	//
 	public func generate() -> AnyGenerator<T> {
 		var index = 1
 		return AnyGenerator {

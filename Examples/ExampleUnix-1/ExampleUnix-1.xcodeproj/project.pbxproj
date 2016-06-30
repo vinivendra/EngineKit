@@ -34,7 +34,7 @@
 		24CFC7E61D18B4F60025C437 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = "ExampleUnix-1/EKFileManager.swift"; sourceTree = "<group>"; };
 		24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLanguageEngine.swift; path = "ExampleUnix-1/EKLanguageEngine.swift"; sourceTree = "<group>"; };
 		24CFC7E91D18B4F60025C437 /* EKMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMatrix.swift; path = "ExampleUnix-1/EKMatrix.swift"; sourceTree = "<group>"; };
-		24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = "ExampleUnix-1/EKOpenGLAddon.swift"; sourceTree = "<group>"; };
+		24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOpenGLAddon.swift; sourceTree = "<group>"; };
 		24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = "ExampleUnix-1/EKOSFactory.swift"; sourceTree = "<group>"; };
 		24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftEngine.swift; path = "ExampleUnix-1/EKSwiftEngine.swift"; sourceTree = "<group>"; };
 		24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = "ExampleUnix-1/EKSwiftExtensions.swift"; sourceTree = "<group>"; };
@@ -111,6 +111,7 @@
 				24D297211D1B04D50093E04D /* EKMath.swift */,
 				24D2971F1D1B048C0093E04D /* EKCBridging.swift */,
 				24D2971A1D1B04250093E04D /* EKOpenGL.swift */,
+				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
 				247368931D21D8E60050C1D5 /* EKTimer.swift */,
 				247368941D21D9060050C1D5 /* EKResourcePool.swift */,
 				24D297251D1B072A0093E04D /* EngineKitUnix */,
@@ -130,7 +131,6 @@
 				243E47F51D22FF4D006F65EC /* EKAnimation.swift */,
 				24CFC7E61D18B4F60025C437 /* EKFileManager.swift */,
 				24CFC7E71D18B4F60025C437 /* EKLanguageEngine.swift */,
-				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
 				24CFC7EB1D18B4F60025C437 /* EKOSFactory.swift */,
 				24CFC7EC1D18B4F60025C437 /* EKSwiftEngine.swift */,
 				24CFC7ED1D18B4F60025C437 /* EKSwiftExtensions.swift */,

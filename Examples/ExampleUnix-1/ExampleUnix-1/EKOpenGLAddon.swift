@@ -1,8 +1,8 @@
 import CGLFW3
 import SGLOpenGL
 
-let width: GLfloat = 800
-let height: GLfloat = 600
+let width: GLfloat = 1024
+let height: GLfloat = 768
 
 public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
@@ -42,6 +42,8 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		//
 		glEnable(GL_DEPTH_TEST)
 		glDepthFunc(GL_LESS)
+		glEnable(GL_STENCIL_TEST)
+		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE)
 
 		/////////////////////
 		var vertexArrayID: GLuint = 0
@@ -76,9 +78,15 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 			EKGLProjectionViewMatrix = projection * EKGLCamera.viewMatrix
 
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+			glClearStencil(0)
+			glClear(
+				GL_COLOR_BUFFER_BIT |
+				GL_DEPTH_BUFFER_BIT |
+				GL_STENCIL_BUFFER_BIT)
 
-			for object in EKGLObjects {
+			for object in EKGLObjectPool {
+				let completeMask: GLuint = 0xff
+				glStencilFunc(GL_ALWAYS, GLint(object.poolIndex!), completeMask)
 				object.draw()
 			}
 

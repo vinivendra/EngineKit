@@ -4,9 +4,20 @@ var EKGLMVPMatrixID: GLint! = nil
 var EKGLColorID: GLint! = nil
 var EKGLProjectionViewMatrix = EKMatrix.identity
 
-var EKGLObjects: [EKGLObject] = []
+var EKGLObjectPool = EKResourcePool<EKGLObject>()
+
+func EKGLObjectAtPixel(pixel: EKVector2) -> EKGLObject? {
+	var index: GLuint = 0
+	let x = GLint(pixel.x) * 2
+	let y = GLint(pixel.y) * 2
+	glReadPixels(x, y, 1, 1,
+	             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+	return EKGLObjectPool[Int(index)]
+}
 
 protocol EKGLObject {
+	var poolIndex: Int? { get set }
+
 	static var geometryWasInitialized: Bool { get set }
 
 	var color: EKColorType { get set }
@@ -14,6 +25,8 @@ protocol EKGLObject {
 	var position: EKVector3 { get set }
 	var scale: EKVector3 { get set }
 	var rotation: EKVector4 { get set }
+
+	var name: String { get set }
 
 	static var vertexBuffer: [GLfloat]! { get }
 
@@ -48,8 +61,6 @@ extension EKGLObject {
 
 			Self.vertexBufferID = vertexID
 		}
-
-		EKGLObjects.append(self)
 	}
 
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
@@ -156,6 +167,8 @@ class EKGLCamera {
 }
 
 class EKGLCube: EKGLObject {
+	var poolIndex: Int? = nil
+	var name: String = ""
 	var position = EKVector3.origin()
 	var scale = EKVector3(x: 1, y: 1, z: 1)
 	var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0)
@@ -212,6 +225,10 @@ class EKGLCube: EKGLObject {
 
 	init() {
 		self.commonInit()
+
+		if poolIndex == nil {
+			poolIndex = EKGLObjectPool.addResourceAndGetIndex(self)
+		}
 	}
 }
 
