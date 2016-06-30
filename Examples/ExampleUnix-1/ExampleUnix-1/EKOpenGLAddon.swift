@@ -84,9 +84,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 				GL_DEPTH_BUFFER_BIT |
 				GL_STENCIL_BUFFER_BIT)
 
-			for object in EKGLObjectPool {
-				let completeMask: GLuint = 0xff
-				glStencilFunc(GL_ALWAYS, GLint(object.poolIndex!), completeMask)
+			for object in EKGLObjectPool where object.parent == nil {
 				object.draw()
 			}
 

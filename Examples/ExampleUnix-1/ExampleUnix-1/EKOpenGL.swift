@@ -15,7 +15,7 @@ func EKGLObjectAtPixel(pixel: EKVector2) -> EKGLObject? {
 	return EKGLObjectPool[Int(index)]
 }
 
-protocol EKGLObject {
+protocol EKGLObject: class {
 	var poolIndex: Int? { get set }
 
 	static var geometryWasInitialized: Bool { get set }
@@ -25,6 +25,8 @@ protocol EKGLObject {
 	var position: EKVector3 { get set }
 	var scale: EKVector3 { get set }
 	var rotation: EKVector4 { get set }
+	var modelMatrixIsDirty: Bool { get set }
+	var _modelMatrix: EKMatrix { get set }
 
 	var name: String { get set }
 
@@ -32,14 +34,21 @@ protocol EKGLObject {
 
 	static var numberOfVertices: GLsizei! { get set }
 	static var vertexBufferID: GLuint! { get set }
+
+	var children: [EKGLObject] { get set }
+	var parent: EKGLObject? { get set }
 }
 
 extension EKGLObject {
 	var modelMatrix: EKMatrix {
 		get {
-			return position.translationToMatrix() *
-				   scale.scaleToMatrix() *
-				   rotation.rotationToMatrix()
+			if modelMatrixIsDirty {
+				modelMatrixIsDirty = false
+				_modelMatrix = position.translationToMatrix() *
+					scale.scaleToMatrix() *
+					rotation.rotationToMatrix()
+			}
+			return _modelMatrix
 		}
 	}
 
@@ -61,9 +70,16 @@ extension EKGLObject {
 
 			Self.vertexBufferID = vertexID
 		}
+
+		if poolIndex == nil {
+			poolIndex = EKGLObjectPool.addResourceAndGetIndex(self)
+		}
 	}
 
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
+		let completeMask: GLuint = 0xff
+		glStencilFunc(GL_ALWAYS, GLint(poolIndex!), completeMask)
+
 		var projectionViewMatrix = projectionViewMatrix
 		if projectionViewMatrix == nil {
 			projectionViewMatrix = EKGLProjectionViewMatrix
@@ -100,6 +116,27 @@ extension EKGLObject {
 		             first: 0,
 		             count: Self.numberOfVertices)
 		glDisableVertexAttribArray(0)
+
+		//
+		for child in children {
+			child.draw(withProjectionViewMatrix: mvp)
+		}
+	}
+
+	func addChild(child: EKGLObject) {
+		children.append(child)
+		child.parent = self
+	}
+
+	func removeFromParent(andAddToScene shouldAddToScene: Bool = false) {
+		guard let parent = parent else { return }
+
+		for (index, sibling) in parent.children.enumerate() {
+			if sibling.poolIndex == self.poolIndex {
+				parent.children.removeAtIndex(index)
+				break
+			}
+		}
 	}
 }
 
@@ -169,11 +206,30 @@ class EKGLCamera {
 class EKGLCube: EKGLObject {
 	var poolIndex: Int? = nil
 	var name: String = ""
-	var position = EKVector3.origin()
-	var scale = EKVector3(x: 1, y: 1, z: 1)
-	var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0)
+
+	var position = EKVector3.origin() {
+		didSet {
+			modelMatrixIsDirty = true
+		}
+	}
+	var scale = EKVector3(x: 1, y: 1, z: 1) {
+		didSet {
+			modelMatrixIsDirty = true
+		}
+	}
+	var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0) {
+		didSet {
+			modelMatrixIsDirty = true
+		}
+	}
 
 	var color = EKVector4.whiteColor()
+
+	var modelMatrixIsDirty: Bool = true
+	var _modelMatrix = EKMatrix.identity
+
+	var children = [EKGLObject]()
+	var parent: EKGLObject? = nil
 
 	static var geometryWasInitialized = false
 
@@ -225,10 +281,6 @@ class EKGLCube: EKGLObject {
 
 	init() {
 		self.commonInit()
-
-		if poolIndex == nil {
-			poolIndex = EKGLObjectPool.addResourceAndGetIndex(self)
-		}
 	}
 }
 
