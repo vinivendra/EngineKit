@@ -30,7 +30,7 @@ engine.languageEngine = swiftEngine
 engine.loadAddon(EKOpenGLAddon())
 
 try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
-	let object = EKGLObjectAtPixel(eventPan.position)
+	let object = EKGLObject.object(atPixel: eventPan.position)
 
 	if let object = object {
 		let resized = eventPan.displacement.times(0.01)
@@ -54,7 +54,7 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 }
 
 try! engine.register(forEvent: EKEventTap.self) { (eventTap: EKEventTap) in
-	let object = EKGLObjectAtPixel(eventTap.position)
+	let object = EKGLObject.object(atPixel: eventTap.position)
 	print("Tapped \(object?.name)")
 }
 

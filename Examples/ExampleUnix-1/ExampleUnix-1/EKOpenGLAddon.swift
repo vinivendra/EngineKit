@@ -1,19 +1,18 @@
 import CGLFW3
 import SGLOpenGL
 
-let width: GLfloat = 1024
-let height: GLfloat = 768
+let EKOpenGLWindowWidth: GLfloat = 1024
+let EKOpenGLWindowHeight: GLfloat = 768
 
 public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
-
-	let projection = EKMatrix.createPerspective(
+	public let projection = EKMatrix.createPerspective(
 		fieldOfViewY: EKToRadians(45),
-		aspect: Double(width / height),
+		aspect: Double(EKOpenGLWindowWidth / EKOpenGLWindowHeight),
 		zNear: 0.1,
 		zFar: 100)
 
-	var window: COpaquePointer! = nil
-	var inputHandler: EKUnixInputAddon! = nil
+	private var window: COpaquePointer! = nil
+	private var inputHandler: EKUnixInputAddon! = nil
 
 	public func setup(onEngine engine: EKEngine) {
 		if glfwInit() == 0 {
@@ -68,7 +67,92 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		try! engine.addObject(self, withName: "OpenGL")
 	}
 
-	func loopOpenGL(){
+	private func loadShaders(vertexFilePath vertexPath: String,
+							 fragmentFilePath fragmentPath: String)
+			-> GLuint {
+		let vertexShaderID = glCreateShader(GL_VERTEX_SHADER)
+		let fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER)
+
+		let fileManager = OSFactory.createFileManager()
+		let vertexShaderCode = fileManager.getContentsFromFile(vertexPath)!
+		let fragmentShaderCode = fileManager.getContentsFromFile(fragmentPath)!
+
+		var result: GLint = GL_FALSE
+		var infoLogLength: GLint = 0
+
+		vertexShaderCode.withCStringPointer {
+			glShaderSource(vertexShaderID,
+				1,
+				$0,
+				nil)
+		}
+
+		glCompileShader(vertexShaderID)
+
+		//
+		glGetShaderiv(vertexShaderID, GL_COMPILE_STATUS, &result)
+		glGetShaderiv(vertexShaderID, GL_INFO_LOG_LENGTH, &infoLogLength)
+		if infoLogLength > 0 {
+			let string = CString(emptyStringWithlength: Int(infoLogLength))
+			glGetShaderInfoLog(shader: vertexShaderID,
+			                   bufSize: infoLogLength,
+			                   length: nil,
+			                   infoLog: string.buffer)
+			print(String.fromCString(string.buffer))
+		}
+
+		//
+		let fragmentShaderCString = CString(fragmentShaderCode)
+		withUnsafePointer(&(fragmentShaderCString.buffer)) {
+			(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>) -> Void in
+			let foo = unsafeBitCast(pointer,
+			                        UnsafePointer<UnsafePointer<Int8>>.self)
+			glShaderSource( fragmentShaderID,
+			                1,
+			                foo,
+			                nil)
+		}
+
+		glCompileShader(fragmentShaderID)
+
+		//
+		glGetShaderiv(fragmentShaderID, GL_COMPILE_STATUS, &result)
+		glGetShaderiv(fragmentShaderID, GL_INFO_LOG_LENGTH, &infoLogLength)
+		if infoLogLength > 0 {
+			let string = CString(emptyStringWithlength: Int(infoLogLength))
+			glGetShaderInfoLog(shader: fragmentShaderID,
+			                   bufSize: infoLogLength,
+			                   length: nil,
+			                   infoLog: string.buffer)
+			print(String.fromCString(string.buffer))
+		}
+
+		//
+		let programID = glCreateProgram()
+		glAttachShader(programID, vertexShaderID)
+		glAttachShader(programID, fragmentShaderID)
+		glLinkProgram(programID)
+
+		//
+		glGetShaderiv(programID, GL_LINK_STATUS, &result)
+		glGetShaderiv(programID, GL_INFO_LOG_LENGTH, &infoLogLength)
+		if infoLogLength > 0 {
+			let string = CString(emptyStringWithlength: Int(infoLogLength))
+			glGetShaderInfoLog(programID, infoLogLength, nil, string.buffer)
+			print(String.fromCString(string.buffer))
+		}
+
+		//
+		glDetachShader(programID, vertexShaderID)
+		glDetachShader(programID, fragmentShaderID)
+
+		glDeleteShader(vertexShaderID)
+		glDeleteShader(fragmentShaderID)
+		
+		return programID
+	}
+
+	public func loopOpenGL(){
 		var oldTime = glfwGetTime()
 		repeat {
 			let newTime = glfwGetTime()

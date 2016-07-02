@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		2404522C1D2861A8002BD361 /* EKOpenGLComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKOpenGLComponents.swift; sourceTree = "<group>"; };
+		2404522D1D286312002BD361 /* EKOpenGLCBridging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKOpenGLCBridging.swift; sourceTree = "<group>"; };
 		2414B7531D074B8800CFFC2B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		242CD3C21D21A35E0021E67D /* EKUnixInputAddon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKUnixInputAddon.swift; sourceTree = "<group>"; };
 		243E47F51D22FF4D006F65EC /* EKAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKAnimation.swift; path = "ExampleUnix-1/EKAnimation.swift"; sourceTree = "<group>"; };
@@ -111,6 +113,8 @@
 				24D297211D1B04D50093E04D /* EKMath.swift */,
 				24D2971F1D1B048C0093E04D /* EKCBridging.swift */,
 				24D2971A1D1B04250093E04D /* EKOpenGL.swift */,
+				2404522D1D286312002BD361 /* EKOpenGLCBridging.swift */,
+				2404522C1D2861A8002BD361 /* EKOpenGLComponents.swift */,
 				24CFC7EA1D18B4F60025C437 /* EKOpenGLAddon.swift */,
 				247368931D21D8E60050C1D5 /* EKTimer.swift */,
 				247368941D21D9060050C1D5 /* EKResourcePool.swift */,
