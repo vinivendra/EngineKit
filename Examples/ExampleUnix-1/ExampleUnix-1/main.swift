@@ -17,7 +17,7 @@ class MyEngine: EKSwiftEngine {
 		ball2.name = "gray"
 		ball.addChild(ball2)
 
-		EKGLCamera.position = EKVector3(x: 0, y: 0, z: 10)
+		EKGLCamera.mainCamera.position = EKVector3(x: 0, y: 0, z: 10)
 
 		//
 		openGL.loopOpenGL()
@@ -32,11 +32,13 @@ engine.loadAddon(EKOpenGLAddon())
 try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	let object = EKGLObject.object(atPixel: eventPan.position)
 
+	let camera = EKGLCamera.mainCamera
+
 	if let object = object {
 		let resized = eventPan.displacement.times(0.01)
-		let translation = EKGLCamera.xAxis.times(resized.x).plus(
-						  EKGLCamera.yAxis.times(resized.y))
-		let distance = object.position.minus(EKGLCamera.position)
+		let translation = camera.xAxis.times(resized.x).plus(
+						  camera.yAxis.times(resized.y))
+		let distance = object.position.minus(camera.position)
 		let ratio = distance.norm() / 7.5
 
 		let resizedTranslation = translation.times(ratio)
@@ -45,11 +47,11 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	} else {
 		let resized = eventPan.displacement.times(0.01)
 
-		let axis = EKGLCamera.xAxis.times(resized.y).plus(
-				   EKGLCamera.yAxis.times(-resized.x))
+		let axis = camera.xAxis.times(resized.y).plus(
+				   camera.yAxis.times(-resized.x))
 		let rot = EKVector4(x: axis.x, y: axis.y, z: axis.z,
 							w: resized.normSquared())
-		EKGLCamera.rotate(rot.normalize(), around: EKVector3.origin())
+		camera.rotate(rot.normalize(), around: EKVector3.origin())
 	}
 }
 

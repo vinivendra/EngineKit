@@ -160,7 +160,8 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 			EKTimer.updateTimers(deltaTime: deltaTime)
 			inputHandler?.update()
 
-			EKGLProjectionViewMatrix = projection * EKGLCamera.viewMatrix
+			EKGLProjectionViewMatrix = projection *
+									   EKGLCamera.mainCamera.viewMatrix
 
 			glClearStencil(0)
 			glClear(
