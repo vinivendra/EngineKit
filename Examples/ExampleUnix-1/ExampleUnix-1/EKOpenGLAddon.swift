@@ -58,8 +58,8 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		let matrixID = glGetUniformLocation(program: programID, name: "MVP")
 		let colorID = glGetUniformLocation(program: programID, name: "color")
 
-		EKGLMVPMatrixID = matrixID
-		EKGLColorID = colorID
+		EKGLObject.mvpMatrixID = matrixID
+		EKGLObject.colorID = colorID
 
 		//
 		inputHandler = EKUnixInputAddon(window: window)
@@ -160,8 +160,8 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 			EKTimer.updateTimers(deltaTime: deltaTime)
 			inputHandler?.update()
 
-			EKGLProjectionViewMatrix = projection *
-									   EKGLCamera.mainCamera.viewMatrix
+			EKGLObject.projectionViewMatrix = projection *
+											  EKGLCamera.mainCamera.viewMatrix
 
 			glClearStencil(0)
 			glClear(
@@ -169,7 +169,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 				GL_DEPTH_BUFFER_BIT |
 				GL_STENCIL_BUFFER_BIT)
 
-			for object in EKGLObjectPool where object.parent == nil {
+			for object in EKGLObject.allObjects where object.parent == nil {
 				object.draw()
 			}
 

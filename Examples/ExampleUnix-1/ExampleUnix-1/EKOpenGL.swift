@@ -1,34 +1,50 @@
 import SGLOpenGL
 
-var EKGLMVPMatrixID: GLint! = nil
-var EKGLColorID: GLint! = nil
-var EKGLProjectionViewMatrix = EKMatrix.identity
-
-var EKGLObjectPool = EKResourcePool<EKGLObject>()
-
 public class EKGLObject: EKGLMatrixComposer {
-	var poolIndex: Int? = nil
+	public static var mvpMatrixID: GLint! = nil
+	public static var colorID: GLint! = nil
+	public static var projectionViewMatrix = EKMatrix.identity
 
-	var matrixComponent = EKGLMatrixComponent()
-	let vertexComponent: EKGLVertexComponent?
+	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	var color: EKColorType? = nil
+	private var objectIndex: Int? = nil
 
-	var name: String? = nil
+	public var matrixComponent = EKGLMatrixComponent()
+	public let vertexComponent: EKGLVertexComponent?
 
-	var children = [EKGLObject]()
-	var parent: EKGLObject? = nil
+	public var color: EKColorType? = nil
+
+	public var name: String? = nil
+
+	public var children = [EKGLObject]()
+	public var parent: EKGLObject? = nil
 
 	internal init(vertexComponent: EKGLVertexComponent?) {
 		self.vertexComponent = vertexComponent
 
-		if poolIndex == nil {
-			poolIndex = EKGLObjectPool.addResourceAndGetIndex(self)
+		if objectIndex == nil {
+			objectIndex = EKGLObject.allObjects.addResourceAndGetIndex(self)
 		}
 	}
 
 	public convenience init() {
 		self.init(vertexComponent: nil)
+	}
+
+	public func copy() -> EKGLObject {
+		let object = EKGLObject(vertexComponent: vertexComponent)
+		copyInfo(to: object)
+		return object
+	}
+
+	public func copyInfo(to object: EKGLObject) {
+		object.matrixComponent = matrixComponent
+		object.color = color
+		object.name = name
+
+		for child in children {
+			object.addChild(child.copy())
+		}
 	}
 }
 
@@ -39,7 +55,7 @@ extension EKGLObject {
 		let y = GLint(pixel.y) * 2
 		glReadPixels(x, y, 1, 1,
 		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
-		return EKGLObjectPool[Int(index)]
+		return EKGLObject.allObjects[Int(index)]
 	}
 }
 
@@ -50,11 +66,11 @@ extension EKGLObject {
 
 		//
 		let completeMask: GLuint = 0xff
-		glStencilFunc(GL_ALWAYS, GLint(poolIndex!), completeMask)
+		glStencilFunc(GL_ALWAYS, GLint(objectIndex!), completeMask)
 
 		var projectionViewMatrix = projectionViewMatrix
 		if projectionViewMatrix == nil {
-			projectionViewMatrix = EKGLProjectionViewMatrix
+			projectionViewMatrix = EKGLObject.projectionViewMatrix
 		}
 
 		glEnableVertexAttribArray(0)
@@ -72,14 +88,14 @@ extension EKGLObject {
 		let mvp = projectionViewMatrix * modelMatrix
 
 		mvp.withGLFloatArray {
-			glUniformMatrix4fv(location: EKGLMVPMatrixID,
+			glUniformMatrix4fv(location: EKGLObject.mvpMatrixID,
 			                   count: 1,
 			                   transpose: false,
 			                   value: $0)
 		}
 
 		color.withGLFloatArray {
-			glUniform3fv(location: EKGLColorID,
+			glUniform3fv(location: EKGLObject.colorID,
 						 count: 1,
 						 value: $0)
 		}
@@ -107,7 +123,7 @@ extension EKGLObject {
 		guard let parent = parent else { return }
 
 		for (index, sibling) in parent.children.enumerate() {
-			if sibling.poolIndex == self.poolIndex {
+			if sibling.objectIndex == self.objectIndex {
 				parent.children.removeAtIndex(index)
 				break
 			}
@@ -149,9 +165,15 @@ extension EKGLObject {
 	}
 }
 
-class EKGLCube: EKGLObject {
-	init() {
+public class EKGLCube: EKGLObject {
+	public init() {
 		super.init(vertexComponent: EKGLVertexComponent.Cube)
+	}
+
+	override public func copy() -> EKGLCube {
+		let object = EKGLCube()
+		copyInfo(to: object)
+		return object
 	}
 }
 
