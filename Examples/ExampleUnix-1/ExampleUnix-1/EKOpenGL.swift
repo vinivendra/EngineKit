@@ -244,7 +244,7 @@ extension EKGLObject {
 		child.parent = self
 	}
 
-	func removeFromParent(andAddToScene shouldAddToScene: Bool = false) {
+	func removeFromParent() {
 		guard let parent = parent else { return }
 
 		for (index, sibling) in parent.children.enumerate() {
@@ -253,6 +253,8 @@ extension EKGLObject {
 				break
 			}
 		}
+
+		self.parent = nil
 	}
 }
 
