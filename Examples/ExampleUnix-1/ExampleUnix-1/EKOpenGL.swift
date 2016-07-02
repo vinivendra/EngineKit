@@ -15,68 +15,183 @@ func EKGLObjectAtPixel(pixel: EKVector2) -> EKGLObject? {
 	return EKGLObjectPool[Int(index)]
 }
 
-protocol EKGLObject: class {
-	var poolIndex: Int? { get set }
-
-	static var geometryWasInitialized: Bool { get set }
-
-	var color: EKColorType { get set }
-
-	var position: EKVector3 { get set }
-	var scale: EKVector3 { get set }
-	var rotation: EKVector4 { get set }
-	var modelMatrixIsDirty: Bool { get set }
-	var _modelMatrix: EKMatrix { get set }
-
-	var name: String { get set }
-
-	static var vertexBuffer: [GLfloat]! { get }
-
-	static var numberOfVertices: GLsizei! { get set }
-	static var vertexBufferID: GLuint! { get set }
-
-	var children: [EKGLObject] { get set }
-	var parent: EKGLObject? { get set }
-}
-
-extension EKGLObject {
-	var modelMatrix: EKMatrix {
-		get {
-			if modelMatrixIsDirty {
-				modelMatrixIsDirty = false
-				_modelMatrix = position.translationToMatrix() *
-					scale.scaleToMatrix() *
-					rotation.rotationToMatrix()
-			}
-			return _modelMatrix
+public struct EKGLMatrixComponent {
+	public var position = EKVector3.origin() {
+		didSet {
+			_modelMatrix = nil
+		}
+	}
+	public var scale = EKVector3(x: 1, y: 1, z: 1) {
+		didSet {
+			_modelMatrix = nil
+		}
+	}
+	public var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0) {
+		didSet {
+			_modelMatrix = nil
 		}
 	}
 
-	func commonInit() {
-		if !Self.geometryWasInitialized {
-			Self.geometryWasInitialized = true
+	private var _modelMatrix: EKMatrix? = nil
 
-			let vertexBuffer = Self.vertexBuffer
-
-			Self.numberOfVertices = GLsizei(vertexBuffer.count) / 3
-
-			var vertexID: GLuint = 0
-			glGenBuffers(n: 1, buffers: &vertexID)
-			glBindBuffer(target: GL_ARRAY_BUFFER, buffer: vertexID)
-			glBufferData(target: GL_ARRAY_BUFFER,
-			             size: sizeof([GLfloat]) * vertexBuffer.count,
-			             data: vertexBuffer,
-			             usage: GL_DYNAMIC_DRAW)
-
-			Self.vertexBufferID = vertexID
+	public mutating func getMatrix() -> EKMatrix {
+		guard let modelMatrix = _modelMatrix else {
+			_modelMatrix = position.translationToMatrix() *
+				scale.scaleToMatrix() *
+				rotation.rotationToMatrix()
+			return _modelMatrix!
 		}
+		return modelMatrix
+	}
 
+	init () {
+		position = EKVector3(x: 0, y: 0, z: 0)
+		scale = EKVector3(x: 1, y: 1, z: 1)
+		rotation = EKVector4(x: 1, y: 0, z: 0, w: 0)
+	}
+}
+
+public struct EKGLVertexComponent {
+	private let vertices: [GLfloat]
+
+	public let bufferID: GLuint
+	public let numberOfVertices: GLsizei
+
+	public init(vertices: [GLfloat]) {
+		self.vertices = vertices
+		self.numberOfVertices = GLsizei(vertices.count) / 3
+
+		var tempBufferID: GLuint = 0
+		glGenBuffers(n: 1, buffers: &tempBufferID)
+		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: tempBufferID)
+		glBufferData(target: GL_ARRAY_BUFFER,
+		             size: sizeof([GLfloat]) * vertices.count,
+		             data: vertices,
+		             usage: GL_DYNAMIC_DRAW)
+		self.bufferID = tempBufferID
+	}
+
+	//
+	public static let Cube = EKGLVertexComponent(vertices:
+		[
+		-1.0,-1.0,-1.0,
+		-1.0,-1.0, 1.0,
+		-1.0, 1.0, 1.0,
+		1.0, 1.0,-1.0,
+		-1.0,-1.0,-1.0,
+		-1.0, 1.0,-1.0,
+		1.0,-1.0, 1.0,
+		-1.0,-1.0,-1.0,
+		1.0,-1.0,-1.0,
+		1.0, 1.0,-1.0,
+		1.0,-1.0,-1.0,
+		-1.0,-1.0,-1.0,
+		-1.0,-1.0,-1.0,
+		-1.0, 1.0, 1.0,
+		-1.0, 1.0,-1.0,
+		1.0,-1.0, 1.0,
+		-1.0,-1.0, 1.0,
+		-1.0,-1.0,-1.0,
+		-1.0, 1.0, 1.0,
+		-1.0,-1.0, 1.0,
+		1.0,-1.0, 1.0,
+		1.0, 1.0, 1.0,
+		1.0,-1.0,-1.0,
+		1.0, 1.0,-1.0,
+		1.0,-1.0,-1.0,
+		1.0, 1.0, 1.0,
+		1.0,-1.0, 1.0,
+		1.0, 1.0, 1.0,
+		1.0, 1.0,-1.0,
+		-1.0, 1.0,-1.0,
+		1.0, 1.0, 1.0,
+		-1.0, 1.0,-1.0,
+		-1.0, 1.0, 1.0,
+		1.0, 1.0, 1.0,
+		-1.0, 1.0, 1.0,
+		1.0,-1.0, 1.0
+		])
+}
+
+public class EKGLObject: EKGLMatrixComposer {
+	var poolIndex: Int? = nil
+
+	var matrixComponent = EKGLMatrixComponent()
+	let vertexComponent: EKGLVertexComponent?
+
+	var color: EKColorType? = nil
+
+	var name: String? = nil
+
+	var children = [EKGLObject]()
+	var parent: EKGLObject? = nil
+
+	internal init(vertexComponent: EKGLVertexComponent) {
+		self.vertexComponent = vertexComponent
+		self.commonInit()
+	}
+
+	public init() {
+		self.vertexComponent = nil
+		self.commonInit()
+	}
+}
+
+protocol EKGLMatrixComposer: class {
+	var matrixComponent: EKGLMatrixComponent { get set }
+	var position: EKVector3 { get set }
+	var scale: EKVector3 { get set }
+	var rotation: EKVector4 { get set }
+	var modelMatrix: EKMatrix { get }
+}
+
+extension EKGLMatrixComposer {
+	var position: EKVector3 {
+		get {
+			return matrixComponent.position
+		}
+		set {
+			matrixComponent.position = newValue
+		}
+	}
+
+	var scale: EKVector3 {
+		get {
+			return matrixComponent.scale
+		}
+		set {
+			matrixComponent.scale = newValue
+		}
+	}
+
+	var rotation: EKVector4 {
+		get {
+			return matrixComponent.rotation
+		}
+		set {
+			matrixComponent.rotation = newValue
+		}
+	}
+
+	var modelMatrix: EKMatrix {
+		get {
+			return matrixComponent.getMatrix()
+		}
+	}
+}
+
+extension EKGLObject {
+	func commonInit() {
 		if poolIndex == nil {
 			poolIndex = EKGLObjectPool.addResourceAndGetIndex(self)
 		}
 	}
 
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
+		guard let vertexComponent = vertexComponent else { return }
+		let color = self.color ?? EKVector4.whiteColor()
+
+		//
 		let completeMask: GLuint = 0xff
 		glStencilFunc(GL_ALWAYS, GLint(poolIndex!), completeMask)
 
@@ -86,7 +201,8 @@ extension EKGLObject {
 		}
 
 		glEnableVertexAttribArray(0)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: Self.vertexBufferID)
+		glBindBuffer(target: GL_ARRAY_BUFFER,
+		             buffer: vertexComponent.bufferID)
 		glVertexAttribPointer(
 			index: 0, // Matching shader
 			size: 3,
@@ -114,7 +230,7 @@ extension EKGLObject {
 		//
 		glDrawArrays(mode: GL_TRIANGLES,
 		             first: 0,
-		             count: Self.numberOfVertices)
+		             count: vertexComponent.numberOfVertices)
 		glDisableVertexAttribArray(0)
 
 		//
@@ -137,6 +253,12 @@ extension EKGLObject {
 				break
 			}
 		}
+	}
+}
+
+class EKGLCube: EKGLObject {
+	override init() {
+		super.init(vertexComponent: EKGLVertexComponent.Cube)
 	}
 }
 
@@ -173,7 +295,7 @@ class EKGLCamera {
 	}
 
 	static func rotate(rotationObject: AnyObject,
-	            around anchorPoint: AnyObject) {
+	                   around anchorPoint: AnyObject) {
 		// TODO: This doesn't rotate around the anchor
 		let orientation = rotation.rotationToQuaternion()
 
@@ -200,87 +322,6 @@ class EKGLCamera {
 			quaternion: orientation)
 
 		rotation = newOrientation.quaternionToRotation()
-	}
-}
-
-class EKGLCube: EKGLObject {
-	var poolIndex: Int? = nil
-	var name: String = ""
-
-	var position = EKVector3.origin() {
-		didSet {
-			modelMatrixIsDirty = true
-		}
-	}
-	var scale = EKVector3(x: 1, y: 1, z: 1) {
-		didSet {
-			modelMatrixIsDirty = true
-		}
-	}
-	var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0) {
-		didSet {
-			modelMatrixIsDirty = true
-		}
-	}
-
-	var color = EKVector4.whiteColor()
-
-	var modelMatrixIsDirty: Bool = true
-	var _modelMatrix = EKMatrix.identity
-
-	var children = [EKGLObject]()
-	var parent: EKGLObject? = nil
-
-	static var geometryWasInitialized = false
-
-	static var numberOfVertices: GLsizei! = nil
-	static var vertexBufferID: GLuint! = nil
-
-	static var vertexBuffer: [GLfloat]! {
-		get {
-			return [
-			       	-1.0,-1.0,-1.0,
-			       	-1.0,-1.0, 1.0,
-			       	-1.0, 1.0, 1.0,
-			       	1.0, 1.0,-1.0,
-			       	-1.0,-1.0,-1.0,
-			       	-1.0, 1.0,-1.0,
-			       	1.0,-1.0, 1.0,
-			       	-1.0,-1.0,-1.0,
-			       	1.0,-1.0,-1.0,
-			       	1.0, 1.0,-1.0,
-			       	1.0,-1.0,-1.0,
-			       	-1.0,-1.0,-1.0,
-			       	-1.0,-1.0,-1.0,
-			       	-1.0, 1.0, 1.0,
-			       	-1.0, 1.0,-1.0,
-			       	1.0,-1.0, 1.0,
-			       	-1.0,-1.0, 1.0,
-			       	-1.0,-1.0,-1.0,
-			       	-1.0, 1.0, 1.0,
-			       	-1.0,-1.0, 1.0,
-			       	1.0,-1.0, 1.0,
-			       	1.0, 1.0, 1.0,
-			       	1.0,-1.0,-1.0,
-			       	1.0, 1.0,-1.0,
-			       	1.0,-1.0,-1.0,
-			       	1.0, 1.0, 1.0,
-			       	1.0,-1.0, 1.0,
-			       	1.0, 1.0, 1.0,
-			       	1.0, 1.0,-1.0,
-			       	-1.0, 1.0,-1.0,
-			       	1.0, 1.0, 1.0,
-			       	-1.0, 1.0,-1.0,
-			       	-1.0, 1.0, 1.0,
-			       	1.0, 1.0, 1.0,
-			       	-1.0, 1.0, 1.0,
-			       	1.0,-1.0, 1.0
-				] as [GLfloat]
-		}
-	}
-
-	init() {
-		self.commonInit()
 	}
 }
 
