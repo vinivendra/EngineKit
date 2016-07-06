@@ -1,4 +1,8 @@
-import Darwin
+#if os(Linux)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 public class EKUnixFileManager: EKFileManager {
 	public func getContentsFromFile(_ filename: String) -> String? {

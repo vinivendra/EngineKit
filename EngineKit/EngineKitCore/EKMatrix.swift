@@ -1,4 +1,8 @@
-import Darwin
+#if os(Linux)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 let EKUsesOpenGLOrientedMath = true
 
