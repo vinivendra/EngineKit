@@ -1,4 +1,4 @@
-import SGLOpenGL
+
 
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil

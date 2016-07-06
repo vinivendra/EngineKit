@@ -1,5 +1,4 @@
 import CGLFW3
-import SGLOpenGL
 
 let EKOpenGLWindowWidth: GLfloat = 1024
 let EKOpenGLWindowHeight: GLfloat = 768

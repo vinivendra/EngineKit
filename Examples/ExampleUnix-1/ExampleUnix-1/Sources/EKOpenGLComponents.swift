@@ -1,4 +1,4 @@
-import SGLOpenGL
+
 
 public struct EKGLMatrixComponent {
 	public var position = EKVector3.origin() {
