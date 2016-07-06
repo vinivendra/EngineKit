@@ -35,7 +35,7 @@ class EKJSCoreEngineTests: XCTestCase {
 		engine = EKJSCoreEngine(engine: ekEngine)
 		ekEngine.languageEngine = engine
 
-		currentNSBundle = NSBundle(forClass: EKJSCoreEngineTests.self)
+		currentNSBundle = Bundle(for: EKJSCoreEngineTests.self)
 	}
 
 	func testOutput() {

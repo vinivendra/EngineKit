@@ -8,7 +8,7 @@ public protocol EKVector4Type: EKLanguageCompatible,
 	CustomDebugStringConvertible,
 	CustomStringConvertible {
 
-	static func createVector(x x: Double,
+	static func createVector(x: Double,
 	                           y: Double,
 	                           z: Double,
 	                           w: Double) -> EKVector4
@@ -30,30 +30,30 @@ public func != (lhs: EKVector4, rhs: EKVector4) -> Bool {
 }
 
 extension EKVector4 {
-	public func plus(object: AnyObject) -> EKVector4 {
-		let vector = EKVector4.createVector(object: object)
+	public func plus(_ object: AnyObject) -> EKVector4 {
+		let vector = EKVector4.createVector(fromObject: object)
 		return EKVector4.createVector(x: self.x + vector.x,
 		                              y: self.y + vector.y,
 		                              z: self.z + vector.z,
 		                              w: min(self.w + vector.w, 1))
 	}
 
-	public func minus(object: AnyObject) -> EKVector4 {
-		let vector = EKVector4.createVector(object: object)
+	public func minus(_ object: AnyObject) -> EKVector4 {
+		let vector = EKVector4.createVector(fromObject: object)
 		return EKVector4.createVector(x: self.x - vector.x,
 		                              y: self.y - vector.y,
 		                              z: self.z - vector.z,
 		                              w: max(self.w - vector.w, 0))
 	}
 
-	public func times(scalar: Double) -> EKVector4 {
+	public func times(_ scalar: Double) -> EKVector4 {
 		return EKVector4.createVector(x: self.x * scalar,
 		                              y: self.y * scalar,
 		                              z: self.z * scalar,
 		                              w: self.w)
 	}
 
-	public func over(scalar: Double) -> EKVector4 {
+	public func over(_ scalar: Double) -> EKVector4 {
 		return self.times(1/scalar)
 	}
 
@@ -64,8 +64,8 @@ extension EKVector4 {
 		                              w: self.w)
 	}
 
-	public func dot(object: AnyObject) -> Double {
-		let vector = EKVector4.createVector(object: object)
+	public func dot(_ object: AnyObject) -> Double {
+		let vector = EKVector4.createVector(fromObject: object)
 		return self.x * vector.x + self.y * vector.y + self.z * vector.z
 	}
 
@@ -86,12 +86,12 @@ extension EKVector4 {
 		}
 	}
 
-	public func translate(object: AnyObject) -> EKVector4 {
+	public func translate(_ object: AnyObject) -> EKVector4 {
 		return self.plus(object)
 	}
 
-	public func scale(object: AnyObject) -> EKVector4 {
-		let vector = EKVector4.createVector(object: object)
+	public func scale(_ object: AnyObject) -> EKVector4 {
+		let vector = EKVector4.createVector(fromObject: object)
 		return EKVector4.createVector(x: self.x * vector.x,
 		                              y: self.y * vector.y,
 		                              z: self.z * vector.z,
@@ -108,22 +108,22 @@ extension EKVector4 {
 		return EKVector4.createVector(x: 0, y: 0, z: 0, w: 1)
 	}
 
-	public static func createVector(xyz xyz: Double) -> EKVector4 {
+	public static func createVector(withUniformNumbers xyz: Double) -> EKVector4 {
 		return EKVector4.createVector(x: xyz,
 		                              y: xyz,
 		                              z: xyz,
 		                              w: 0)
 	}
 
-	public static func createVector(array array: [Double]) -> EKVector4 {
+	public static func createVector(fromArray array: [Double]) -> EKVector4 {
 		return self.createVector(x: array[zero: 0],
 		                         y: array[zero: 1],
 		                         z: array[zero: 2],
 		                         w: array[zero: 3])
 	}
 
-	public static func createVector(dictionary
-		dictionary: [String: Double]) -> EKVector4 {
+	public static func createVector(fromDictionary dictionary: [String: Double])
+		-> EKVector4 {
 
 		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
 		                         y: dictionary[zero: ["1", "y", "Y"]],
@@ -131,7 +131,7 @@ extension EKVector4 {
 		                         w: dictionary[zero: ["3", "w", "W", "a", "A"]])
 	}
 
-	public static func createVector(string string: String) -> EKVector4 {
+	public static func createVector(fromString string: String) -> EKVector4 {
 		var strings = [string]
 
 		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
@@ -143,20 +143,20 @@ extension EKVector4 {
 
 		let doubles = strings.flatMap(Double.init)
 
-		return createVector(array: doubles)
+		return createVector(fromArray: doubles)
 	}
 
-	public static func createVector(object object: AnyObject) -> EKVector4 {
+	public static func createVector(fromObject object: AnyObject) -> EKVector4 {
 		if let vector = object as? EKVector4 {
 			return vector
 		} else if let array = object as? [Double] {
-			return createVector(array: array)
+			return createVector(fromArray: array)
 		} else if let string = object as? String {
-			return createVector(string: string)
+			return createVector(fromString: string)
 		} else if let dictionary = object as? [String: Double] {
-			return createVector(dictionary: dictionary)
+			return createVector(fromDictionary: dictionary)
 		} else if let number = object as? Double {
-			return createVector(xyz: number)
+			return createVector(withUniformNumbers: number)
 		}
 
 		return origin()
@@ -207,12 +207,12 @@ extension EKVector4 {
 		return rotationToQuaternion().quaternionToMatrix()
 	}
 
-	public func rotate(matrix matrix: EKMatrix) -> EKMatrix {
+	public func rotate(matrix: EKMatrix) -> EKMatrix {
 		return rotationToMatrix() * matrix
 	}
 
-	public func rotate(vector: AnyObject) -> EKVector3 {
-		let v = EKVector3.createVector(object: vector)
+	public func rotate(_ vector: AnyObject) -> EKVector3 {
+		let v = EKVector3.createVector(fromObject: vector)
 		let q = self.rotationToQuaternion()
 		let p = EKVector4(
 			x: q.w * v.x + q.y * v.z - q.z * v.y,
@@ -227,7 +227,7 @@ extension EKVector4 {
 		return result
 	}
 
-	public func translate(matrix matrix: EKMatrix) -> EKMatrix {
+	public func translate(matrix: EKMatrix) -> EKMatrix {
 		return translationToMatrix() * matrix
 	}
 
@@ -235,7 +235,7 @@ extension EKVector4 {
 		return EKMatrix.createTranslation(self.toEKVector3())
 	}
 
-	func multiplyAsQuaternion(vector vector: EKVector3) -> EKVector4 {
+	func multiplyAsQuaternion(vector: EKVector3) -> EKVector4 {
 		return multiplyAsQuaternion(quaternion: vector.toHomogeneousVector())
 	}
 

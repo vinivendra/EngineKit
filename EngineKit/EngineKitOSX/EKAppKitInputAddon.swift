@@ -29,28 +29,28 @@ private extension NSEvent {
 }
 
 public class EKView: NSView {
-	var backgroundColor: NSColor = .clearColor()
+	var backgroundColor: NSColor = .clear()
 
-	override public func drawRect(dirtyRect: NSRect) {
+	override public func draw(_ dirtyRect: NSRect) {
 		backgroundColor.setFill()
 		NSRectFill(dirtyRect)
-		super.drawRect(dirtyRect)
+		super.draw(dirtyRect)
 	}
 }
 
 extension NSView {
-	func addSubviewAndFill(subview: NSView) {
+	func addSubviewAndFill(_ subview: NSView) {
 		addSubview(subview)
 
 		let horizontalConstraints =
-			NSLayoutConstraint.constraintsWithVisualFormat(
-			"|[subview]|",
+			NSLayoutConstraint.constraints(
+			withVisualFormat: "|[subview]|",
 			options: NSLayoutFormatOptions(rawValue: 0),
 			metrics: nil,
 			views: ["subview": subview])
 		let verticalConstraints =
-			NSLayoutConstraint.constraintsWithVisualFormat(
-			"V:|[subview]|",
+			NSLayoutConstraint.constraints(
+			withVisualFormat: "V:|[subview]|",
 			options: NSLayoutFormatOptions(rawValue: 0),
 			metrics: nil,
 			views: ["subview": subview])
@@ -70,28 +70,28 @@ public final class EKAppKitInputView: EKView {
 	var rotationIsHappening = false
 
 	enum GestureRecognizerState {
-		case Standby
-		case Detected
-		case DetectedTolerance
-		case PerformingLongGesture
+		case standby
+		case detected
+		case detectedTolerance
+		case performingLongGesture
 	}
 
-	var state = GestureRecognizerState.Standby
+	var state = GestureRecognizerState.standby
 
 	func longPressDelayExpired() {
 		switch state {
-		case .PerformingLongGesture:
+		case .performingLongGesture:
 			break
 		default:
 			longPressTriggered = true
 		}
 	}
 
-	override public func mouseUp(event: NSEvent) {
+	override public func mouseUp(_ event: NSEvent) {
 		let eventToFire: EKEvent
 
 		switch state {
-		case .PerformingLongGesture:
+		case .performingLongGesture:
 			if longPressTriggered {
 				eventToFire = EKEventLongPress(
 					position: event.position,
@@ -113,34 +113,34 @@ public final class EKAppKitInputView: EKView {
 
 		eventCenter?.fireEvent(eventToFire)
 
-		state = .Standby
+		state = .standby
 	}
 
-	override public func mouseDown(event: NSEvent) {
+	override public func mouseDown(_ event: NSEvent) {
 		window?.acceptsMouseMovedEvents = true
 
-		state = .Detected
+		state = .detected
 
 		longPressTriggered = false
 
-		NSTimer.scheduledTimerWithTimeInterval(
-			0.5,
+		Timer.scheduledTimer(
+			timeInterval: 0.5,
 			target: self,
 			selector: #selector(longPressDelayExpired),
 			userInfo: nil,
 			repeats: false)
 	}
 
-	override public func mouseDragged(event: NSEvent) {
+	override public func mouseDragged(_ event: NSEvent) {
 		var stateOfEventToFire: EKEventInputState? = nil
 
 		switch state {
-		case .Detected:
-			state = .DetectedTolerance
-		case .DetectedTolerance:
-			state = .PerformingLongGesture
+		case .detected:
+			state = .detectedTolerance
+		case .detectedTolerance:
+			state = .performingLongGesture
 			stateOfEventToFire = .Began
-		case .PerformingLongGesture:
+		case .performingLongGesture:
 			stateOfEventToFire = .Changed
 		default: break
 		}
@@ -166,7 +166,7 @@ public final class EKAppKitInputView: EKView {
 		}
 	}
 
-	override public func magnifyWithEvent(event: NSEvent) {
+	override public func magnify(with event: NSEvent) {
 		let position = NSEvent.mouseLocation().toEKVector2()
 		let scale = Double(1 + event.magnification)
 
@@ -189,7 +189,7 @@ public final class EKAppKitInputView: EKView {
 			state: state))
 	}
 
-	override public func rotateWithEvent(event: NSEvent) {
+	override public func rotate(with event: NSEvent) {
 		let position = NSEvent.mouseLocation().toEKVector2()
 		let rotation = Double(event.rotation)
 		let angle = -rotation / 180 * M_PI

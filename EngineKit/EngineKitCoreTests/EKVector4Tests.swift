@@ -161,7 +161,7 @@ class EKVector4Tests: XCTestCase {
 	}
 
 	func testCreateWithXYZ() {
-		let testVector = EKVector4.createVector(xyz: 3)
+		let testVector = EKVector4.createVector(withUniformNumbers: 3)
 
 		XCTAssertEqual(testVector.x, 3)
 		XCTAssertEqual(testVector.y, 3)
@@ -170,13 +170,13 @@ class EKVector4Tests: XCTestCase {
 	}
 
 	func testCreateWithArray() {
-		var testVector = EKVector4.createVector(array: [1, 2, 3, 1])
+		var testVector = EKVector4.createVector(fromArray: [1, 2, 3, 1])
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
 		XCTAssertEqual(testVector.z, 3)
 		XCTAssertEqual(testVector.w, 1)
 
-		testVector = EKVector4.createVector(array: [1, 2, 3])
+		testVector = EKVector4.createVector(fromArray: [1, 2, 3])
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
 		XCTAssertEqual(testVector.z, 3)
@@ -193,7 +193,7 @@ class EKVector4Tests: XCTestCase {
 			 ["X": 1, "Y": 2, "Z": 3]]
 
 		for dictionary in dictionaries {
-			let testVector = EKVector4.createVector(dictionary: dictionary)
+			let testVector = EKVector4.createVector(fromDictionary: dictionary)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -208,7 +208,7 @@ class EKVector4Tests: XCTestCase {
 		                         "{{{1}{2}{3}{1}}"]
 
 		for string in strings {
-			let testVector = EKVector4.createVector(string: string)
+			let testVector = EKVector4.createVector(fromString: string)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -226,7 +226,7 @@ class EKVector4Tests: XCTestCase {
 
 		//
 		for object in objects {
-			let testVector = EKVector4.createVector(object: object)
+			let testVector = EKVector4.createVector(fromObject: object)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -234,7 +234,7 @@ class EKVector4Tests: XCTestCase {
 			XCTAssertEqual(testVector.w, 1)
 		}
 
-		let testVector = EKVector4.createVector(object: 3.0)
+		let testVector = EKVector4.createVector(fromObject: 3.0)
 
 		XCTAssertEqual(testVector.x, 3)
 		XCTAssertEqual(testVector.y, 3)

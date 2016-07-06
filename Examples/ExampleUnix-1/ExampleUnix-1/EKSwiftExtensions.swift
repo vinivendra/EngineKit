@@ -67,7 +67,7 @@ extension Dictionary where Value: IntegerLiteralConvertible {
 		}
 	}
 
-	func zero(index: Key) -> Value {
+	func zero(_ index: Key) -> Value {
 		return self[index] ?? 0
 	}
 }
@@ -141,7 +141,7 @@ extension String {
 		return array
 	}
 
-	func ekHasPrefix(prefix: String) -> Bool {
+	func ekHasPrefix(_ prefix: String) -> Bool {
 		guard self.unicodeScalars.count >= prefix.unicodeScalars.count else {
 			return false
 		}

@@ -13,7 +13,11 @@ class ViewController: NSViewController {
 		engine.languageEngine = javaScriptEngine
 		engine.loadAddon(EKSceneKitAddon(sceneView: sceneView))
 		engine.loadAddon(EKAppKitInputAddon(view: sceneView))
-		try! engine.runScript(filename: "main.js")
+		do {
+			try javaScriptEngine.runScript(filename: "main.js")
+		} catch {
+
+		}
 
 		let lightnode = SCNNode()
 		let light = SCNLight()

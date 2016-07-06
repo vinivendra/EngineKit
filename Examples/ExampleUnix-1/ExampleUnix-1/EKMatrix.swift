@@ -6,7 +6,7 @@ public protocol EKMatrixType: class,
 EKLanguageCompatible {
 
 	static func createMatrix(
-		m11 m11: Double, m12: Double, m13: Double, m14: Double,
+		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,
 		m31: Double, m32: Double, m33: Double, m34: Double,
 		m41: Double, m42: Double, m43: Double, m44: Double) -> EKMatrix
@@ -51,13 +51,15 @@ public func * (m: EKMatrix, v: EKVector4) -> EKVector4 {
 }
 
 extension EKMatrix {
-	public static var identity = EKMatrix.createMatrix(
-		m11: 1, m12: 0, m13: 0, m14: 0,
-		m21: 0, m22: 1, m23: 0, m24: 0,
-		m31: 0, m32: 0, m33: 1, m34: 0,
-		m41: 0, m42: 0, m43: 0, m44: 1)
+	public static func identity() -> EKMatrix {
+		return EKMatrix.createMatrix(
+			m11: 1, m12: 0, m13: 0, m14: 0,
+			m21: 0, m22: 1, m23: 0, m24: 0,
+			m31: 0, m32: 0, m33: 1, m34: 0,
+			m41: 0, m42: 0, m43: 0, m44: 1)
+	}
 
-	public func times(r: EKMatrix) -> EKMatrix {
+	public func times(_ r: EKMatrix) -> EKMatrix {
 		let l = self
 		return EKMatrix(
 			m11: l.m11 * r.m11 + l.m12 * r.m21 + l.m13 * r.m31 + l.m14 * r.m41,
@@ -80,11 +82,11 @@ extension EKMatrix {
 }
 
 extension EKMatrix {
-	public static func createScale(vector: EKVector3) -> EKMatrix {
+	public static func createScale(_ vector: EKVector3) -> EKMatrix {
 		return createScale(x: vector.x, y: vector.y, z: vector.z)
 	}
 
-	public static func createScale(x x: Double, y: Double, z: Double)
+	public static func createScale(x: Double, y: Double, z: Double)
 		-> EKMatrix {
 			return EKMatrix.createMatrix(m11: x, m12: 0, m13: 0, m14: 0,
 			                             m21: 0, m22: y, m23: 0, m24: 0,
@@ -92,11 +94,11 @@ extension EKMatrix {
 			                             m41: 0, m42: 0, m43: 0, m44: 1)
 	}
 
-	public static func createTranslation(vector: EKVector3) -> EKMatrix {
+	public static func createTranslation(_ vector: EKVector3) -> EKMatrix {
 		return createTranslation(x: vector.x, y: vector.y, z: vector.z)
 	}
 
-	public static func createTranslation(x x: Double, y: Double, z: Double)
+	public static func createTranslation(x: Double, y: Double, z: Double)
 		-> EKMatrix {
 			if EKUsesOpenGLOrientedMath {
 				return EKMatrix.createMatrix(m11: 1, m12: 0, m13: 0, m14: 0,
@@ -134,7 +136,7 @@ extension EKMatrix {
 		return EKUsesOpenGLOrientedMath ? result : result.transpose()
 	}
 
-	public static func createLookAt(eye eye: EKVector3,
+	public static func createLookAt(eye: EKVector3,
 	                                center: EKVector3,
 	                                up: EKVector3) -> EKMatrix {
 		let f = center.minus(eye).normalize()

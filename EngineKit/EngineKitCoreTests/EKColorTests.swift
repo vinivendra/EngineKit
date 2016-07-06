@@ -9,21 +9,21 @@ import XCTest
 
 class EKVector4AsEKColorTests: EKColorTests {
 	func testAll() {
-		testAll(EKVector4)
+		testAll(forType: EKVector4.self)
 	}
 }
 
 class EKColorTests: XCTestCase {
 
-	func testAll<ColorType: EKColorType>(type: ColorType.Type) {
-		testCreateAndEquals(type)
-		testComponents(type)
-		testCreate(type)
-		testCreateGrayscale(type)
-		testCreateArray(type)
-		testCreateName(type)
-		testCreateSpecifics(type)
-		testCreateObject(type)
+	func testAll<ColorType: EKColorType>(forType type: ColorType.Type) {
+		testCreateAndEquals(type: type)
+		testComponents(type: type)
+		testCreate(type: type)
+		testCreateGrayscale(type: type)
+		testCreateArray(type: type)
+		testCreateName(type: type)
+		testCreateSpecifics(type: type)
+		testCreateObject(type: type)
 	}
 
 	func testCreateAndEquals<ColorType: EKColorType>(type: ColorType.Type) {

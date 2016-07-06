@@ -50,35 +50,6 @@
 		24CFC8051D18CFD70025C437 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/Constants.swift"; sourceTree = "<group>"; };
 		24CFC8061D18CFD70025C437 /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loaders.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/Loaders.swift"; sourceTree = "<group>"; };
 		24CFC8071D18CFD70025C437 /* SwiftGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftGL.swift; path = "Packages/SGLOpenGL-1.0.1/Sources/SwiftGL.swift"; sourceTree = "<group>"; };
-		24CFC8091D18D00A0025C437 /* Complex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Complex.swift; path = "Packages/SGLMath-1.0.3/Sources/Complex.swift"; sourceTree = "<group>"; };
-		24CFC80A1D18D00A0025C437 /* glm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = glm.swift; path = "Packages/SGLMath-1.0.3/Sources/glm.swift"; sourceTree = "<group>"; };
-		24CFC80B1D18D00A0025C437 /* glsl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = glsl.swift; path = "Packages/SGLMath-1.0.3/Sources/glsl.swift"; sourceTree = "<group>"; };
-		24CFC80C1D18D00A0025C437 /* Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Internal.swift; path = "Packages/SGLMath-1.0.3/Sources/Internal.swift"; sourceTree = "<group>"; };
-		24CFC80D1D18D00A0025C437 /* Matrix2x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix2x2.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix2x2.swift"; sourceTree = "<group>"; };
-		24CFC80E1D18D00A0025C437 /* Matrix2x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix2x3.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix2x3.swift"; sourceTree = "<group>"; };
-		24CFC80F1D18D00A0025C437 /* Matrix2x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix2x4.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix2x4.swift"; sourceTree = "<group>"; };
-		24CFC8101D18D00A0025C437 /* Matrix3x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix3x2.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix3x2.swift"; sourceTree = "<group>"; };
-		24CFC8111D18D00A0025C437 /* Matrix3x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix3x3.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix3x3.swift"; sourceTree = "<group>"; };
-		24CFC8121D18D00A0025C437 /* Matrix3x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix3x4.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix3x4.swift"; sourceTree = "<group>"; };
-		24CFC8131D18D00A0025C437 /* Matrix4x2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix4x2.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix4x2.swift"; sourceTree = "<group>"; };
-		24CFC8141D18D00A0025C437 /* Matrix4x3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix4x3.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix4x3.swift"; sourceTree = "<group>"; };
-		24CFC8151D18D00A0025C437 /* Matrix4x4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix4x4.swift; path = "Packages/SGLMath-1.0.3/Sources/Matrix4x4.swift"; sourceTree = "<group>"; };
-		24CFC8161D18D00A0025C437 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = "Packages/SGLMath-1.0.3/Sources/Operators.swift"; sourceTree = "<group>"; };
-		24CFC8171D18D00A0025C437 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = "Packages/SGLMath-1.0.3/Sources/Protocols.swift"; sourceTree = "<group>"; };
-		24CFC8181D18D00A0025C437 /* Quaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quaternion.swift; path = "Packages/SGLMath-1.0.3/Sources/Quaternion.swift"; sourceTree = "<group>"; };
-		24CFC8191D18D00A0025C437 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = "Packages/SGLMath-1.0.3/Sources/Swizzle.swift"; sourceTree = "<group>"; };
-		24CFC81A1D18D00A0025C437 /* Vector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector2.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector2.swift"; sourceTree = "<group>"; };
-		24CFC81B1D18D00A0025C437 /* Vector2b.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector2b.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector2b.swift"; sourceTree = "<group>"; };
-		24CFC81C1D18D00A0025C437 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector3.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector3.swift"; sourceTree = "<group>"; };
-		24CFC81D1D18D00A0025C437 /* Vector3b.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector3b.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector3b.swift"; sourceTree = "<group>"; };
-		24CFC81E1D18D00A0025C437 /* Vector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector4.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector4.swift"; sourceTree = "<group>"; };
-		24CFC81F1D18D00A0025C437 /* Vector4b.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector4b.swift; path = "Packages/SGLMath-1.0.3/Sources/Vector4b.swift"; sourceTree = "<group>"; };
-		24CFC8211D18D0D40025C437 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = "Packages/SGLImage-1.0.1/Sources/Image.swift"; sourceTree = "<group>"; };
-		24CFC8221D18D0D40025C437 /* ImageBMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBMP.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageBMP.swift"; sourceTree = "<group>"; };
-		24CFC8231D18D0D40025C437 /* ImageGIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageGIF.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageGIF.swift"; sourceTree = "<group>"; };
-		24CFC8241D18D0D40025C437 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = "Packages/SGLImage-1.0.1/Sources/ImageLoader.swift"; sourceTree = "<group>"; };
-		24CFC8251D18D0D40025C437 /* ImagePNG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePNG.swift; path = "Packages/SGLImage-1.0.1/Sources/ImagePNG.swift"; sourceTree = "<group>"; };
-		24CFC8261D18D0D40025C437 /* Inflate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Inflate.swift; path = "Packages/SGLImage-1.0.1/Sources/Inflate.swift"; sourceTree = "<group>"; };
 		24D2971A1D1B04250093E04D /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKOpenGL.swift; sourceTree = "<group>"; };
 		24D2971F1D1B048C0093E04D /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKCBridging.swift; sourceTree = "<group>"; };
 		24D297211D1B04D50093E04D /* EKMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKMath.swift; sourceTree = "<group>"; };
@@ -91,22 +62,12 @@
 			isa = PBXGroup;
 			children = (
 				2414B7521D074B8800CFFC2B /* ExampleUnix-1 */,
-				2414B7511D074B8800CFFC2B /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		2414B7511D074B8800CFFC2B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2414B7521D074B8800CFFC2B /* ExampleUnix-1 */ = {
 			isa = PBXGroup;
 			children = (
-				24CFC8271D18D0DC0025C437 /* SGLImage */,
-				24CFC8201D18D03A0025C437 /* SGLMath */,
 				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
 				24B14F111D0750B700B38098 /* EngineKitSources */,
 				2414B7531D074B8800CFFC2B /* main.swift */,
@@ -158,49 +119,6 @@
 			name = SGLOpenGL;
 			sourceTree = "<group>";
 		};
-		24CFC8201D18D03A0025C437 /* SGLMath */ = {
-			isa = PBXGroup;
-			children = (
-				24CFC8091D18D00A0025C437 /* Complex.swift */,
-				24CFC80A1D18D00A0025C437 /* glm.swift */,
-				24CFC80B1D18D00A0025C437 /* glsl.swift */,
-				24CFC80C1D18D00A0025C437 /* Internal.swift */,
-				24CFC80D1D18D00A0025C437 /* Matrix2x2.swift */,
-				24CFC80E1D18D00A0025C437 /* Matrix2x3.swift */,
-				24CFC80F1D18D00A0025C437 /* Matrix2x4.swift */,
-				24CFC8101D18D00A0025C437 /* Matrix3x2.swift */,
-				24CFC8111D18D00A0025C437 /* Matrix3x3.swift */,
-				24CFC8121D18D00A0025C437 /* Matrix3x4.swift */,
-				24CFC8131D18D00A0025C437 /* Matrix4x2.swift */,
-				24CFC8141D18D00A0025C437 /* Matrix4x3.swift */,
-				24CFC8151D18D00A0025C437 /* Matrix4x4.swift */,
-				24CFC8161D18D00A0025C437 /* Operators.swift */,
-				24CFC8171D18D00A0025C437 /* Protocols.swift */,
-				24CFC8181D18D00A0025C437 /* Quaternion.swift */,
-				24CFC8191D18D00A0025C437 /* Swizzle.swift */,
-				24CFC81A1D18D00A0025C437 /* Vector2.swift */,
-				24CFC81B1D18D00A0025C437 /* Vector2b.swift */,
-				24CFC81C1D18D00A0025C437 /* Vector3.swift */,
-				24CFC81D1D18D00A0025C437 /* Vector3b.swift */,
-				24CFC81E1D18D00A0025C437 /* Vector4.swift */,
-				24CFC81F1D18D00A0025C437 /* Vector4b.swift */,
-			);
-			name = SGLMath;
-			sourceTree = "<group>";
-		};
-		24CFC8271D18D0DC0025C437 /* SGLImage */ = {
-			isa = PBXGroup;
-			children = (
-				24CFC8211D18D0D40025C437 /* Image.swift */,
-				24CFC8221D18D0D40025C437 /* ImageBMP.swift */,
-				24CFC8231D18D0D40025C437 /* ImageGIF.swift */,
-				24CFC8241D18D0D40025C437 /* ImageLoader.swift */,
-				24CFC8251D18D0D40025C437 /* ImagePNG.swift */,
-				24CFC8261D18D0D40025C437 /* Inflate.swift */,
-			);
-			name = SGLImage;
-			sourceTree = "<group>";
-		};
 		24D297251D1B072A0093E04D /* EngineKitUnix */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,12 +137,13 @@
 		2414B7481D074B8800CFFC2B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Vinicius Vendramini";
 				TargetAttributes = {
 					24CFC7DD1D18B2280025C437 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -236,7 +155,7 @@
 				en,
 			);
 			mainGroup = 2414B7471D074B8800CFFC2B;
-			productRefGroup = 2414B7511D074B8800CFFC2B /* Products */;
+			productRefGroup = 2414B7471D074B8800CFFC2B;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -257,7 +176,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
+			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -351,6 +270,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -360,6 +280,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

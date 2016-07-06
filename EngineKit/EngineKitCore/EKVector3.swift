@@ -5,13 +5,11 @@
 #endif
 
 public protocol EKVector3Type: class,
-	EKLanguageCompatible,
-	CustomDebugStringConvertible,
-	CustomStringConvertible {
+EKLanguageCompatible {
 
-	static func createVector(x x: Double,
-	                           y: Double,
-	                           z: Double) -> EKVector3
+	static func createVector(x: Double,
+	                         y: Double,
+	                         z: Double) -> EKVector3
 
 	var x: Double { get }
 	var y: Double { get }
@@ -31,27 +29,27 @@ public func != (lhs: EKVector3, rhs: EKVector3) -> Bool {
 
 //
 extension EKVector3 {
-	public func plus(object: AnyObject) -> EKVector3 {
-		let vector = EKVector3.createVector(object: object)
+	public func plus(_ object: AnyObject) -> EKVector3 {
+		let vector = EKVector3.createVector(fromObject: object)
 		return EKVector3.createVector(x: self.x + vector.x,
 		                              y: self.y + vector.y,
 		                              z: self.z + vector.z)
 	}
 
-	public func minus(object: AnyObject) -> EKVector3 {
-		let vector = EKVector3.createVector(object: object)
+	public func minus(_ object: AnyObject) -> EKVector3 {
+		let vector = EKVector3.createVector(fromObject: object)
 		return EKVector3.createVector(x: self.x - vector.x,
 		                              y: self.y - vector.y,
 		                              z: self.z - vector.z)
 	}
 
-	public func times(scalar: Double) -> EKVector3 {
+	public func times(_ scalar: Double) -> EKVector3 {
 		return EKVector3.createVector(x: self.x * scalar,
 		                              y: self.y * scalar,
 		                              z: self.z * scalar)
 	}
 
-	public func over(scalar: Double) -> EKVector3 {
+	public func over(_ scalar: Double) -> EKVector3 {
 		return self.times(1/scalar)
 	}
 
@@ -61,8 +59,8 @@ extension EKVector3 {
 		                              z: -self.z)
 	}
 
-	public func dot(object: AnyObject) -> Double {
-		let vector = EKVector3.createVector(object: object)
+	public func dot(_ object: AnyObject) -> Double {
+		let vector = EKVector3.createVector(fromObject: object)
 		return self.x * vector.x + self.y * vector.y + self.z * vector.z
 	}
 
@@ -83,12 +81,12 @@ extension EKVector3 {
 		}
 	}
 
-	public func translate(object: AnyObject) -> EKVector3 {
+	public func translate(_ object: AnyObject) -> EKVector3 {
 		return self.plus(object)
 	}
 
-	public func scale(object: AnyObject) -> EKVector3 {
-		let vector = EKVector3.createVector(object: object)
+	public func scale(_ object: AnyObject) -> EKVector3 {
+		let vector = EKVector3.createVector(fromObject: object)
 		return EKVector3.createVector(x: self.x * vector.x,
 		                              y: self.y * vector.y,
 		                              z: self.z * vector.z)
@@ -104,27 +102,28 @@ extension EKVector3 {
 		return EKVector3.createVector(x: 0, y: 0, z: 0)
 	}
 
-	public static func createVector(xyz xyz: Double) -> EKVector3 {
+	public static func createVector(withUniformNumbers xyz: Double)
+		-> EKVector3 {
 		return EKVector3.createVector(x: xyz,
 		                              y: xyz,
 		                              z: xyz)
 	}
 
-	public static func createVector(array array: [Double]) -> EKVector3 {
+	public static func createVector(fromArray array: [Double]) -> EKVector3 {
 		return self.createVector(x: array[zero: 0],
 		                         y: array[zero: 1],
 		                         z: array[zero: 2])
 	}
 
-	public static func createVector(dictionary
-		dictionary: [String: Double]) -> EKVector3 {
+	public static func createVector(fromDictionary dictionary: [String: Double])
+		-> EKVector3 {
 
 		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
 		                         y: dictionary[zero: ["1", "y", "Y"]],
 		                         z: dictionary[zero: ["2", "z", "Z"]])
 	}
 
-	public static func createVector(string string: String) -> EKVector3 {
+	public static func createVector(fromString string: String) -> EKVector3 {
 		var strings = [string]
 
 		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
@@ -136,20 +135,20 @@ extension EKVector3 {
 
 		let doubles = strings.flatMap(Double.init)
 
-		return createVector(array: doubles)
+		return createVector(fromArray: doubles)
 	}
 
-	public static func createVector(object object: AnyObject) -> EKVector3 {
+	public static func createVector(fromObject object: AnyObject) -> EKVector3 {
 		if let vector = object as? EKVector3 {
 			return vector
 		} else if let array = object as? [Double] {
-			return createVector(array: array)
+			return createVector(fromArray: array)
 		} else if let string = object as? String {
-			return createVector(string: string)
+			return createVector(fromString: string)
 		} else if let dictionary = object as? [String: Double] {
-			return createVector(dictionary: dictionary)
+			return createVector(fromDictionary: dictionary)
 		} else if let number = object as? Double {
-			return createVector(xyz: number)
+			return createVector(withUniformNumbers: number)
 		}
 
 		return origin()
@@ -157,26 +156,20 @@ extension EKVector3 {
 }
 
 extension EKVector3 {
-	public func translate(matrix matrix: EKMatrix) -> EKMatrix {
+	public func translate(matrix: EKMatrix) -> EKMatrix {
 		return translationToMatrix() * matrix
 	}
 
-	public func scale(matrix matrix: EKMatrix) -> EKMatrix {
+	public func scale(matrix: EKMatrix) -> EKMatrix {
 		return scaleToMatrix() * matrix
 	}
 
 	public func translationToMatrix() -> EKMatrix {
-		return EKMatrix(m11: 1, m12: 0, m13: 0, m14: 0,
-		                m21: 0, m22: 1, m23: 0, m24: 0,
-		                m31: 0, m32: 0, m33: 1, m34: 0,
-		                m41: x, m42: y, m43: z, m44: 1)
+		return EKMatrix.createTranslation(self)
 	}
 
 	public func scaleToMatrix() -> EKMatrix {
-		return EKMatrix(m11: x, m12: 0, m13: 0, m14: 0,
-		                m21: 0, m22: y, m23: 0, m24: 0,
-		                m31: 0, m32: 0, m33: z, m34: 0,
-		                m41: 0, m42: 0, m43: 0, m44: 1)
+		return EKMatrix.createScale(self)
 	}
 
 	public func toHomogeneousPoint() -> EKVector4 {
@@ -185,5 +178,13 @@ extension EKVector3 {
 
 	public func toHomogeneousVector() -> EKVector4 {
 		return EKVector4(x: x, y: y, z: z, w: 0)
+	}
+}
+
+extension EKVector3 {
+	public func cross(_ other: EKVector3) -> EKVector3 {
+		return EKVector3(x: self.y * other.z - other.y * self.z,
+		                 y: self.z * other.x - other.z * self.x,
+		                 z: self.x * other.y - other.x * self.y)
 	}
 }

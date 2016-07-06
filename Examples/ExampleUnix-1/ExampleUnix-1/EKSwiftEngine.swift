@@ -13,13 +13,13 @@ public class EKSwiftEngine: EKLanguageEngine {
 		self.engine = engine
 	}
 
-	public func addClass<T: EKLanguageCompatible>(class: T.Type,
+	public func addClass<T: EKLanguageCompatible>(_ class: T.Type,
 	              withName className: String,
 	                       constructor: (() -> (T)) ) {
 		constructors[className] = constructor
 	}
 
-	public func addObject<T: EKLanguageCompatible>(object: T,
+	public func addObject<T: EKLanguageCompatible>(_ object: T,
 	               withName name: String) throws {
 		objects[name] = object
 	}

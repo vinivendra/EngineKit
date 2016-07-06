@@ -1,19 +1,42 @@
 public protocol EKAction {
-	func callWithArgument(argument: Any?) throws -> Any?
+	@discardableResult
+	func callWithArgument(_ argument: Any?) throws -> Any?
+}
+
+public struct EKFunctionVoidAction<ReturnType>: EKAction {
+	let closure: () -> (ReturnType)
+
+	@discardableResult
+	public func callWithArgument(_ argument: Any?) throws -> Any? {
+		return closure()
+	}
 }
 
 public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
 	let closure: (ArgumentType) -> (ReturnType)
 
-	public func callWithArgument(argument: Any?) throws -> Any? {
+	@discardableResult
+	public func callWithArgument(_ argument: Any?) throws -> Any? {
 		if let typedArgument = argument as? ArgumentType {
 			return closure(typedArgument)
 		} else {
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
 				"\(argument.dynamicType)."
-			throw EKError.InvalidArgumentTypeError(message: message)
+			throw EKError.invalidArgumentTypeError(message: message)
 		}
+	}
+}
+
+public struct EKMethodVoidAction<ObjectType, ReturnType>: EKAction {
+	typealias Method = (ObjectType) -> () -> (ReturnType)
+
+	let object: ObjectType
+	let method: Method
+
+	@discardableResult
+	public func callWithArgument(_ argument: Any?) throws -> Any? {
+		return method(object)()
 	}
 }
 
@@ -23,14 +46,15 @@ public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
 	let object: ObjectType
 	let method: Method
 
-	public func callWithArgument(argument: Any?) throws -> Any? {
+	@discardableResult
+	public func callWithArgument(_ argument: Any?) throws -> Any? {
 		if let typedArgument = argument as? ArgumentType {
 			return method(object)(typedArgument)
 		} else {
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
 				"\(argument.dynamicType)."
-			throw EKError.InvalidArgumentTypeError(message: message)
+			throw EKError.invalidArgumentTypeError(message: message)
 		}
 	}
 }
@@ -38,7 +62,7 @@ public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
 public class EKEventCenter {
 	var allActions = [String: [EKAction]]()
 
-	public func fireEvent(event: EKEvent) {
+	public func fireEvent(_ event: EKEvent) {
 		let className = eventName(forEvent: event)
 		if let actions = allActions[className] {
 			for action in actions {
@@ -108,7 +132,7 @@ public class EKEventCenter {
 	func register(forEventNamed eventName: String,
 	                            action: EKAction) throws {
 		if allActions[eventName] == nil {
-			throw EKError.EventRegistryError(
+			throw EKError.eventRegistryError(
 				message: "No addons have been registered to fire " + eventName +
 				" events")
 		}

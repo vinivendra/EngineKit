@@ -3,7 +3,7 @@ import SGLOpenGL
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
 	public static var colorID: GLint! = nil
-	public static var projectionViewMatrix = EKMatrix.identity
+	public static var projectionViewMatrix = EKMatrix.identity()
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
@@ -68,10 +68,8 @@ extension EKGLObject {
 		let completeMask: GLuint = 0xff
 		glStencilFunc(GL_ALWAYS, GLint(objectIndex!), completeMask)
 
-		var projectionViewMatrix = projectionViewMatrix
-		if projectionViewMatrix == nil {
-			projectionViewMatrix = EKGLObject.projectionViewMatrix
-		}
+		let projectionViewMatrix = projectionViewMatrix ??
+								   EKGLObject.projectionViewMatrix
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
@@ -82,7 +80,7 @@ extension EKGLObject {
 			type: GL_FLOAT,
 			normalized: false,
 			stride: 0,
-			pointer: nil) // offset
+			pointer: NULL) // offset
 
 		//
 		let mvp = projectionViewMatrix * modelMatrix
@@ -114,7 +112,7 @@ extension EKGLObject {
 }
 
 extension EKGLObject {
-	func addChild(child: EKGLObject) {
+	func addChild(_ child: EKGLObject) {
 		children.append(child)
 		child.parent = self
 	}
@@ -122,9 +120,9 @@ extension EKGLObject {
 	func removeFromParent() {
 		guard let parent = parent else { return }
 
-		for (index, sibling) in parent.children.enumerate() {
+		for (index, sibling) in parent.children.enumerated() {
 			if sibling.objectIndex == self.objectIndex {
-				parent.children.removeAtIndex(index)
+				parent.children.remove(at: index)
 				break
 			}
 		}
@@ -134,12 +132,13 @@ extension EKGLObject {
 }
 
 extension EKGLObject {
-	func rotate(rotationObject: AnyObject,
+	func rotate(_ rotationObject: AnyObject,
 	                   around anchorPoint: AnyObject) {
 		// TODO: This doesn't rotate around the anchor
 		let orientation = rotation.rotationToQuaternion()
 
-		let rotationOperation = EKVector4.createVector(object: rotationObject)
+		let rotationOperation = EKVector4.createVector(
+			fromObject: rotationObject)
 		let quaternion = rotationOperation.rotationToQuaternion()
 			.unitQuaternion()
 
@@ -151,10 +150,11 @@ extension EKGLObject {
 		rotation = newOrientation.quaternionToRotation()
 	}
 
-	func rotate(rotationObject: AnyObject) {
+	func rotate(_ rotationObject: AnyObject) {
 		let orientation = rotation.rotationToQuaternion()
 
-		let rotationOperation = EKVector4.createVector(object: rotationObject)
+		let rotationOperation = EKVector4.createVector(
+			fromObject: rotationObject)
 		let quaternion = rotationOperation.rotationToQuaternion()
 			.unitQuaternion()
 

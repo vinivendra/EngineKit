@@ -1,10 +1,10 @@
 import Foundation
 
-var currentNSBundle = NSBundle.mainBundle()
+var currentNSBundle = Bundle.main()
 
 public class EKFoundationFileManager: EKFileManager {
 
-	public func getContentsFromFile(filename: String) -> String? {
+	public func getContentsFromFile(_ filename: String) -> String? {
 		guard
 			let path = self.pathForFilename(filename)
 			else {
@@ -12,20 +12,20 @@ public class EKFoundationFileManager: EKFileManager {
 		}
 
 		let contents = try? String(contentsOfFile: path,
-		                           encoding: NSUTF8StringEncoding)
+		                           encoding: .utf8)
 
 		return contents
 	}
 
-	func pathForFilename(filename: String) -> String? {
+	func pathForFilename(_ filename: String) -> String? {
 		let nsfilename = filename as NSString
-		let mainName = nsfilename.stringByDeletingPathExtension
+		let mainName = nsfilename.deletingPathExtension
 
 		let mainNameRange = NSRange(location: 0,
 		                            length: (mainName as NSString).length)
 		let fileExtension =
-			nsfilename.stringByReplacingCharactersInRange(mainNameRange,
-			                                              withString: "")
+			nsfilename.replacingCharacters(in: mainNameRange,
+			                               with: "")
 
 		return currentNSBundle.pathForResource(mainName, ofType: fileExtension)
 	}

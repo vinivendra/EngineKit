@@ -8,7 +8,7 @@ public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 		self.y = y
 	}
 
-	public static func createVector(x x: Double,
+	public static func createVector(x: Double,
 	                                  y: Double) -> EKVector2 {
 		return EKVector2(x: x, y: y)
 	}
@@ -38,7 +38,7 @@ public final class EKVector3: EKVector3Type, EKLanguageCompatible {
 		self.z = z
 	}
 
-	public static func createVector(x x: Double,
+	public static func createVector(x: Double,
 	                                  y: Double,
 	                                  z: Double) -> EKVector3 {
 		return EKVector3(x: x, y: y, z: z)
@@ -70,7 +70,7 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 		self.w = w
 	}
 
-	public static func createVector(x x: Double,
+	public static func createVector(x: Double,
 	                                  y: Double,
 	                                  z: Double,
 	                                  w: Double) -> EKVector4 {
@@ -92,7 +92,7 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 
 public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 	public static func createMatrix(
-		m11 m11: Double, m12: Double, m13: Double, m14: Double,
+		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,
 		m31: Double, m32: Double, m33: Double, m34: Double,
 		m41: Double, m42: Double, m43: Double, m44: Double) -> EKMatrix {

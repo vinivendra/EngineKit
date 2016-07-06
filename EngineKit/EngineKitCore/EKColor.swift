@@ -19,7 +19,7 @@ let EKColorDictionary: [String: Any] =
 	 "clear": [0.0, 0.0, 0.0, 0.0]]
 
 extension EKVector4: EKColorType {
-	public static func createColor(red red: Double,
+	public static func createColor(red: Double,
 	                                   green: Double,
 	                                   blue: Double,
 	                                   alpha: Double) -> EKColorType {
@@ -37,7 +37,7 @@ extension EKVector4: EKColorType {
 }
 
 public protocol EKColorType: class {
-	static func createColor(red red: Double,
+	static func createColor(red: Double,
 	                            green: Double,
 	                            blue: Double,
 	                            alpha: Double) -> EKColorType
@@ -63,26 +63,26 @@ public func != (lhs: EKColorType, rhs: EKColorType) -> Bool {
 }
 
 extension EKColorType {
-	static func createColor(red red: Double,
+	static func createColor(red: Double,
 	                            green: Double,
 	                            blue: Double) -> EKColorType {
 		return createColor(red: red, green: green, blue: blue, alpha: 1.0)
 	}
 
-	static func createColor(grayscale grayscale: Double) -> EKColorType {
+	static func createColor(grayscale: Double) -> EKColorType {
 		return createColor(red: grayscale,
 		                   green: grayscale,
 		                   blue: grayscale)
 	}
 
-	static func createColor(array array: [Double]) -> EKColorType {
+	static func createColor(array: [Double]) -> EKColorType {
 		return createColor(red: array[zero: 0],
 		                   green: array[zero: 1],
 		                   blue: array[zero: 2],
 		                   alpha: array[one: 3])
 	}
 
-	static func createColor(object object: Any) -> EKColorType {
+	static func createColor(object: Any) -> EKColorType {
 		if let color = object as? EKColorType {
 			return color
 		} else if let array = object as? [Double] {
@@ -96,7 +96,7 @@ extension EKColorType {
 		return clearColor()
 	}
 
-	static func createColor(name name: String) -> EKColorType {
+	static func createColor(name: String) -> EKColorType {
 		if let object = EKColorDictionary[name] {
 			return createColor(object: object)
 		}

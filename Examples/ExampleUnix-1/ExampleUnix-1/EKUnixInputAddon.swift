@@ -2,7 +2,7 @@ import CGLFW3
 
 public final class EKUnixInputAddon: EKEventAddon {
 	let handler = EKScreenInputHandler()
-	let window: COpaquePointer
+	let window: OpaquePointer
 
 	var width: CInt = 0
 	var height: CInt = 0
@@ -26,7 +26,7 @@ public final class EKUnixInputAddon: EKEventAddon {
 	var oldMousePosition = EKVector2.origin()
 
 	//
-	init(window: COpaquePointer) {
+	init(window: OpaquePointer) {
 		self.window = window
 	}
 
@@ -43,14 +43,15 @@ public final class EKUnixInputAddon: EKEventAddon {
 
 		switch (oldMouseButtonState, newMouseButtonState) {
 		case (GLFW_RELEASE, GLFW_PRESS):
-			handler.mouseDown(newMousePosition)
+			handler.mouseDown(atPosition: newMousePosition)
 		case (GLFW_PRESS, GLFW_RELEASE):
-			handler.mouseUp(newMousePosition)
+			handler.mouseUp(atPosition: newMousePosition)
 		case (GLFW_PRESS, GLFW_PRESS)
 			where newMousePosition != oldMousePosition:
 
 			let displacement = newMousePosition.minus(oldMousePosition)
-			handler.mouseDragged(newMousePosition, displacement: displacement)
+			handler.mouseDragged(atPosition: newMousePosition,
+			                     displacement: displacement)
 		default:
 			// hover?
 			break
@@ -94,7 +95,7 @@ public final class EKScreenInputHandler {
 		}
 	}
 
-	public func mouseUp(position: EKVector2) {
+	public func mouseUp(atPosition position: EKVector2) {
 		let eventToFire: EKEvent
 
 		switch state {
@@ -123,7 +124,7 @@ public final class EKScreenInputHandler {
 		state = .Standby
 	}
 	
-	public func mouseDown(position: EKVector2) {
+	public func mouseDown(atPosition position: EKVector2) {
 		state = .Detected
 
 		longPressTriggered = false
@@ -136,7 +137,8 @@ public final class EKScreenInputHandler {
 //			repeats: false)
 	}
 
-	public func mouseDragged(position: EKVector2, displacement: EKVector2) {
+	public func mouseDragged(atPosition position: EKVector2,
+	                         displacement: EKVector2) {
 		var stateOfEventToFire: EKEventInputState? = nil
 
 		switch state {

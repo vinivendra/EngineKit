@@ -3,16 +3,16 @@ public protocol EKLanguageEngine {
 
 	init(engine: EKEngine)
 
-	func addClass<T: EKLanguageCompatible>(class: T.Type,
+	func addClass<T: EKLanguageCompatible>(_ class: T.Type,
 	              withName className: String,
 	                       constructor: (() -> (T)) )
-	func addObject<T: EKLanguageCompatible>(object: T,
+	func addObject<T: EKLanguageCompatible>(_ object: T,
 	               withName name: String) throws
 }
 
 extension EKLanguageEngine {
 	public func addClass<T: EKLanguageCompatible where T: Initable>(
-		class: T.Type,
+		_ class: T.Type,
 		withName className: String) {
 
 		addClass(T.self, withName: className, constructor: T.init)
@@ -23,7 +23,7 @@ extension String {
 	func toEKPrefixClassName() -> String {
 		guard !self.ekHasPrefix("EK") else { return self }
 
-		let uppercase = self.uppercaseString.utf8.dropFirst()
+		let uppercase = self.uppercased().utf8.dropFirst()
 		let normal = self.utf8.dropFirst()
 		var copy = self.utf8
 

@@ -10,7 +10,7 @@ extension EKMatrix {
 			 GLfloat(m31), GLfloat(m32), GLfloat(m33), GLfloat(m34),
 			 GLfloat(m41), GLfloat(m42), GLfloat(m43), GLfloat(m44)]
 		return array.withUnsafeBufferPointer {
-			return closure($0.baseAddress)
+			return closure($0.baseAddress!)
 		}
 	}
 }
@@ -26,7 +26,7 @@ extension EKColorType {
 			 GLfloat(components.green),
 			 GLfloat(components.blue)]
 		return array.withUnsafeBufferPointer {
-			return closure($0.baseAddress)
+			return closure($0.baseAddress!)
 		}
 	}
 }

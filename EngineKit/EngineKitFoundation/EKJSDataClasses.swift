@@ -4,21 +4,21 @@ import JavaScriptCore
 @objc public protocol EKVector2Export: JSExport {
 	var x: Double { get }
 	var y: Double { get }
-	func plus(object: AnyObject) -> EKVector2
-	func minus(object: AnyObject) -> EKVector2
-	func times(scalar: Double) -> EKVector2
-	func over(scalar: Double) -> EKVector2
+	func plus(_ object: AnyObject) -> EKVector2
+	func minus(_ object: AnyObject) -> EKVector2
+	func times(_ scalar: Double) -> EKVector2
+	func over(_ scalar: Double) -> EKVector2
 	func opposite() -> EKVector2
-	func dot(object: AnyObject) -> Double
+	func dot(_ object: AnyObject) -> Double
 	func normSquared() -> Double
 	func norm() -> Double
 	func normalize() -> EKVector2
-	func translate(object: AnyObject) -> EKVector2
-	func scale(object: AnyObject) -> EKVector2
+	func translate(_ object: AnyObject) -> EKVector2
+	func scale(_ object: AnyObject) -> EKVector2
 }
 
 @objc public final class EKVector2: NSObject, EKVector2Type, EKVector2Export,
-	EKLanguageCompatible {
+EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -28,8 +28,8 @@ import JavaScriptCore
 		self.y = y
 	}
 
-	public static func createVector(x x: Double,
-	                                  y: Double) -> EKVector2 {
+	public static func createVector(x: Double,
+	                                y: Double) -> EKVector2 {
 		return EKVector2(x: x, y: y)
 	}
 
@@ -50,23 +50,23 @@ import JavaScriptCore
 	var x: Double { get }
 	var y: Double { get }
 	var z: Double { get }
-	func plus(object: AnyObject) -> EKVector3
-	func minus(object: AnyObject) -> EKVector3
-	func times(scalar: Double) -> EKVector3
-	func over(scalar: Double) -> EKVector3
+	func plus(_ object: AnyObject) -> EKVector3
+	func minus(_ object: AnyObject) -> EKVector3
+	func times(_ scalar: Double) -> EKVector3
+	func over(_ scalar: Double) -> EKVector3
 	func opposite() -> EKVector3
-	func dot(object: AnyObject) -> Double
+	func dot(_ object: AnyObject) -> Double
 	func normSquared() -> Double
 	func norm() -> Double
 	func normalize() -> EKVector3
-	func translate(object: AnyObject) -> EKVector3
-	func scale(object: AnyObject) -> EKVector3
+	func translate(_ object: AnyObject) -> EKVector3
+	func scale(_ object: AnyObject) -> EKVector3
 	func notZero() -> Bool
 	static func origin() -> EKVector3
 }
 
 @objc public final class EKVector3: NSObject, EKVector3Type, EKVector3Export,
-	EKLanguageCompatible {
+EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -78,9 +78,9 @@ import JavaScriptCore
 		self.z = z
 	}
 
-	public static func createVector(x x: Double,
-	                                  y: Double,
-	                                  z: Double) -> EKVector3 {
+	public static func createVector(x: Double,
+	                                y: Double,
+	                                z: Double) -> EKVector3 {
 		return EKVector3(x: x, y: y, z: z)
 	}
 
@@ -102,28 +102,28 @@ import JavaScriptCore
 	var y: Double { get }
 	var z: Double { get }
 	var w: Double { get }
-	func plus(object: AnyObject) -> EKVector4
-	func minus(object: AnyObject) -> EKVector4
-	func times(scalar: Double) -> EKVector4
-	func over(scalar: Double) -> EKVector4
+	func plus(_ object: AnyObject) -> EKVector4
+	func minus(_ object: AnyObject) -> EKVector4
+	func times(_ scalar: Double) -> EKVector4
+	func over(_ scalar: Double) -> EKVector4
 	func opposite() -> EKVector4
-	func dot(object: AnyObject) -> Double
+	func dot(_ object: AnyObject) -> Double
 	func normSquared() -> Double
 	func norm() -> Double
 	func normalize() -> EKVector4
-	func translate(object: AnyObject) -> EKVector4
-	func scale(object: AnyObject) -> EKVector4
+	func translate(_ object: AnyObject) -> EKVector4
+	func scale(_ object: AnyObject) -> EKVector4
 	func notZero() -> Bool
 	static func origin() -> EKVector4
 	func rotationToQuaternion() -> EKVector4
 	func quaternionToMatrix() -> EKMatrix
 	func rotationToMatrix() -> EKMatrix
-	func rotate(matrix matrix: EKMatrix) -> EKMatrix
-	func rotate(vector: AnyObject) -> EKVector3
+	func rotate(matrix: EKMatrix) -> EKMatrix
+	func rotate(_ vector: AnyObject) -> EKVector3
 }
 
 @objc public final class EKVector4: NSObject, EKVector4Type, EKVector4Export,
-	EKLanguageCompatible {
+EKLanguageCompatible {
 
 	public let x: Double
 	public let y: Double
@@ -137,10 +137,10 @@ import JavaScriptCore
 		self.w = w
 	}
 
-	public static func createVector(x x: Double,
-	                                  y: Double,
-	                                  z: Double,
-	                                  w: Double) -> EKVector4 {
+	public static func createVector(x: Double,
+	                                y: Double,
+	                                z: Double,
+	                                w: Double) -> EKVector4 {
 		return EKVector4(x: x, y: y, z: z, w: w)
 	}
 

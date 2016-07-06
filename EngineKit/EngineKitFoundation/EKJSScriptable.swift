@@ -13,7 +13,7 @@ extension EKLanguageCompatible {
 
 		while let currentMirror = mirror {
 			defer {
-				mirror = currentMirror.superclassMirror()
+				mirror = currentMirror.superclassMirror
 			}
 
 			for child in currentMirror.children {
@@ -28,7 +28,7 @@ extension EKLanguageCompatible {
 						let message = "Error converting \(self) " +
 							"(\(self.dynamicType)): Unable to convert child " +
 							"\(child) into an NSObject"
-						throw EKError.ScriptConversionError(message: message)
+						throw EKError.scriptConversionError(message: message)
 					}
 				}
 			}
@@ -53,19 +53,19 @@ extension String: EKLanguageCompatible {
 
 extension Double: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
-		return NSNumber(double: self)
+		return NSNumber(value: self)
 	}
 }
 
 extension Float: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
-		return NSNumber(float: self)
+		return NSNumber(value: self)
 	}
 }
 
 extension Int: EKLanguageCompatible {
 	public func toNSObject() throws -> NSObject {
-		return NSNumber(integer: self)
+		return NSNumber(value: self)
 	}
 }
 

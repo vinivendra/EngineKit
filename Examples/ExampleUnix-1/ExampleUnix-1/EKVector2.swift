@@ -9,7 +9,7 @@ public protocol EKVector2Type: class,
 	CustomDebugStringConvertible,
 	CustomStringConvertible {
 
-	static func createVector(x x: Double,
+	static func createVector(x: Double,
 	                           y: Double) -> EKVector2
 
 	var x: Double { get }
@@ -29,24 +29,24 @@ public func != (lhs: EKVector2, rhs: EKVector2) -> Bool {
 
 //
 extension EKVector2 {
-	public func plus(object: AnyObject) -> EKVector2 {
-		let vector = EKVector2.createVector(object: object)
+	public func plus(_ object: AnyObject) -> EKVector2 {
+		let vector = EKVector2.createVector(fromObject: object)
 		return EKVector2.createVector(x: self.x + vector.x,
 		                              y: self.y + vector.y)
 	}
 
-	public func minus(object: AnyObject) -> EKVector2 {
-		let vector = EKVector2.createVector(object: object)
+	public func minus(_ object: AnyObject) -> EKVector2 {
+		let vector = EKVector2.createVector(fromObject: object)
 		return EKVector2.createVector(x: self.x - vector.x,
 		                              y: self.y - vector.y)
 	}
 
-	public func times(scalar: Double) -> EKVector2 {
+	public func times(_ scalar: Double) -> EKVector2 {
 		return EKVector2.createVector(x: self.x * scalar,
 		                              y: self.y * scalar)
 	}
 
-	public func over(scalar: Double) -> EKVector2 {
+	public func over(_ scalar: Double) -> EKVector2 {
 		return self.times(1/scalar)
 	}
 
@@ -55,8 +55,8 @@ extension EKVector2 {
 		                              y: -self.y)
 	}
 
-	public func dot(object: AnyObject) -> Double {
-		let vector = EKVector2.createVector(object: object)
+	public func dot(_ object: AnyObject) -> Double {
+		let vector = EKVector2.createVector(fromObject: object)
 		return self.x * vector.x + self.y * vector.y
 	}
 
@@ -77,12 +77,12 @@ extension EKVector2 {
 		}
 	}
 
-	public func translate(object: AnyObject) -> EKVector2 {
+	public func translate(_ object: AnyObject) -> EKVector2 {
 		return self.plus(object)
 	}
 
-	public func scale(object: AnyObject) -> EKVector2 {
-		let vector = EKVector2.createVector(object: object)
+	public func scale(_ object: AnyObject) -> EKVector2 {
+		let vector = EKVector2.createVector(fromObject: object)
 		return EKVector2.createVector(x: self.x * vector.x,
 		                              y: self.y * vector.y)
 	}
@@ -98,24 +98,24 @@ extension EKVector2 {
 		return EKVector2.createVector(x: 0, y: 0)
 	}
 
-	public static func createVector(xy xy: Double) -> EKVector2 {
+	public static func createVector(withUniformNumbers xy: Double)
+		-> EKVector2 {
 		return EKVector2.createVector(x: xy,
 		                              y: xy)
 	}
 
-	public static func createVector(array array: [Double]) -> EKVector2 {
+	public static func createVector(fromArray array: [Double]) -> EKVector2 {
 		return self.createVector(x: array[zero: 0],
 		                         y: array[zero: 1])
 	}
 
-	public static func createVector(dictionary
-		dictionary: [String: Double]) -> EKVector2 {
-
+	public static func createVector(fromDictionary dictionary: [String: Double])
+		-> EKVector2 {
 		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
 		                         y: dictionary[zero: ["1", "y", "Y"]])
 	}
 
-	public static func createVector(string string: String) -> EKVector2 {
+	public static func createVector(fromString string: String) -> EKVector2 {
 		var strings = [string]
 
 		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
@@ -127,20 +127,20 @@ extension EKVector2 {
 
 		let doubles = strings.flatMap(Double.init)
 
-		return createVector(array: doubles)
+		return createVector(fromArray: doubles)
 	}
 
-	public static func createVector(object object: AnyObject) -> EKVector2 {
+	public static func createVector(fromObject object: AnyObject) -> EKVector2 {
 		if let vector = object as? EKVector2 {
 			return vector
 		} else if let array = object as? [Double] {
-			return createVector(array: array)
+			return createVector(fromArray: array)
 		} else if let string = object as? String {
-			return createVector(string: string)
+			return createVector(fromString: string)
 		} else if let dictionary = object as? [String: Double] {
-			return createVector(dictionary: dictionary)
+			return createVector(fromDictionary: dictionary)
 		} else if let number = object as? Double {
-			return createVector(xy: number)
+			return createVector(withUniformNumbers: number)
 		}
 
 		return origin()

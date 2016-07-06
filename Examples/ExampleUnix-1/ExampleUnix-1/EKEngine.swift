@@ -1,8 +1,8 @@
-enum EKError: ErrorType {
-	case ScriptEvaluationError(message: String)
-	case ScriptConversionError(message: String)
-	case EventRegistryError(message: String)
-	case InvalidArgumentTypeError(message: String)
+enum EKError: ErrorProtocol {
+	case scriptEvaluationError(message: String)
+	case scriptConversionError(message: String)
+	case eventRegistryError(message: String)
+	case invalidArgumentTypeError(message: String)
 }
 
 public protocol Initable {
@@ -26,7 +26,7 @@ public class EKEngine {
 
 	public init() {}
 
-	public func loadAddon(addon: EKAddon) {
+	public func loadAddon(_ addon: EKAddon) {
 		addon.setup(onEngine: self)
 
 		addons.append(addon)
@@ -75,7 +75,7 @@ public class EKEngine {
 		}
 	}
 
-	public func addClass<T: EKLanguageCompatible>(class: T.Type,
+	public func addClass<T: EKLanguageCompatible>(_ class: T.Type,
 	                     withName className: String?,
 	                              constructor: (() -> (T)) ) {
 		let className = className ?? "\(T.self)".toEKPrefixClassName()
@@ -85,7 +85,7 @@ public class EKEngine {
 		                         constructor: constructor)
 	}
 
-	public func addObject<T: EKLanguageCompatible>(object: T,
+	public func addObject<T: EKLanguageCompatible>(_ object: T,
 	                      withName name: String) throws {
 		do {
 			try languageEngine.addObject(object, withName: name)
@@ -97,13 +97,13 @@ public class EKEngine {
 
 extension EKEngine {
 	public func addClass<T: EKLanguageCompatible
-		where T: Initable>(class: T.Type) {
+		where T: Initable>(_ class: T.Type) {
 
 		addClass(T.self, withName: nil)
 	}
 
 	public func addClass<T: EKLanguageCompatible
-		where T: Initable>(class: T.Type,
+		where T: Initable>(_ class: T.Type,
 
 	                     withName className: String?) {
 		addClass(T.self, withName: className, constructor: T.init)

@@ -1,15 +1,15 @@
 import Darwin
 
 public class EKUnixFileManager: EKFileManager {
-	public func getContentsFromFile(filename: String) -> String? {
+	public func getContentsFromFile(_ filename: String) -> String? {
 		var fileContents = ""
 		let fp = fopen(filename, "r")
 		defer { fclose(fp) }
 
 		if fp != nil {
-			var buffer = [CChar](count: 1024, repeatedValue: CChar(0))
+			var buffer = [CChar](repeating: CChar(0), count: 1024)
 			while fgets(&buffer, Int32(1024), fp) != nil {
-				fileContents = fileContents + String.fromCString(buffer)!
+				fileContents = fileContents + String(validatingUTF8: buffer)!
 			}
 			return fileContents
 		} else {

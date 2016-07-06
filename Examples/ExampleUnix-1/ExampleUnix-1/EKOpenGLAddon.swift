@@ -4,6 +4,8 @@ import SGLOpenGL
 let EKOpenGLWindowWidth: GLfloat = 1024
 let EKOpenGLWindowHeight: GLfloat = 768
 
+let NULL = UnsafeMutablePointer<Int32>(bitPattern: 4)!.predecessor()
+
 public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	public let projection = EKMatrix.createPerspective(
 		fieldOfViewY: EKToRadians(45),
@@ -11,7 +13,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		zNear: 0.1,
 		zFar: 100)
 
-	private var window: COpaquePointer! = nil
+	private var window: OpaquePointer! = nil
 	private var inputHandler: EKUnixInputAddon! = nil
 
 	public func setup(onEngine engine: EKEngine) {
@@ -51,7 +53,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		//
 		let programID = loadShaders(vertexFilePath: "../../vertex.glsl",
-		                            fragmentFilePath: "../../fragment.glsl")
+		                            fragmentFilePath: "../../fragment.glsl")!
 		glUseProgram(programID)
 
 		//
@@ -67,87 +69,92 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		try! engine.addObject(self, withName: "OpenGL")
 	}
 
-	private func loadShaders(vertexFilePath vertexPath: String,
-							 fragmentFilePath fragmentPath: String)
-			-> GLuint {
-		let vertexShaderID = glCreateShader(GL_VERTEX_SHADER)
-		let fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER)
-
-		let fileManager = OSFactory.createFileManager()
-		let vertexShaderCode = fileManager.getContentsFromFile(vertexPath)!
-		let fragmentShaderCode = fileManager.getContentsFromFile(fragmentPath)!
-
+	private func checkCompilerStatus(forID shaderID: GLuint,
+	                                 status: GLint) -> Bool {
 		var result: GLint = GL_FALSE
 		var infoLogLength: GLint = 0
 
-		vertexShaderCode.withCStringPointer {
-			glShaderSource(vertexShaderID,
-				1,
-				$0,
-				nil)
-		}
-
-		glCompileShader(vertexShaderID)
-
-		//
-		glGetShaderiv(vertexShaderID, GL_COMPILE_STATUS, &result)
-		glGetShaderiv(vertexShaderID, GL_INFO_LOG_LENGTH, &infoLogLength)
+		glGetShaderiv(shader: shaderID,
+		              pname: status,
+		              params: &result)
+		glGetShaderiv(shader: shaderID,
+		              pname: GL_INFO_LOG_LENGTH,
+		              params: &infoLogLength)
 		if infoLogLength > 0 {
 			let string = CString(emptyStringWithlength: Int(infoLogLength))
-			glGetShaderInfoLog(shader: vertexShaderID,
-			                   bufSize: infoLogLength,
-			                   length: nil,
-			                   infoLog: string.buffer)
-			print(String.fromCString(string.buffer))
+			glGetShaderInfoLog(
+				shader: shaderID,
+				bufSize: infoLogLength,
+				length: NULL,
+				infoLog: string.buffer)
+			print(String(validatingUTF8: string.buffer))
+			return false
 		}
 
-		//
-		let fragmentShaderCString = CString(fragmentShaderCode)
-		withUnsafePointer(&(fragmentShaderCString.buffer)) {
-			(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>) -> Void in
-			let foo = unsafeBitCast(pointer,
-			                        UnsafePointer<UnsafePointer<Int8>>.self)
-			glShaderSource( fragmentShaderID,
-			                1,
-			                foo,
-			                nil)
+		return true
+	}
+
+	private func compileShader(ofType shaderType: GLenum,
+	                           inFilePath filePath: String) -> GLuint? {
+		let fileManager = OSFactory.createFileManager()
+
+		let shaderID = glCreateShader(type: shaderType)
+		let shaderCode = fileManager.getContentsFromFile(filePath)!
+
+		shaderCode.withCStringPointer { pointer in
+			glShaderSource(
+				shader: shaderID,
+				count: 1,
+				string: pointer,
+				length: NULL)
 		}
 
-		glCompileShader(fragmentShaderID)
+		glCompileShader(shaderID)
 
-		//
-		glGetShaderiv(fragmentShaderID, GL_COMPILE_STATUS, &result)
-		glGetShaderiv(fragmentShaderID, GL_INFO_LOG_LENGTH, &infoLogLength)
-		if infoLogLength > 0 {
-			let string = CString(emptyStringWithlength: Int(infoLogLength))
-			glGetShaderInfoLog(shader: fragmentShaderID,
-			                   bufSize: infoLogLength,
-			                   length: nil,
-			                   infoLog: string.buffer)
-			print(String.fromCString(string.buffer))
-		}
+		let shaderDidCompile = checkCompilerStatus(forID: shaderID,
+		                                           status: GL_COMPILE_STATUS)
 
-		//
+		return shaderDidCompile ? shaderID : nil
+	}
+
+	private func linkShaders(vertexShaderID: GLuint,
+	                         fragmentShaderID: GLuint) -> GLuint? {
 		let programID = glCreateProgram()
-		glAttachShader(programID, vertexShaderID)
-		glAttachShader(programID, fragmentShaderID)
+		glAttachShader(program: programID, shader: vertexShaderID)
+		glAttachShader(program: programID, shader: fragmentShaderID)
 		glLinkProgram(programID)
 
-		//
-		glGetShaderiv(programID, GL_LINK_STATUS, &result)
-		glGetShaderiv(programID, GL_INFO_LOG_LENGTH, &infoLogLength)
-		if infoLogLength > 0 {
-			let string = CString(emptyStringWithlength: Int(infoLogLength))
-			glGetShaderInfoLog(programID, infoLogLength, nil, string.buffer)
-			print(String.fromCString(string.buffer))
+		let programDidLink = checkCompilerStatus(
+			forID: programID, status: GL_LINK_STATUS)
+		guard programDidLink else { return nil }
+
+		glDetachShader(program: programID, shader: vertexShaderID)
+		glDetachShader(program: programID, shader: fragmentShaderID)
+
+		return programID
+	}
+
+	private func loadShaders(vertexFilePath vertexPath: String,
+							 fragmentFilePath fragmentPath: String) -> GLuint? {
+		guard let vertexShaderID = compileShader(ofType: GL_VERTEX_SHADER,
+												 inFilePath: vertexPath)
+			else {
+				return nil
 		}
+		defer { glDeleteShader(vertexShaderID) }
 
-		//
-		glDetachShader(programID, vertexShaderID)
-		glDetachShader(programID, fragmentShaderID)
+		guard let fragmentShaderID = compileShader(ofType: GL_FRAGMENT_SHADER,
+		                                           inFilePath: fragmentPath)
+			else {
+				return nil
+		}
+		defer { glDeleteShader(fragmentShaderID) }
 
-		glDeleteShader(vertexShaderID)
-		glDeleteShader(fragmentShaderID)
+		guard let programID = linkShaders(vertexShaderID: vertexShaderID,
+		                                  fragmentShaderID: fragmentShaderID)
+			else {
+				return nil
+		}
 		
 		return programID
 	}

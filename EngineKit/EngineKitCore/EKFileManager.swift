@@ -1,3 +1,3 @@
 public protocol EKFileManager {
-	func getContentsFromFile(filename: String) -> String?
+	func getContentsFromFile(_ filename: String) -> String?
 }
