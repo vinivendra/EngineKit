@@ -147,10 +147,10 @@ func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
 
     import Glibc
 
-    var dlopenHandle = UnsafeMutablePointer<Void>()
+    var dlopenHandle: UnsafeMutablePointer<Void>? = nil
     var glXGetProcAddress:(@convention(c) (UnsafePointer<GLchar>) -> UnsafeMutablePointer<Void>)? = nil
     
-    func lookupAddress(info: CommandInfo) -> UnsafeMutablePointer<Void> {
+    func lookupAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void>? {
         if dlopenHandle == nil {
             dlopenHandle = dlopen(nil, RTLD_LAZY | RTLD_LOCAL)
         }
@@ -160,19 +160,19 @@ func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
         if glXGetProcAddress == nil {
             let fp = dlsym(dlopenHandle, "glXGetProcAddressARB")
             if fp != nil {
-                glXGetProcAddress = unsafeBitCast(fp, glXGetProcAddress.dynamicType)
+                glXGetProcAddress = unsafeBitCast(fp, to: glXGetProcAddress.dynamicType)
             }
         }
         if glXGetProcAddress == nil {
             let fp = dlsym(dlopenHandle, "glXGetProcAddress")
             if fp != nil {
-                glXGetProcAddress = unsafeBitCast(fp, glXGetProcAddress.dynamicType)
+                glXGetProcAddress = unsafeBitCast(fp, to: glXGetProcAddress.dynamicType)
             }
         }
         if glXGetProcAddress == nil {
             fatalError("Failed to find glXGetProcAddress")
         }
-        return glXGetProcAddress!(info.name)
+        return glXGetProcAddress?(info.name)
     }
     
 #else

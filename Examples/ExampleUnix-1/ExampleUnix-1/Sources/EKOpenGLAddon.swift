@@ -18,7 +18,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	public func setup(onEngine engine: EKEngine) {
 		if glfwInit() == 0 {
 			print("Error: glfwInit")
-			return
+			fatalError()
 		}
 
 		// Set all the required options for GLFW
@@ -32,7 +32,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		if window == nil {
 			print("Error: glfwCreateWindow")
 			glfwTerminate()
-			return
+			fatalError()
 		}
 
 		glfwMakeContextCurrent(window)
