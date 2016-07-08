@@ -51,8 +51,8 @@ public class EKGLObject: EKGLMatrixComposer {
 extension EKGLObject {
 	public static func object(atPixel pixel: EKVector2) -> EKGLObject? {
 		var index: GLuint = 0
-		let x = GLint(pixel.x) * 2
-		let y = GLint(pixel.y) * 2
+		let x = GLint(pixel.x)
+		let y = GLint(pixel.y)
 		glReadPixels(x, y, 1, 1,
 		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
 		return EKGLObject.allObjects[Int(index)]

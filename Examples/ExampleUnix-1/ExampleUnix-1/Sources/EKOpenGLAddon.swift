@@ -16,6 +16,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	private var inputHandler: EKUnixInputAddon! = nil
 
 	public func setup(onEngine engine: EKEngine) {
+
 		if glfwInit() == 0 {
 			print("Error: glfwInit")
 			fatalError()
@@ -51,8 +52,12 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		glBindVertexArray(vertexArrayID)
 
 		//
-		let programID = loadShaders(vertexFilePath: "../../vertex.glsl",
-		                            fragmentFilePath: "../../fragment.glsl")!
+		guard let programID = loadShaders(vertexFilePath: "../../vertex.glsl",
+		                            fragmentFilePath: "../../fragment.glsl")
+			else {
+			print("Error compiling shaders.")
+			return
+		}
 		glUseProgram(programID)
 
 		//
@@ -65,6 +70,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		//
 		inputHandler = EKUnixInputAddon(window: window)
 		engine.loadAddon(inputHandler)
+
 		try! engine.addObject(self, withName: "OpenGL")
 	}
 
@@ -79,14 +85,16 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		glGetShaderiv(shader: shaderID,
 		              pname: GL_INFO_LOG_LENGTH,
 		              params: &infoLogLength)
-		if infoLogLength > 0 {
-			let string = CString(emptyStringWithlength: Int(infoLogLength))
+		if infoLogLength > 1 {
+			let string = CString(emptyStringWithlength: Int(infoLogLength + 1))
 			glGetShaderInfoLog(
 				shader: shaderID,
 				bufSize: infoLogLength,
 				length: NULL,
 				infoLog: string.buffer)
-			print(String(validatingUTF8: string.buffer))
+			if let errorString = String(validatingUTF8: string.buffer) { 
+				print("OpenGL shader compiler error: \(errorString).")
+			}
 			return false
 		}
 
@@ -96,16 +104,20 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	private func compileShader(ofType shaderType: GLenum,
 	                           inFilePath filePath: String) -> GLuint? {
 		let fileManager = OSFactory.createFileManager()
-
 		let shaderID = glCreateShader(type: shaderType)
-		let shaderCode = fileManager.getContentsFromFile(filePath)!
+		guard let shaderCode = fileManager.getContentsFromFile(filePath)
+			else {
+			print("Error reading shader \(filePath)")
+			return nil
+		}
 
-		shaderCode.withCStringPointer { pointer in
+		shaderCode.withCStringPointerAndLength { pointer, length in
+			var len = GLint(length)
 			glShaderSource(
 				shader: shaderID,
 				count: 1,
 				string: pointer,
-				length: NULL)
+				length: &len)
 		}
 
 		glCompileShader(shaderID)
@@ -113,7 +125,12 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		let shaderDidCompile = checkCompilerStatus(forID: shaderID,
 		                                           status: GL_COMPILE_STATUS)
 
-		return shaderDidCompile ? shaderID : nil
+		guard shaderDidCompile else {
+			print("Error compiling shader \(filePath)")
+			return nil	
+		}
+
+		return shaderID
 	}
 
 	private func linkShaders(vertexShaderID: GLuint,
@@ -125,7 +142,10 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		let programDidLink = checkCompilerStatus(
 			forID: programID, status: GL_LINK_STATUS)
-		guard programDidLink else { return nil }
+		guard programDidLink else { 
+			print("Error linking program.")
+			return nil
+		}
 
 		glDetachShader(program: programID, shader: vertexShaderID)
 		glDetachShader(program: programID, shader: fragmentShaderID)
@@ -138,23 +158,26 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		guard let vertexShaderID = compileShader(ofType: GL_VERTEX_SHADER,
 												 inFilePath: vertexPath)
 			else {
-				return nil
+			print("Error compiling vertex shader.")
+			return nil
 		}
 		defer { glDeleteShader(vertexShaderID) }
 
 		guard let fragmentShaderID = compileShader(ofType: GL_FRAGMENT_SHADER,
 		                                           inFilePath: fragmentPath)
 			else {
-				return nil
+			print("Error compiling fragment shader.")
+			return nil
 		}
 		defer { glDeleteShader(fragmentShaderID) }
 
 		guard let programID = linkShaders(vertexShaderID: vertexShaderID,
 		                                  fragmentShaderID: fragmentShaderID)
 			else {
-				return nil
+			print("Error linking shaders.")
+			return nil
 		}
-		
+
 		return programID
 	}
 
