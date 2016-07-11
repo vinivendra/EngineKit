@@ -1,4 +1,5 @@
 import SceneKit
+import JavaScriptCore
 
 #if os(OSX)
 	typealias OSColor = NSColor
@@ -21,7 +22,7 @@ private extension EKVector2 {
 }
 
 //
-public class EKSceneKitAddon: EKLanguageAddon {
+public class EKSceneKitAddon: EKScriptAddon {
 
 	let ekScene: EKScene
 
@@ -49,7 +50,7 @@ public class EKSceneKitAddon: EKLanguageAddon {
 
 		view.scene = view.scene ?? SCNScene()
 		self.scene?.rootNode.addChildNode(camera.node)
-		self.sceneView.backgroundColor = OSColor.darkGrayColor()
+		self.sceneView.backgroundColor = OSColor.darkGray()
 	}
 
 	public func addFunctionality(toEngine engine: EKEngine) {
@@ -76,7 +77,7 @@ public class EKSceneKitAddon: EKLanguageAddon {
 	func objects(inCoordinate coordinate: AnyObject) -> [AnyObject]
 }
 
-public class EKScene: NSObject, Scriptable, SceneExport {
+public class EKScene: NSObject, EKLanguageCompatible, SceneExport {
 	let sceneView: SCNView
 	var scene: SCNScene? {
 		get {
@@ -93,7 +94,7 @@ public class EKScene: NSObject, Scriptable, SceneExport {
 	}
 
 	public func objects(inCoordinate object: AnyObject) -> [AnyObject] {
-		let coordinate = EKVector2.createVector(object: object)
+		let coordinate = EKVector2.createVector(fromObject: object)
 		let point = coordinate.toCGPoint()
 		let hitTests = sceneView.hitTest(point, options: nil)
 		let scnNodes = hitTests.map { $0.node }

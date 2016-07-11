@@ -150,7 +150,7 @@ class EKVector3Tests: XCTestCase {
 	}
 
 	func testCreateWithXYZ() {
-		let testVector = EKVector3.createVector(xyz: 3)
+		let testVector = EKVector3.createVector(withUniformNumbers: 3)
 
 		XCTAssertEqual(testVector.x, 3)
 		XCTAssertEqual(testVector.y, 3)
@@ -158,7 +158,7 @@ class EKVector3Tests: XCTestCase {
 	}
 
 	func testCreateWithArray() {
-		let testVector = EKVector3.createVector(array: [1, 2, 3])
+		let testVector = EKVector3.createVector(fromArray: [1, 2, 3])
 		XCTAssertEqual(testVector.x, 1)
 		XCTAssertEqual(testVector.y, 2)
 		XCTAssertEqual(testVector.z, 3)
@@ -171,7 +171,7 @@ class EKVector3Tests: XCTestCase {
 			 ["X": 1, "Y": 2, "Z": 3]]
 
 		for dictionary in dictionaries {
-			let testVector = EKVector3.createVector(dictionary: dictionary)
+			let testVector = EKVector3.createVector(fromDictionary: dictionary)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -183,7 +183,7 @@ class EKVector3Tests: XCTestCase {
 		let strings: [String] = ["[1, 2, 3]", "1.0, 2, 3", "{{{1}{2}{3}}"]
 
 		for string in strings {
-			let testVector = EKVector3.createVector(string: string)
+			let testVector = EKVector3.createVector(fromString: string)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
@@ -199,14 +199,14 @@ class EKVector3Tests: XCTestCase {
 
 		//
 		for object in objects {
-			let testVector = EKVector3.createVector(object: object)
+			let testVector = EKVector3.createVector(fromObject: object)
 
 			XCTAssertEqual(testVector.x, 1)
 			XCTAssertEqual(testVector.y, 2)
 			XCTAssertEqual(testVector.z, 3)
 		}
 
-		let testVector = EKVector3.createVector(object: 3.0)
+		let testVector = EKVector3.createVector(fromObject: 3.0)
 
 		XCTAssertEqual(testVector.x, 3)
 		XCTAssertEqual(testVector.y, 3)

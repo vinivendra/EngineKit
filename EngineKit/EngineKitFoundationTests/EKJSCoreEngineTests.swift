@@ -11,7 +11,7 @@ import JavaScriptCore
 @objc protocol JSTestExport: JSExport {
 	func test()
 }
-@objc class JSTest: NSObject, JSTestExport, Scriptable, Initable {
+@objc class JSTest: NSObject, JSTestExport, EKLanguageCompatible, Initable {
 
 	override required init() {
 		super.init()
@@ -35,7 +35,7 @@ class EKJSCoreEngineTests: XCTestCase {
 		engine = EKJSCoreEngine(engine: ekEngine)
 		ekEngine.languageEngine = engine
 
-		currentNSBundle = NSBundle(forClass: EKJSCoreEngineTests.self)
+		currentNSBundle = Bundle(for: EKJSCoreEngineTests.self)
 	}
 
 	func testOutput() {

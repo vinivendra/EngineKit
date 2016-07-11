@@ -3,11 +3,10 @@ import UIKit
 let OSFactory = EKiOSFactory()
 
 extension UIColor: EKColorType {
-
-	public static func createColor(red red: Double,
-	                                   green: Double,
-	                                   blue: Double,
-	                                   alpha: Double) -> EKColorType {
+	public static func createColor(red: Double,
+	                               green: Double,
+	                               blue: Double,
+	                               alpha: Double) -> EKColorType {
 		return UIColor(red: CGFloat(red),
 		               green: CGFloat(green),
 		               blue: CGFloat(blue),
@@ -26,9 +25,7 @@ extension UIColor: EKColorType {
 }
 
 public class EKiOSFactory: EKOSFactory {
-
 	public func createFileManager() -> EKFoundationFileManager {
 		return EKFoundationFileManager()
 	}
-
 }

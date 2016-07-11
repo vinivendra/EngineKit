@@ -57,24 +57,24 @@ public class EKUIKitInputAddon: EKEventAddon {
 		self.view.addGestureRecognizer(longPressGestureRecognizer)
 	}
 
-	@objc public func handleTap(gestureRecognizer: UIGestureRecognizer) {
-		let point = gestureRecognizer.locationInView(view)
+	@objc public func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
+		let point = gestureRecognizer.location(in: view)
 		eventCenter?.fireEvent(EKEventTap(position: point.toEKVector2(),
 			touches: gestureRecognizer.numberOfTouches()))
 	}
 
-	@objc public func handlePan(gestureRecognizer: UIGestureRecognizer) {
-		let point = gestureRecognizer.locationInView(view)
+	@objc public func handlePan(_ gestureRecognizer: UIGestureRecognizer) {
+		let point = gestureRecognizer.location(in: view)
 
 		switch gestureRecognizer.state {
-		case .Began:
+		case .began:
 			numberOfTouches = gestureRecognizer.numberOfTouches()
 
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
 				touches: numberOfTouches,
 				displacement: EKVector2.origin(),
 				state: .Began))
-		case .Ended:
+		case .ended:
 			eventCenter?.fireEvent(EKEventPan(position: point.toEKVector2(),
 				touches: numberOfTouches,
 				displacement: point.toEKVector2().minus(previousPosition),
@@ -89,18 +89,19 @@ public class EKUIKitInputAddon: EKEventAddon {
 		previousPosition = point.toEKVector2()
 	}
 
-	@objc public func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
-		let point = gestureRecognizer.locationInView(view)
+	@objc public func handlePinch(
+		_ gestureRecognizer: UIPinchGestureRecognizer) {
+		let point = gestureRecognizer.location(in: view)
 
 		switch gestureRecognizer.state {
-		case .Began:
+		case .began:
 			numberOfTouches = gestureRecognizer.numberOfTouches()
 
 			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
 				touches: numberOfTouches,
 				scale: 1,
 				state: .Began))
-		case .Ended:
+		case .ended:
 			eventCenter?.fireEvent(EKEventPinch(position: point.toEKVector2(),
 				touches: numberOfTouches,
 				scale: Double(gestureRecognizer.scale / previousScale),
@@ -116,12 +117,12 @@ public class EKUIKitInputAddon: EKEventAddon {
 	}
 
 	@objc public func handleRotation(
-		gestureRecognizer: UIRotationGestureRecognizer) {
+		_ gestureRecognizer: UIRotationGestureRecognizer) {
 
-		let point = gestureRecognizer.locationInView(view)
+		let point = gestureRecognizer.location(in: view)
 
 		switch gestureRecognizer.state {
-		case .Began:
+		case .began:
 			numberOfTouches = gestureRecognizer.numberOfTouches()
 
 			eventCenter?.fireEvent(EKEventRotation(
@@ -129,7 +130,7 @@ public class EKUIKitInputAddon: EKEventAddon {
 				touches: numberOfTouches,
 				angle: 0,
 				state: .Began))
-		case .Ended:
+		case .ended:
 			eventCenter?.fireEvent(EKEventRotation(
 				position: point.toEKVector2(),
 				touches: numberOfTouches,
@@ -147,11 +148,11 @@ public class EKUIKitInputAddon: EKEventAddon {
 	}
 
 	@objc public func handleLongPress(
-		gestureRecognizer: UILongPressGestureRecognizer) {
+		_ gestureRecognizer: UILongPressGestureRecognizer) {
 
-		let point = gestureRecognizer.locationInView(view)
+		let point = gestureRecognizer.location(in: view)
 
-		if gestureRecognizer.state == .Began {
+		if gestureRecognizer.state == .began {
 			numberOfTouches = gestureRecognizer.numberOfTouches()
 		}
 

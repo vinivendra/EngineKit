@@ -2,6 +2,6 @@ import UIKit
 
 class UIColorAsEKColorTests: EKColorTests {
 	func testAll() {
-		testAll(UIColor)
+		testAll(forType: UIColor.self)
 	}
 }

@@ -14,7 +14,7 @@ class EKFileManagerTests: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
-		currentNSBundle = NSBundle(forClass: EKFileManagerTests.self)
+		currentNSBundle = Bundle(for: EKFileManagerTests.self)
 	}
 
 	func testGetContentsFromFile() {

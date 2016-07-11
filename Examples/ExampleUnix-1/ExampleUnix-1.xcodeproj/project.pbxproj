@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		24CFC7DD1D18B2280025C437 /* ExampleUnix-1SPM */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 24CFC7DE1D18B2280025C437 /* Build configuration list for PBXAggregateTarget "ExampleUnix-1SPM" */;
+			buildPhases = (
+				24CFC7E11D18B22D0025C437 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "ExampleUnix-1SPM";
+			productName = "ExampleUnix-1SPM";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXFileReference section */
+		249423D91D2CB3B6009F2100 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commands.swift; path = Sources/Commands.swift; sourceTree = "<group>"; };
+		249423DA1D2CB3B6009F2100 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = "<group>"; };
+		249423DB1D2CB3B6009F2100 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = "ExampleUnix-1/Sources/EKAddon.swift"; sourceTree = "<group>"; };
+		249423DC1D2CB3B6009F2100 /* EKAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAnimation.swift; path = "ExampleUnix-1/Sources/EKAnimation.swift"; sourceTree = "<group>"; };
+		249423DD1D2CB3B6009F2100 /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKCBridging.swift; path = Sources/EKCBridging.swift; sourceTree = "<group>"; };
+		249423DE1D2CB3B6009F2100 /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKColor.swift; path = "ExampleUnix-1/Sources/EKColor.swift"; sourceTree = "<group>"; };
+		249423DF1D2CB3B6009F2100 /* EKEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEngine.swift; path = "ExampleUnix-1/Sources/EKEngine.swift"; sourceTree = "<group>"; };
+		249423E01D2CB3B6009F2100 /* EKEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKEvent.swift; path = "ExampleUnix-1/Sources/EKEvent.swift"; sourceTree = "<group>"; };
+		249423E11D2CB3B6009F2100 /* EKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKFileManager.swift; path = "ExampleUnix-1/Sources/EKFileManager.swift"; sourceTree = "<group>"; };
+		249423E21D2CB3B6009F2100 /* EKLanguageEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKLanguageEngine.swift; path = "ExampleUnix-1/Sources/EKLanguageEngine.swift"; sourceTree = "<group>"; };
+		249423E31D2CB3B6009F2100 /* EKMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMath.swift; path = Sources/EKMath.swift; sourceTree = "<group>"; };
+		249423E41D2CB3B6009F2100 /* EKMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMatrix.swift; path = "ExampleUnix-1/Sources/EKMatrix.swift"; sourceTree = "<group>"; };
+		249423E51D2CB3B6009F2100 /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGL.swift; path = Sources/EKOpenGL.swift; sourceTree = "<group>"; };
+		249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = Sources/EKOpenGLAddon.swift; sourceTree = "<group>"; };
+		249423E71D2CB3B6009F2100 /* EKOpenGLCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLCBridging.swift; path = Sources/EKOpenGLCBridging.swift; sourceTree = "<group>"; };
+		249423E81D2CB3B6009F2100 /* EKOpenGLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLComponents.swift; path = Sources/EKOpenGLComponents.swift; sourceTree = "<group>"; };
+		249423E91D2CB3B6009F2100 /* EKOSFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOSFactory.swift; path = "ExampleUnix-1/Sources/EKOSFactory.swift"; sourceTree = "<group>"; };
+		249423EA1D2CB3B6009F2100 /* EKResourcePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKResourcePool.swift; path = Sources/EKResourcePool.swift; sourceTree = "<group>"; };
+		249423EB1D2CB3B6009F2100 /* EKSwiftEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftEngine.swift; path = "ExampleUnix-1/Sources/EKSwiftEngine.swift"; sourceTree = "<group>"; };
+		249423EC1D2CB3B6009F2100 /* EKSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKSwiftExtensions.swift; path = "ExampleUnix-1/Sources/EKSwiftExtensions.swift"; sourceTree = "<group>"; };
+		249423ED1D2CB3B6009F2100 /* EKTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKTimer.swift; path = Sources/EKTimer.swift; sourceTree = "<group>"; };
+		249423EE1D2CB3B6009F2100 /* EKUnixDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixDataClasses.swift; path = Sources/EKUnixDataClasses.swift; sourceTree = "<group>"; };
+		249423EF1D2CB3B6009F2100 /* EKUnixFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixFactory.swift; path = Sources/EKUnixFactory.swift; sourceTree = "<group>"; };
+		249423F01D2CB3B6009F2100 /* EKUnixFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixFileManager.swift; path = Sources/EKUnixFileManager.swift; sourceTree = "<group>"; };
+		249423F11D2CB3B6009F2100 /* EKUnixInputAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixInputAddon.swift; path = Sources/EKUnixInputAddon.swift; sourceTree = "<group>"; };
+		249423F21D2CB3B6009F2100 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = Sources/EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
+		249423F31D2CB3B6009F2100 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = "ExampleUnix-1/Sources/EKVector2.swift"; sourceTree = "<group>"; };
+		249423F41D2CB3B6009F2100 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = "ExampleUnix-1/Sources/EKVector3.swift"; sourceTree = "<group>"; };
+		249423F51D2CB3B6009F2100 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = "ExampleUnix-1/Sources/EKVector4.swift"; sourceTree = "<group>"; };
+		249423F61D2CB3B6009F2100 /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loaders.swift; path = Sources/Loaders.swift; sourceTree = "<group>"; };
+		249423F71D2CB3B6009F2100 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = Sources/main.swift; sourceTree = "<group>"; };
+		249423F81D2CB3B6009F2100 /* SwiftGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftGL.swift; path = Sources/SwiftGL.swift; sourceTree = "<group>"; };
+		24CFC8021D18B6BE0025C437 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
+		24CFC8031D18B6BE0025C437 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2414B7471D074B8800CFFC2B = {
+			isa = PBXGroup;
+			children = (
+				2414B7521D074B8800CFFC2B /* ExampleUnix-1 */,
+			);
+			sourceTree = "<group>";
+		};
+		2414B7521D074B8800CFFC2B /* ExampleUnix-1 */ = {
+			isa = PBXGroup;
+			children = (
+				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
+				24B14F111D0750B700B38098 /* EngineKitSources */,
+				249423DD1D2CB3B6009F2100 /* EKCBridging.swift */,
+				249423E31D2CB3B6009F2100 /* EKMath.swift */,
+				249423E51D2CB3B6009F2100 /* EKOpenGL.swift */,
+				249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */,
+				249423E71D2CB3B6009F2100 /* EKOpenGLCBridging.swift */,
+				249423E81D2CB3B6009F2100 /* EKOpenGLComponents.swift */,
+				249423EA1D2CB3B6009F2100 /* EKResourcePool.swift */,
+				249423ED1D2CB3B6009F2100 /* EKTimer.swift */,
+				249423F71D2CB3B6009F2100 /* main.swift */,
+				24D297251D1B072A0093E04D /* EngineKitUnix */,
+				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
+				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
+			);
+			path = "ExampleUnix-1";
+			sourceTree = "<group>";
+		};
+		24B14F111D0750B700B38098 /* EngineKitSources */ = {
+			isa = PBXGroup;
+			children = (
+				249423DB1D2CB3B6009F2100 /* EKAddon.swift */,
+				249423DC1D2CB3B6009F2100 /* EKAnimation.swift */,
+				249423DE1D2CB3B6009F2100 /* EKColor.swift */,
+				249423DF1D2CB3B6009F2100 /* EKEngine.swift */,
+				249423E01D2CB3B6009F2100 /* EKEvent.swift */,
+				249423E11D2CB3B6009F2100 /* EKFileManager.swift */,
+				249423E21D2CB3B6009F2100 /* EKLanguageEngine.swift */,
+				249423E41D2CB3B6009F2100 /* EKMatrix.swift */,
+				249423E91D2CB3B6009F2100 /* EKOSFactory.swift */,
+				249423EB1D2CB3B6009F2100 /* EKSwiftEngine.swift */,
+				249423EC1D2CB3B6009F2100 /* EKSwiftExtensions.swift */,
+				249423F31D2CB3B6009F2100 /* EKVector2.swift */,
+				249423F41D2CB3B6009F2100 /* EKVector3.swift */,
+				249423F51D2CB3B6009F2100 /* EKVector4.swift */,
+			);
+			name = EngineKitSources;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		24CFC8081D18CFF70025C437 /* SGLOpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				249423D91D2CB3B6009F2100 /* Commands.swift */,
+				249423DA1D2CB3B6009F2100 /* Constants.swift */,
+				249423F61D2CB3B6009F2100 /* Loaders.swift */,
+				249423F81D2CB3B6009F2100 /* SwiftGL.swift */,
+			);
+			name = SGLOpenGL;
+			sourceTree = "<group>";
+		};
+		24D297251D1B072A0093E04D /* EngineKitUnix */ = {
+			isa = PBXGroup;
+			children = (
+				249423EE1D2CB3B6009F2100 /* EKUnixDataClasses.swift */,
+				249423EF1D2CB3B6009F2100 /* EKUnixFactory.swift */,
+				249423F01D2CB3B6009F2100 /* EKUnixFileManager.swift */,
+				249423F11D2CB3B6009F2100 /* EKUnixInputAddon.swift */,
+				249423F21D2CB3B6009F2100 /* EKUnixSwiftExtensions.swift */,
+			);
+			name = EngineKitUnix;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		2414B7481D074B8800CFFC2B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Vinicius Vendramini";
+				TargetAttributes = {
+					24CFC7DD1D18B2280025C437 = {
+						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = 2414B74B1D074B8800CFFC2B /* Build configuration list for PBXProject "ExampleUnix-1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2414B7471D074B8800CFFC2B;
+			productRefGroup = 2414B7471D074B8800CFFC2B;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24CFC7DD1D18B2280025C437 /* ExampleUnix-1SPM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24CFC7E11D18B22D0025C437 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2414B7551D074B8800CFFC2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2414B7561D074B8800CFFC2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		24CFC7DF1D18B2280025C437 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		24CFC7E01D18B2280025C437 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2414B74B1D074B8800CFFC2B /* Build configuration list for PBXProject "ExampleUnix-1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2414B7551D074B8800CFFC2B /* Debug */,
+				2414B7561D074B8800CFFC2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24CFC7DE1D18B2280025C437 /* Build configuration list for PBXAggregateTarget "ExampleUnix-1SPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24CFC7DF1D18B2280025C437 /* Debug */,
+				24CFC7E01D18B2280025C437 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2414B7481D074B8800CFFC2B /* Project object */;
+}

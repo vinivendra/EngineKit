@@ -1,11 +1,12 @@
 import SceneKit
+import JavaScriptCore
 
 @objc protocol NodeExport: JSExport {
 	var position: AnyObject { get set }
 	var scale: AnyObject { get set }
 	var rotation: AnyObject { get set }
-	func rotate(rotation: AnyObject)
-	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
+	func rotate(_ rotation: AnyObject)
+	func rotate(_ rotation: AnyObject, around anchorPoint: AnyObject)
 }
 
 public class EKNode: NSObject, NodeExport {
@@ -20,7 +21,7 @@ public class EKNode: NSObject, NodeExport {
 			return EKVector3.createVector(SCNVector3: node.position)
 		}
 		set {
-			let vector = EKVector3.createVector(object: newValue)
+			let vector = EKVector3.createVector(fromObject: newValue)
 			node.position = vector.toSCNVector3()
 		}
 	}
@@ -30,7 +31,7 @@ public class EKNode: NSObject, NodeExport {
 			return EKVector3.createVector(SCNVector3: node.scale)
 		}
 		set {
-			let vector = EKVector3.createVector(object: newValue)
+			let vector = EKVector3.createVector(fromObject: newValue)
 			node.scale = vector.toSCNVector3()
 		}
 	}
@@ -40,17 +41,17 @@ public class EKNode: NSObject, NodeExport {
 			return EKVector4.createVector(SCNVector4: node.rotation)
 		}
 		set {
-			let vector = EKVector4.createVector(object: newValue)
+			let vector = EKVector4.createVector(fromObject: newValue)
 			node.rotation = vector.toSCNVector4()
 		}
 	}
 
-	func rotate(rotation: AnyObject, around anchorPoint: AnyObject) {
+	func rotate(_ rotation: AnyObject, around anchorPoint: AnyObject) {
 		// TODO: This doesn't rotate around the anchor
 		let position = EKVector3.createVector(SCNVector3: node.position)
 		let orientation = EKVector4.createVector(SCNVector4: node.orientation)
 
-		let rotation = EKVector4.createVector(object: rotation)
+		let rotation = EKVector4.createVector(fromObject: rotation)
 		let quaternion = rotation.rotationToQuaternion().unitQuaternion()
 
 		let newPosition = quaternion.conjugate(vector: position)
@@ -61,10 +62,10 @@ public class EKNode: NSObject, NodeExport {
 		node.orientation = newOrientation.toSCNVector4()
 	}
 
-	func rotate(rotation: AnyObject) {
+	func rotate(_ rotation: AnyObject) {
 		let orientation = EKVector4.createVector(SCNVector4: node.orientation)
 
-		let rotation = EKVector4.createVector(object: rotation)
+		let rotation = EKVector4.createVector(fromObject: rotation)
 		let quaternion = rotation.rotationToQuaternion().unitQuaternion()
 
 		let newOrientation = quaternion.multiplyAsQuaternion(
@@ -75,7 +76,7 @@ public class EKNode: NSObject, NodeExport {
 }
 
 //
-public class EKCamera: EKNode, CameraExport, Scriptable {
+public class EKCamera: EKNode, CameraExport, EKLanguageCompatible {
 	let camera = SCNCamera()
 
 	override init(node: SCNNode? = nil) {
@@ -88,8 +89,8 @@ public class EKCamera: EKNode, CameraExport, Scriptable {
 	var position: AnyObject { get set }
 	var scale: AnyObject { get set }
 	var rotation: AnyObject { get set }
-	func rotate(rotation: AnyObject)
-	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
+	func rotate(_ rotation: AnyObject)
+	func rotate(_ rotation: AnyObject, around anchorPoint: AnyObject)
 }
 
 //
@@ -101,7 +102,7 @@ public class EKShape: EKNode {
 				return OSColor.createColor(object: contents)
 			}
 
-			return OSColor.whiteColor()
+			return OSColor.white()
 		}
 		set {
 			let color = OSColor.createColor(object: newValue)
@@ -121,11 +122,11 @@ public class EKShape: EKNode {
 			let type = node.physicsBody?.type
 
 			switch type {
-			case .Some(.Dynamic):
+			case .some(.dynamic):
 				return "dynamic"
-			case .Some(.Kinematic):
+			case .some(.kinematic):
 				return "kinematic"
-			case .Some(.Static):
+			case .some(.static):
 				return "static"
 			default:
 				return "none"
@@ -133,13 +134,13 @@ public class EKShape: EKNode {
 		}
 		set {
 			let type: SCNPhysicsBodyType?
-			switch newValue.lowercaseString {
+			switch newValue.lowercased() {
 			case "dynamic":
-				type = .Dynamic
+				type = .dynamic
 			case "kinematic":
-				type = .Kinematic
+				type = .kinematic
 			case "static":
-				type = .Static
+				type = .static
 			default:
 				type = nil
 			}
@@ -161,14 +162,14 @@ public class EKShape: EKNode {
 			return EKVector3.origin()
 		}
 		set {
-			let vector = EKVector3.createVector(object: newValue)
+			let vector = EKVector3.createVector(fromObject: newValue)
 			node.physicsBody?.velocity = vector.toSCNVector3()
 		}
 	}
 }
 
 //
-public class EKSphere: EKShape, SphereExport, Scriptable {
+public class EKSphere: EKShape, SphereExport, EKLanguageCompatible {
 	public required init() {
 		super.init()
 		node.geometry = SCNSphere()
@@ -198,12 +199,12 @@ public class EKSphere: EKShape, SphereExport, Scriptable {
 	var velocity: AnyObject { get set }
 	var color: AnyObject { get set }
 	var physics: String { get set }
-	func rotate(rotation: AnyObject)
-	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
+	func rotate(_ rotation: AnyObject)
+	func rotate(_ rotation: AnyObject, around anchorPoint: AnyObject)
 }
 
 //
-public class EKBox: EKShape, BoxExport, Scriptable {
+public class EKBox: EKShape, BoxExport, EKLanguageCompatible {
 	required public init() {
 		super.init()
 		node.geometry = SCNBox()
@@ -253,6 +254,6 @@ public class EKBox: EKShape, BoxExport, Scriptable {
 	var velocity: AnyObject { get set }
 	var color: AnyObject { get set }
 	var physics: String { get set }
-	func rotate(rotation: AnyObject)
-	func rotate(rotation: AnyObject, around anchorPoint: AnyObject)
+	func rotate(_ rotation: AnyObject)
+	func rotate(_ rotation: AnyObject, around anchorPoint: AnyObject)
 }

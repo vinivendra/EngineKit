@@ -4,7 +4,7 @@ let OSFactory = EKOSXFactory()
 
 extension NSColor: EKColorType {
 
-	public static func createColor(red red: Double,
+	public static func createColor(red: Double,
 	                            green: Double,
 	                            blue: Double,
 	                            alpha: Double) -> EKColorType {
