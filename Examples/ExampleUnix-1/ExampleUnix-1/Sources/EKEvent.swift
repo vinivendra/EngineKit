@@ -22,7 +22,7 @@ public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
 		} else {
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
-				"\(argument.dynamicType)."
+				"\(type(of: argument))."
 			throw EKError.invalidArgumentTypeError(message: message)
 		}
 	}
@@ -53,7 +53,7 @@ public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
 		} else {
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
-				"\(argument.dynamicType)."
+				"\(type(of: argument))."
 			throw EKError.invalidArgumentTypeError(message: message)
 		}
 	}
@@ -152,7 +152,7 @@ public class EKEventCenter {
 	}
 
 	func eventName<Event: EKEvent>(forEvent event: Event) -> String {
-		return "\(event.dynamicType)"
+		return "\(type(of: event))"
 	}
 }
 

@@ -1,4 +1,4 @@
-extension Array where Element: IntegerLiteralConvertible {
+extension Array where Element: ExpressibleByIntegerLiteral {
 	subscript(one index: Int) -> Element {
 		get {
 			if count > index {
@@ -32,7 +32,7 @@ extension Array where Element: IntegerLiteralConvertible {
 	}
 }
 
-extension Dictionary where Value: IntegerLiteralConvertible {
+extension Dictionary where Value: ExpressibleByIntegerLiteral {
 	subscript(one index: Key) -> Value {
 		get {
 			return self[index] ?? 1
