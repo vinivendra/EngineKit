@@ -240,7 +240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
+			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\nswift build -Xlinker -L/usr/local/lib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
