@@ -7,7 +7,7 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	private var objectIndex: Int? = nil
+	fileprivate var objectIndex: Int? = nil
 
 	public var matrixComponent = EKGLMatrixComponent()
 	public let vertexComponent: EKGLVertexComponent?

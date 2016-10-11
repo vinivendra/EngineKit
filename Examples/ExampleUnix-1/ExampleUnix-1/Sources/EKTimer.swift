@@ -2,12 +2,12 @@ public final class EKTimer {
 	private static var pool = EKResourcePool<EKTimer>()
 	private var poolIndex: Int? = nil
 
-	private let argument: Any?
-	private let action: EKAction?
+	fileprivate let argument: Any?
+	fileprivate let action: EKAction?
 
-	private var elapsedTime: Double = 0
-	private let duration: Double
-	private let repeats: Bool
+	fileprivate var elapsedTime: Double = 0
+	fileprivate let duration: Double
+	fileprivate let repeats: Bool
 
 	public weak var delegate: EKTimerDelegate? = nil
 
@@ -88,7 +88,7 @@ public final class EKTimer {
 }
 
 extension EKTimer {
-	private func update(deltaTime dt: Double) {
+	fileprivate func update(deltaTime dt: Double) {
 		elapsedTime = elapsedTime + dt
 		if elapsedTime < duration {
 			delegate?.timerHasUpdated(self,

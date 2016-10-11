@@ -1,7 +1,7 @@
 public struct EKResourcePool<T>: Sequence {
 	typealias Element = T
 
-	private var resources = [EKResource<T>(value: nil, next: 0)]
+	fileprivate var resources = [EKResource<T>(value: nil, next: 0)]
 
 	private var arrayCapacity = 1
 	public var count = 0
