@@ -131,7 +131,7 @@ extension String {
 				array.append(string)
 				string = ""
 			} else {
-				string.append(char)
+				string.append("\(char)")
 			}
 		}
 
