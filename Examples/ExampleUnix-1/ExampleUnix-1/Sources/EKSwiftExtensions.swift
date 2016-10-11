@@ -77,7 +77,7 @@ extension UnicodeScalar {
 		get {
 			switch value {
 			case 97...122:
-				return UnicodeScalar(value - 32)
+				return UnicodeScalar(value - 32)!
 			default:
 				return self
 			}

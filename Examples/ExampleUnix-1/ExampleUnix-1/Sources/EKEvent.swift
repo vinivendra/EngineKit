@@ -143,7 +143,7 @@ public class EKEventCenter {
 	func eventName(forExternalName name: String) -> String {
 		let capitalized = name.capitalizedString
 		let components = capitalized.split(character: " ")
-		let camelCase: String = components.reduce("", combine: +)
+		let camelCase: String = components.reduce("", +)
 		return "EKEvent" + camelCase
 	}
 

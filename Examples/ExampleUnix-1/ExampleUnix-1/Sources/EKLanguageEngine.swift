@@ -35,7 +35,7 @@ extension String {
 			}
 		}
 
-		let result = "EK" + String(copy)
+        let result = "EK" + String(describing: copy)
 		return result
 	}
 }

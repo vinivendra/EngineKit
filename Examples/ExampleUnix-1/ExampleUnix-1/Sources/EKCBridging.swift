@@ -11,20 +11,20 @@ public class CString {
 	public init(_ string: String) {
 		(len, buffer) = string.withCString {
 			let len = Int(strlen($0) + 1)
-			let dst = strcpy(UnsafeMutablePointer<Int8>(allocatingCapacity: len), $0)!
+			let dst = strcpy(UnsafeMutablePointer.allocate(capacity: len), $0)!
 			return (len, dst)
 		}
 	}
 
 	public init(emptyStringWithlength length: Int) {
 		len = length + 1
-		buffer = UnsafeMutablePointer<Int8>(allocatingCapacity: len)
+		buffer = UnsafeMutablePointer.allocate(capacity: len)
 		buffer[0] = 0
 		buffer[length] = 0
 	}
 
 	deinit {
-		buffer.deallocateCapacity(len)
+        buffer.deallocate(capacity: len)
 	}
 }
 
@@ -34,7 +34,7 @@ extension String {
 		-> ReturnType {
 
 			let cString = CString(self)
-			return withUnsafePointer(&(cString.buffer)) {
+            return withUnsafePointer(to: &(cString.buffer)) {
 				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
 				-> ReturnType in
 				let foo = unsafeBitCast(
@@ -48,7 +48,7 @@ extension String {
 		-> ReturnType {
 
 			let cString = CString(self)
-			return withUnsafePointer(&(cString.buffer)) {
+            return withUnsafePointer(to: &(cString.buffer)) {
 				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
 				-> ReturnType in
 				let foo = unsafeBitCast(
