@@ -30,7 +30,7 @@ public class CString {
 
 extension String {
 	func withCStringPointer<ReturnType>(
-		closure: @noescape(UnsafePointer<UnsafePointer<Int8>>) -> ReturnType)
+		closure: (UnsafePointer<UnsafePointer<Int8>>) -> ReturnType)
 		-> ReturnType {
 
 			let cString = CString(self)
@@ -44,7 +44,7 @@ extension String {
 	}
 
 	func withCStringPointerAndLength<ReturnType>(
-		closure: @noescape(UnsafePointer<UnsafePointer<Int8>>, Int) -> ReturnType)
+		closure: (UnsafePointer<UnsafePointer<Int8>>, Int) -> ReturnType)
 		-> ReturnType {
 
 			let cString = CString(self)
