@@ -826,7 +826,7 @@ func glBinormal3svEXT_L(_ v:UnsafePointer<GLshort>) {
     glBinormal3svEXT_P = unsafeBitCast(getAddress(CommandInfo("glBinormal3svEXT", [S160])), to: type(of: glBinormal3svEXT_P))
     glBinormal3svEXT_P(v)
 }
-func glBinormalPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glBinormalPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glBinormalPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glBinormalPointerEXT", [S160])), to: type(of: glBinormalPointerEXT_P))
     glBinormalPointerEXT_P(type, stride, pointer)
 }
@@ -1014,11 +1014,11 @@ func glBufferAddressRangeNV_L(_ pname:GLenum, _ index:GLuint, _ address:GLuint64
     glBufferAddressRangeNV_P = unsafeBitCast(getAddress(CommandInfo("glBufferAddressRangeNV", [S302])), to: type(of: glBufferAddressRangeNV_P))
     glBufferAddressRangeNV_P(pname, index, address, length)
 }
-func glBufferData_L(_ target:GLenum, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ usage:GLenum) {
+func glBufferData_L(_ target:GLenum, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ usage:GLenum) {
     glBufferData_P = unsafeBitCast(getAddress(CommandInfo("glBufferData", [S5, S18])), to: type(of: glBufferData_P))
     glBufferData_P(target, size, data, usage)
 }
-func glBufferDataARB_L(_ target:GLenum, _ size:GLsizeiptrARB, _ data:UnsafePointer<Void>, _ usage:GLenum) {
+func glBufferDataARB_L(_ target:GLenum, _ size:GLsizeiptrARB, _ data:UnsafeRawPointer, _ usage:GLenum) {
     glBufferDataARB_P = unsafeBitCast(getAddress(CommandInfo("glBufferDataARB", [S133])), to: type(of: glBufferDataARB_P))
     glBufferDataARB_P(target, size, data, usage)
 }
@@ -1030,19 +1030,19 @@ func glBufferParameteriAPPLE_L(_ target:GLenum, _ pname:GLenum, _ param:GLint) {
     glBufferParameteriAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glBufferParameteriAPPLE", [S44])), to: type(of: glBufferParameteriAPPLE_P))
     glBufferParameteriAPPLE_P(target, pname, param)
 }
-func glBufferStorage_L(_ target:GLenum, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ flags:GLbitfield) {
+func glBufferStorage_L(_ target:GLenum, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ flags:GLbitfield) {
     glBufferStorage_P = unsafeBitCast(getAddress(CommandInfo("glBufferStorage", [S16, S58])), to: type(of: glBufferStorage_P))
     glBufferStorage_P(target, size, data, flags)
 }
-func glBufferStorageEXT_L(_ target:GLenum, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ flags:GLbitfield) {
+func glBufferStorageEXT_L(_ target:GLenum, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ flags:GLbitfield) {
     glBufferStorageEXT_P = unsafeBitCast(getAddress(CommandInfo("glBufferStorageEXT", [S156])), to: type(of: glBufferStorageEXT_P))
     glBufferStorageEXT_P(target, size, data, flags)
 }
-func glBufferSubData_L(_ target:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafePointer<Void>) {
+func glBufferSubData_L(_ target:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeRawPointer) {
     glBufferSubData_P = unsafeBitCast(getAddress(CommandInfo("glBufferSubData", [S5, S18])), to: type(of: glBufferSubData_P))
     glBufferSubData_P(target, offset, size, data)
 }
-func glBufferSubDataARB_L(_ target:GLenum, _ offset:GLintptrARB, _ size:GLsizeiptrARB, _ data:UnsafePointer<Void>) {
+func glBufferSubDataARB_L(_ target:GLenum, _ offset:GLintptrARB, _ size:GLsizeiptrARB, _ data:UnsafeRawPointer) {
     glBufferSubDataARB_P = unsafeBitCast(getAddress(CommandInfo("glBufferSubDataARB", [S133])), to: type(of: glBufferSubDataARB_P))
     glBufferSubDataARB_P(target, offset, size, data)
 }
@@ -1054,7 +1054,7 @@ func glCallList_L(_ list:GLuint) {
     glCallList_P = unsafeBitCast(getAddress(CommandInfo("glCallList", [S0, S23])), to: type(of: glCallList_P))
     glCallList_P(list)
 }
-func glCallLists_L(_ n:GLsizei, _ type:GLenum, _ lists:UnsafePointer<Void>) {
+func glCallLists_L(_ n:GLsizei, _ type:GLenum, _ lists:UnsafeRawPointer) {
     glCallLists_P = unsafeBitCast(getAddress(CommandInfo("glCallLists", [S0, S23])), to: type(of: glCallLists_P))
     glCallLists_P(n, type, lists)
 }
@@ -1098,11 +1098,11 @@ func glClearAccumxOES_L(_ red:GLfixed, _ green:GLfixed, _ blue:GLfixed, _ alpha:
     glClearAccumxOES_P = unsafeBitCast(getAddress(CommandInfo("glClearAccumxOES", [S316])), to: type(of: glClearAccumxOES_P))
     glClearAccumxOES_P(red, green, blue, alpha)
 }
-func glClearBufferData_L(_ target:GLenum, _ internalformat:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearBufferData_L(_ target:GLenum, _ internalformat:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearBufferData_P = unsafeBitCast(getAddress(CommandInfo("glClearBufferData", [S15, S60])), to: type(of: glClearBufferData_P))
     glClearBufferData_P(target, internalformat, format, type, data)
 }
-func glClearBufferSubData_L(_ target:GLenum, _ internalformat:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearBufferSubData_L(_ target:GLenum, _ internalformat:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearBufferSubData_P = unsafeBitCast(getAddress(CommandInfo("glClearBufferSubData", [S15, S60])), to: type(of: glClearBufferSubData_P))
     glClearBufferSubData_P(target, internalformat, offset, size, format, type, data)
 }
@@ -1170,19 +1170,19 @@ func glClearIndex_L(_ c:GLfloat) {
     glClearIndex_P = unsafeBitCast(getAddress(CommandInfo("glClearIndex", [S0, S23])), to: type(of: glClearIndex_P))
     glClearIndex_P(c)
 }
-func glClearNamedBufferData_L(_ buffer:GLuint, _ internalformat:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearNamedBufferData_L(_ buffer:GLuint, _ internalformat:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearNamedBufferData_P = unsafeBitCast(getAddress(CommandInfo("glClearNamedBufferData", [S17, S69])), to: type(of: glClearNamedBufferData_P))
     glClearNamedBufferData_P(buffer, internalformat, format, type, data)
 }
-func glClearNamedBufferDataEXT_L(_ buffer:GLuint, _ internalformat:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearNamedBufferDataEXT_L(_ buffer:GLuint, _ internalformat:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearNamedBufferDataEXT_P = unsafeBitCast(getAddress(CommandInfo("glClearNamedBufferDataEXT", [S167])), to: type(of: glClearNamedBufferDataEXT_P))
     glClearNamedBufferDataEXT_P(buffer, internalformat, format, type, data)
 }
-func glClearNamedBufferSubData_L(_ buffer:GLuint, _ internalformat:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearNamedBufferSubData_L(_ buffer:GLuint, _ internalformat:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearNamedBufferSubData_P = unsafeBitCast(getAddress(CommandInfo("glClearNamedBufferSubData", [S17, S69])), to: type(of: glClearNamedBufferSubData_P))
     glClearNamedBufferSubData_P(buffer, internalformat, offset, size, format, type, data)
 }
-func glClearNamedBufferSubDataEXT_L(_ buffer:GLuint, _ internalformat:GLenum, _ offset:GLsizeiptr, _ size:GLsizeiptr, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearNamedBufferSubDataEXT_L(_ buffer:GLuint, _ internalformat:GLenum, _ offset:GLsizeiptr, _ size:GLsizeiptr, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearNamedBufferSubDataEXT_P = unsafeBitCast(getAddress(CommandInfo("glClearNamedBufferSubDataEXT", [S167])), to: type(of: glClearNamedBufferSubDataEXT_P))
     glClearNamedBufferSubDataEXT_P(buffer, internalformat, offset, size, format, type, data)
 }
@@ -1206,11 +1206,11 @@ func glClearStencil_L(_ s:GLint) {
     glClearStencil_P = unsafeBitCast(getAddress(CommandInfo("glClearStencil", [S0, S18])), to: type(of: glClearStencil_P))
     glClearStencil_P(s)
 }
-func glClearTexImage_L(_ texture:GLuint, _ level:GLint, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearTexImage_L(_ texture:GLuint, _ level:GLint, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearTexImage_P = unsafeBitCast(getAddress(CommandInfo("glClearTexImage", [S16, S61])), to: type(of: glClearTexImage_P))
     glClearTexImage_P(texture, level, format, type, data)
 }
-func glClearTexSubImage_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glClearTexSubImage_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glClearTexSubImage_P = unsafeBitCast(getAddress(CommandInfo("glClearTexSubImage", [S16, S61])), to: type(of: glClearTexSubImage_P))
     glClearTexSubImage_P(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data)
 }
@@ -1522,35 +1522,35 @@ func glColorP4uiv_L(_ type:GLenum, _ color:UnsafePointer<GLuint>) {
     glColorP4uiv_P = unsafeBitCast(getAddress(CommandInfo("glColorP4uiv", [S11, S136])), to: type(of: glColorP4uiv_P))
     glColorP4uiv_P(type, color)
 }
-func glColorPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glColorPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glColorPointer_P = unsafeBitCast(getAddress(CommandInfo("glColorPointer", [S1, S23, S18])), to: type(of: glColorPointer_P))
     glColorPointer_P(size, type, stride, pointer)
 }
-func glColorPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glColorPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafeRawPointer) {
     glColorPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glColorPointerEXT", [S226])), to: type(of: glColorPointerEXT_P))
     glColorPointerEXT_P(size, type, stride, count, pointer)
 }
-func glColorPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glColorPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glColorPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glColorPointerListIBM", [S236])), to: type(of: glColorPointerListIBM_P))
     glColorPointerListIBM_P(size, type, stride, pointer, ptrstride)
 }
-func glColorPointervINTEL_L(_ size:GLint, _ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>) {
+func glColorPointervINTEL_L(_ size:GLint, _ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>) {
     glColorPointervINTEL_P = unsafeBitCast(getAddress(CommandInfo("glColorPointervINTEL", [S242])), to: type(of: glColorPointervINTEL_P))
     glColorPointervINTEL_P(size, type, pointer)
 }
-func glColorSubTable_L(_ target:GLenum, _ start:GLsizei, _ count:GLsizei, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glColorSubTable_L(_ target:GLenum, _ start:GLsizei, _ count:GLsizei, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glColorSubTable_P = unsafeBitCast(getAddress(CommandInfo("glColorSubTable", [S83])), to: type(of: glColorSubTable_P))
     glColorSubTable_P(target, start, count, format, type, data)
 }
-func glColorSubTableEXT_L(_ target:GLenum, _ start:GLsizei, _ count:GLsizei, _ format:GLenum, _ type:GLenum, _ data:UnsafePointer<Void>) {
+func glColorSubTableEXT_L(_ target:GLenum, _ start:GLsizei, _ count:GLsizei, _ format:GLenum, _ type:GLenum, _ data:UnsafeRawPointer) {
     glColorSubTableEXT_P = unsafeBitCast(getAddress(CommandInfo("glColorSubTableEXT", [S157])), to: type(of: glColorSubTableEXT_P))
     glColorSubTableEXT_P(target, start, count, format, type, data)
 }
-func glColorTable_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ table:UnsafePointer<Void>) {
+func glColorTable_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ table:UnsafeRawPointer) {
     glColorTable_P = unsafeBitCast(getAddress(CommandInfo("glColorTable", [S83])), to: type(of: glColorTable_P))
     glColorTable_P(target, internalformat, width, format, type, table)
 }
-func glColorTableEXT_L(_ target:GLenum, _ internalFormat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ table:UnsafePointer<Void>) {
+func glColorTableEXT_L(_ target:GLenum, _ internalFormat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ table:UnsafeRawPointer) {
     glColorTableEXT_P = unsafeBitCast(getAddress(CommandInfo("glColorTableEXT", [S196])), to: type(of: glColorTableEXT_P))
     glColorTableEXT_P(target, internalFormat, width, format, type, table)
 }
@@ -1570,7 +1570,7 @@ func glColorTableParameterivSGI_L(_ target:GLenum, _ pname:GLenum, _ params:Unsa
     glColorTableParameterivSGI_P = unsafeBitCast(getAddress(CommandInfo("glColorTableParameterivSGI", [S364])), to: type(of: glColorTableParameterivSGI_P))
     glColorTableParameterivSGI_P(target, pname, params)
 }
-func glColorTableSGI_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ table:UnsafePointer<Void>) {
+func glColorTableSGI_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ table:UnsafeRawPointer) {
     glColorTableSGI_P = unsafeBitCast(getAddress(CommandInfo("glColorTableSGI", [S364])), to: type(of: glColorTableSGI_P))
     glColorTableSGI_P(target, internalformat, width, format, type, table)
 }
@@ -1622,119 +1622,119 @@ func glCompileShaderIncludeARB_L(_ shader:GLuint, _ count:GLsizei, _ path:Unsafe
     glCompileShaderIncludeARB_P = unsafeBitCast(getAddress(CommandInfo("glCompileShaderIncludeARB", [S110])), to: type(of: glCompileShaderIncludeARB_P))
     glCompileShaderIncludeARB_P(shader, count, path, length)
 }
-func glCompressedMultiTexImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedMultiTexImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedMultiTexImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedMultiTexImage1DEXT", [S167])), to: type(of: glCompressedMultiTexImage1DEXT_P))
     glCompressedMultiTexImage1DEXT_P(texunit, target, level, internalformat, width, border, imageSize, bits)
 }
-func glCompressedMultiTexImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedMultiTexImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedMultiTexImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedMultiTexImage2DEXT", [S167])), to: type(of: glCompressedMultiTexImage2DEXT_P))
     glCompressedMultiTexImage2DEXT_P(texunit, target, level, internalformat, width, height, border, imageSize, bits)
 }
-func glCompressedMultiTexImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedMultiTexImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedMultiTexImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedMultiTexImage3DEXT", [S167])), to: type(of: glCompressedMultiTexImage3DEXT_P))
     glCompressedMultiTexImage3DEXT_P(texunit, target, level, internalformat, width, height, depth, border, imageSize, bits)
 }
-func glCompressedMultiTexSubImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedMultiTexSubImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedMultiTexSubImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedMultiTexSubImage1DEXT", [S167])), to: type(of: glCompressedMultiTexSubImage1DEXT_P))
     glCompressedMultiTexSubImage1DEXT_P(texunit, target, level, xoffset, width, format, imageSize, bits)
 }
-func glCompressedMultiTexSubImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedMultiTexSubImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedMultiTexSubImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedMultiTexSubImage2DEXT", [S167])), to: type(of: glCompressedMultiTexSubImage2DEXT_P))
     glCompressedMultiTexSubImage2DEXT_P(texunit, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
 }
-func glCompressedMultiTexSubImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedMultiTexSubImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedMultiTexSubImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedMultiTexSubImage3DEXT", [S167])), to: type(of: glCompressedMultiTexSubImage3DEXT_P))
     glCompressedMultiTexSubImage3DEXT_P(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
 }
-func glCompressedTexImage1D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage1D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage1D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage1D", [S3])), to: type(of: glCompressedTexImage1D_P))
     glCompressedTexImage1D_P(target, level, internalformat, width, border, imageSize, data)
 }
-func glCompressedTexImage1DARB_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage1DARB_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage1DARB_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage1DARB", [S118])), to: type(of: glCompressedTexImage1DARB_P))
     glCompressedTexImage1DARB_P(target, level, internalformat, width, border, imageSize, data)
 }
-func glCompressedTexImage2D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage2D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage2D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage2D", [S3, S18])), to: type(of: glCompressedTexImage2D_P))
     glCompressedTexImage2D_P(target, level, internalformat, width, height, border, imageSize, data)
 }
-func glCompressedTexImage2DARB_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage2DARB_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage2DARB_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage2DARB", [S118])), to: type(of: glCompressedTexImage2DARB_P))
     glCompressedTexImage2DARB_P(target, level, internalformat, width, height, border, imageSize, data)
 }
-func glCompressedTexImage3D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage3D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage3D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage3D", [S3, S20])), to: type(of: glCompressedTexImage3D_P))
     glCompressedTexImage3D_P(target, level, internalformat, width, height, depth, border, imageSize, data)
 }
-func glCompressedTexImage3DARB_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage3DARB_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage3DARB_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage3DARB", [S118])), to: type(of: glCompressedTexImage3DARB_P))
     glCompressedTexImage3DARB_P(target, level, internalformat, width, height, depth, border, imageSize, data)
 }
-func glCompressedTexImage3DOES_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexImage3DOES_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexImage3DOES_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexImage3DOES", [S328])), to: type(of: glCompressedTexImage3DOES_P))
     glCompressedTexImage3DOES_P(target, level, internalformat, width, height, depth, border, imageSize, data)
 }
-func glCompressedTexSubImage1D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage1D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage1D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage1D", [S3])), to: type(of: glCompressedTexSubImage1D_P))
     glCompressedTexSubImage1D_P(target, level, xoffset, width, format, imageSize, data)
 }
-func glCompressedTexSubImage1DARB_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage1DARB_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage1DARB_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage1DARB", [S118])), to: type(of: glCompressedTexSubImage1DARB_P))
     glCompressedTexSubImage1DARB_P(target, level, xoffset, width, format, imageSize, data)
 }
-func glCompressedTexSubImage2D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage2D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage2D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage2D", [S3, S18])), to: type(of: glCompressedTexSubImage2D_P))
     glCompressedTexSubImage2D_P(target, level, xoffset, yoffset, width, height, format, imageSize, data)
 }
-func glCompressedTexSubImage2DARB_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage2DARB_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage2DARB_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage2DARB", [S118])), to: type(of: glCompressedTexSubImage2DARB_P))
     glCompressedTexSubImage2DARB_P(target, level, xoffset, yoffset, width, height, format, imageSize, data)
 }
-func glCompressedTexSubImage3D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage3D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage3D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage3D", [S3, S20])), to: type(of: glCompressedTexSubImage3D_P))
     glCompressedTexSubImage3D_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 }
-func glCompressedTexSubImage3DARB_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage3DARB_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage3DARB_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage3DARB", [S118])), to: type(of: glCompressedTexSubImage3DARB_P))
     glCompressedTexSubImage3DARB_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 }
-func glCompressedTexSubImage3DOES_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTexSubImage3DOES_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTexSubImage3DOES_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTexSubImage3DOES", [S328])), to: type(of: glCompressedTexSubImage3DOES_P))
     glCompressedTexSubImage3DOES_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 }
-func glCompressedTextureImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedTextureImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedTextureImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureImage1DEXT", [S167])), to: type(of: glCompressedTextureImage1DEXT_P))
     glCompressedTextureImage1DEXT_P(texture, target, level, internalformat, width, border, imageSize, bits)
 }
-func glCompressedTextureImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedTextureImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedTextureImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureImage2DEXT", [S167])), to: type(of: glCompressedTextureImage2DEXT_P))
     glCompressedTextureImage2DEXT_P(texture, target, level, internalformat, width, height, border, imageSize, bits)
 }
-func glCompressedTextureImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedTextureImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedTextureImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureImage3DEXT", [S167])), to: type(of: glCompressedTextureImage3DEXT_P))
     glCompressedTextureImage3DEXT_P(texture, target, level, internalformat, width, height, depth, border, imageSize, bits)
 }
-func glCompressedTextureSubImage1D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTextureSubImage1D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTextureSubImage1D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureSubImage1D", [S17, S69])), to: type(of: glCompressedTextureSubImage1D_P))
     glCompressedTextureSubImage1D_P(texture, level, xoffset, width, format, imageSize, data)
 }
-func glCompressedTextureSubImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedTextureSubImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedTextureSubImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureSubImage1DEXT", [S167])), to: type(of: glCompressedTextureSubImage1DEXT_P))
     glCompressedTextureSubImage1DEXT_P(texture, target, level, xoffset, width, format, imageSize, bits)
 }
-func glCompressedTextureSubImage2D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTextureSubImage2D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTextureSubImage2D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureSubImage2D", [S17, S69])), to: type(of: glCompressedTextureSubImage2D_P))
     glCompressedTextureSubImage2D_P(texture, level, xoffset, yoffset, width, height, format, imageSize, data)
 }
-func glCompressedTextureSubImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedTextureSubImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedTextureSubImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureSubImage2DEXT", [S167])), to: type(of: glCompressedTextureSubImage2DEXT_P))
     glCompressedTextureSubImage2DEXT_P(texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits)
 }
-func glCompressedTextureSubImage3D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafePointer<Void>) {
+func glCompressedTextureSubImage3D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ data:UnsafeRawPointer) {
     glCompressedTextureSubImage3D_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureSubImage3D", [S17, S69])), to: type(of: glCompressedTextureSubImage3D_P))
     glCompressedTextureSubImage3D_P(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data)
 }
-func glCompressedTextureSubImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafePointer<Void>) {
+func glCompressedTextureSubImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ imageSize:GLsizei, _ bits:UnsafeRawPointer) {
     glCompressedTextureSubImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCompressedTextureSubImage3DEXT", [S167])), to: type(of: glCompressedTextureSubImage3DEXT_P))
     glCompressedTextureSubImage3DEXT_P(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits)
 }
@@ -1742,19 +1742,19 @@ func glConservativeRasterParameterfNV_L(_ pname:GLenum, _ value:GLfloat) {
     glConservativeRasterParameterfNV_P = unsafeBitCast(getAddress(CommandInfo("glConservativeRasterParameterfNV", [S257])), to: type(of: glConservativeRasterParameterfNV_P))
     glConservativeRasterParameterfNV_P(pname, value)
 }
-func glConvolutionFilter1D_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafePointer<Void>) {
+func glConvolutionFilter1D_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafeRawPointer) {
     glConvolutionFilter1D_P = unsafeBitCast(getAddress(CommandInfo("glConvolutionFilter1D", [S83])), to: type(of: glConvolutionFilter1D_P))
     glConvolutionFilter1D_P(target, internalformat, width, format, type, image)
 }
-func glConvolutionFilter1DEXT_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafePointer<Void>) {
+func glConvolutionFilter1DEXT_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafeRawPointer) {
     glConvolutionFilter1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glConvolutionFilter1DEXT", [S159])), to: type(of: glConvolutionFilter1DEXT_P))
     glConvolutionFilter1DEXT_P(target, internalformat, width, format, type, image)
 }
-func glConvolutionFilter2D_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafePointer<Void>) {
+func glConvolutionFilter2D_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafeRawPointer) {
     glConvolutionFilter2D_P = unsafeBitCast(getAddress(CommandInfo("glConvolutionFilter2D", [S83])), to: type(of: glConvolutionFilter2D_P))
     glConvolutionFilter2D_P(target, internalformat, width, height, format, type, image)
 }
-func glConvolutionFilter2DEXT_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafePointer<Void>) {
+func glConvolutionFilter2DEXT_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ image:UnsafeRawPointer) {
     glConvolutionFilter2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glConvolutionFilter2DEXT", [S159])), to: type(of: glConvolutionFilter2DEXT_P))
     glConvolutionFilter2DEXT_P(target, internalformat, width, height, format, type, image)
 }
@@ -1966,7 +1966,7 @@ func glCopyTextureSubImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLi
     glCopyTextureSubImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glCopyTextureSubImage3DEXT", [S167])), to: type(of: glCopyTextureSubImage3DEXT_P))
     glCopyTextureSubImage3DEXT_P(texture, target, level, xoffset, yoffset, zoffset, x, y, width, height)
 }
-func glCoverFillPathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
+func glCoverFillPathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
     glCoverFillPathInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glCoverFillPathInstancedNV", [S284])), to: type(of: glCoverFillPathInstancedNV_P))
     glCoverFillPathInstancedNV_P(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
 }
@@ -1974,7 +1974,7 @@ func glCoverFillPathNV_L(_ path:GLuint, _ coverMode:GLenum) {
     glCoverFillPathNV_P = unsafeBitCast(getAddress(CommandInfo("glCoverFillPathNV", [S284])), to: type(of: glCoverFillPathNV_P))
     glCoverFillPathNV_P(path, coverMode)
 }
-func glCoverStrokePathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
+func glCoverStrokePathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
     glCoverStrokePathInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glCoverStrokePathInstancedNV", [S284])), to: type(of: glCoverStrokePathInstancedNV_P))
     glCoverStrokePathInstancedNV_P(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues)
 }
@@ -2098,19 +2098,19 @@ func glCurrentPaletteMatrixOES_L(_ matrixpaletteindex:GLuint) {
     glCurrentPaletteMatrixOES_P = unsafeBitCast(getAddress(CommandInfo("glCurrentPaletteMatrixOES", [S321])), to: type(of: glCurrentPaletteMatrixOES_P))
     glCurrentPaletteMatrixOES_P(matrixpaletteindex)
 }
-func glDebugMessageCallback_L(_ callback:GLDEBUGPROC, _ userParam:UnsafePointer<Void>) {
+func glDebugMessageCallback_L(_ callback:GLDEBUGPROC, _ userParam:UnsafeRawPointer) {
     glDebugMessageCallback_P = unsafeBitCast(getAddress(CommandInfo("glDebugMessageCallback", [S15, S22, S245])), to: type(of: glDebugMessageCallback_P))
     glDebugMessageCallback_P(callback, userParam)
 }
-func glDebugMessageCallbackAMD_L(_ callback:GLDEBUGPROCAMD, _ userParam:UnsafeMutablePointer<Void>) {
+func glDebugMessageCallbackAMD_L(_ callback:GLDEBUGPROCAMD, _ userParam:UnsafeMutableRawPointer) {
     glDebugMessageCallbackAMD_P = unsafeBitCast(getAddress(CommandInfo("glDebugMessageCallbackAMD", [S25])), to: type(of: glDebugMessageCallbackAMD_P))
     glDebugMessageCallbackAMD_P(callback, userParam)
 }
-func glDebugMessageCallbackARB_L(_ callback:GLDEBUGPROCARB, _ userParam:UnsafePointer<Void>) {
+func glDebugMessageCallbackARB_L(_ callback:GLDEBUGPROCARB, _ userParam:UnsafeRawPointer) {
     glDebugMessageCallbackARB_P = unsafeBitCast(getAddress(CommandInfo("glDebugMessageCallbackARB", [S68])), to: type(of: glDebugMessageCallbackARB_P))
     glDebugMessageCallbackARB_P(callback, userParam)
 }
-func glDebugMessageCallbackKHR_L(_ callback:GLDEBUGPROCKHR, _ userParam:UnsafePointer<Void>) {
+func glDebugMessageCallbackKHR_L(_ callback:GLDEBUGPROCKHR, _ userParam:UnsafeRawPointer) {
     glDebugMessageCallbackKHR_P = unsafeBitCast(getAddress(CommandInfo("glDebugMessageCallbackKHR", [S245])), to: type(of: glDebugMessageCallbackKHR_P))
     glDebugMessageCallbackKHR_P(callback, userParam)
 }
@@ -2486,7 +2486,7 @@ func glDrawArraysEXT_L(_ mode:GLenum, _ first:GLint, _ count:GLsizei) {
     glDrawArraysEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawArraysEXT", [S226])), to: type(of: glDrawArraysEXT_P))
     glDrawArraysEXT_P(mode, first, count)
 }
-func glDrawArraysIndirect_L(_ mode:GLenum, _ indirect:UnsafePointer<Void>) {
+func glDrawArraysIndirect_L(_ mode:GLenum, _ indirect:UnsafeRawPointer) {
     glDrawArraysIndirect_P = unsafeBitCast(getAddress(CommandInfo("glDrawArraysIndirect", [S12, S21, S73])), to: type(of: glDrawArraysIndirect_P))
     glDrawArraysIndirect_P(mode, indirect)
 }
@@ -2570,71 +2570,71 @@ func glDrawElementArrayATI_L(_ mode:GLenum, _ count:GLsizei) {
     glDrawElementArrayATI_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementArrayATI", [S140])), to: type(of: glDrawElementArrayATI_P))
     glDrawElementArrayATI_P(mode, count)
 }
-func glDrawElements_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>) {
+func glDrawElements_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer) {
     glDrawElements_P = unsafeBitCast(getAddress(CommandInfo("glDrawElements", [S1, S18])), to: type(of: glDrawElements_P))
     glDrawElements_P(mode, count, type, indices)
 }
-func glDrawElementsBaseVertex_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ basevertex:GLint) {
+func glDrawElementsBaseVertex_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ basevertex:GLint) {
     glDrawElementsBaseVertex_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsBaseVertex", [S10, S22, S72])), to: type(of: glDrawElementsBaseVertex_P))
     glDrawElementsBaseVertex_P(mode, count, type, indices, basevertex)
 }
-func glDrawElementsBaseVertexEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ basevertex:GLint) {
+func glDrawElementsBaseVertexEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ basevertex:GLint) {
     glDrawElementsBaseVertexEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsBaseVertexEXT", [S173])), to: type(of: glDrawElementsBaseVertexEXT_P))
     glDrawElementsBaseVertexEXT_P(mode, count, type, indices, basevertex)
 }
-func glDrawElementsBaseVertexOES_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ basevertex:GLint) {
+func glDrawElementsBaseVertexOES_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ basevertex:GLint) {
     glDrawElementsBaseVertexOES_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsBaseVertexOES", [S314])), to: type(of: glDrawElementsBaseVertexOES_P))
     glDrawElementsBaseVertexOES_P(mode, count, type, indices, basevertex)
 }
-func glDrawElementsIndirect_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafePointer<Void>) {
+func glDrawElementsIndirect_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafeRawPointer) {
     glDrawElementsIndirect_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsIndirect", [S12, S21, S73])), to: type(of: glDrawElementsIndirect_P))
     glDrawElementsIndirect_P(mode, type, indirect)
 }
-func glDrawElementsInstanced_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei) {
+func glDrawElementsInstanced_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei) {
     glDrawElementsInstanced_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstanced", [S9, S20])), to: type(of: glDrawElementsInstanced_P))
     glDrawElementsInstanced_P(mode, count, type, indices, instancecount)
 }
-func glDrawElementsInstancedANGLE_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ primcount:GLsizei) {
+func glDrawElementsInstancedANGLE_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ primcount:GLsizei) {
     glDrawElementsInstancedANGLE_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedANGLE", [S39])), to: type(of: glDrawElementsInstancedANGLE_P))
     glDrawElementsInstancedANGLE_P(mode, count, type, indices, primcount)
 }
-func glDrawElementsInstancedARB_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ primcount:GLsizei) {
+func glDrawElementsInstancedARB_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ primcount:GLsizei) {
     glDrawElementsInstancedARB_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedARB", [S74])), to: type(of: glDrawElementsInstancedARB_P))
     glDrawElementsInstancedARB_P(mode, count, type, indices, primcount)
 }
-func glDrawElementsInstancedBaseInstance_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ baseinstance:GLuint) {
+func glDrawElementsInstancedBaseInstance_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ baseinstance:GLuint) {
     glDrawElementsInstancedBaseInstance_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseInstance", [S14, S55])), to: type(of: glDrawElementsInstancedBaseInstance_P))
     glDrawElementsInstancedBaseInstance_P(mode, count, type, indices, instancecount, baseinstance)
 }
-func glDrawElementsInstancedBaseInstanceEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ baseinstance:GLuint) {
+func glDrawElementsInstancedBaseInstanceEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ baseinstance:GLuint) {
     glDrawElementsInstancedBaseInstanceEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseInstanceEXT", [S149])), to: type(of: glDrawElementsInstancedBaseInstanceEXT_P))
     glDrawElementsInstancedBaseInstanceEXT_P(mode, count, type, indices, instancecount, baseinstance)
 }
-func glDrawElementsInstancedBaseVertex_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ basevertex:GLint) {
+func glDrawElementsInstancedBaseVertex_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ basevertex:GLint) {
     glDrawElementsInstancedBaseVertex_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseVertex", [S10, S22, S72])), to: type(of: glDrawElementsInstancedBaseVertex_P))
     glDrawElementsInstancedBaseVertex_P(mode, count, type, indices, instancecount, basevertex)
 }
-func glDrawElementsInstancedBaseVertexBaseInstance_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ basevertex:GLint, _ baseinstance:GLuint) {
+func glDrawElementsInstancedBaseVertexBaseInstance_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ basevertex:GLint, _ baseinstance:GLuint) {
     glDrawElementsInstancedBaseVertexBaseInstance_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseVertexBaseInstance", [S14, S55])), to: type(of: glDrawElementsInstancedBaseVertexBaseInstance_P))
     glDrawElementsInstancedBaseVertexBaseInstance_P(mode, count, type, indices, instancecount, basevertex, baseinstance)
 }
-func glDrawElementsInstancedBaseVertexBaseInstanceEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ basevertex:GLint, _ baseinstance:GLuint) {
+func glDrawElementsInstancedBaseVertexBaseInstanceEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ basevertex:GLint, _ baseinstance:GLuint) {
     glDrawElementsInstancedBaseVertexBaseInstanceEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseVertexBaseInstanceEXT", [S149])), to: type(of: glDrawElementsInstancedBaseVertexBaseInstanceEXT_P))
     glDrawElementsInstancedBaseVertexBaseInstanceEXT_P(mode, count, type, indices, instancecount, basevertex, baseinstance)
 }
-func glDrawElementsInstancedBaseVertexEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ basevertex:GLint) {
+func glDrawElementsInstancedBaseVertexEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ basevertex:GLint) {
     glDrawElementsInstancedBaseVertexEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseVertexEXT", [S173])), to: type(of: glDrawElementsInstancedBaseVertexEXT_P))
     glDrawElementsInstancedBaseVertexEXT_P(mode, count, type, indices, instancecount, basevertex)
 }
-func glDrawElementsInstancedBaseVertexOES_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ instancecount:GLsizei, _ basevertex:GLint) {
+func glDrawElementsInstancedBaseVertexOES_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ instancecount:GLsizei, _ basevertex:GLint) {
     glDrawElementsInstancedBaseVertexOES_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedBaseVertexOES", [S314])), to: type(of: glDrawElementsInstancedBaseVertexOES_P))
     glDrawElementsInstancedBaseVertexOES_P(mode, count, type, indices, instancecount, basevertex)
 }
-func glDrawElementsInstancedEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ primcount:GLsizei) {
+func glDrawElementsInstancedEXT_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ primcount:GLsizei) {
     glDrawElementsInstancedEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedEXT", [S174, S187])), to: type(of: glDrawElementsInstancedEXT_P))
     glDrawElementsInstancedEXT_P(mode, count, type, indices, primcount)
 }
-func glDrawElementsInstancedNV_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ primcount:GLsizei) {
+func glDrawElementsInstancedNV_L(_ mode:GLenum, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ primcount:GLsizei) {
     glDrawElementsInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glDrawElementsInstancedNV", [S263])), to: type(of: glDrawElementsInstancedNV_P))
     glDrawElementsInstancedNV_P(mode, count, type, indices, primcount)
 }
@@ -2642,7 +2642,7 @@ func glDrawMeshArraysSUN_L(_ mode:GLenum, _ first:GLint, _ count:GLsizei, _ widt
     glDrawMeshArraysSUN_P = unsafeBitCast(getAddress(CommandInfo("glDrawMeshArraysSUN", [S367])), to: type(of: glDrawMeshArraysSUN_P))
     glDrawMeshArraysSUN_P(mode, first, count, width)
 }
-func glDrawPixels_L(_ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glDrawPixels_L(_ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glDrawPixels_P = unsafeBitCast(getAddress(CommandInfo("glDrawPixels", [S0, S23])), to: type(of: glDrawPixels_P))
     glDrawPixels_P(width, height, format, type, pixels)
 }
@@ -2654,23 +2654,23 @@ func glDrawRangeElementArrayATI_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _
     glDrawRangeElementArrayATI_P = unsafeBitCast(getAddress(CommandInfo("glDrawRangeElementArrayATI", [S140])), to: type(of: glDrawRangeElementArrayATI_P))
     glDrawRangeElementArrayATI_P(mode, start, end, count)
 }
-func glDrawRangeElements_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>) {
+func glDrawRangeElements_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer) {
     glDrawRangeElements_P = unsafeBitCast(getAddress(CommandInfo("glDrawRangeElements", [S2, S20])), to: type(of: glDrawRangeElements_P))
     glDrawRangeElements_P(mode, start, end, count, type, indices)
 }
-func glDrawRangeElementsBaseVertex_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ basevertex:GLint) {
+func glDrawRangeElementsBaseVertex_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ basevertex:GLint) {
     glDrawRangeElementsBaseVertex_P = unsafeBitCast(getAddress(CommandInfo("glDrawRangeElementsBaseVertex", [S10, S22, S72])), to: type(of: glDrawRangeElementsBaseVertex_P))
     glDrawRangeElementsBaseVertex_P(mode, start, end, count, type, indices, basevertex)
 }
-func glDrawRangeElementsBaseVertexEXT_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ basevertex:GLint) {
+func glDrawRangeElementsBaseVertexEXT_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ basevertex:GLint) {
     glDrawRangeElementsBaseVertexEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawRangeElementsBaseVertexEXT", [S173])), to: type(of: glDrawRangeElementsBaseVertexEXT_P))
     glDrawRangeElementsBaseVertexEXT_P(mode, start, end, count, type, indices, basevertex)
 }
-func glDrawRangeElementsBaseVertexOES_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>, _ basevertex:GLint) {
+func glDrawRangeElementsBaseVertexOES_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer, _ basevertex:GLint) {
     glDrawRangeElementsBaseVertexOES_P = unsafeBitCast(getAddress(CommandInfo("glDrawRangeElementsBaseVertexOES", [S314])), to: type(of: glDrawRangeElementsBaseVertexOES_P))
     glDrawRangeElementsBaseVertexOES_P(mode, start, end, count, type, indices, basevertex)
 }
-func glDrawRangeElementsEXT_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafePointer<Void>) {
+func glDrawRangeElementsEXT_L(_ mode:GLenum, _ start:GLuint, _ end:GLuint, _ count:GLsizei, _ type:GLenum, _ indices:UnsafeRawPointer) {
     glDrawRangeElementsEXT_P = unsafeBitCast(getAddress(CommandInfo("glDrawRangeElementsEXT", [S175])), to: type(of: glDrawRangeElementsEXT_P))
     glDrawRangeElementsEXT_P(mode, start, end, count, type, indices)
 }
@@ -2746,7 +2746,7 @@ func glEdgeFlagFormatNV_L(_ stride:GLsizei) {
     glEdgeFlagFormatNV_P = unsafeBitCast(getAddress(CommandInfo("glEdgeFlagFormatNV", [S302])), to: type(of: glEdgeFlagFormatNV_P))
     glEdgeFlagFormatNV_P(stride)
 }
-func glEdgeFlagPointer_L(_ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glEdgeFlagPointer_L(_ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glEdgeFlagPointer_P = unsafeBitCast(getAddress(CommandInfo("glEdgeFlagPointer", [S1, S23])), to: type(of: glEdgeFlagPointer_P))
     glEdgeFlagPointer_P(stride, pointer)
 }
@@ -2762,11 +2762,11 @@ func glEdgeFlagv_L(_ flag:UnsafePointer<GLboolean>) {
     glEdgeFlagv_P = unsafeBitCast(getAddress(CommandInfo("glEdgeFlagv", [S0, S23])), to: type(of: glEdgeFlagv_P))
     glEdgeFlagv_P(flag)
 }
-func glElementPointerAPPLE_L(_ type:GLenum, _ pointer:UnsafePointer<Void>) {
+func glElementPointerAPPLE_L(_ type:GLenum, _ pointer:UnsafeRawPointer) {
     glElementPointerAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glElementPointerAPPLE", [S42])), to: type(of: glElementPointerAPPLE_P))
     glElementPointerAPPLE_P(type, pointer)
 }
-func glElementPointerATI_L(_ type:GLenum, _ pointer:UnsafePointer<Void>) {
+func glElementPointerATI_L(_ type:GLenum, _ pointer:UnsafeRawPointer) {
     glElementPointerATI_P = unsafeBitCast(getAddress(CommandInfo("glElementPointerATI", [S140])), to: type(of: glElementPointerATI_P))
     glElementPointerATI_P(type, pointer)
 }
@@ -2990,7 +2990,7 @@ func glExecuteProgramNV_L(_ target:GLenum, _ id:GLuint, _ params:UnsafePointer<G
     glExecuteProgramNV_P = unsafeBitCast(getAddress(CommandInfo("glExecuteProgramNV", [S303])), to: type(of: glExecuteProgramNV_P))
     glExecuteProgramNV_P(target, id, params)
 }
-func glExtGetBufferPointervQCOM_L(_ target:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glExtGetBufferPointervQCOM_L(_ target:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glExtGetBufferPointervQCOM_P = unsafeBitCast(getAddress(CommandInfo("glExtGetBufferPointervQCOM", [S340])), to: type(of: glExtGetBufferPointervQCOM_P))
     glExtGetBufferPointervQCOM_P(target, params)
 }
@@ -3022,7 +3022,7 @@ func glExtGetTexLevelParameterivQCOM_L(_ texture:GLuint, _ face:GLenum, _ level:
     glExtGetTexLevelParameterivQCOM_P = unsafeBitCast(getAddress(CommandInfo("glExtGetTexLevelParameterivQCOM", [S340])), to: type(of: glExtGetTexLevelParameterivQCOM_P))
     glExtGetTexLevelParameterivQCOM_P(texture, face, level, pname, params)
 }
-func glExtGetTexSubImageQCOM_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ texels:UnsafeMutablePointer<Void>) {
+func glExtGetTexSubImageQCOM_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ texels:UnsafeMutableRawPointer) {
     glExtGetTexSubImageQCOM_P = unsafeBitCast(getAddress(CommandInfo("glExtGetTexSubImageQCOM", [S340])), to: type(of: glExtGetTexSubImageQCOM_P))
     glExtGetTexSubImageQCOM_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, texels)
 }
@@ -3122,7 +3122,7 @@ func glFlushStaticDataIBM_L(_ target:GLenum) {
     glFlushStaticDataIBM_P = unsafeBitCast(getAddress(CommandInfo("glFlushStaticDataIBM", [S235])), to: type(of: glFlushStaticDataIBM_P))
     glFlushStaticDataIBM_P(target)
 }
-func glFlushVertexArrayRangeAPPLE_L(_ length:GLsizei, _ pointer:UnsafeMutablePointer<Void>) {
+func glFlushVertexArrayRangeAPPLE_L(_ length:GLsizei, _ pointer:UnsafeMutableRawPointer) {
     glFlushVertexArrayRangeAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glFlushVertexArrayRangeAPPLE", [S50])), to: type(of: glFlushVertexArrayRangeAPPLE_P))
     glFlushVertexArrayRangeAPPLE_P(length, pointer)
 }
@@ -3134,15 +3134,15 @@ func glFogCoordFormatNV_L(_ type:GLenum, _ stride:GLsizei) {
     glFogCoordFormatNV_P = unsafeBitCast(getAddress(CommandInfo("glFogCoordFormatNV", [S302])), to: type(of: glFogCoordFormatNV_P))
     glFogCoordFormatNV_P(type, stride)
 }
-func glFogCoordPointer_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glFogCoordPointer_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glFogCoordPointer_P = unsafeBitCast(getAddress(CommandInfo("glFogCoordPointer", [S4, S23])), to: type(of: glFogCoordPointer_P))
     glFogCoordPointer_P(type, stride, pointer)
 }
-func glFogCoordPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glFogCoordPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glFogCoordPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glFogCoordPointerEXT", [S176])), to: type(of: glFogCoordPointerEXT_P))
     glFogCoordPointerEXT_P(type, stride, pointer)
 }
-func glFogCoordPointerListIBM_L(_ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glFogCoordPointerListIBM_L(_ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glFogCoordPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glFogCoordPointerListIBM", [S236])), to: type(of: glFogCoordPointerListIBM_P))
     glFogCoordPointerListIBM_P(type, stride, pointer, ptrstride)
 }
@@ -3698,23 +3698,23 @@ func glGetBufferParameterui64vNV_L(_ target:GLenum, _ pname:GLenum, _ params:Uns
     glGetBufferParameterui64vNV_P = unsafeBitCast(getAddress(CommandInfo("glGetBufferParameterui64vNV", [S294])), to: type(of: glGetBufferParameterui64vNV_P))
     glGetBufferParameterui64vNV_P(target, pname, params)
 }
-func glGetBufferPointerv_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetBufferPointerv_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetBufferPointerv_P = unsafeBitCast(getAddress(CommandInfo("glGetBufferPointerv", [S5, S20])), to: type(of: glGetBufferPointerv_P))
     glGetBufferPointerv_P(target, pname, params)
 }
-func glGetBufferPointervARB_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetBufferPointervARB_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetBufferPointervARB_P = unsafeBitCast(getAddress(CommandInfo("glGetBufferPointervARB", [S133])), to: type(of: glGetBufferPointervARB_P))
     glGetBufferPointervARB_P(target, pname, params)
 }
-func glGetBufferPointervOES_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetBufferPointervOES_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetBufferPointervOES_P = unsafeBitCast(getAddress(CommandInfo("glGetBufferPointervOES", [S320])), to: type(of: glGetBufferPointervOES_P))
     glGetBufferPointervOES_P(target, pname, params)
 }
-func glGetBufferSubData_L(_ target:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeMutablePointer<Void>) {
+func glGetBufferSubData_L(_ target:GLenum, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeMutableRawPointer) {
     glGetBufferSubData_P = unsafeBitCast(getAddress(CommandInfo("glGetBufferSubData", [S5])), to: type(of: glGetBufferSubData_P))
     glGetBufferSubData_P(target, offset, size, data)
 }
-func glGetBufferSubDataARB_L(_ target:GLenum, _ offset:GLintptrARB, _ size:GLsizeiptrARB, _ data:UnsafeMutablePointer<Void>) {
+func glGetBufferSubDataARB_L(_ target:GLenum, _ offset:GLintptrARB, _ size:GLsizeiptrARB, _ data:UnsafeMutableRawPointer) {
     glGetBufferSubDataARB_P = unsafeBitCast(getAddress(CommandInfo("glGetBufferSubDataARB", [S133])), to: type(of: glGetBufferSubDataARB_P))
     glGetBufferSubDataARB_P(target, offset, size, data)
 }
@@ -3738,11 +3738,11 @@ func glGetClipPlanexOES_L(_ plane:GLenum, _ equation:UnsafeMutablePointer<GLfixe
     glGetClipPlanexOES_P = unsafeBitCast(getAddress(CommandInfo("glGetClipPlanexOES", [S316])), to: type(of: glGetClipPlanexOES_P))
     glGetClipPlanexOES_P(plane, equation)
 }
-func glGetColorTable_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ table:UnsafeMutablePointer<Void>) {
+func glGetColorTable_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ table:UnsafeMutableRawPointer) {
     glGetColorTable_P = unsafeBitCast(getAddress(CommandInfo("glGetColorTable", [S83])), to: type(of: glGetColorTable_P))
     glGetColorTable_P(target, format, type, table)
 }
-func glGetColorTableEXT_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafeMutablePointer<Void>) {
+func glGetColorTableEXT_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ data:UnsafeMutableRawPointer) {
     glGetColorTableEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetColorTableEXT", [S196])), to: type(of: glGetColorTableEXT_P))
     glGetColorTableEXT_P(target, format, type, data)
 }
@@ -3770,7 +3770,7 @@ func glGetColorTableParameterivSGI_L(_ target:GLenum, _ pname:GLenum, _ params:U
     glGetColorTableParameterivSGI_P = unsafeBitCast(getAddress(CommandInfo("glGetColorTableParameterivSGI", [S364])), to: type(of: glGetColorTableParameterivSGI_P))
     glGetColorTableParameterivSGI_P(target, pname, params)
 }
-func glGetColorTableSGI_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ table:UnsafeMutablePointer<Void>) {
+func glGetColorTableSGI_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ table:UnsafeMutableRawPointer) {
     glGetColorTableSGI_P = unsafeBitCast(getAddress(CommandInfo("glGetColorTableSGI", [S364])), to: type(of: glGetColorTableSGI_P))
     glGetColorTableSGI_P(target, format, type, table)
 }
@@ -3798,35 +3798,35 @@ func glGetCommandHeaderNV_L(_ tokenID:GLenum, _ size:GLuint) -> GLuint {
     glGetCommandHeaderNV_P = unsafeBitCast(getAddress(CommandInfo("glGetCommandHeaderNV", [S254])), to: type(of: glGetCommandHeaderNV_P))
     return glGetCommandHeaderNV_P(tokenID, size)
 }
-func glGetCompressedMultiTexImageEXT_L(_ texunit:GLenum, _ target:GLenum, _ lod:GLint, _ img:UnsafeMutablePointer<Void>) {
+func glGetCompressedMultiTexImageEXT_L(_ texunit:GLenum, _ target:GLenum, _ lod:GLint, _ img:UnsafeMutableRawPointer) {
     glGetCompressedMultiTexImageEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetCompressedMultiTexImageEXT", [S167])), to: type(of: glGetCompressedMultiTexImageEXT_P))
     glGetCompressedMultiTexImageEXT_P(texunit, target, lod, img)
 }
-func glGetCompressedTexImage_L(_ target:GLenum, _ level:GLint, _ img:UnsafeMutablePointer<Void>) {
+func glGetCompressedTexImage_L(_ target:GLenum, _ level:GLint, _ img:UnsafeMutableRawPointer) {
     glGetCompressedTexImage_P = unsafeBitCast(getAddress(CommandInfo("glGetCompressedTexImage", [S3])), to: type(of: glGetCompressedTexImage_P))
     glGetCompressedTexImage_P(target, level, img)
 }
-func glGetCompressedTexImageARB_L(_ target:GLenum, _ level:GLint, _ img:UnsafeMutablePointer<Void>) {
+func glGetCompressedTexImageARB_L(_ target:GLenum, _ level:GLint, _ img:UnsafeMutableRawPointer) {
     glGetCompressedTexImageARB_P = unsafeBitCast(getAddress(CommandInfo("glGetCompressedTexImageARB", [S118])), to: type(of: glGetCompressedTexImageARB_P))
     glGetCompressedTexImageARB_P(target, level, img)
 }
-func glGetCompressedTextureImage_L(_ texture:GLuint, _ level:GLint, _ bufSize:GLsizei, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetCompressedTextureImage_L(_ texture:GLuint, _ level:GLint, _ bufSize:GLsizei, _ pixels:UnsafeMutableRawPointer) {
     glGetCompressedTextureImage_P = unsafeBitCast(getAddress(CommandInfo("glGetCompressedTextureImage", [S17, S69])), to: type(of: glGetCompressedTextureImage_P))
     glGetCompressedTextureImage_P(texture, level, bufSize, pixels)
 }
-func glGetCompressedTextureImageEXT_L(_ texture:GLuint, _ target:GLenum, _ lod:GLint, _ img:UnsafeMutablePointer<Void>) {
+func glGetCompressedTextureImageEXT_L(_ texture:GLuint, _ target:GLenum, _ lod:GLint, _ img:UnsafeMutableRawPointer) {
     glGetCompressedTextureImageEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetCompressedTextureImageEXT", [S167])), to: type(of: glGetCompressedTextureImageEXT_P))
     glGetCompressedTextureImageEXT_P(texture, target, lod, img)
 }
-func glGetCompressedTextureSubImage_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ bufSize:GLsizei, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetCompressedTextureSubImage_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ bufSize:GLsizei, _ pixels:UnsafeMutableRawPointer) {
     glGetCompressedTextureSubImage_P = unsafeBitCast(getAddress(CommandInfo("glGetCompressedTextureSubImage", [S17, S80])), to: type(of: glGetCompressedTextureSubImage_P))
     glGetCompressedTextureSubImage_P(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels)
 }
-func glGetConvolutionFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ image:UnsafeMutablePointer<Void>) {
+func glGetConvolutionFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ image:UnsafeMutableRawPointer) {
     glGetConvolutionFilter_P = unsafeBitCast(getAddress(CommandInfo("glGetConvolutionFilter", [S83])), to: type(of: glGetConvolutionFilter_P))
     glGetConvolutionFilter_P(target, format, type, image)
 }
-func glGetConvolutionFilterEXT_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ image:UnsafeMutablePointer<Void>) {
+func glGetConvolutionFilterEXT_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ image:UnsafeMutableRawPointer) {
     glGetConvolutionFilterEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetConvolutionFilterEXT", [S159])), to: type(of: glGetConvolutionFilterEXT_P))
     glGetConvolutionFilterEXT_P(target, format, type, image)
 }
@@ -4022,11 +4022,11 @@ func glGetHandleARB_L(_ pname:GLenum) -> GLhandleARB {
     glGetHandleARB_P = unsafeBitCast(getAddress(CommandInfo("glGetHandleARB", [S107])), to: type(of: glGetHandleARB_P))
     return glGetHandleARB_P(pname)
 }
-func glGetHistogram_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutablePointer<Void>) {
+func glGetHistogram_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutableRawPointer) {
     glGetHistogram_P = unsafeBitCast(getAddress(CommandInfo("glGetHistogram", [S83])), to: type(of: glGetHistogram_P))
     glGetHistogram_P(target, reset, format, type, values)
 }
-func glGetHistogramEXT_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutablePointer<Void>) {
+func glGetHistogramEXT_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutableRawPointer) {
     glGetHistogramEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetHistogramEXT", [S184])), to: type(of: glGetHistogramEXT_P))
     glGetHistogramEXT_P(target, reset, format, type, values)
 }
@@ -4182,7 +4182,7 @@ func glGetMapAttribParameterivNV_L(_ target:GLenum, _ index:GLuint, _ pname:GLen
     glGetMapAttribParameterivNV_P = unsafeBitCast(getAddress(CommandInfo("glGetMapAttribParameterivNV", [S265])), to: type(of: glGetMapAttribParameterivNV_P))
     glGetMapAttribParameterivNV_P(target, index, pname, params)
 }
-func glGetMapControlPointsNV_L(_ target:GLenum, _ index:GLuint, _ type:GLenum, _ ustride:GLsizei, _ vstride:GLsizei, _ packed:GLboolean, _ points:UnsafeMutablePointer<Void>) {
+func glGetMapControlPointsNV_L(_ target:GLenum, _ index:GLuint, _ type:GLenum, _ ustride:GLsizei, _ vstride:GLsizei, _ packed:GLboolean, _ points:UnsafeMutableRawPointer) {
     glGetMapControlPointsNV_P = unsafeBitCast(getAddress(CommandInfo("glGetMapControlPointsNV", [S265])), to: type(of: glGetMapControlPointsNV_P))
     glGetMapControlPointsNV_P(target, index, type, ustride, vstride, packed, points)
 }
@@ -4230,11 +4230,11 @@ func glGetMaterialxvOES_L(_ face:GLenum, _ pname:GLenum, _ params:UnsafeMutableP
     glGetMaterialxvOES_P = unsafeBitCast(getAddress(CommandInfo("glGetMaterialxvOES", [S316])), to: type(of: glGetMaterialxvOES_P))
     glGetMaterialxvOES_P(face, pname, params)
 }
-func glGetMinmax_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutablePointer<Void>) {
+func glGetMinmax_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutableRawPointer) {
     glGetMinmax_P = unsafeBitCast(getAddress(CommandInfo("glGetMinmax", [S83])), to: type(of: glGetMinmax_P))
     glGetMinmax_P(target, reset, format, type, values)
 }
-func glGetMinmaxEXT_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutablePointer<Void>) {
+func glGetMinmaxEXT_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ values:UnsafeMutableRawPointer) {
     glGetMinmaxEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetMinmaxEXT", [S184])), to: type(of: glGetMinmaxEXT_P))
     glGetMinmaxEXT_P(target, reset, format, type, values)
 }
@@ -4274,7 +4274,7 @@ func glGetMultiTexGenivEXT_L(_ texunit:GLenum, _ coord:GLenum, _ pname:GLenum, _
     glGetMultiTexGenivEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetMultiTexGenivEXT", [S167])), to: type(of: glGetMultiTexGenivEXT_P))
     glGetMultiTexGenivEXT_P(texunit, coord, pname, params)
 }
-func glGetMultiTexImageEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetMultiTexImageEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutableRawPointer) {
     glGetMultiTexImageEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetMultiTexImageEXT", [S167])), to: type(of: glGetMultiTexImageEXT_P))
     glGetMultiTexImageEXT_P(texunit, target, level, format, type, pixels)
 }
@@ -4326,19 +4326,19 @@ func glGetNamedBufferParameterui64vNV_L(_ buffer:GLuint, _ pname:GLenum, _ param
     glGetNamedBufferParameterui64vNV_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedBufferParameterui64vNV", [S294])), to: type(of: glGetNamedBufferParameterui64vNV_P))
     glGetNamedBufferParameterui64vNV_P(buffer, pname, params)
 }
-func glGetNamedBufferPointerv_L(_ buffer:GLuint, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetNamedBufferPointerv_L(_ buffer:GLuint, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetNamedBufferPointerv_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedBufferPointerv", [S17, S69])), to: type(of: glGetNamedBufferPointerv_P))
     glGetNamedBufferPointerv_P(buffer, pname, params)
 }
-func glGetNamedBufferPointervEXT_L(_ buffer:GLuint, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetNamedBufferPointervEXT_L(_ buffer:GLuint, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetNamedBufferPointervEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedBufferPointervEXT", [S167])), to: type(of: glGetNamedBufferPointervEXT_P))
     glGetNamedBufferPointervEXT_P(buffer, pname, params)
 }
-func glGetNamedBufferSubData_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeMutablePointer<Void>) {
+func glGetNamedBufferSubData_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeMutableRawPointer) {
     glGetNamedBufferSubData_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedBufferSubData", [S17, S69])), to: type(of: glGetNamedBufferSubData_P))
     glGetNamedBufferSubData_P(buffer, offset, size, data)
 }
-func glGetNamedBufferSubDataEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeMutablePointer<Void>) {
+func glGetNamedBufferSubDataEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeMutableRawPointer) {
     glGetNamedBufferSubDataEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedBufferSubDataEXT", [S167])), to: type(of: glGetNamedBufferSubDataEXT_P))
     glGetNamedBufferSubDataEXT_P(buffer, offset, size, data)
 }
@@ -4374,7 +4374,7 @@ func glGetNamedProgramLocalParameterfvEXT_L(_ program:GLuint, _ target:GLenum, _
     glGetNamedProgramLocalParameterfvEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedProgramLocalParameterfvEXT", [S167])), to: type(of: glGetNamedProgramLocalParameterfvEXT_P))
     glGetNamedProgramLocalParameterfvEXT_P(program, target, index, params)
 }
-func glGetNamedProgramStringEXT_L(_ program:GLuint, _ target:GLenum, _ pname:GLenum, _ string:UnsafeMutablePointer<Void>) {
+func glGetNamedProgramStringEXT_L(_ program:GLuint, _ target:GLenum, _ pname:GLenum, _ string:UnsafeMutableRawPointer) {
     glGetNamedProgramStringEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetNamedProgramStringEXT", [S167])), to: type(of: glGetNamedProgramStringEXT_P))
     glGetNamedProgramStringEXT_P(program, target, pname, string)
 }
@@ -4434,11 +4434,11 @@ func glGetObjectParameterivARB_L(_ obj:GLhandleARB, _ pname:GLenum, _ params:Uns
     glGetObjectParameterivARB_P = unsafeBitCast(getAddress(CommandInfo("glGetObjectParameterivARB", [S107])), to: type(of: glGetObjectParameterivARB_P))
     glGetObjectParameterivARB_P(obj, pname, params)
 }
-func glGetObjectPtrLabel_L(_ ptr:UnsafePointer<Void>, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ label:UnsafeMutablePointer<GLchar>) {
+func glGetObjectPtrLabel_L(_ ptr:UnsafeRawPointer, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ label:UnsafeMutablePointer<GLchar>) {
     glGetObjectPtrLabel_P = unsafeBitCast(getAddress(CommandInfo("glGetObjectPtrLabel", [S15, S22, S245])), to: type(of: glGetObjectPtrLabel_P))
     glGetObjectPtrLabel_P(ptr, bufSize, length, label)
 }
-func glGetObjectPtrLabelKHR_L(_ ptr:UnsafePointer<Void>, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ label:UnsafeMutablePointer<GLchar>) {
+func glGetObjectPtrLabelKHR_L(_ ptr:UnsafeRawPointer, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ label:UnsafeMutablePointer<GLchar>) {
     glGetObjectPtrLabelKHR_P = unsafeBitCast(getAddress(CommandInfo("glGetObjectPtrLabelKHR", [S245])), to: type(of: glGetObjectPtrLabelKHR_P))
     glGetObjectPtrLabelKHR_P(ptr, bufSize, length, label)
 }
@@ -4478,7 +4478,7 @@ func glGetPathMetricRangeNV_L(_ metricQueryMask:GLbitfield, _ firstPathName:GLui
     glGetPathMetricRangeNV_P = unsafeBitCast(getAddress(CommandInfo("glGetPathMetricRangeNV", [S284])), to: type(of: glGetPathMetricRangeNV_P))
     glGetPathMetricRangeNV_P(metricQueryMask, firstPathName, numPaths, stride, metrics)
 }
-func glGetPathMetricsNV_L(_ metricQueryMask:GLbitfield, _ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ stride:GLsizei, _ metrics:UnsafeMutablePointer<GLfloat>) {
+func glGetPathMetricsNV_L(_ metricQueryMask:GLbitfield, _ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ stride:GLsizei, _ metrics:UnsafeMutablePointer<GLfloat>) {
     glGetPathMetricsNV_P = unsafeBitCast(getAddress(CommandInfo("glGetPathMetricsNV", [S284])), to: type(of: glGetPathMetricsNV_P))
     glGetPathMetricsNV_P(metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics)
 }
@@ -4490,7 +4490,7 @@ func glGetPathParameterivNV_L(_ path:GLuint, _ pname:GLenum, _ value:UnsafeMutab
     glGetPathParameterivNV_P = unsafeBitCast(getAddress(CommandInfo("glGetPathParameterivNV", [S284])), to: type(of: glGetPathParameterivNV_P))
     glGetPathParameterivNV_P(path, pname, value)
 }
-func glGetPathSpacingNV_L(_ pathListMode:GLenum, _ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ advanceScale:GLfloat, _ kerningScale:GLfloat, _ transformType:GLenum, _ returnedSpacing:UnsafeMutablePointer<GLfloat>) {
+func glGetPathSpacingNV_L(_ pathListMode:GLenum, _ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ advanceScale:GLfloat, _ kerningScale:GLfloat, _ transformType:GLenum, _ returnedSpacing:UnsafeMutablePointer<GLfloat>) {
     glGetPathSpacingNV_P = unsafeBitCast(getAddress(CommandInfo("glGetPathSpacingNV", [S284])), to: type(of: glGetPathSpacingNV_P))
     glGetPathSpacingNV_P(pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing)
 }
@@ -4510,7 +4510,7 @@ func glGetPerfMonitorCounterDataAMD_L(_ monitor:GLuint, _ pname:GLenum, _ dataSi
     glGetPerfMonitorCounterDataAMD_P = unsafeBitCast(getAddress(CommandInfo("glGetPerfMonitorCounterDataAMD", [S32])), to: type(of: glGetPerfMonitorCounterDataAMD_P))
     glGetPerfMonitorCounterDataAMD_P(monitor, pname, dataSize, data, bytesWritten)
 }
-func glGetPerfMonitorCounterInfoAMD_L(_ group:GLuint, _ counter:GLuint, _ pname:GLenum, _ data:UnsafeMutablePointer<Void>) {
+func glGetPerfMonitorCounterInfoAMD_L(_ group:GLuint, _ counter:GLuint, _ pname:GLenum, _ data:UnsafeMutableRawPointer) {
     glGetPerfMonitorCounterInfoAMD_P = unsafeBitCast(getAddress(CommandInfo("glGetPerfMonitorCounterInfoAMD", [S32])), to: type(of: glGetPerfMonitorCounterInfoAMD_P))
     glGetPerfMonitorCounterInfoAMD_P(group, counter, pname, data)
 }
@@ -4530,7 +4530,7 @@ func glGetPerfMonitorGroupsAMD_L(_ numGroups:UnsafeMutablePointer<GLint>, _ grou
     glGetPerfMonitorGroupsAMD_P = unsafeBitCast(getAddress(CommandInfo("glGetPerfMonitorGroupsAMD", [S32])), to: type(of: glGetPerfMonitorGroupsAMD_P))
     glGetPerfMonitorGroupsAMD_P(numGroups, groupsSize, groups)
 }
-func glGetPerfQueryDataINTEL_L(_ queryHandle:GLuint, _ flags:GLuint, _ dataSize:GLsizei, _ data:UnsafeMutablePointer<Void>, _ bytesWritten:UnsafeMutablePointer<GLuint>) {
+func glGetPerfQueryDataINTEL_L(_ queryHandle:GLuint, _ flags:GLuint, _ dataSize:GLsizei, _ data:UnsafeMutableRawPointer, _ bytesWritten:UnsafeMutablePointer<GLuint>) {
     glGetPerfQueryDataINTEL_P = unsafeBitCast(getAddress(CommandInfo("glGetPerfQueryDataINTEL", [S243])), to: type(of: glGetPerfQueryDataINTEL_P))
     glGetPerfQueryDataINTEL_P(queryHandle, flags, dataSize, data, bytesWritten)
 }
@@ -4574,23 +4574,23 @@ func glGetPixelTransformParameterivEXT_L(_ target:GLenum, _ pname:GLenum, _ para
     glGetPixelTransformParameterivEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetPixelTransformParameterivEXT", [S197])), to: type(of: glGetPixelTransformParameterivEXT_P))
     glGetPixelTransformParameterivEXT_P(target, pname, params)
 }
-func glGetPointerIndexedvEXT_L(_ target:GLenum, _ index:GLuint, _ data:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetPointerIndexedvEXT_L(_ target:GLenum, _ index:GLuint, _ data:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetPointerIndexedvEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetPointerIndexedvEXT", [S167])), to: type(of: glGetPointerIndexedvEXT_P))
     glGetPointerIndexedvEXT_P(target, index, data)
 }
-func glGetPointeri_vEXT_L(_ pname:GLenum, _ index:GLuint, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetPointeri_vEXT_L(_ pname:GLenum, _ index:GLuint, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetPointeri_vEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetPointeri_vEXT", [S167])), to: type(of: glGetPointeri_vEXT_P))
     glGetPointeri_vEXT_P(pname, index, params)
 }
-func glGetPointerv_L(_ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetPointerv_L(_ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetPointerv_P = unsafeBitCast(getAddress(CommandInfo("glGetPointerv", [S1, S23, S15, S15, S18, S22, S245])), to: type(of: glGetPointerv_P))
     glGetPointerv_P(pname, params)
 }
-func glGetPointervEXT_L(_ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetPointervEXT_L(_ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetPointervEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetPointervEXT", [S226])), to: type(of: glGetPointervEXT_P))
     glGetPointervEXT_P(pname, params)
 }
-func glGetPointervKHR_L(_ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetPointervKHR_L(_ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetPointervKHR_P = unsafeBitCast(getAddress(CommandInfo("glGetPointervKHR", [S245])), to: type(of: glGetPointervKHR_P))
     glGetPointervKHR_P(pname, params)
 }
@@ -4598,11 +4598,11 @@ func glGetPolygonStipple_L(_ mask:UnsafeMutablePointer<GLubyte>) {
     glGetPolygonStipple_P = unsafeBitCast(getAddress(CommandInfo("glGetPolygonStipple", [S0, S23])), to: type(of: glGetPolygonStipple_P))
     glGetPolygonStipple_P(mask)
 }
-func glGetProgramBinary_L(_ program:GLuint, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ binaryFormat:UnsafeMutablePointer<GLenum>, _ binary:UnsafeMutablePointer<Void>) {
+func glGetProgramBinary_L(_ program:GLuint, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ binaryFormat:UnsafeMutablePointer<GLenum>, _ binary:UnsafeMutableRawPointer) {
     glGetProgramBinary_P = unsafeBitCast(getAddress(CommandInfo("glGetProgramBinary", [S13, S20, S79])), to: type(of: glGetProgramBinary_P))
     glGetProgramBinary_P(program, bufSize, length, binaryFormat, binary)
 }
-func glGetProgramBinaryOES_L(_ program:GLuint, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ binaryFormat:UnsafeMutablePointer<GLenum>, _ binary:UnsafeMutablePointer<Void>) {
+func glGetProgramBinaryOES_L(_ program:GLuint, _ bufSize:GLsizei, _ length:UnsafeMutablePointer<GLsizei>, _ binaryFormat:UnsafeMutablePointer<GLenum>, _ binary:UnsafeMutableRawPointer) {
     glGetProgramBinaryOES_P = unsafeBitCast(getAddress(CommandInfo("glGetProgramBinaryOES", [S319])), to: type(of: glGetProgramBinaryOES_P))
     glGetProgramBinaryOES_P(program, bufSize, length, binaryFormat, binary)
 }
@@ -4710,7 +4710,7 @@ func glGetProgramStageiv_L(_ program:GLuint, _ shadertype:GLenum, _ pname:GLenum
     glGetProgramStageiv_P = unsafeBitCast(getAddress(CommandInfo("glGetProgramStageiv", [S12, S109])), to: type(of: glGetProgramStageiv_P))
     glGetProgramStageiv_P(program, shadertype, pname, values)
 }
-func glGetProgramStringARB_L(_ target:GLenum, _ pname:GLenum, _ string:UnsafeMutablePointer<Void>) {
+func glGetProgramStringARB_L(_ target:GLenum, _ pname:GLenum, _ string:UnsafeMutableRawPointer) {
     glGetProgramStringARB_P = unsafeBitCast(getAddress(CommandInfo("glGetProgramStringARB", [S75, S134])), to: type(of: glGetProgramStringARB_P))
     glGetProgramStringARB_P(target, pname, string)
 }
@@ -4850,11 +4850,11 @@ func glGetSamplerParameteriv_L(_ sampler:GLuint, _ pname:GLenum, _ params:Unsafe
     glGetSamplerParameteriv_P = unsafeBitCast(getAddress(CommandInfo("glGetSamplerParameteriv", [S11, S20, S103])), to: type(of: glGetSamplerParameteriv_P))
     glGetSamplerParameteriv_P(sampler, pname, params)
 }
-func glGetSeparableFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ row:UnsafeMutablePointer<Void>, _ column:UnsafeMutablePointer<Void>, _ span:UnsafeMutablePointer<Void>) {
+func glGetSeparableFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ row:UnsafeMutableRawPointer, _ column:UnsafeMutableRawPointer, _ span:UnsafeMutableRawPointer) {
     glGetSeparableFilter_P = unsafeBitCast(getAddress(CommandInfo("glGetSeparableFilter", [S83])), to: type(of: glGetSeparableFilter_P))
     glGetSeparableFilter_P(target, format, type, row, column, span)
 }
-func glGetSeparableFilterEXT_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ row:UnsafeMutablePointer<Void>, _ column:UnsafeMutablePointer<Void>, _ span:UnsafeMutablePointer<Void>) {
+func glGetSeparableFilterEXT_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ row:UnsafeMutableRawPointer, _ column:UnsafeMutableRawPointer, _ span:UnsafeMutableRawPointer) {
     glGetSeparableFilterEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetSeparableFilterEXT", [S159])), to: type(of: glGetSeparableFilterEXT_P))
     glGetSeparableFilterEXT_P(target, format, type, row, column, span)
 }
@@ -4962,7 +4962,7 @@ func glGetTexGenxvOES_L(_ coord:GLenum, _ pname:GLenum, _ params:UnsafeMutablePo
     glGetTexGenxvOES_P = unsafeBitCast(getAddress(CommandInfo("glGetTexGenxvOES", [S316, S331])), to: type(of: glGetTexGenxvOES_P))
     glGetTexGenxvOES_P(coord, pname, params)
 }
-func glGetTexImage_L(_ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetTexImage_L(_ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutableRawPointer) {
     glGetTexImage_P = unsafeBitCast(getAddress(CommandInfo("glGetTexImage", [S0])), to: type(of: glGetTexImage_P))
     glGetTexImage_P(target, level, format, type, pixels)
 }
@@ -5002,7 +5002,7 @@ func glGetTexParameterIuivOES_L(_ target:GLenum, _ pname:GLenum, _ params:Unsafe
     glGetTexParameterIuivOES_P = unsafeBitCast(getAddress(CommandInfo("glGetTexParameterIuivOES", [S329])), to: type(of: glGetTexParameterIuivOES_P))
     glGetTexParameterIuivOES_P(target, pname, params)
 }
-func glGetTexParameterPointervAPPLE_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetTexParameterPointervAPPLE_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetTexParameterPointervAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glGetTexParameterPointervAPPLE", [S48])), to: type(of: glGetTexParameterPointervAPPLE_P))
     glGetTexParameterPointervAPPLE_P(target, pname, params)
 }
@@ -5030,11 +5030,11 @@ func glGetTextureHandleNV_L(_ texture:GLuint) -> GLuint64 {
     glGetTextureHandleNV_P = unsafeBitCast(getAddress(CommandInfo("glGetTextureHandleNV", [S252])), to: type(of: glGetTextureHandleNV_P))
     return glGetTextureHandleNV_P(texture)
 }
-func glGetTextureImage_L(_ texture:GLuint, _ level:GLint, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetTextureImage_L(_ texture:GLuint, _ level:GLint, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ pixels:UnsafeMutableRawPointer) {
     glGetTextureImage_P = unsafeBitCast(getAddress(CommandInfo("glGetTextureImage", [S17, S69])), to: type(of: glGetTextureImage_P))
     glGetTextureImage_P(texture, level, format, type, bufSize, pixels)
 }
-func glGetTextureImageEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetTextureImageEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutableRawPointer) {
     glGetTextureImageEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetTextureImageEXT", [S167])), to: type(of: glGetTextureImageEXT_P))
     glGetTextureImageEXT_P(texture, target, level, format, type, pixels)
 }
@@ -5094,7 +5094,7 @@ func glGetTextureSamplerHandleNV_L(_ texture:GLuint, _ sampler:GLuint) -> GLuint
     glGetTextureSamplerHandleNV_P = unsafeBitCast(getAddress(CommandInfo("glGetTextureSamplerHandleNV", [S252])), to: type(of: glGetTextureSamplerHandleNV_P))
     return glGetTextureSamplerHandleNV_P(texture, sampler)
 }
-func glGetTextureSubImage_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetTextureSubImage_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ pixels:UnsafeMutableRawPointer) {
     glGetTextureSubImage_P = unsafeBitCast(getAddress(CommandInfo("glGetTextureSubImage", [S17, S80])), to: type(of: glGetTextureSubImage_P))
     glGetTextureSubImage_P(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels)
 }
@@ -5222,7 +5222,7 @@ func glGetVariantIntegervEXT_L(_ id:GLuint, _ value:GLenum, _ data:UnsafeMutable
     glGetVariantIntegervEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetVariantIntegervEXT", [S228])), to: type(of: glGetVariantIntegervEXT_P))
     glGetVariantIntegervEXT_P(id, value, data)
 }
-func glGetVariantPointervEXT_L(_ id:GLuint, _ value:GLenum, _ data:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetVariantPointervEXT_L(_ id:GLuint, _ value:GLenum, _ data:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetVariantPointervEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetVariantPointervEXT", [S228])), to: type(of: glGetVariantPointervEXT_P))
     glGetVariantPointervEXT_P(id, value, data)
 }
@@ -5246,11 +5246,11 @@ func glGetVertexArrayIntegervEXT_L(_ vaobj:GLuint, _ pname:GLenum, _ param:Unsaf
     glGetVertexArrayIntegervEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexArrayIntegervEXT", [S167])), to: type(of: glGetVertexArrayIntegervEXT_P))
     glGetVertexArrayIntegervEXT_P(vaobj, pname, param)
 }
-func glGetVertexArrayPointeri_vEXT_L(_ vaobj:GLuint, _ index:GLuint, _ pname:GLenum, _ param:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetVertexArrayPointeri_vEXT_L(_ vaobj:GLuint, _ index:GLuint, _ pname:GLenum, _ param:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetVertexArrayPointeri_vEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexArrayPointeri_vEXT", [S167])), to: type(of: glGetVertexArrayPointeri_vEXT_P))
     glGetVertexArrayPointeri_vEXT_P(vaobj, index, pname, param)
 }
-func glGetVertexArrayPointervEXT_L(_ vaobj:GLuint, _ pname:GLenum, _ param:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetVertexArrayPointervEXT_L(_ vaobj:GLuint, _ pname:GLenum, _ param:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetVertexArrayPointervEXT_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexArrayPointervEXT", [S167])), to: type(of: glGetVertexArrayPointervEXT_P))
     glGetVertexArrayPointervEXT_P(vaobj, pname, param)
 }
@@ -5302,15 +5302,15 @@ func glGetVertexAttribLui64vNV_L(_ index:GLuint, _ pname:GLenum, _ params:Unsafe
     glGetVertexAttribLui64vNV_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexAttribLui64vNV", [S301])), to: type(of: glGetVertexAttribLui64vNV_P))
     glGetVertexAttribLui64vNV_P(index, pname, params)
 }
-func glGetVertexAttribPointerv_L(_ index:GLuint, _ pname:GLenum, _ pointer:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetVertexAttribPointerv_L(_ index:GLuint, _ pname:GLenum, _ pointer:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetVertexAttribPointerv_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexAttribPointerv", [S6, S19])), to: type(of: glGetVertexAttribPointerv_P))
     glGetVertexAttribPointerv_P(index, pname, pointer)
 }
-func glGetVertexAttribPointervARB_L(_ index:GLuint, _ pname:GLenum, _ pointer:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetVertexAttribPointervARB_L(_ index:GLuint, _ pname:GLenum, _ pointer:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetVertexAttribPointervARB_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexAttribPointervARB", [S134, S135])), to: type(of: glGetVertexAttribPointervARB_P))
     glGetVertexAttribPointervARB_P(index, pname, pointer)
 }
-func glGetVertexAttribPointervNV_L(_ index:GLuint, _ pname:GLenum, _ pointer:UnsafeMutablePointer<UnsafeMutablePointer<Void>>) {
+func glGetVertexAttribPointervNV_L(_ index:GLuint, _ pname:GLenum, _ pointer:UnsafeMutablePointer<UnsafeMutableRawPointer>) {
     glGetVertexAttribPointervNV_P = unsafeBitCast(getAddress(CommandInfo("glGetVertexAttribPointervNV", [S303])), to: type(of: glGetVertexAttribPointervNV_P))
     glGetVertexAttribPointervNV_P(index, pname, pointer)
 }
@@ -5382,35 +5382,35 @@ func glGetVideouivNV_L(_ video_slot:GLuint, _ pname:GLenum, _ params:UnsafeMutab
     glGetVideouivNV_P = unsafeBitCast(getAddress(CommandInfo("glGetVideouivNV", [S288])), to: type(of: glGetVideouivNV_P))
     glGetVideouivNV_P(video_slot, pname, params)
 }
-func glGetnColorTable_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ table:UnsafeMutablePointer<Void>) {
+func glGetnColorTable_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ table:UnsafeMutableRawPointer) {
     glGetnColorTable_P = unsafeBitCast(getAddress(CommandInfo("glGetnColorTable", [S17])), to: type(of: glGetnColorTable_P))
     glGetnColorTable_P(target, format, type, bufSize, table)
 }
-func glGetnColorTableARB_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ table:UnsafeMutablePointer<Void>) {
+func glGetnColorTableARB_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ table:UnsafeMutableRawPointer) {
     glGetnColorTableARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnColorTableARB", [S100])), to: type(of: glGetnColorTableARB_P))
     glGetnColorTableARB_P(target, format, type, bufSize, table)
 }
-func glGetnCompressedTexImage_L(_ target:GLenum, _ lod:GLint, _ bufSize:GLsizei, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetnCompressedTexImage_L(_ target:GLenum, _ lod:GLint, _ bufSize:GLsizei, _ pixels:UnsafeMutableRawPointer) {
     glGetnCompressedTexImage_P = unsafeBitCast(getAddress(CommandInfo("glGetnCompressedTexImage", [S17])), to: type(of: glGetnCompressedTexImage_P))
     glGetnCompressedTexImage_P(target, lod, bufSize, pixels)
 }
-func glGetnCompressedTexImageARB_L(_ target:GLenum, _ lod:GLint, _ bufSize:GLsizei, _ img:UnsafeMutablePointer<Void>) {
+func glGetnCompressedTexImageARB_L(_ target:GLenum, _ lod:GLint, _ bufSize:GLsizei, _ img:UnsafeMutableRawPointer) {
     glGetnCompressedTexImageARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnCompressedTexImageARB", [S100])), to: type(of: glGetnCompressedTexImageARB_P))
     glGetnCompressedTexImageARB_P(target, lod, bufSize, img)
 }
-func glGetnConvolutionFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ image:UnsafeMutablePointer<Void>) {
+func glGetnConvolutionFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ image:UnsafeMutableRawPointer) {
     glGetnConvolutionFilter_P = unsafeBitCast(getAddress(CommandInfo("glGetnConvolutionFilter", [S17])), to: type(of: glGetnConvolutionFilter_P))
     glGetnConvolutionFilter_P(target, format, type, bufSize, image)
 }
-func glGetnConvolutionFilterARB_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ image:UnsafeMutablePointer<Void>) {
+func glGetnConvolutionFilterARB_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ image:UnsafeMutableRawPointer) {
     glGetnConvolutionFilterARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnConvolutionFilterARB", [S100])), to: type(of: glGetnConvolutionFilterARB_P))
     glGetnConvolutionFilterARB_P(target, format, type, bufSize, image)
 }
-func glGetnHistogram_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutablePointer<Void>) {
+func glGetnHistogram_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutableRawPointer) {
     glGetnHistogram_P = unsafeBitCast(getAddress(CommandInfo("glGetnHistogram", [S17])), to: type(of: glGetnHistogram_P))
     glGetnHistogram_P(target, reset, format, type, bufSize, values)
 }
-func glGetnHistogramARB_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutablePointer<Void>) {
+func glGetnHistogramARB_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutableRawPointer) {
     glGetnHistogramARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnHistogramARB", [S100])), to: type(of: glGetnHistogramARB_P))
     glGetnHistogramARB_P(target, reset, format, type, bufSize, values)
 }
@@ -5438,11 +5438,11 @@ func glGetnMapivARB_L(_ target:GLenum, _ query:GLenum, _ bufSize:GLsizei, _ v:Un
     glGetnMapivARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnMapivARB", [S100])), to: type(of: glGetnMapivARB_P))
     glGetnMapivARB_P(target, query, bufSize, v)
 }
-func glGetnMinmax_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutablePointer<Void>) {
+func glGetnMinmax_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutableRawPointer) {
     glGetnMinmax_P = unsafeBitCast(getAddress(CommandInfo("glGetnMinmax", [S17])), to: type(of: glGetnMinmax_P))
     glGetnMinmax_P(target, reset, format, type, bufSize, values)
 }
-func glGetnMinmaxARB_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutablePointer<Void>) {
+func glGetnMinmaxARB_L(_ target:GLenum, _ reset:GLboolean, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ values:UnsafeMutableRawPointer) {
     glGetnMinmaxARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnMinmaxARB", [S100])), to: type(of: glGetnMinmaxARB_P))
     glGetnMinmaxARB_P(target, reset, format, type, bufSize, values)
 }
@@ -5478,19 +5478,19 @@ func glGetnPolygonStippleARB_L(_ bufSize:GLsizei, _ pattern:UnsafeMutablePointer
     glGetnPolygonStippleARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnPolygonStippleARB", [S100])), to: type(of: glGetnPolygonStippleARB_P))
     glGetnPolygonStippleARB_P(bufSize, pattern)
 }
-func glGetnSeparableFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ rowBufSize:GLsizei, _ row:UnsafeMutablePointer<Void>, _ columnBufSize:GLsizei, _ column:UnsafeMutablePointer<Void>, _ span:UnsafeMutablePointer<Void>) {
+func glGetnSeparableFilter_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ rowBufSize:GLsizei, _ row:UnsafeMutableRawPointer, _ columnBufSize:GLsizei, _ column:UnsafeMutableRawPointer, _ span:UnsafeMutableRawPointer) {
     glGetnSeparableFilter_P = unsafeBitCast(getAddress(CommandInfo("glGetnSeparableFilter", [S17])), to: type(of: glGetnSeparableFilter_P))
     glGetnSeparableFilter_P(target, format, type, rowBufSize, row, columnBufSize, column, span)
 }
-func glGetnSeparableFilterARB_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ rowBufSize:GLsizei, _ row:UnsafeMutablePointer<Void>, _ columnBufSize:GLsizei, _ column:UnsafeMutablePointer<Void>, _ span:UnsafeMutablePointer<Void>) {
+func glGetnSeparableFilterARB_L(_ target:GLenum, _ format:GLenum, _ type:GLenum, _ rowBufSize:GLsizei, _ row:UnsafeMutableRawPointer, _ columnBufSize:GLsizei, _ column:UnsafeMutableRawPointer, _ span:UnsafeMutableRawPointer) {
     glGetnSeparableFilterARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnSeparableFilterARB", [S100])), to: type(of: glGetnSeparableFilterARB_P))
     glGetnSeparableFilterARB_P(target, format, type, rowBufSize, row, columnBufSize, column, span)
 }
-func glGetnTexImage_L(_ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ pixels:UnsafeMutablePointer<Void>) {
+func glGetnTexImage_L(_ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ pixels:UnsafeMutableRawPointer) {
     glGetnTexImage_P = unsafeBitCast(getAddress(CommandInfo("glGetnTexImage", [S17])), to: type(of: glGetnTexImage_P))
     glGetnTexImage_P(target, level, format, type, bufSize, pixels)
 }
-func glGetnTexImageARB_L(_ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ img:UnsafeMutablePointer<Void>) {
+func glGetnTexImageARB_L(_ target:GLenum, _ level:GLint, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ img:UnsafeMutableRawPointer) {
     glGetnTexImageARB_P = unsafeBitCast(getAddress(CommandInfo("glGetnTexImageARB", [S100])), to: type(of: glGetnTexImageARB_P))
     glGetnTexImageARB_P(target, level, format, type, bufSize, img)
 }
@@ -5602,7 +5602,7 @@ func glHistogramEXT_L(_ target:GLenum, _ width:GLsizei, _ internalformat:GLenum,
     glHistogramEXT_P = unsafeBitCast(getAddress(CommandInfo("glHistogramEXT", [S184])), to: type(of: glHistogramEXT_P))
     glHistogramEXT_P(target, width, internalformat, sink)
 }
-func glIglooInterfaceSGIX_L(_ pname:GLenum, _ params:UnsafePointer<Void>) {
+func glIglooInterfaceSGIX_L(_ pname:GLenum, _ params:UnsafeRawPointer) {
     glIglooInterfaceSGIX_P = unsafeBitCast(getAddress(CommandInfo("glIglooInterfaceSGIX", [S356])), to: type(of: glIglooInterfaceSGIX_P))
     glIglooInterfaceSGIX_P(pname, params)
 }
@@ -5642,15 +5642,15 @@ func glIndexMaterialEXT_L(_ face:GLenum, _ mode:GLenum) {
     glIndexMaterialEXT_P = unsafeBitCast(getAddress(CommandInfo("glIndexMaterialEXT", [S186])), to: type(of: glIndexMaterialEXT_P))
     glIndexMaterialEXT_P(face, mode)
 }
-func glIndexPointer_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glIndexPointer_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glIndexPointer_P = unsafeBitCast(getAddress(CommandInfo("glIndexPointer", [S1, S23])), to: type(of: glIndexPointer_P))
     glIndexPointer_P(type, stride, pointer)
 }
-func glIndexPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glIndexPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafeRawPointer) {
     glIndexPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glIndexPointerEXT", [S226])), to: type(of: glIndexPointerEXT_P))
     glIndexPointerEXT_P(type, stride, count, pointer)
 }
-func glIndexPointerListIBM_L(_ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glIndexPointerListIBM_L(_ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glIndexPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glIndexPointerListIBM", [S236])), to: type(of: glIndexPointerListIBM_P))
     glIndexPointerListIBM_P(type, stride, pointer, ptrstride)
 }
@@ -5718,7 +5718,7 @@ func glInstrumentsBufferSGIX_L(_ size:GLsizei, _ buffer:UnsafeMutablePointer<GLi
     glInstrumentsBufferSGIX_P = unsafeBitCast(getAddress(CommandInfo("glInstrumentsBufferSGIX", [S357])), to: type(of: glInstrumentsBufferSGIX_P))
     glInstrumentsBufferSGIX_P(size, buffer)
 }
-func glInterleavedArrays_L(_ format:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glInterleavedArrays_L(_ format:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glInterleavedArrays_P = unsafeBitCast(getAddress(CommandInfo("glInterleavedArrays", [S1, S23])), to: type(of: glInterleavedArrays_P))
     glInterleavedArrays_P(format, stride, pointer)
 }
@@ -6074,7 +6074,7 @@ func glListBase_L(_ base:GLuint) {
     glListBase_P = unsafeBitCast(getAddress(CommandInfo("glListBase", [S0, S23])), to: type(of: glListBase_P))
     glListBase_P(base)
 }
-func glListDrawCommandsStatesClientNV_L(_ list:GLuint, _ segment:GLuint, _ indirects:UnsafeMutablePointer<UnsafePointer<Void>>, _ sizes:UnsafePointer<GLsizei>, _ states:UnsafePointer<GLuint>, _ fbos:UnsafePointer<GLuint>, _ count:GLuint) {
+func glListDrawCommandsStatesClientNV_L(_ list:GLuint, _ segment:GLuint, _ indirects:UnsafeMutablePointer<UnsafeRawPointer>, _ sizes:UnsafePointer<GLsizei>, _ states:UnsafePointer<GLuint>, _ fbos:UnsafePointer<GLuint>, _ count:GLuint) {
     glListDrawCommandsStatesClientNV_P = unsafeBitCast(getAddress(CommandInfo("glListDrawCommandsStatesClientNV", [S254])), to: type(of: glListDrawCommandsStatesClientNV_P))
     glListDrawCommandsStatesClientNV_P(list, segment, indirects, sizes, states, fbos, count)
 }
@@ -6230,27 +6230,27 @@ func glMap2xOES_L(_ target:GLenum, _ u1:GLfixed, _ u2:GLfixed, _ ustride:GLint, 
     glMap2xOES_P = unsafeBitCast(getAddress(CommandInfo("glMap2xOES", [S316])), to: type(of: glMap2xOES_P))
     glMap2xOES_P(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points)
 }
-func glMapBuffer_L(_ target:GLenum, _ access:GLenum) -> UnsafeMutablePointer<Void> {
+func glMapBuffer_L(_ target:GLenum, _ access:GLenum) -> UnsafeMutableRawPointer {
     glMapBuffer_P = unsafeBitCast(getAddress(CommandInfo("glMapBuffer", [S5])), to: type(of: glMapBuffer_P))
     return glMapBuffer_P(target, access)
 }
-func glMapBufferARB_L(_ target:GLenum, _ access:GLenum) -> UnsafeMutablePointer<Void> {
+func glMapBufferARB_L(_ target:GLenum, _ access:GLenum) -> UnsafeMutableRawPointer {
     glMapBufferARB_P = unsafeBitCast(getAddress(CommandInfo("glMapBufferARB", [S133])), to: type(of: glMapBufferARB_P))
     return glMapBufferARB_P(target, access)
 }
-func glMapBufferOES_L(_ target:GLenum, _ access:GLenum) -> UnsafeMutablePointer<Void> {
+func glMapBufferOES_L(_ target:GLenum, _ access:GLenum) -> UnsafeMutableRawPointer {
     glMapBufferOES_P = unsafeBitCast(getAddress(CommandInfo("glMapBufferOES", [S320])), to: type(of: glMapBufferOES_P))
     return glMapBufferOES_P(target, access)
 }
-func glMapBufferRange_L(_ target:GLenum, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutablePointer<Void> {
+func glMapBufferRange_L(_ target:GLenum, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutableRawPointer {
     glMapBufferRange_P = unsafeBitCast(getAddress(CommandInfo("glMapBufferRange", [S8, S20, S89])), to: type(of: glMapBufferRange_P))
     return glMapBufferRange_P(target, offset, length, access)
 }
-func glMapBufferRangeEXT_L(_ target:GLenum, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutablePointer<Void> {
+func glMapBufferRangeEXT_L(_ target:GLenum, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutableRawPointer {
     glMapBufferRangeEXT_P = unsafeBitCast(getAddress(CommandInfo("glMapBufferRangeEXT", [S189])), to: type(of: glMapBufferRangeEXT_P))
     return glMapBufferRangeEXT_P(target, offset, length, access)
 }
-func glMapControlPointsNV_L(_ target:GLenum, _ index:GLuint, _ type:GLenum, _ ustride:GLsizei, _ vstride:GLsizei, _ uorder:GLint, _ vorder:GLint, _ packed:GLboolean, _ points:UnsafePointer<Void>) {
+func glMapControlPointsNV_L(_ target:GLenum, _ index:GLuint, _ type:GLenum, _ ustride:GLsizei, _ vstride:GLsizei, _ uorder:GLint, _ vorder:GLint, _ packed:GLboolean, _ points:UnsafeRawPointer) {
     glMapControlPointsNV_P = unsafeBitCast(getAddress(CommandInfo("glMapControlPointsNV", [S265])), to: type(of: glMapControlPointsNV_P))
     glMapControlPointsNV_P(target, index, type, ustride, vstride, uorder, vorder, packed, points)
 }
@@ -6278,23 +6278,23 @@ func glMapGrid2xOES_L(_ n:GLint, _ u1:GLfixed, _ u2:GLfixed, _ v1:GLfixed, _ v2:
     glMapGrid2xOES_P = unsafeBitCast(getAddress(CommandInfo("glMapGrid2xOES", [S316])), to: type(of: glMapGrid2xOES_P))
     glMapGrid2xOES_P(n, u1, u2, v1, v2)
 }
-func glMapNamedBuffer_L(_ buffer:GLuint, _ access:GLenum) -> UnsafeMutablePointer<Void> {
+func glMapNamedBuffer_L(_ buffer:GLuint, _ access:GLenum) -> UnsafeMutableRawPointer {
     glMapNamedBuffer_P = unsafeBitCast(getAddress(CommandInfo("glMapNamedBuffer", [S17, S69])), to: type(of: glMapNamedBuffer_P))
     return glMapNamedBuffer_P(buffer, access)
 }
-func glMapNamedBufferEXT_L(_ buffer:GLuint, _ access:GLenum) -> UnsafeMutablePointer<Void> {
+func glMapNamedBufferEXT_L(_ buffer:GLuint, _ access:GLenum) -> UnsafeMutableRawPointer {
     glMapNamedBufferEXT_P = unsafeBitCast(getAddress(CommandInfo("glMapNamedBufferEXT", [S167])), to: type(of: glMapNamedBufferEXT_P))
     return glMapNamedBufferEXT_P(buffer, access)
 }
-func glMapNamedBufferRange_L(_ buffer:GLuint, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutablePointer<Void> {
+func glMapNamedBufferRange_L(_ buffer:GLuint, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutableRawPointer {
     glMapNamedBufferRange_P = unsafeBitCast(getAddress(CommandInfo("glMapNamedBufferRange", [S17, S69])), to: type(of: glMapNamedBufferRange_P))
     return glMapNamedBufferRange_P(buffer, offset, length, access)
 }
-func glMapNamedBufferRangeEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutablePointer<Void> {
+func glMapNamedBufferRangeEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ length:GLsizeiptr, _ access:GLbitfield) -> UnsafeMutableRawPointer {
     glMapNamedBufferRangeEXT_P = unsafeBitCast(getAddress(CommandInfo("glMapNamedBufferRangeEXT", [S167])), to: type(of: glMapNamedBufferRangeEXT_P))
     return glMapNamedBufferRangeEXT_P(buffer, offset, length, access)
 }
-func glMapObjectBufferATI_L(_ buffer:GLuint) -> UnsafeMutablePointer<Void> {
+func glMapObjectBufferATI_L(_ buffer:GLuint) -> UnsafeMutableRawPointer {
     glMapObjectBufferATI_P = unsafeBitCast(getAddress(CommandInfo("glMapObjectBufferATI", [S143])), to: type(of: glMapObjectBufferATI_P))
     return glMapObjectBufferATI_P(buffer)
 }
@@ -6306,7 +6306,7 @@ func glMapParameterivNV_L(_ target:GLenum, _ pname:GLenum, _ params:UnsafePointe
     glMapParameterivNV_P = unsafeBitCast(getAddress(CommandInfo("glMapParameterivNV", [S265])), to: type(of: glMapParameterivNV_P))
     glMapParameterivNV_P(target, pname, params)
 }
-func glMapTexture2DINTEL_L(_ texture:GLuint, _ level:GLint, _ access:GLbitfield, _ stride:UnsafeMutablePointer<GLint>, _ layout:UnsafeMutablePointer<GLenum>) -> UnsafeMutablePointer<Void> {
+func glMapTexture2DINTEL_L(_ texture:GLuint, _ level:GLint, _ access:GLbitfield, _ stride:UnsafeMutablePointer<GLint>, _ layout:UnsafeMutablePointer<GLenum>) -> UnsafeMutableRawPointer {
     glMapTexture2DINTEL_P = unsafeBitCast(getAddress(CommandInfo("glMapTexture2DINTEL", [S241])), to: type(of: glMapTexture2DINTEL_P))
     return glMapTexture2DINTEL_P(texture, level, access, stride, layout)
 }
@@ -6362,11 +6362,11 @@ func glMatrixFrustumEXT_L(_ mode:GLenum, _ left:GLdouble, _ right:GLdouble, _ bo
     glMatrixFrustumEXT_P = unsafeBitCast(getAddress(CommandInfo("glMatrixFrustumEXT", [S167])), to: type(of: glMatrixFrustumEXT_P))
     glMatrixFrustumEXT_P(mode, left, right, bottom, top, zNear, zFar)
 }
-func glMatrixIndexPointerARB_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glMatrixIndexPointerARB_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glMatrixIndexPointerARB_P = unsafeBitCast(getAddress(CommandInfo("glMatrixIndexPointerARB", [S90])), to: type(of: glMatrixIndexPointerARB_P))
     glMatrixIndexPointerARB_P(size, type, stride, pointer)
 }
-func glMatrixIndexPointerOES_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glMatrixIndexPointerOES_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glMatrixIndexPointerOES_P = unsafeBitCast(getAddress(CommandInfo("glMatrixIndexPointerOES", [S321])), to: type(of: glMatrixIndexPointerOES_P))
     glMatrixIndexPointerOES_P(size, type, stride, pointer)
 }
@@ -6562,19 +6562,19 @@ func glMultiDrawArraysEXT_L(_ mode:GLenum, _ first:UnsafePointer<GLint>, _ count
     glMultiDrawArraysEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysEXT", [S190])), to: type(of: glMultiDrawArraysEXT_P))
     glMultiDrawArraysEXT_P(mode, first, count, primcount)
 }
-func glMultiDrawArraysIndirect_L(_ mode:GLenum, _ indirect:UnsafePointer<Void>, _ drawcount:GLsizei, _ stride:GLsizei) {
+func glMultiDrawArraysIndirect_L(_ mode:GLenum, _ indirect:UnsafeRawPointer, _ drawcount:GLsizei, _ stride:GLsizei) {
     glMultiDrawArraysIndirect_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysIndirect", [S15, S92])), to: type(of: glMultiDrawArraysIndirect_P))
     glMultiDrawArraysIndirect_P(mode, indirect, drawcount, stride)
 }
-func glMultiDrawArraysIndirectAMD_L(_ mode:GLenum, _ indirect:UnsafePointer<Void>, _ primcount:GLsizei, _ stride:GLsizei) {
+func glMultiDrawArraysIndirectAMD_L(_ mode:GLenum, _ indirect:UnsafeRawPointer, _ primcount:GLsizei, _ stride:GLsizei) {
     glMultiDrawArraysIndirectAMD_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysIndirectAMD", [S29])), to: type(of: glMultiDrawArraysIndirectAMD_P))
     glMultiDrawArraysIndirectAMD_P(mode, indirect, primcount, stride)
 }
-func glMultiDrawArraysIndirectBindlessCountNV_L(_ mode:GLenum, _ indirect:UnsafePointer<Void>, _ drawCount:GLsizei, _ maxDrawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
+func glMultiDrawArraysIndirectBindlessCountNV_L(_ mode:GLenum, _ indirect:UnsafeRawPointer, _ drawCount:GLsizei, _ maxDrawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
     glMultiDrawArraysIndirectBindlessCountNV_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysIndirectBindlessCountNV", [S251])), to: type(of: glMultiDrawArraysIndirectBindlessCountNV_P))
     glMultiDrawArraysIndirectBindlessCountNV_P(mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
 }
-func glMultiDrawArraysIndirectBindlessNV_L(_ mode:GLenum, _ indirect:UnsafePointer<Void>, _ drawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
+func glMultiDrawArraysIndirectBindlessNV_L(_ mode:GLenum, _ indirect:UnsafeRawPointer, _ drawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
     glMultiDrawArraysIndirectBindlessNV_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysIndirectBindlessNV", [S250])), to: type(of: glMultiDrawArraysIndirectBindlessNV_P))
     glMultiDrawArraysIndirectBindlessNV_P(mode, indirect, drawCount, stride, vertexBufferCount)
 }
@@ -6582,7 +6582,7 @@ func glMultiDrawArraysIndirectCountARB_L(_ mode:GLenum, _ indirect:GLintptr, _ d
     glMultiDrawArraysIndirectCountARB_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysIndirectCountARB", [S84])), to: type(of: glMultiDrawArraysIndirectCountARB_P))
     glMultiDrawArraysIndirectCountARB_P(mode, indirect, drawcount, maxdrawcount, stride)
 }
-func glMultiDrawArraysIndirectEXT_L(_ mode:GLenum, _ indirect:UnsafePointer<Void>, _ drawcount:GLsizei, _ stride:GLsizei) {
+func glMultiDrawArraysIndirectEXT_L(_ mode:GLenum, _ indirect:UnsafeRawPointer, _ drawcount:GLsizei, _ stride:GLsizei) {
     glMultiDrawArraysIndirectEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawArraysIndirectEXT", [S191])), to: type(of: glMultiDrawArraysIndirectEXT_P))
     glMultiDrawArraysIndirectEXT_P(mode, indirect, drawcount, stride)
 }
@@ -6590,39 +6590,39 @@ func glMultiDrawElementArrayAPPLE_L(_ mode:GLenum, _ first:UnsafePointer<GLint>,
     glMultiDrawElementArrayAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementArrayAPPLE", [S42])), to: type(of: glMultiDrawElementArrayAPPLE_P))
     glMultiDrawElementArrayAPPLE_P(mode, first, count, primcount)
 }
-func glMultiDrawElements_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafePointer<Void>>, _ drawcount:GLsizei) {
+func glMultiDrawElements_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafeRawPointer>, _ drawcount:GLsizei) {
     glMultiDrawElements_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElements", [S4])), to: type(of: glMultiDrawElements_P))
     glMultiDrawElements_P(mode, count, type, indices, drawcount)
 }
-func glMultiDrawElementsBaseVertex_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafePointer<Void>>, _ drawcount:GLsizei, _ basevertex:UnsafePointer<GLint>) {
+func glMultiDrawElementsBaseVertex_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafeRawPointer>, _ drawcount:GLsizei, _ basevertex:UnsafePointer<GLint>) {
     glMultiDrawElementsBaseVertex_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsBaseVertex", [S10, S72])), to: type(of: glMultiDrawElementsBaseVertex_P))
     glMultiDrawElementsBaseVertex_P(mode, count, type, indices, drawcount, basevertex)
 }
-func glMultiDrawElementsBaseVertexEXT_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafePointer<Void>>, _ primcount:GLsizei, _ basevertex:UnsafePointer<GLint>) {
+func glMultiDrawElementsBaseVertexEXT_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafeRawPointer>, _ primcount:GLsizei, _ basevertex:UnsafePointer<GLint>) {
     glMultiDrawElementsBaseVertexEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsBaseVertexEXT", [S173])), to: type(of: glMultiDrawElementsBaseVertexEXT_P))
     glMultiDrawElementsBaseVertexEXT_P(mode, count, type, indices, primcount, basevertex)
 }
-func glMultiDrawElementsBaseVertexOES_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafePointer<Void>>, _ primcount:GLsizei, _ basevertex:UnsafePointer<GLint>) {
+func glMultiDrawElementsBaseVertexOES_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafeRawPointer>, _ primcount:GLsizei, _ basevertex:UnsafePointer<GLint>) {
     glMultiDrawElementsBaseVertexOES_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsBaseVertexOES", [S314])), to: type(of: glMultiDrawElementsBaseVertexOES_P))
     glMultiDrawElementsBaseVertexOES_P(mode, count, type, indices, primcount, basevertex)
 }
-func glMultiDrawElementsEXT_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafePointer<Void>>, _ primcount:GLsizei) {
+func glMultiDrawElementsEXT_L(_ mode:GLenum, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafeRawPointer>, _ primcount:GLsizei) {
     glMultiDrawElementsEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsEXT", [S190])), to: type(of: glMultiDrawElementsEXT_P))
     glMultiDrawElementsEXT_P(mode, count, type, indices, primcount)
 }
-func glMultiDrawElementsIndirect_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafePointer<Void>, _ drawcount:GLsizei, _ stride:GLsizei) {
+func glMultiDrawElementsIndirect_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafeRawPointer, _ drawcount:GLsizei, _ stride:GLsizei) {
     glMultiDrawElementsIndirect_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsIndirect", [S15, S92])), to: type(of: glMultiDrawElementsIndirect_P))
     glMultiDrawElementsIndirect_P(mode, type, indirect, drawcount, stride)
 }
-func glMultiDrawElementsIndirectAMD_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafePointer<Void>, _ primcount:GLsizei, _ stride:GLsizei) {
+func glMultiDrawElementsIndirectAMD_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafeRawPointer, _ primcount:GLsizei, _ stride:GLsizei) {
     glMultiDrawElementsIndirectAMD_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsIndirectAMD", [S29])), to: type(of: glMultiDrawElementsIndirectAMD_P))
     glMultiDrawElementsIndirectAMD_P(mode, type, indirect, primcount, stride)
 }
-func glMultiDrawElementsIndirectBindlessCountNV_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafePointer<Void>, _ drawCount:GLsizei, _ maxDrawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
+func glMultiDrawElementsIndirectBindlessCountNV_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafeRawPointer, _ drawCount:GLsizei, _ maxDrawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
     glMultiDrawElementsIndirectBindlessCountNV_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsIndirectBindlessCountNV", [S251])), to: type(of: glMultiDrawElementsIndirectBindlessCountNV_P))
     glMultiDrawElementsIndirectBindlessCountNV_P(mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount)
 }
-func glMultiDrawElementsIndirectBindlessNV_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafePointer<Void>, _ drawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
+func glMultiDrawElementsIndirectBindlessNV_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafeRawPointer, _ drawCount:GLsizei, _ stride:GLsizei, _ vertexBufferCount:GLint) {
     glMultiDrawElementsIndirectBindlessNV_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsIndirectBindlessNV", [S250])), to: type(of: glMultiDrawElementsIndirectBindlessNV_P))
     glMultiDrawElementsIndirectBindlessNV_P(mode, type, indirect, drawCount, stride, vertexBufferCount)
 }
@@ -6630,7 +6630,7 @@ func glMultiDrawElementsIndirectCountARB_L(_ mode:GLenum, _ type:GLenum, _ indir
     glMultiDrawElementsIndirectCountARB_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsIndirectCountARB", [S84])), to: type(of: glMultiDrawElementsIndirectCountARB_P))
     glMultiDrawElementsIndirectCountARB_P(mode, type, indirect, drawcount, maxdrawcount, stride)
 }
-func glMultiDrawElementsIndirectEXT_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafePointer<Void>, _ drawcount:GLsizei, _ stride:GLsizei) {
+func glMultiDrawElementsIndirectEXT_L(_ mode:GLenum, _ type:GLenum, _ indirect:UnsafeRawPointer, _ drawcount:GLsizei, _ stride:GLsizei) {
     glMultiDrawElementsIndirectEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiDrawElementsIndirectEXT", [S191])), to: type(of: glMultiDrawElementsIndirectEXT_P))
     glMultiDrawElementsIndirectEXT_P(mode, type, indirect, drawcount, stride)
 }
@@ -6642,7 +6642,7 @@ func glMultiModeDrawArraysIBM_L(_ mode:UnsafePointer<GLenum>, _ first:UnsafePoin
     glMultiModeDrawArraysIBM_P = unsafeBitCast(getAddress(CommandInfo("glMultiModeDrawArraysIBM", [S234])), to: type(of: glMultiModeDrawArraysIBM_P))
     glMultiModeDrawArraysIBM_P(mode, first, count, primcount, modestride)
 }
-func glMultiModeDrawElementsIBM_L(_ mode:UnsafePointer<GLenum>, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafePointer<Void>>, _ primcount:GLsizei, _ modestride:GLint) {
+func glMultiModeDrawElementsIBM_L(_ mode:UnsafePointer<GLenum>, _ count:UnsafePointer<GLsizei>, _ type:GLenum, _ indices:UnsafePointer<UnsafeRawPointer>, _ primcount:GLsizei, _ modestride:GLint) {
     glMultiModeDrawElementsIBM_P = unsafeBitCast(getAddress(CommandInfo("glMultiModeDrawElementsIBM", [S234])), to: type(of: glMultiModeDrawElementsIBM_P))
     glMultiModeDrawElementsIBM_P(mode, count, type, indices, primcount, modestride)
 }
@@ -7038,7 +7038,7 @@ func glMultiTexCoordP4uiv_L(_ texture:GLenum, _ type:GLenum, _ coords:UnsafePoin
     glMultiTexCoordP4uiv_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexCoordP4uiv", [S11, S136])), to: type(of: glMultiTexCoordP4uiv_P))
     glMultiTexCoordP4uiv_P(texture, type, coords)
 }
-func glMultiTexCoordPointerEXT_L(_ texunit:GLenum, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glMultiTexCoordPointerEXT_L(_ texunit:GLenum, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glMultiTexCoordPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexCoordPointerEXT", [S167])), to: type(of: glMultiTexCoordPointerEXT_P))
     glMultiTexCoordPointerEXT_P(texunit, size, type, stride, pointer)
 }
@@ -7082,15 +7082,15 @@ func glMultiTexGenivEXT_L(_ texunit:GLenum, _ coord:GLenum, _ pname:GLenum, _ pa
     glMultiTexGenivEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexGenivEXT", [S167])), to: type(of: glMultiTexGenivEXT_P))
     glMultiTexGenivEXT_P(texunit, coord, pname, params)
 }
-func glMultiTexImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glMultiTexImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glMultiTexImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexImage1DEXT", [S167])), to: type(of: glMultiTexImage1DEXT_P))
     glMultiTexImage1DEXT_P(texunit, target, level, internalformat, width, border, format, type, pixels)
 }
-func glMultiTexImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glMultiTexImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glMultiTexImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexImage2DEXT", [S167])), to: type(of: glMultiTexImage2DEXT_P))
     glMultiTexImage2DEXT_P(texunit, target, level, internalformat, width, height, border, format, type, pixels)
 }
-func glMultiTexImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glMultiTexImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glMultiTexImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexImage3DEXT", [S167])), to: type(of: glMultiTexImage3DEXT_P))
     glMultiTexImage3DEXT_P(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels)
 }
@@ -7122,23 +7122,23 @@ func glMultiTexRenderbufferEXT_L(_ texunit:GLenum, _ target:GLenum, _ renderbuff
     glMultiTexRenderbufferEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexRenderbufferEXT", [S167])), to: type(of: glMultiTexRenderbufferEXT_P))
     glMultiTexRenderbufferEXT_P(texunit, target, renderbuffer)
 }
-func glMultiTexSubImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glMultiTexSubImage1DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glMultiTexSubImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexSubImage1DEXT", [S167])), to: type(of: glMultiTexSubImage1DEXT_P))
     glMultiTexSubImage1DEXT_P(texunit, target, level, xoffset, width, format, type, pixels)
 }
-func glMultiTexSubImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glMultiTexSubImage2DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glMultiTexSubImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexSubImage2DEXT", [S167])), to: type(of: glMultiTexSubImage2DEXT_P))
     glMultiTexSubImage2DEXT_P(texunit, target, level, xoffset, yoffset, width, height, format, type, pixels)
 }
-func glMultiTexSubImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glMultiTexSubImage3DEXT_L(_ texunit:GLenum, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glMultiTexSubImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glMultiTexSubImage3DEXT", [S167])), to: type(of: glMultiTexSubImage3DEXT_P))
     glMultiTexSubImage3DEXT_P(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 }
-func glNamedBufferData_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ usage:GLenum) {
+func glNamedBufferData_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ usage:GLenum) {
     glNamedBufferData_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferData", [S17, S69])), to: type(of: glNamedBufferData_P))
     glNamedBufferData_P(buffer, size, data, usage)
 }
-func glNamedBufferDataEXT_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ usage:GLenum) {
+func glNamedBufferDataEXT_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ usage:GLenum) {
     glNamedBufferDataEXT_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferDataEXT", [S167])), to: type(of: glNamedBufferDataEXT_P))
     glNamedBufferDataEXT_P(buffer, size, data, usage)
 }
@@ -7150,19 +7150,19 @@ func glNamedBufferPageCommitmentEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ size
     glNamedBufferPageCommitmentEXT_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferPageCommitmentEXT", [S111])), to: type(of: glNamedBufferPageCommitmentEXT_P))
     glNamedBufferPageCommitmentEXT_P(buffer, offset, size, commit)
 }
-func glNamedBufferStorage_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ flags:GLbitfield) {
+func glNamedBufferStorage_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ flags:GLbitfield) {
     glNamedBufferStorage_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferStorage", [S17, S69])), to: type(of: glNamedBufferStorage_P))
     glNamedBufferStorage_P(buffer, size, data, flags)
 }
-func glNamedBufferStorageEXT_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafePointer<Void>, _ flags:GLbitfield) {
+func glNamedBufferStorageEXT_L(_ buffer:GLuint, _ size:GLsizeiptr, _ data:UnsafeRawPointer, _ flags:GLbitfield) {
     glNamedBufferStorageEXT_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferStorageEXT", [S167])), to: type(of: glNamedBufferStorageEXT_P))
     glNamedBufferStorageEXT_P(buffer, size, data, flags)
 }
-func glNamedBufferSubData_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafePointer<Void>) {
+func glNamedBufferSubData_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeRawPointer) {
     glNamedBufferSubData_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferSubData", [S17, S69])), to: type(of: glNamedBufferSubData_P))
     glNamedBufferSubData_P(buffer, offset, size, data)
 }
-func glNamedBufferSubDataEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafePointer<Void>) {
+func glNamedBufferSubDataEXT_L(_ buffer:GLuint, _ offset:GLintptr, _ size:GLsizeiptr, _ data:UnsafeRawPointer) {
     glNamedBufferSubDataEXT_P = unsafeBitCast(getAddress(CommandInfo("glNamedBufferSubDataEXT", [S167])), to: type(of: glNamedBufferSubDataEXT_P))
     glNamedBufferSubDataEXT_P(buffer, offset, size, data)
 }
@@ -7282,7 +7282,7 @@ func glNamedProgramLocalParametersI4uivEXT_L(_ program:GLuint, _ target:GLenum, 
     glNamedProgramLocalParametersI4uivEXT_P = unsafeBitCast(getAddress(CommandInfo("glNamedProgramLocalParametersI4uivEXT", [S167])), to: type(of: glNamedProgramLocalParametersI4uivEXT_P))
     glNamedProgramLocalParametersI4uivEXT_P(program, target, index, count, params)
 }
-func glNamedProgramStringEXT_L(_ program:GLuint, _ target:GLenum, _ format:GLenum, _ len:GLsizei, _ string:UnsafePointer<Void>) {
+func glNamedProgramStringEXT_L(_ program:GLuint, _ target:GLenum, _ format:GLenum, _ len:GLsizei, _ string:UnsafeRawPointer) {
     glNamedProgramStringEXT_P = unsafeBitCast(getAddress(CommandInfo("glNamedProgramStringEXT", [S167])), to: type(of: glNamedProgramStringEXT_P))
     glNamedProgramStringEXT_P(program, target, format, len, string)
 }
@@ -7314,7 +7314,7 @@ func glNewList_L(_ list:GLuint, _ mode:GLenum) {
     glNewList_P = unsafeBitCast(getAddress(CommandInfo("glNewList", [S0, S23])), to: type(of: glNewList_P))
     glNewList_P(list, mode)
 }
-func glNewObjectBufferATI_L(_ size:GLsizei, _ pointer:UnsafePointer<Void>, _ usage:GLenum) -> GLuint {
+func glNewObjectBufferATI_L(_ size:GLsizei, _ pointer:UnsafeRawPointer, _ usage:GLenum) -> GLuint {
     glNewObjectBufferATI_P = unsafeBitCast(getAddress(CommandInfo("glNewObjectBufferATI", [S146])), to: type(of: glNewObjectBufferATI_P))
     return glNewObjectBufferATI_P(size, pointer, usage)
 }
@@ -7398,19 +7398,19 @@ func glNormalP3uiv_L(_ type:GLenum, _ coords:UnsafePointer<GLuint>) {
     glNormalP3uiv_P = unsafeBitCast(getAddress(CommandInfo("glNormalP3uiv", [S11, S136])), to: type(of: glNormalP3uiv_P))
     glNormalP3uiv_P(type, coords)
 }
-func glNormalPointer_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glNormalPointer_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glNormalPointer_P = unsafeBitCast(getAddress(CommandInfo("glNormalPointer", [S1, S23, S18])), to: type(of: glNormalPointer_P))
     glNormalPointer_P(type, stride, pointer)
 }
-func glNormalPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glNormalPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafeRawPointer) {
     glNormalPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glNormalPointerEXT", [S226])), to: type(of: glNormalPointerEXT_P))
     glNormalPointerEXT_P(type, stride, count, pointer)
 }
-func glNormalPointerListIBM_L(_ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glNormalPointerListIBM_L(_ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glNormalPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glNormalPointerListIBM", [S236])), to: type(of: glNormalPointerListIBM_P))
     glNormalPointerListIBM_P(type, stride, pointer, ptrstride)
 }
-func glNormalPointervINTEL_L(_ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>) {
+func glNormalPointervINTEL_L(_ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>) {
     glNormalPointervINTEL_P = unsafeBitCast(getAddress(CommandInfo("glNormalPointervINTEL", [S242])), to: type(of: glNormalPointervINTEL_P))
     glNormalPointervINTEL_P(type, pointer)
 }
@@ -7462,11 +7462,11 @@ func glObjectLabelKHR_L(_ identifier:GLenum, _ name:GLuint, _ length:GLsizei, _ 
     glObjectLabelKHR_P = unsafeBitCast(getAddress(CommandInfo("glObjectLabelKHR", [S245])), to: type(of: glObjectLabelKHR_P))
     glObjectLabelKHR_P(identifier, name, length, label)
 }
-func glObjectPtrLabel_L(_ ptr:UnsafePointer<Void>, _ length:GLsizei, _ label:UnsafePointer<GLchar>) {
+func glObjectPtrLabel_L(_ ptr:UnsafeRawPointer, _ length:GLsizei, _ label:UnsafePointer<GLchar>) {
     glObjectPtrLabel_P = unsafeBitCast(getAddress(CommandInfo("glObjectPtrLabel", [S15, S22, S245])), to: type(of: glObjectPtrLabel_P))
     glObjectPtrLabel_P(ptr, length, label)
 }
-func glObjectPtrLabelKHR_L(_ ptr:UnsafePointer<Void>, _ length:GLsizei, _ label:UnsafePointer<GLchar>) {
+func glObjectPtrLabelKHR_L(_ ptr:UnsafeRawPointer, _ length:GLsizei, _ label:UnsafePointer<GLchar>) {
     glObjectPtrLabelKHR_P = unsafeBitCast(getAddress(CommandInfo("glObjectPtrLabelKHR", [S245])), to: type(of: glObjectPtrLabelKHR_P))
     glObjectPtrLabelKHR_P(ptr, length, label)
 }
@@ -7538,11 +7538,11 @@ func glPathColorGenNV_L(_ color:GLenum, _ genMode:GLenum, _ colorFormat:GLenum, 
     glPathColorGenNV_P = unsafeBitCast(getAddress(CommandInfo("glPathColorGenNV", [S284])), to: type(of: glPathColorGenNV_P))
     glPathColorGenNV_P(color, genMode, colorFormat, coeffs)
 }
-func glPathCommandsNV_L(_ path:GLuint, _ numCommands:GLsizei, _ commands:UnsafePointer<GLubyte>, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafePointer<Void>) {
+func glPathCommandsNV_L(_ path:GLuint, _ numCommands:GLsizei, _ commands:UnsafePointer<GLubyte>, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafeRawPointer) {
     glPathCommandsNV_P = unsafeBitCast(getAddress(CommandInfo("glPathCommandsNV", [S284])), to: type(of: glPathCommandsNV_P))
     glPathCommandsNV_P(path, numCommands, commands, numCoords, coordType, coords)
 }
-func glPathCoordsNV_L(_ path:GLuint, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafePointer<Void>) {
+func glPathCoordsNV_L(_ path:GLuint, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafeRawPointer) {
     glPathCoordsNV_P = unsafeBitCast(getAddress(CommandInfo("glPathCoordsNV", [S284])), to: type(of: glPathCoordsNV_P))
     glPathCoordsNV_P(path, numCoords, coordType, coords)
 }
@@ -7558,23 +7558,23 @@ func glPathFogGenNV_L(_ genMode:GLenum) {
     glPathFogGenNV_P = unsafeBitCast(getAddress(CommandInfo("glPathFogGenNV", [S284])), to: type(of: glPathFogGenNV_P))
     glPathFogGenNV_P(genMode)
 }
-func glPathGlyphIndexArrayNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontName:UnsafePointer<Void>, _ fontStyle:GLbitfield, _ firstGlyphIndex:GLuint, _ numGlyphs:GLsizei, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) -> GLenum {
+func glPathGlyphIndexArrayNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontName:UnsafeRawPointer, _ fontStyle:GLbitfield, _ firstGlyphIndex:GLuint, _ numGlyphs:GLsizei, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) -> GLenum {
     glPathGlyphIndexArrayNV_P = unsafeBitCast(getAddress(CommandInfo("glPathGlyphIndexArrayNV", [S284])), to: type(of: glPathGlyphIndexArrayNV_P))
     return glPathGlyphIndexArrayNV_P(firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
 }
-func glPathGlyphIndexRangeNV_L(_ fontTarget:GLenum, _ fontName:UnsafePointer<Void>, _ fontStyle:GLbitfield, _ pathParameterTemplate:GLuint, _ emScale:GLfloat, _ baseAndCount:GLuint) -> GLenum {
+func glPathGlyphIndexRangeNV_L(_ fontTarget:GLenum, _ fontName:UnsafeRawPointer, _ fontStyle:GLbitfield, _ pathParameterTemplate:GLuint, _ emScale:GLfloat, _ baseAndCount:GLuint) -> GLenum {
     glPathGlyphIndexRangeNV_P = unsafeBitCast(getAddress(CommandInfo("glPathGlyphIndexRangeNV", [S284])), to: type(of: glPathGlyphIndexRangeNV_P))
     return glPathGlyphIndexRangeNV_P(fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount)
 }
-func glPathGlyphRangeNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontName:UnsafePointer<Void>, _ fontStyle:GLbitfield, _ firstGlyph:GLuint, _ numGlyphs:GLsizei, _ handleMissingGlyphs:GLenum, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) {
+func glPathGlyphRangeNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontName:UnsafeRawPointer, _ fontStyle:GLbitfield, _ firstGlyph:GLuint, _ numGlyphs:GLsizei, _ handleMissingGlyphs:GLenum, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) {
     glPathGlyphRangeNV_P = unsafeBitCast(getAddress(CommandInfo("glPathGlyphRangeNV", [S284])), to: type(of: glPathGlyphRangeNV_P))
     glPathGlyphRangeNV_P(firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale)
 }
-func glPathGlyphsNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontName:UnsafePointer<Void>, _ fontStyle:GLbitfield, _ numGlyphs:GLsizei, _ type:GLenum, _ charcodes:UnsafePointer<Void>, _ handleMissingGlyphs:GLenum, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) {
+func glPathGlyphsNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontName:UnsafeRawPointer, _ fontStyle:GLbitfield, _ numGlyphs:GLsizei, _ type:GLenum, _ charcodes:UnsafeRawPointer, _ handleMissingGlyphs:GLenum, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) {
     glPathGlyphsNV_P = unsafeBitCast(getAddress(CommandInfo("glPathGlyphsNV", [S284])), to: type(of: glPathGlyphsNV_P))
     glPathGlyphsNV_P(firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale)
 }
-func glPathMemoryGlyphIndexArrayNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontSize:GLsizeiptr, _ fontData:UnsafePointer<Void>, _ faceIndex:GLsizei, _ firstGlyphIndex:GLuint, _ numGlyphs:GLsizei, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) -> GLenum {
+func glPathMemoryGlyphIndexArrayNV_L(_ firstPathName:GLuint, _ fontTarget:GLenum, _ fontSize:GLsizeiptr, _ fontData:UnsafeRawPointer, _ faceIndex:GLsizei, _ firstGlyphIndex:GLuint, _ numGlyphs:GLsizei, _ pathParameterTemplate:GLuint, _ emScale:GLfloat) -> GLenum {
     glPathMemoryGlyphIndexArrayNV_P = unsafeBitCast(getAddress(CommandInfo("glPathMemoryGlyphIndexArrayNV", [S284])), to: type(of: glPathMemoryGlyphIndexArrayNV_P))
     return glPathMemoryGlyphIndexArrayNV_P(firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale)
 }
@@ -7602,15 +7602,15 @@ func glPathStencilFuncNV_L(_ fn:GLenum, _ ref:GLint, _ mask:GLuint) {
     glPathStencilFuncNV_P = unsafeBitCast(getAddress(CommandInfo("glPathStencilFuncNV", [S284])), to: type(of: glPathStencilFuncNV_P))
     glPathStencilFuncNV_P(fn, ref, mask)
 }
-func glPathStringNV_L(_ path:GLuint, _ format:GLenum, _ length:GLsizei, _ pathString:UnsafePointer<Void>) {
+func glPathStringNV_L(_ path:GLuint, _ format:GLenum, _ length:GLsizei, _ pathString:UnsafeRawPointer) {
     glPathStringNV_P = unsafeBitCast(getAddress(CommandInfo("glPathStringNV", [S284])), to: type(of: glPathStringNV_P))
     glPathStringNV_P(path, format, length, pathString)
 }
-func glPathSubCommandsNV_L(_ path:GLuint, _ commandStart:GLsizei, _ commandsToDelete:GLsizei, _ numCommands:GLsizei, _ commands:UnsafePointer<GLubyte>, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafePointer<Void>) {
+func glPathSubCommandsNV_L(_ path:GLuint, _ commandStart:GLsizei, _ commandsToDelete:GLsizei, _ numCommands:GLsizei, _ commands:UnsafePointer<GLubyte>, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafeRawPointer) {
     glPathSubCommandsNV_P = unsafeBitCast(getAddress(CommandInfo("glPathSubCommandsNV", [S284])), to: type(of: glPathSubCommandsNV_P))
     glPathSubCommandsNV_P(path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords)
 }
-func glPathSubCoordsNV_L(_ path:GLuint, _ coordStart:GLsizei, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafePointer<Void>) {
+func glPathSubCoordsNV_L(_ path:GLuint, _ coordStart:GLsizei, _ numCoords:GLsizei, _ coordType:GLenum, _ coords:UnsafeRawPointer) {
     glPathSubCoordsNV_P = unsafeBitCast(getAddress(CommandInfo("glPathSubCoordsNV", [S284])), to: type(of: glPathSubCoordsNV_P))
     glPathSubCoordsNV_P(path, coordStart, numCoords, coordType, coords)
 }
@@ -7626,7 +7626,7 @@ func glPauseTransformFeedbackNV_L() {
     glPauseTransformFeedbackNV_P = unsafeBitCast(getAddress(CommandInfo("glPauseTransformFeedbackNV", [S298])), to: type(of: glPauseTransformFeedbackNV_P))
     glPauseTransformFeedbackNV_P()
 }
-func glPixelDataRangeNV_L(_ target:GLenum, _ length:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glPixelDataRangeNV_L(_ target:GLenum, _ length:GLsizei, _ pointer:UnsafeRawPointer) {
     glPixelDataRangeNV_P = unsafeBitCast(getAddress(CommandInfo("glPixelDataRangeNV", [S285])), to: type(of: glPixelDataRangeNV_P))
     glPixelDataRangeNV_P(target, length, pointer)
 }
@@ -7786,7 +7786,7 @@ func glPointSize_L(_ size:GLfloat) {
     glPointSize_P = unsafeBitCast(getAddress(CommandInfo("glPointSize", [S0, S18])), to: type(of: glPointSize_P))
     glPointSize_P(size)
 }
-func glPointSizePointerOES_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glPointSizePointerOES_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glPointSizePointerOES_P = unsafeBitCast(getAddress(CommandInfo("glPointSizePointerOES", [S322])), to: type(of: glPointSizePointerOES_P))
     glPointSizePointerOES_P(type, stride, pointer)
 }
@@ -7914,11 +7914,11 @@ func glPrioritizeTexturesxOES_L(_ n:GLsizei, _ textures:UnsafePointer<GLuint>, _
     glPrioritizeTexturesxOES_P = unsafeBitCast(getAddress(CommandInfo("glPrioritizeTexturesxOES", [S316])), to: type(of: glPrioritizeTexturesxOES_P))
     glPrioritizeTexturesxOES_P(n, textures, priorities)
 }
-func glProgramBinary_L(_ program:GLuint, _ binaryFormat:GLenum, _ binary:UnsafePointer<Void>, _ length:GLsizei) {
+func glProgramBinary_L(_ program:GLuint, _ binaryFormat:GLenum, _ binary:UnsafeRawPointer, _ length:GLsizei) {
     glProgramBinary_P = unsafeBitCast(getAddress(CommandInfo("glProgramBinary", [S13, S20, S79])), to: type(of: glProgramBinary_P))
     glProgramBinary_P(program, binaryFormat, binary, length)
 }
-func glProgramBinaryOES_L(_ program:GLuint, _ binaryFormat:GLenum, _ binary:UnsafePointer<Void>, _ length:GLint) {
+func glProgramBinaryOES_L(_ program:GLuint, _ binaryFormat:GLenum, _ binary:UnsafeRawPointer, _ length:GLint) {
     glProgramBinaryOES_P = unsafeBitCast(getAddress(CommandInfo("glProgramBinaryOES", [S319])), to: type(of: glProgramBinaryOES_P))
     glProgramBinaryOES_P(program, binaryFormat, binary, length)
 }
@@ -8078,7 +8078,7 @@ func glProgramPathFragmentInputGenNV_L(_ program:GLuint, _ location:GLint, _ gen
     glProgramPathFragmentInputGenNV_P = unsafeBitCast(getAddress(CommandInfo("glProgramPathFragmentInputGenNV", [S284])), to: type(of: glProgramPathFragmentInputGenNV_P))
     glProgramPathFragmentInputGenNV_P(program, location, genMode, components, coeffs)
 }
-func glProgramStringARB_L(_ target:GLenum, _ format:GLenum, _ len:GLsizei, _ string:UnsafePointer<Void>) {
+func glProgramStringARB_L(_ target:GLenum, _ format:GLenum, _ len:GLsizei, _ string:UnsafeRawPointer) {
     glProgramStringARB_P = unsafeBitCast(getAddress(CommandInfo("glProgramStringARB", [S75, S134])), to: type(of: glProgramStringARB_P))
     glProgramStringARB_P(target, format, len, string)
 }
@@ -8838,23 +8838,23 @@ func glReadInstrumentsSGIX_L(_ marker:GLint) {
     glReadInstrumentsSGIX_P = unsafeBitCast(getAddress(CommandInfo("glReadInstrumentsSGIX", [S357])), to: type(of: glReadInstrumentsSGIX_P))
     glReadInstrumentsSGIX_P(marker)
 }
-func glReadPixels_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutablePointer<Void>) {
+func glReadPixels_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeMutableRawPointer) {
     glReadPixels_P = unsafeBitCast(getAddress(CommandInfo("glReadPixels", [S0, S18])), to: type(of: glReadPixels_P))
     glReadPixels_P(x, y, width, height, format, type, pixels)
 }
-func glReadnPixels_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutablePointer<Void>) {
+func glReadnPixels_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutableRawPointer) {
     glReadnPixels_P = unsafeBitCast(getAddress(CommandInfo("glReadnPixels", [S17, S22, S246])), to: type(of: glReadnPixels_P))
     glReadnPixels_P(x, y, width, height, format, type, bufSize, data)
 }
-func glReadnPixelsARB_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutablePointer<Void>) {
+func glReadnPixelsARB_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutableRawPointer) {
     glReadnPixelsARB_P = unsafeBitCast(getAddress(CommandInfo("glReadnPixelsARB", [S100])), to: type(of: glReadnPixelsARB_P))
     glReadnPixelsARB_P(x, y, width, height, format, type, bufSize, data)
 }
-func glReadnPixelsEXT_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutablePointer<Void>) {
+func glReadnPixelsEXT_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutableRawPointer) {
     glReadnPixelsEXT_P = unsafeBitCast(getAddress(CommandInfo("glReadnPixelsEXT", [S204])), to: type(of: glReadnPixelsEXT_P))
     glReadnPixelsEXT_P(x, y, width, height, format, type, bufSize, data)
 }
-func glReadnPixelsKHR_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutablePointer<Void>) {
+func glReadnPixelsKHR_L(_ x:GLint, _ y:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ bufSize:GLsizei, _ data:UnsafeMutableRawPointer) {
     glReadnPixelsKHR_P = unsafeBitCast(getAddress(CommandInfo("glReadnPixelsKHR", [S246])), to: type(of: glReadnPixelsKHR_P))
     glReadnPixelsKHR_P(x, y, width, height, format, type, bufSize, data)
 }
@@ -8950,7 +8950,7 @@ func glRenderbufferStorageOES_L(_ target:GLenum, _ internalformat:GLenum, _ widt
     glRenderbufferStorageOES_P = unsafeBitCast(getAddress(CommandInfo("glRenderbufferStorageOES", [S317])), to: type(of: glRenderbufferStorageOES_P))
     glRenderbufferStorageOES_P(target, internalformat, width, height)
 }
-func glReplacementCodePointerSUN_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>) {
+func glReplacementCodePointerSUN_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>) {
     glReplacementCodePointerSUN_P = unsafeBitCast(getAddress(CommandInfo("glReplacementCodePointerSUN", [S368])), to: type(of: glReplacementCodePointerSUN_P))
     glReplacementCodePointerSUN_P(type, stride, pointer)
 }
@@ -9374,15 +9374,15 @@ func glSecondaryColorP3uiv_L(_ type:GLenum, _ color:UnsafePointer<GLuint>) {
     glSecondaryColorP3uiv_P = unsafeBitCast(getAddress(CommandInfo("glSecondaryColorP3uiv", [S11, S136])), to: type(of: glSecondaryColorP3uiv_P))
     glSecondaryColorP3uiv_P(type, color)
 }
-func glSecondaryColorPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glSecondaryColorPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glSecondaryColorPointer_P = unsafeBitCast(getAddress(CommandInfo("glSecondaryColorPointer", [S4, S23])), to: type(of: glSecondaryColorPointer_P))
     glSecondaryColorPointer_P(size, type, stride, pointer)
 }
-func glSecondaryColorPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glSecondaryColorPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glSecondaryColorPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glSecondaryColorPointerEXT", [S205])), to: type(of: glSecondaryColorPointerEXT_P))
     glSecondaryColorPointerEXT_P(size, type, stride, pointer)
 }
-func glSecondaryColorPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glSecondaryColorPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glSecondaryColorPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glSecondaryColorPointerListIBM", [S236])), to: type(of: glSecondaryColorPointerListIBM_P))
     glSecondaryColorPointerListIBM_P(size, type, stride, pointer, ptrstride)
 }
@@ -9394,11 +9394,11 @@ func glSelectPerfMonitorCountersAMD_L(_ monitor:GLuint, _ enable:GLboolean, _ gr
     glSelectPerfMonitorCountersAMD_P = unsafeBitCast(getAddress(CommandInfo("glSelectPerfMonitorCountersAMD", [S32])), to: type(of: glSelectPerfMonitorCountersAMD_P))
     glSelectPerfMonitorCountersAMD_P(monitor, enable, group, numCounters, counterList)
 }
-func glSeparableFilter2D_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ row:UnsafePointer<Void>, _ column:UnsafePointer<Void>) {
+func glSeparableFilter2D_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ row:UnsafeRawPointer, _ column:UnsafeRawPointer) {
     glSeparableFilter2D_P = unsafeBitCast(getAddress(CommandInfo("glSeparableFilter2D", [S83])), to: type(of: glSeparableFilter2D_P))
     glSeparableFilter2D_P(target, internalformat, width, height, format, type, row, column)
 }
-func glSeparableFilter2DEXT_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ row:UnsafePointer<Void>, _ column:UnsafePointer<Void>) {
+func glSeparableFilter2DEXT_L(_ target:GLenum, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ row:UnsafeRawPointer, _ column:UnsafeRawPointer) {
     glSeparableFilter2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glSeparableFilter2DEXT", [S159])), to: type(of: glSeparableFilter2DEXT_P))
     glSeparableFilter2DEXT_P(target, internalformat, width, height, format, type, row, column)
 }
@@ -9414,11 +9414,11 @@ func glSetFragmentShaderConstantATI_L(_ dst:GLuint, _ value:UnsafePointer<GLfloa
     glSetFragmentShaderConstantATI_P = unsafeBitCast(getAddress(CommandInfo("glSetFragmentShaderConstantATI", [S142])), to: type(of: glSetFragmentShaderConstantATI_P))
     glSetFragmentShaderConstantATI_P(dst, value)
 }
-func glSetInvariantEXT_L(_ id:GLuint, _ type:GLenum, _ addr:UnsafePointer<Void>) {
+func glSetInvariantEXT_L(_ id:GLuint, _ type:GLenum, _ addr:UnsafeRawPointer) {
     glSetInvariantEXT_P = unsafeBitCast(getAddress(CommandInfo("glSetInvariantEXT", [S228])), to: type(of: glSetInvariantEXT_P))
     glSetInvariantEXT_P(id, type, addr)
 }
-func glSetLocalConstantEXT_L(_ id:GLuint, _ type:GLenum, _ addr:UnsafePointer<Void>) {
+func glSetLocalConstantEXT_L(_ id:GLuint, _ type:GLenum, _ addr:UnsafeRawPointer) {
     glSetLocalConstantEXT_P = unsafeBitCast(getAddress(CommandInfo("glSetLocalConstantEXT", [S228])), to: type(of: glSetLocalConstantEXT_P))
     glSetLocalConstantEXT_P(id, type, addr)
 }
@@ -9430,7 +9430,7 @@ func glShadeModel_L(_ mode:GLenum) {
     glShadeModel_P = unsafeBitCast(getAddress(CommandInfo("glShadeModel", [S0, S23, S18])), to: type(of: glShadeModel_P))
     glShadeModel_P(mode)
 }
-func glShaderBinary_L(_ count:GLsizei, _ shaders:UnsafePointer<GLuint>, _ binaryformat:GLenum, _ binary:UnsafePointer<Void>, _ length:GLsizei) {
+func glShaderBinary_L(_ count:GLsizei, _ shaders:UnsafePointer<GLuint>, _ binaryformat:GLenum, _ binary:UnsafeRawPointer, _ length:GLsizei) {
     glShaderBinary_P = unsafeBitCast(getAddress(CommandInfo("glShaderBinary", [S13, S19, S52])), to: type(of: glShaderBinary_P))
     glShaderBinary_P(count, shaders, binaryformat, binary, length)
 }
@@ -9494,7 +9494,7 @@ func glStencilClearTagEXT_L(_ stencilTagBits:GLsizei, _ stencilClearTag:GLuint) 
     glStencilClearTagEXT_P = unsafeBitCast(getAddress(CommandInfo("glStencilClearTagEXT", [S209])), to: type(of: glStencilClearTagEXT_P))
     glStencilClearTagEXT_P(stencilTagBits, stencilClearTag)
 }
-func glStencilFillPathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ fillMode:GLenum, _ mask:GLuint, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
+func glStencilFillPathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ fillMode:GLenum, _ mask:GLuint, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
     glStencilFillPathInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glStencilFillPathInstancedNV", [S284])), to: type(of: glStencilFillPathInstancedNV_P))
     glStencilFillPathInstancedNV_P(numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues)
 }
@@ -9538,7 +9538,7 @@ func glStencilOpValueAMD_L(_ face:GLenum, _ value:GLuint) {
     glStencilOpValueAMD_P = unsafeBitCast(getAddress(CommandInfo("glStencilOpValueAMD", [S35])), to: type(of: glStencilOpValueAMD_P))
     glStencilOpValueAMD_P(face, value)
 }
-func glStencilStrokePathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ reference:GLint, _ mask:GLuint, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
+func glStencilStrokePathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ reference:GLint, _ mask:GLuint, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
     glStencilStrokePathInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glStencilStrokePathInstancedNV", [S284])), to: type(of: glStencilStrokePathInstancedNV_P))
     glStencilStrokePathInstancedNV_P(numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues)
 }
@@ -9546,7 +9546,7 @@ func glStencilStrokePathNV_L(_ path:GLuint, _ reference:GLint, _ mask:GLuint) {
     glStencilStrokePathNV_P = unsafeBitCast(getAddress(CommandInfo("glStencilStrokePathNV", [S284])), to: type(of: glStencilStrokePathNV_P))
     glStencilStrokePathNV_P(path, reference, mask)
 }
-func glStencilThenCoverFillPathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ fillMode:GLenum, _ mask:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
+func glStencilThenCoverFillPathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ fillMode:GLenum, _ mask:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
     glStencilThenCoverFillPathInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glStencilThenCoverFillPathInstancedNV", [S284])), to: type(of: glStencilThenCoverFillPathInstancedNV_P))
     glStencilThenCoverFillPathInstancedNV_P(numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues)
 }
@@ -9554,7 +9554,7 @@ func glStencilThenCoverFillPathNV_L(_ path:GLuint, _ fillMode:GLenum, _ mask:GLu
     glStencilThenCoverFillPathNV_P = unsafeBitCast(getAddress(CommandInfo("glStencilThenCoverFillPathNV", [S284])), to: type(of: glStencilThenCoverFillPathNV_P))
     glStencilThenCoverFillPathNV_P(path, fillMode, mask, coverMode)
 }
-func glStencilThenCoverStrokePathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafePointer<Void>, _ pathBase:GLuint, _ reference:GLint, _ mask:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
+func glStencilThenCoverStrokePathInstancedNV_L(_ numPaths:GLsizei, _ pathNameType:GLenum, _ paths:UnsafeRawPointer, _ pathBase:GLuint, _ reference:GLint, _ mask:GLuint, _ coverMode:GLenum, _ transformType:GLenum, _ transformValues:UnsafePointer<GLfloat>) {
     glStencilThenCoverStrokePathInstancedNV_P = unsafeBitCast(getAddress(CommandInfo("glStencilThenCoverStrokePathInstancedNV", [S284])), to: type(of: glStencilThenCoverStrokePathInstancedNV_P))
     glStencilThenCoverStrokePathInstancedNV_P(numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues)
 }
@@ -9566,7 +9566,7 @@ func glStopInstrumentsSGIX_L(_ marker:GLint) {
     glStopInstrumentsSGIX_P = unsafeBitCast(getAddress(CommandInfo("glStopInstrumentsSGIX", [S357])), to: type(of: glStopInstrumentsSGIX_P))
     glStopInstrumentsSGIX_P(marker)
 }
-func glStringMarkerGREMEDY_L(_ len:GLsizei, _ string:UnsafePointer<Void>) {
+func glStringMarkerGREMEDY_L(_ len:GLsizei, _ string:UnsafeRawPointer) {
     glStringMarkerGREMEDY_P = unsafeBitCast(getAddress(CommandInfo("glStringMarkerGREMEDY", [S232])), to: type(of: glStringMarkerGREMEDY_P))
     glStringMarkerGREMEDY_P(len, string)
 }
@@ -9626,7 +9626,7 @@ func glTangent3svEXT_L(_ v:UnsafePointer<GLshort>) {
     glTangent3svEXT_P = unsafeBitCast(getAddress(CommandInfo("glTangent3svEXT", [S160])), to: type(of: glTangent3svEXT_P))
     glTangent3svEXT_P(v)
 }
-func glTangentPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glTangentPointerEXT_L(_ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glTangentPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glTangentPointerEXT", [S160])), to: type(of: glTangentPointerEXT_P))
     glTangentPointerEXT_P(type, stride, pointer)
 }
@@ -10006,19 +10006,19 @@ func glTexCoordP4uiv_L(_ type:GLenum, _ coords:UnsafePointer<GLuint>) {
     glTexCoordP4uiv_P = unsafeBitCast(getAddress(CommandInfo("glTexCoordP4uiv", [S11, S136])), to: type(of: glTexCoordP4uiv_P))
     glTexCoordP4uiv_P(type, coords)
 }
-func glTexCoordPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glTexCoordPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glTexCoordPointer_P = unsafeBitCast(getAddress(CommandInfo("glTexCoordPointer", [S1, S23, S18])), to: type(of: glTexCoordPointer_P))
     glTexCoordPointer_P(size, type, stride, pointer)
 }
-func glTexCoordPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glTexCoordPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafeRawPointer) {
     glTexCoordPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glTexCoordPointerEXT", [S226])), to: type(of: glTexCoordPointerEXT_P))
     glTexCoordPointerEXT_P(size, type, stride, count, pointer)
 }
-func glTexCoordPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glTexCoordPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glTexCoordPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glTexCoordPointerListIBM", [S236])), to: type(of: glTexCoordPointerListIBM_P))
     glTexCoordPointerListIBM_P(size, type, stride, pointer, ptrstride)
 }
-func glTexCoordPointervINTEL_L(_ size:GLint, _ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>) {
+func glTexCoordPointervINTEL_L(_ size:GLint, _ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>) {
     glTexCoordPointervINTEL_P = unsafeBitCast(getAddress(CommandInfo("glTexCoordPointervINTEL", [S242])), to: type(of: glTexCoordPointervINTEL_P))
     glTexCoordPointervINTEL_P(size, type, pointer)
 }
@@ -10106,11 +10106,11 @@ func glTexGenxvOES_L(_ coord:GLenum, _ pname:GLenum, _ params:UnsafePointer<GLfi
     glTexGenxvOES_P = unsafeBitCast(getAddress(CommandInfo("glTexGenxvOES", [S316, S331])), to: type(of: glTexGenxvOES_P))
     glTexGenxvOES_P(coord, pname, params)
 }
-func glTexImage1D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexImage1D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexImage1D_P = unsafeBitCast(getAddress(CommandInfo("glTexImage1D", [S0])), to: type(of: glTexImage1D_P))
     glTexImage1D_P(target, level, internalformat, width, border, format, type, pixels)
 }
-func glTexImage2D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexImage2D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexImage2D_P = unsafeBitCast(getAddress(CommandInfo("glTexImage2D", [S0, S18])), to: type(of: glTexImage2D_P))
     glTexImage2D_P(target, level, internalformat, width, height, border, format, type, pixels)
 }
@@ -10122,11 +10122,11 @@ func glTexImage2DMultisampleCoverageNV_L(_ target:GLenum, _ coverageSamples:GLsi
     glTexImage2DMultisampleCoverageNV_P = unsafeBitCast(getAddress(CommandInfo("glTexImage2DMultisampleCoverageNV", [S296])), to: type(of: glTexImage2DMultisampleCoverageNV_P))
     glTexImage2DMultisampleCoverageNV_P(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations)
 }
-func glTexImage3D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexImage3D_L(_ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexImage3D_P = unsafeBitCast(getAddress(CommandInfo("glTexImage3D", [S2, S20])), to: type(of: glTexImage3D_P))
     glTexImage3D_P(target, level, internalformat, width, height, depth, border, format, type, pixels)
 }
-func glTexImage3DEXT_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexImage3DEXT_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTexImage3DEXT", [S213])), to: type(of: glTexImage3DEXT_P))
     glTexImage3DEXT_P(target, level, internalformat, width, height, depth, border, format, type, pixels)
 }
@@ -10138,11 +10138,11 @@ func glTexImage3DMultisampleCoverageNV_L(_ target:GLenum, _ coverageSamples:GLsi
     glTexImage3DMultisampleCoverageNV_P = unsafeBitCast(getAddress(CommandInfo("glTexImage3DMultisampleCoverageNV", [S296])), to: type(of: glTexImage3DMultisampleCoverageNV_P))
     glTexImage3DMultisampleCoverageNV_P(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations)
 }
-func glTexImage3DOES_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexImage3DOES_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexImage3DOES_P = unsafeBitCast(getAddress(CommandInfo("glTexImage3DOES", [S328])), to: type(of: glTexImage3DOES_P))
     glTexImage3DOES_P(target, level, internalformat, width, height, depth, border, format, type, pixels)
 }
-func glTexImage4DSGIS_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ size4d:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexImage4DSGIS_L(_ target:GLenum, _ level:GLint, _ internalformat:GLenum, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ size4d:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexImage4DSGIS_P = unsafeBitCast(getAddress(CommandInfo("glTexImage4DSGIS", [S349])), to: type(of: glTexImage4DSGIS_P))
     glTexImage4DSGIS_P(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels)
 }
@@ -10254,35 +10254,35 @@ func glTexStorageSparseAMD_L(_ target:GLenum, _ internalFormat:GLenum, _ width:G
     glTexStorageSparseAMD_P = unsafeBitCast(getAddress(CommandInfo("glTexStorageSparseAMD", [S34])), to: type(of: glTexStorageSparseAMD_P))
     glTexStorageSparseAMD_P(target, internalFormat, width, height, depth, layers, flags)
 }
-func glTexSubImage1D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage1D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage1D_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage1D", [S1])), to: type(of: glTexSubImage1D_P))
     glTexSubImage1D_P(target, level, xoffset, width, format, type, pixels)
 }
-func glTexSubImage1DEXT_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage1DEXT_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage1DEXT", [S211])), to: type(of: glTexSubImage1DEXT_P))
     glTexSubImage1DEXT_P(target, level, xoffset, width, format, type, pixels)
 }
-func glTexSubImage2D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage2D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage2D_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage2D", [S1, S18])), to: type(of: glTexSubImage2D_P))
     glTexSubImage2D_P(target, level, xoffset, yoffset, width, height, format, type, pixels)
 }
-func glTexSubImage2DEXT_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage2DEXT_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage2DEXT", [S211])), to: type(of: glTexSubImage2DEXT_P))
     glTexSubImage2DEXT_P(target, level, xoffset, yoffset, width, height, format, type, pixels)
 }
-func glTexSubImage3D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage3D_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage3D_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage3D", [S2, S20])), to: type(of: glTexSubImage3D_P))
     glTexSubImage3D_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 }
-func glTexSubImage3DEXT_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage3DEXT_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage3DEXT", [S213])), to: type(of: glTexSubImage3DEXT_P))
     glTexSubImage3DEXT_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 }
-func glTexSubImage3DOES_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage3DOES_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage3DOES_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage3DOES", [S328])), to: type(of: glTexSubImage3DOES_P))
     glTexSubImage3DOES_P(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 }
-func glTexSubImage4DSGIS_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ woffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ size4d:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTexSubImage4DSGIS_L(_ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ woffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ size4d:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTexSubImage4DSGIS_P = unsafeBitCast(getAddress(CommandInfo("glTexSubImage4DSGIS", [S349])), to: type(of: glTexSubImage4DSGIS_P))
     glTexSubImage4DSGIS_P(target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels)
 }
@@ -10314,11 +10314,11 @@ func glTextureColorMaskSGIS_L(_ red:GLboolean, _ green:GLboolean, _ blue:GLboole
     glTextureColorMaskSGIS_P = unsafeBitCast(getAddress(CommandInfo("glTextureColorMaskSGIS", [S350])), to: type(of: glTextureColorMaskSGIS_P))
     glTextureColorMaskSGIS_P(red, green, blue, alpha)
 }
-func glTextureImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureImage1DEXT", [S167])), to: type(of: glTextureImage1DEXT_P))
     glTextureImage1DEXT_P(texture, target, level, internalformat, width, border, format, type, pixels)
 }
-func glTextureImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureImage2DEXT", [S167])), to: type(of: glTextureImage2DEXT_P))
     glTextureImage2DEXT_P(texture, target, level, internalformat, width, height, border, format, type, pixels)
 }
@@ -10330,7 +10330,7 @@ func glTextureImage2DMultisampleNV_L(_ texture:GLuint, _ target:GLenum, _ sample
     glTextureImage2DMultisampleNV_P = unsafeBitCast(getAddress(CommandInfo("glTextureImage2DMultisampleNV", [S296])), to: type(of: glTextureImage2DMultisampleNV_P))
     glTextureImage2DMultisampleNV_P(texture, target, samples, internalFormat, width, height, fixedSampleLocations)
 }
-func glTextureImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ internalformat:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ border:GLint, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureImage3DEXT", [S167])), to: type(of: glTextureImage3DEXT_P))
     glTextureImage3DEXT_P(texture, target, level, internalformat, width, height, depth, border, format, type, pixels)
 }
@@ -10406,7 +10406,7 @@ func glTextureParameterivEXT_L(_ texture:GLuint, _ target:GLenum, _ pname:GLenum
     glTextureParameterivEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureParameterivEXT", [S167])), to: type(of: glTextureParameterivEXT_P))
     glTextureParameterivEXT_P(texture, target, pname, params)
 }
-func glTextureRangeAPPLE_L(_ target:GLenum, _ length:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glTextureRangeAPPLE_L(_ target:GLenum, _ length:GLsizei, _ pointer:UnsafeRawPointer) {
     glTextureRangeAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glTextureRangeAPPLE", [S48])), to: type(of: glTextureRangeAPPLE_P))
     glTextureRangeAPPLE_P(target, length, pointer)
 }
@@ -10458,27 +10458,27 @@ func glTextureStorageSparseAMD_L(_ texture:GLuint, _ target:GLenum, _ internalFo
     glTextureStorageSparseAMD_P = unsafeBitCast(getAddress(CommandInfo("glTextureStorageSparseAMD", [S34])), to: type(of: glTextureStorageSparseAMD_P))
     glTextureStorageSparseAMD_P(texture, target, internalFormat, width, height, depth, layers, flags)
 }
-func glTextureSubImage1D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureSubImage1D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureSubImage1D_P = unsafeBitCast(getAddress(CommandInfo("glTextureSubImage1D", [S17, S69])), to: type(of: glTextureSubImage1D_P))
     glTextureSubImage1D_P(texture, level, xoffset, width, format, type, pixels)
 }
-func glTextureSubImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureSubImage1DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ width:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureSubImage1DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureSubImage1DEXT", [S167])), to: type(of: glTextureSubImage1DEXT_P))
     glTextureSubImage1DEXT_P(texture, target, level, xoffset, width, format, type, pixels)
 }
-func glTextureSubImage2D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureSubImage2D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureSubImage2D_P = unsafeBitCast(getAddress(CommandInfo("glTextureSubImage2D", [S17, S69])), to: type(of: glTextureSubImage2D_P))
     glTextureSubImage2D_P(texture, level, xoffset, yoffset, width, height, format, type, pixels)
 }
-func glTextureSubImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureSubImage2DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureSubImage2DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureSubImage2DEXT", [S167])), to: type(of: glTextureSubImage2DEXT_P))
     glTextureSubImage2DEXT_P(texture, target, level, xoffset, yoffset, width, height, format, type, pixels)
 }
-func glTextureSubImage3D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureSubImage3D_L(_ texture:GLuint, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureSubImage3D_P = unsafeBitCast(getAddress(CommandInfo("glTextureSubImage3D", [S17, S69])), to: type(of: glTextureSubImage3D_P))
     glTextureSubImage3D_P(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 }
-func glTextureSubImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafePointer<Void>) {
+func glTextureSubImage3DEXT_L(_ texture:GLuint, _ target:GLenum, _ level:GLint, _ xoffset:GLint, _ yoffset:GLint, _ zoffset:GLint, _ width:GLsizei, _ height:GLsizei, _ depth:GLsizei, _ format:GLenum, _ type:GLenum, _ pixels:UnsafeRawPointer) {
     glTextureSubImage3DEXT_P = unsafeBitCast(getAddress(CommandInfo("glTextureSubImage3DEXT", [S167])), to: type(of: glTextureSubImage3DEXT_P))
     glTextureSubImage3DEXT_P(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels)
 }
@@ -11074,7 +11074,7 @@ func glUnmapTexture2DINTEL_L(_ texture:GLuint, _ level:GLint) {
     glUnmapTexture2DINTEL_P = unsafeBitCast(getAddress(CommandInfo("glUnmapTexture2DINTEL", [S241])), to: type(of: glUnmapTexture2DINTEL_P))
     glUnmapTexture2DINTEL_P(texture, level)
 }
-func glUpdateObjectBufferATI_L(_ buffer:GLuint, _ offset:GLuint, _ size:GLsizei, _ pointer:UnsafePointer<Void>, _ preserve:GLenum) {
+func glUpdateObjectBufferATI_L(_ buffer:GLuint, _ offset:GLuint, _ size:GLsizei, _ pointer:UnsafeRawPointer, _ preserve:GLenum) {
     glUpdateObjectBufferATI_P = unsafeBitCast(getAddress(CommandInfo("glUpdateObjectBufferATI", [S146])), to: type(of: glUpdateObjectBufferATI_P))
     glUpdateObjectBufferATI_P(buffer, offset, size, pointer, preserve)
 }
@@ -11106,7 +11106,7 @@ func glVDPAUGetSurfaceivNV_L(_ surface:GLvdpauSurfaceNV, _ pname:GLenum, _ bufSi
     glVDPAUGetSurfaceivNV_P = unsafeBitCast(getAddress(CommandInfo("glVDPAUGetSurfaceivNV", [S299])), to: type(of: glVDPAUGetSurfaceivNV_P))
     glVDPAUGetSurfaceivNV_P(surface, pname, bufSize, length, values)
 }
-func glVDPAUInitNV_L(_ vdpDevice:UnsafePointer<Void>, _ getProcAddress:UnsafePointer<Void>) {
+func glVDPAUInitNV_L(_ vdpDevice:UnsafeRawPointer, _ getProcAddress:UnsafeRawPointer) {
     glVDPAUInitNV_P = unsafeBitCast(getAddress(CommandInfo("glVDPAUInitNV", [S299])), to: type(of: glVDPAUInitNV_P))
     glVDPAUInitNV_P(vdpDevice, getProcAddress)
 }
@@ -11118,11 +11118,11 @@ func glVDPAUMapSurfacesNV_L(_ numSurfaces:GLsizei, _ surfaces:UnsafePointer<GLvd
     glVDPAUMapSurfacesNV_P = unsafeBitCast(getAddress(CommandInfo("glVDPAUMapSurfacesNV", [S299])), to: type(of: glVDPAUMapSurfacesNV_P))
     glVDPAUMapSurfacesNV_P(numSurfaces, surfaces)
 }
-func glVDPAURegisterOutputSurfaceNV_L(_ vdpSurface:UnsafePointer<Void>, _ target:GLenum, _ numTextureNames:GLsizei, _ textureNames:UnsafePointer<GLuint>) -> GLvdpauSurfaceNV {
+func glVDPAURegisterOutputSurfaceNV_L(_ vdpSurface:UnsafeRawPointer, _ target:GLenum, _ numTextureNames:GLsizei, _ textureNames:UnsafePointer<GLuint>) -> GLvdpauSurfaceNV {
     glVDPAURegisterOutputSurfaceNV_P = unsafeBitCast(getAddress(CommandInfo("glVDPAURegisterOutputSurfaceNV", [S299])), to: type(of: glVDPAURegisterOutputSurfaceNV_P))
     return glVDPAURegisterOutputSurfaceNV_P(vdpSurface, target, numTextureNames, textureNames)
 }
-func glVDPAURegisterVideoSurfaceNV_L(_ vdpSurface:UnsafePointer<Void>, _ target:GLenum, _ numTextureNames:GLsizei, _ textureNames:UnsafePointer<GLuint>) -> GLvdpauSurfaceNV {
+func glVDPAURegisterVideoSurfaceNV_L(_ vdpSurface:UnsafeRawPointer, _ target:GLenum, _ numTextureNames:GLsizei, _ textureNames:UnsafePointer<GLuint>) -> GLvdpauSurfaceNV {
     glVDPAURegisterVideoSurfaceNV_P = unsafeBitCast(getAddress(CommandInfo("glVDPAURegisterVideoSurfaceNV", [S299])), to: type(of: glVDPAURegisterVideoSurfaceNV_P))
     return glVDPAURegisterVideoSurfaceNV_P(vdpSurface, target, numTextureNames, textureNames)
 }
@@ -11158,7 +11158,7 @@ func glVariantArrayObjectATI_L(_ id:GLuint, _ type:GLenum, _ stride:GLsizei, _ b
     glVariantArrayObjectATI_P = unsafeBitCast(getAddress(CommandInfo("glVariantArrayObjectATI", [S146])), to: type(of: glVariantArrayObjectATI_P))
     glVariantArrayObjectATI_P(id, type, stride, buffer, offset)
 }
-func glVariantPointerEXT_L(_ id:GLuint, _ type:GLenum, _ stride:GLuint, _ addr:UnsafePointer<Void>) {
+func glVariantPointerEXT_L(_ id:GLuint, _ type:GLenum, _ stride:GLuint, _ addr:UnsafeRawPointer) {
     glVariantPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glVariantPointerEXT", [S228])), to: type(of: glVariantPointerEXT_P))
     glVariantPointerEXT_P(id, type, stride, addr)
 }
@@ -11418,11 +11418,11 @@ func glVertexArrayParameteriAPPLE_L(_ pname:GLenum, _ param:GLint) {
     glVertexArrayParameteriAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glVertexArrayParameteriAPPLE", [S50])), to: type(of: glVertexArrayParameteriAPPLE_P))
     glVertexArrayParameteriAPPLE_P(pname, param)
 }
-func glVertexArrayRangeAPPLE_L(_ length:GLsizei, _ pointer:UnsafeMutablePointer<Void>) {
+func glVertexArrayRangeAPPLE_L(_ length:GLsizei, _ pointer:UnsafeMutableRawPointer) {
     glVertexArrayRangeAPPLE_P = unsafeBitCast(getAddress(CommandInfo("glVertexArrayRangeAPPLE", [S50])), to: type(of: glVertexArrayRangeAPPLE_P))
     glVertexArrayRangeAPPLE_P(length, pointer)
 }
-func glVertexArrayRangeNV_L(_ length:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexArrayRangeNV_L(_ length:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexArrayRangeNV_P = unsafeBitCast(getAddress(CommandInfo("glVertexArrayRangeNV", [S300])), to: type(of: glVertexArrayRangeNV_P))
     glVertexArrayRangeNV_P(length, pointer)
 }
@@ -12110,11 +12110,11 @@ func glVertexAttribIFormatNV_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ st
     glVertexAttribIFormatNV_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribIFormatNV", [S302])), to: type(of: glVertexAttribIFormatNV_P))
     glVertexAttribIFormatNV_P(index, size, type, stride)
 }
-func glVertexAttribIPointer_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribIPointer_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribIPointer_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribIPointer", [S8, S20])), to: type(of: glVertexAttribIPointer_P))
     glVertexAttribIPointer_P(index, size, type, stride, pointer)
 }
-func glVertexAttribIPointerEXT_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribIPointerEXT_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribIPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribIPointerEXT", [S304])), to: type(of: glVertexAttribIPointerEXT_P))
     glVertexAttribIPointerEXT_P(index, size, type, stride, pointer)
 }
@@ -12262,11 +12262,11 @@ func glVertexAttribLFormatNV_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ st
     glVertexAttribLFormatNV_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribLFormatNV", [S301])), to: type(of: glVertexAttribLFormatNV_P))
     glVertexAttribLFormatNV_P(index, size, type, stride)
 }
-func glVertexAttribLPointer_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribLPointer_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribLPointer_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribLPointer", [S13, S130])), to: type(of: glVertexAttribLPointer_P))
     glVertexAttribLPointer_P(index, size, type, stride, pointer)
 }
-func glVertexAttribLPointerEXT_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribLPointerEXT_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribLPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribLPointerEXT", [S227])), to: type(of: glVertexAttribLPointerEXT_P))
     glVertexAttribLPointerEXT_P(index, size, type, stride, pointer)
 }
@@ -12306,15 +12306,15 @@ func glVertexAttribParameteriAMD_L(_ index:GLuint, _ pname:GLenum, _ param:GLint
     glVertexAttribParameteriAMD_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribParameteriAMD", [S28])), to: type(of: glVertexAttribParameteriAMD_P))
     glVertexAttribParameteriAMD_P(index, pname, param)
 }
-func glVertexAttribPointer_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ normalized:GLboolean, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribPointer_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ normalized:GLboolean, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribPointer_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribPointer", [S6, S19])), to: type(of: glVertexAttribPointer_P))
     glVertexAttribPointer_P(index, size, type, normalized, stride, pointer)
 }
-func glVertexAttribPointerARB_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ normalized:GLboolean, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribPointerARB_L(_ index:GLuint, _ size:GLint, _ type:GLenum, _ normalized:GLboolean, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribPointerARB_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribPointerARB", [S134, S135])), to: type(of: glVertexAttribPointerARB_P))
     glVertexAttribPointerARB_P(index, size, type, normalized, stride, pointer)
 }
-func glVertexAttribPointerNV_L(_ index:GLuint, _ fsize:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexAttribPointerNV_L(_ index:GLuint, _ fsize:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexAttribPointerNV_P = unsafeBitCast(getAddress(CommandInfo("glVertexAttribPointerNV", [S303])), to: type(of: glVertexAttribPointerNV_P))
     glVertexAttribPointerNV_P(index, fsize, type, stride, pointer)
 }
@@ -12430,19 +12430,19 @@ func glVertexP4uiv_L(_ type:GLenum, _ value:UnsafePointer<GLuint>) {
     glVertexP4uiv_P = unsafeBitCast(getAddress(CommandInfo("glVertexP4uiv", [S11, S136])), to: type(of: glVertexP4uiv_P))
     glVertexP4uiv_P(type, value)
 }
-func glVertexPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexPointer_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexPointer_P = unsafeBitCast(getAddress(CommandInfo("glVertexPointer", [S1, S23, S18])), to: type(of: glVertexPointer_P))
     glVertexPointer_P(size, type, stride, pointer)
 }
-func glVertexPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ count:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glVertexPointerEXT", [S226])), to: type(of: glVertexPointerEXT_P))
     glVertexPointerEXT_P(size, type, stride, count, pointer)
 }
-func glVertexPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>, _ ptrstride:GLint) {
+func glVertexPointerListIBM_L(_ size:GLint, _ type:GLenum, _ stride:GLint, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>, _ ptrstride:GLint) {
     glVertexPointerListIBM_P = unsafeBitCast(getAddress(CommandInfo("glVertexPointerListIBM", [S236])), to: type(of: glVertexPointerListIBM_P))
     glVertexPointerListIBM_P(size, type, stride, pointer, ptrstride)
 }
-func glVertexPointervINTEL_L(_ size:GLint, _ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafePointer<Void>>) {
+func glVertexPointervINTEL_L(_ size:GLint, _ type:GLenum, _ pointer:UnsafeMutablePointer<UnsafeRawPointer>) {
     glVertexPointervINTEL_P = unsafeBitCast(getAddress(CommandInfo("glVertexPointervINTEL", [S242])), to: type(of: glVertexPointervINTEL_P))
     glVertexPointervINTEL_P(size, type, pointer)
 }
@@ -12574,7 +12574,7 @@ func glVertexStream4svATI_L(_ stream:GLenum, _ coords:UnsafePointer<GLshort>) {
     glVertexStream4svATI_P = unsafeBitCast(getAddress(CommandInfo("glVertexStream4svATI", [S148])), to: type(of: glVertexStream4svATI_P))
     glVertexStream4svATI_P(stream, coords)
 }
-func glVertexWeightPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glVertexWeightPointerEXT_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glVertexWeightPointerEXT_P = unsafeBitCast(getAddress(CommandInfo("glVertexWeightPointerEXT", [S229])), to: type(of: glVertexWeightPointerEXT_P))
     glVertexWeightPointerEXT_P(size, type, stride, pointer)
 }
@@ -12650,11 +12650,11 @@ func glWeightPathsNV_L(_ resultPath:GLuint, _ numPaths:GLsizei, _ paths:UnsafePo
     glWeightPathsNV_P = unsafeBitCast(getAddress(CommandInfo("glWeightPathsNV", [S284])), to: type(of: glWeightPathsNV_P))
     glWeightPathsNV_P(resultPath, numPaths, paths, weights)
 }
-func glWeightPointerARB_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glWeightPointerARB_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glWeightPointerARB_P = unsafeBitCast(getAddress(CommandInfo("glWeightPointerARB", [S132])), to: type(of: glWeightPointerARB_P))
     glWeightPointerARB_P(size, type, stride, pointer)
 }
-func glWeightPointerOES_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafePointer<Void>) {
+func glWeightPointerOES_L(_ size:GLint, _ type:GLenum, _ stride:GLsizei, _ pointer:UnsafeRawPointer) {
     glWeightPointerOES_P = unsafeBitCast(getAddress(CommandInfo("glWeightPointerOES", [S321])), to: type(of: glWeightPointerOES_P))
     glWeightPointerOES_P(size, type, stride, pointer)
 }
