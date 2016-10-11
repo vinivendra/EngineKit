@@ -7,5 +7,11 @@ let package = Package(
 )
 
 package.dependencies.append(
-	Package.Dependency.Package(url: "../CGLFW3", majorVersion: 1)
+	.Package(url: "../CGLFW3",
+	         majorVersion: 1)
+)
+
+package.dependencies.append(
+    .Package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git",
+             majorVersion: 3)
 )
