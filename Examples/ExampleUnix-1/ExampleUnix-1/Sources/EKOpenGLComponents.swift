@@ -93,7 +93,7 @@ public struct EKGLVertexComponent {
 		glGenBuffers(n: 1, buffers: &tempBufferID)
 		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: tempBufferID)
 		glBufferData(target: GL_ARRAY_BUFFER,
-		             size: sizeof([GLfloat]) * vertices.count,
+		             size: MemoryLayout<[GLfloat]>.size * vertices.count,
 		             data: vertices,
 		             usage: GL_DYNAMIC_DRAW)
 		self.bufferID = tempBufferID
