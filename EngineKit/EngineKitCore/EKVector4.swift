@@ -19,12 +19,10 @@ public protocol EKVector4Type: EKLanguageCompatible,
 	var w: Double { get }
 }
 
-@warn_unused_result
 public func == (lhs: EKVector4, rhs: EKVector4) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
 }
 
-@warn_unused_result
 public func != (lhs: EKVector4, rhs: EKVector4) -> Bool {
 	return !(lhs == rhs)
 }
