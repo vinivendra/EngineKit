@@ -1,4 +1,4 @@
-enum EKError: ErrorProtocol {
+enum EKError: Error {
 	case scriptEvaluationError(message: String)
 	case scriptConversionError(message: String)
 	case eventRegistryError(message: String)
