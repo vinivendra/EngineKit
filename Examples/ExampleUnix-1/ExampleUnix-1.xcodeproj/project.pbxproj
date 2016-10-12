@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
-		249423D91D2CB3B6009F2100 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commands.swift; path = Sources/Commands.swift; sourceTree = "<group>"; };
-		249423DA1D2CB3B6009F2100 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = "<group>"; };
 		249423DB1D2CB3B6009F2100 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = "ExampleUnix-1/Sources/EKAddon.swift"; sourceTree = "<group>"; };
 		249423DC1D2CB3B6009F2100 /* EKAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAnimation.swift; path = "ExampleUnix-1/Sources/EKAnimation.swift"; sourceTree = "<group>"; };
 		249423DD1D2CB3B6009F2100 /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKCBridging.swift; path = Sources/EKCBridging.swift; sourceTree = "<group>"; };
@@ -50,9 +48,7 @@
 		249423F31D2CB3B6009F2100 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = "ExampleUnix-1/Sources/EKVector2.swift"; sourceTree = "<group>"; };
 		249423F41D2CB3B6009F2100 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = "ExampleUnix-1/Sources/EKVector3.swift"; sourceTree = "<group>"; };
 		249423F51D2CB3B6009F2100 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = "ExampleUnix-1/Sources/EKVector4.swift"; sourceTree = "<group>"; };
-		249423F61D2CB3B6009F2100 /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loaders.swift; path = Sources/Loaders.swift; sourceTree = "<group>"; };
 		249423F71D2CB3B6009F2100 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = Sources/main.swift; sourceTree = "<group>"; };
-		249423F81D2CB3B6009F2100 /* SwiftGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftGL.swift; path = Sources/SwiftGL.swift; sourceTree = "<group>"; };
 		24CFC8021D18B6BE0025C437 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 		24CFC8031D18B6BE0025C437 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,7 +64,6 @@
 		2414B7521D074B8800CFFC2B /* ExampleUnix-1 */ = {
 			isa = PBXGroup;
 			children = (
-				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
 				24B14F111D0750B700B38098 /* EngineKitSources */,
 				249423DD1D2CB3B6009F2100 /* EKCBridging.swift */,
 				249423E31D2CB3B6009F2100 /* EKMath.swift */,
@@ -106,17 +101,6 @@
 			);
 			name = EngineKitSources;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		24CFC8081D18CFF70025C437 /* SGLOpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				249423D91D2CB3B6009F2100 /* Commands.swift */,
-				249423DA1D2CB3B6009F2100 /* Constants.swift */,
-				249423F61D2CB3B6009F2100 /* Loaders.swift */,
-				249423F81D2CB3B6009F2100 /* SwiftGL.swift */,
-			);
-			name = SGLOpenGL;
 			sourceTree = "<group>";
 		};
 		24D297251D1B072A0093E04D /* EngineKitUnix */ = {

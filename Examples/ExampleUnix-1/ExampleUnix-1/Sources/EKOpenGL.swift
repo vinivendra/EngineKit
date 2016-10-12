@@ -1,4 +1,4 @@
-
+import SwiftGL
 
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
