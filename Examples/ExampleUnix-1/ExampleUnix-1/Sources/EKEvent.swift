@@ -85,7 +85,7 @@ public class EKEventCenter {
 
 	public func register<T>(forEventNamed name: String,
 	                     target: T,
-	                     method: (T) -> (EKEvent) -> ()) throws {
+	                     method: @escaping(T) -> (EKEvent) -> ()) throws {
 		do {
 			let callback = EKMethodAction(object: target, method: method)
 			let className = eventName(forExternalName: name)
@@ -97,7 +97,7 @@ public class EKEventCenter {
 
 	public func register<Event: EKEvent, T>(forEvent type: Event.Type,
 	                     target: T,
-	                     method: (T) -> (Event) -> ()) throws {
+	                     method: @escaping(T) -> (Event) -> ()) throws {
 		do {
 			let callback = EKMethodAction(object: target, method: method)
 			let className = eventName(forEventOfType: type.self)
@@ -108,7 +108,7 @@ public class EKEventCenter {
 	}
 
 	public func register(forEventNamed name: String,
-	                                   callback: (EKEvent) -> ()) throws {
+	                                   callback: @escaping(EKEvent) -> ()) throws {
 		do {
 			let callback = EKFunctionAction(closure: callback)
 			let className = eventName(forExternalName: name)
@@ -119,7 +119,7 @@ public class EKEventCenter {
 	}
 
 	public func register<Event: EKEvent>(forEvent type: Event.Type,
-	                     callback: (Event) -> ()) throws {
+	                     callback: @escaping(Event) -> ()) throws {
 		do {
 			let callback = EKFunctionAction(closure: callback)
 			let className = eventName(forEventOfType: type.self)

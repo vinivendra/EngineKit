@@ -13,9 +13,9 @@ public class EKSwiftEngine: EKLanguageEngine {
 		self.engine = engine
 	}
 
-	public func addClass<T: EKLanguageCompatible>(_ class: T.Type,
-	              withName className: String,
-	                       constructor: (() -> (T)) ) {
+    public func addClass<T: EKLanguageCompatible>(_ class: T.Type,
+                         withName className: String,
+                         constructor: @escaping(() -> (T)) ) {
 		constructors[className] = constructor
 	}
 

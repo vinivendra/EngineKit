@@ -112,7 +112,7 @@ public final class EKAnimation
 	            repeats: Bool = false,
 	            autoreverses: Bool = false,
 	            timingFunction: EKTimingFunction = .EaseInOut,
-	            action: (InterpolatedType) -> ()) {
+	            action: @escaping(InterpolatedType) -> ()) {
 		self.duration = duration
 		self.startValue = startValue
 		self.endValue = endValue
