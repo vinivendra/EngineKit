@@ -96,16 +96,17 @@ public class EKEngine {
 }
 
 extension EKEngine {
-	public func addClass<T: EKLanguageCompatible
-		where T: Initable>(_ class: T.Type) {
+	public func addClass<T: EKLanguageCompatible>
+		(_ class: T.Type) where T: Initable {
 
 		addClass(T.self, withName: nil)
 	}
 
-	public func addClass<T: EKLanguageCompatible
-		where T: Initable>(_ class: T.Type,
+	public func addClass<T: EKLanguageCompatible>
+		(_ class: T.Type,
+		 withName className: String?)
+		where T: Initable {
 
-		                   withName className: String?) {
 		addClass(T.self, withName: className, constructor: T.init)
 	}
 }
