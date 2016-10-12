@@ -2,19 +2,19 @@ public final class EKTimer {
 	private static var pool = EKResourcePool<EKTimer>()
 	private var poolIndex: Int? = nil
 
-	private let argument: Any?
-	private let action: EKAction?
+	fileprivate let argument: Any?
+	fileprivate let action: EKAction?
 
-	private var elapsedTime: Double = 0
-	private let duration: Double
-	private let repeats: Bool
+	fileprivate var elapsedTime: Double = 0
+	fileprivate let duration: Double
+	fileprivate let repeats: Bool
 
 	public weak var delegate: EKTimerDelegate? = nil
 
 	//
-	public static func updateTimers(deltaTime dt: Double) {
+	public static func updateTimers(deltaTime: Double) {
 		for timer in pool {
-			timer.update(deltaTime: dt)
+			timer.update(deltaTime: deltaTime)
 		}
 	}
 
@@ -29,7 +29,7 @@ public final class EKTimer {
 
 	public init(duration: Double,
 	            repeats: Bool = false,
-	            action: () -> ()) {
+	            action: @escaping() -> ()) {
 		self.argument = nil
 		self.action = EKFunctionVoidAction(closure: action)
 		self.duration = duration
@@ -39,7 +39,7 @@ public final class EKTimer {
 	public init<Argument>(duration: Double,
 	            repeats: Bool = false,
 	            argument: Argument,
-	            action: (Argument) -> ()) {
+	            action: @escaping(Argument) -> ()) {
 		self.argument = argument
 		self.action = EKFunctionAction(closure: action)
 		self.duration = duration
@@ -50,7 +50,7 @@ public final class EKTimer {
 	            repeats: Bool = false,
 	            argument: Argument,
 	            target: Target,
-	            action: (Target) -> (Argument) -> ()) {
+	            action: @escaping(Target) -> (Argument) -> ()) {
 		self.argument = argument
 		self.action = EKMethodAction(object: target, method: action)
 		self.duration = duration
@@ -60,7 +60,7 @@ public final class EKTimer {
 	public init<Target>(duration: Double,
 	            repeats: Bool = false,
 	            target: Target,
-	            action: (Target) -> () -> ()) {
+	            action: @escaping(Target) -> () -> ()) {
 		self.argument = nil
 		self.action = EKMethodVoidAction(object: target, method: action)
 		self.duration = duration
@@ -88,16 +88,16 @@ public final class EKTimer {
 }
 
 extension EKTimer {
-	private func update(deltaTime dt: Double) {
-		elapsedTime = elapsedTime + dt
+	fileprivate func update(deltaTime: Double) {
+		elapsedTime = elapsedTime + deltaTime
 		if elapsedTime < duration {
 			delegate?.timerHasUpdated(self,
 			                         currentTime: elapsedTime,
-			                         deltaTime: dt)
+			                         deltaTime: deltaTime)
 		} else {
 			delegate?.timerHasUpdated(self,
 			                         currentTime: duration,
-			                         deltaTime: dt)
+			                         deltaTime: deltaTime)
 
 			do {
 				_ = try action?.callWithArgument(argument)

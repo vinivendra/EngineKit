@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
-		249423D91D2CB3B6009F2100 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commands.swift; path = Sources/Commands.swift; sourceTree = "<group>"; };
-		249423DA1D2CB3B6009F2100 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = "<group>"; };
 		249423DB1D2CB3B6009F2100 /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = "ExampleUnix-1/Sources/EKAddon.swift"; sourceTree = "<group>"; };
 		249423DC1D2CB3B6009F2100 /* EKAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAnimation.swift; path = "ExampleUnix-1/Sources/EKAnimation.swift"; sourceTree = "<group>"; };
 		249423DD1D2CB3B6009F2100 /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKCBridging.swift; path = Sources/EKCBridging.swift; sourceTree = "<group>"; };
@@ -50,37 +48,7 @@
 		249423F31D2CB3B6009F2100 /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = "ExampleUnix-1/Sources/EKVector2.swift"; sourceTree = "<group>"; };
 		249423F41D2CB3B6009F2100 /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = "ExampleUnix-1/Sources/EKVector3.swift"; sourceTree = "<group>"; };
 		249423F51D2CB3B6009F2100 /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = "ExampleUnix-1/Sources/EKVector4.swift"; sourceTree = "<group>"; };
-		249423F61D2CB3B6009F2100 /* Loaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Loaders.swift; path = Sources/Loaders.swift; sourceTree = "<group>"; };
 		249423F71D2CB3B6009F2100 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = Sources/main.swift; sourceTree = "<group>"; };
-		249423F81D2CB3B6009F2100 /* SwiftGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftGL.swift; path = Sources/SwiftGL.swift; sourceTree = "<group>"; };
-		249ABC781D3582B80080BD1F /* AsyncConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncConnection.swift; path = Sources/AsyncConnection.swift; sourceTree = "<group>"; };
-		249ABC791D3582B80080BD1F /* AsyncHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncHost.swift; path = Sources/AsyncHost.swift; sourceTree = "<group>"; };
-		249ABC7A1D3582B80080BD1F /* AsyncStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncStream.swift; path = Sources/AsyncStream.swift; sourceTree = "<group>"; };
-		249ABC7B1D3582B80080BD1F /* AsyncURIConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsyncURIConnection.swift; path = Sources/AsyncURIConnection.swift; sourceTree = "<group>"; };
-		249ABC7C1D3582B80080BD1F /* Byte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Byte.swift; path = Sources/Byte.swift; sourceTree = "<group>"; };
-		249ABC7D1D3582B80080BD1F /* C7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = C7.swift; path = Sources/C7.swift; sourceTree = "<group>"; };
-		249ABC7E1D3582B80080BD1F /* CaseInsensitiveString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaseInsensitiveString.swift; path = Sources/CaseInsensitiveString.swift; sourceTree = "<group>"; };
-		249ABC7F1D3582B80080BD1F /* Closable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Closable.swift; path = Sources/Closable.swift; sourceTree = "<group>"; };
-		249ABC801D3582B80080BD1F /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Connection.swift; path = Sources/Connection.swift; sourceTree = "<group>"; };
-		249ABC811D3582B80080BD1F /* CustomDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomDataStore.swift; path = Sources/CustomDataStore.swift; sourceTree = "<group>"; };
-		249ABC821D3582B80080BD1F /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Sources/Data.swift; sourceTree = "<group>"; };
-		249ABC831D3582B80080BD1F /* Drain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drain.swift; path = Sources/Drain.swift; sourceTree = "<group>"; };
-		249ABC841D3582B80080BD1F /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Host.swift; path = Sources/Host.swift; sourceTree = "<group>"; };
-		249ABC851D3582B80080BD1F /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/JSON.swift; sourceTree = "<group>"; };
-		249ABC861D3582B80080BD1F /* JSONInterchangeDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONInterchangeDataParser.swift; path = Sources/JSONInterchangeDataParser.swift; sourceTree = "<group>"; };
-		249ABC871D3582B80080BD1F /* JSONInterchangeDataSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONInterchangeDataSerializer.swift; path = Sources/JSONInterchangeDataSerializer.swift; sourceTree = "<group>"; };
-		249ABC881D3582B80080BD1F /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONParser.swift; path = Sources/JSONParser.swift; sourceTree = "<group>"; };
-		249ABC891D3582B80080BD1F /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Sources/JSONSerializer.swift; sourceTree = "<group>"; };
-		249ABC8A1D3582B80080BD1F /* Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Query.swift; path = Sources/Query.swift; sourceTree = "<group>"; };
-		249ABC8B1D3582B80080BD1F /* QueryField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueryField.swift; path = Sources/QueryField.swift; sourceTree = "<group>"; };
-		249ABC8C1D3582B80080BD1F /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Sources/Stream.swift; sourceTree = "<group>"; };
-		249ABC8D1D3582B80080BD1F /* StreamError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamError.swift; path = Sources/StreamError.swift; sourceTree = "<group>"; };
-		249ABC8E1D3582B80080BD1F /* StreamSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamSequence.swift; path = Sources/StreamSequence.swift; sourceTree = "<group>"; };
-		249ABC8F1D3582B80080BD1F /* StructuredData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StructuredData.swift; path = Sources/StructuredData.swift; sourceTree = "<group>"; };
-		249ABC901D3582B80080BD1F /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = Sources/Time.swift; sourceTree = "<group>"; };
-		249ABC911D3582B80080BD1F /* URI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URI.swift; path = Sources/URI.swift; sourceTree = "<group>"; };
-		249ABC921D3582B80080BD1F /* URIConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URIConnection.swift; path = Sources/URIConnection.swift; sourceTree = "<group>"; };
-		249ABC931D3583650080BD1F /* StructuredDataC7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StructuredDataC7.swift; path = Sources/StructuredDataC7.swift; sourceTree = "<group>"; };
 		24CFC8021D18B6BE0025C437 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 		24CFC8031D18B6BE0025C437 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +64,6 @@
 		2414B7521D074B8800CFFC2B /* ExampleUnix-1 */ = {
 			isa = PBXGroup;
 			children = (
-				24CFC8081D18CFF70025C437 /* SGLOpenGL */,
 				24B14F111D0750B700B38098 /* EngineKitSources */,
 				249423DD1D2CB3B6009F2100 /* EKCBridging.swift */,
 				249423E31D2CB3B6009F2100 /* EKMath.swift */,
@@ -107,47 +74,11 @@
 				249423EA1D2CB3B6009F2100 /* EKResourcePool.swift */,
 				249423ED1D2CB3B6009F2100 /* EKTimer.swift */,
 				249423F71D2CB3B6009F2100 /* main.swift */,
-				249ABC771D3582AC0080BD1F /* JSON */,
 				24D297251D1B072A0093E04D /* EngineKitUnix */,
 				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
 				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
 			);
 			path = "ExampleUnix-1";
-			sourceTree = "<group>";
-		};
-		249ABC771D3582AC0080BD1F /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				249ABC781D3582B80080BD1F /* AsyncConnection.swift */,
-				249ABC791D3582B80080BD1F /* AsyncHost.swift */,
-				249ABC7A1D3582B80080BD1F /* AsyncStream.swift */,
-				249ABC7B1D3582B80080BD1F /* AsyncURIConnection.swift */,
-				249ABC7C1D3582B80080BD1F /* Byte.swift */,
-				249ABC7D1D3582B80080BD1F /* C7.swift */,
-				249ABC7E1D3582B80080BD1F /* CaseInsensitiveString.swift */,
-				249ABC7F1D3582B80080BD1F /* Closable.swift */,
-				249ABC801D3582B80080BD1F /* Connection.swift */,
-				249ABC811D3582B80080BD1F /* CustomDataStore.swift */,
-				249ABC821D3582B80080BD1F /* Data.swift */,
-				249ABC831D3582B80080BD1F /* Drain.swift */,
-				249ABC841D3582B80080BD1F /* Host.swift */,
-				249ABC851D3582B80080BD1F /* JSON.swift */,
-				249ABC861D3582B80080BD1F /* JSONInterchangeDataParser.swift */,
-				249ABC871D3582B80080BD1F /* JSONInterchangeDataSerializer.swift */,
-				249ABC881D3582B80080BD1F /* JSONParser.swift */,
-				249ABC891D3582B80080BD1F /* JSONSerializer.swift */,
-				249ABC8A1D3582B80080BD1F /* Query.swift */,
-				249ABC8B1D3582B80080BD1F /* QueryField.swift */,
-				249ABC8C1D3582B80080BD1F /* Stream.swift */,
-				249ABC8D1D3582B80080BD1F /* StreamError.swift */,
-				249ABC8E1D3582B80080BD1F /* StreamSequence.swift */,
-				249ABC8F1D3582B80080BD1F /* StructuredData.swift */,
-				249ABC931D3583650080BD1F /* StructuredDataC7.swift */,
-				249ABC901D3582B80080BD1F /* Time.swift */,
-				249ABC911D3582B80080BD1F /* URI.swift */,
-				249ABC921D3582B80080BD1F /* URIConnection.swift */,
-			);
-			name = JSON;
 			sourceTree = "<group>";
 		};
 		24B14F111D0750B700B38098 /* EngineKitSources */ = {
@@ -170,17 +101,6 @@
 			);
 			name = EngineKitSources;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		24CFC8081D18CFF70025C437 /* SGLOpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				249423D91D2CB3B6009F2100 /* Commands.swift */,
-				249423DA1D2CB3B6009F2100 /* Constants.swift */,
-				249423F61D2CB3B6009F2100 /* Loaders.swift */,
-				249423F81D2CB3B6009F2100 /* SwiftGL.swift */,
-			);
-			name = SGLOpenGL;
 			sourceTree = "<group>";
 		};
 		24D297251D1B072A0093E04D /* EngineKitUnix */ = {
@@ -240,7 +160,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/$PROJECT_NAME\nrm -r .build/debug/main*\n/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin/swift build -Xlinker -L/usr/local/lib";
+			shellScript = "cd $SRCROOT/$PROJECT_NAME\nswiftlint\n# rm -r .build/debug/main*\nswift build -Xlinker -L/usr/local/lib";
 		};
 /* End PBXShellScriptBuildPhase section */
 

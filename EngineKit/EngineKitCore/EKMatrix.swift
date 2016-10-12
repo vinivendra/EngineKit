@@ -33,12 +33,10 @@ EKLanguageCompatible {
 	var m44: Double { get }
 }
 
-@warn_unused_result
 public func * (l: EKMatrix, r: EKMatrix) -> EKMatrix {
 	return EKUsesOpenGLOrientedMath ? r.times(l) : l.times(r)
 }
 
-@warn_unused_result
 public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {
 	return EKVector4(x: v.x * m.m11 + v.y * m.m21 + v.z * m.m31 + v.w * m.m41,
 	                 y: v.x * m.m12 + v.y * m.m22 + v.z * m.m32 + v.w * m.m42,
@@ -46,7 +44,6 @@ public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {
 	                 w: v.x * m.m14 + v.y * m.m24 + v.z * m.m34 + v.w * m.m44)
 }
 
-@warn_unused_result
 public func * (m: EKMatrix, v: EKVector4) -> EKVector4 {
 	return EKVector4(x: v.x * m.m11 + v.y * m.m12 + v.z * m.m13 + v.w * m.m14,
 	                 y: v.x * m.m21 + v.y * m.m22 + v.z * m.m23 + v.w * m.m24,

@@ -1,0 +1,10 @@
+disabled_rules:
+  - todo
+
+line_length:
+  - 80  # warning
+  - 100 # error
+
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Packages

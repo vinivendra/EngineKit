@@ -1,4 +1,5 @@
 import CGLFW3
+import SwiftGL
 
 let EKOpenGLWindowWidth: GLfloat = 1024
 let EKOpenGLWindowHeight: GLfloat = 768
@@ -71,6 +72,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		inputHandler = EKUnixInputAddon(window: window)
 		engine.loadAddon(inputHandler)
 
+		// swiftlint:disable:next force_try
 		try! engine.addObject(self, withName: "OpenGL")
 	}
 
@@ -92,7 +94,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 				bufSize: infoLogLength,
 				length: NULL,
 				infoLog: string.buffer)
-			if let errorString = String(validatingUTF8: string.buffer) { 
+			if let errorString = String(validatingUTF8: string.buffer) {
 				print("OpenGL shader compiler error: \(errorString).")
 			}
 			return false
@@ -127,7 +129,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		guard shaderDidCompile else {
 			print("Error compiling shader \(filePath)")
-			return nil	
+			return nil
 		}
 
 		return shaderID
@@ -142,7 +144,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		let programDidLink = checkCompilerStatus(
 			forID: programID, status: GL_LINK_STATUS)
-		guard programDidLink else { 
+		guard programDidLink else {
 			print("Error linking program.")
 			return nil
 		}
@@ -181,7 +183,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		return programID
 	}
 
-	public func loopOpenGL(){
+	public func loopOpenGL() {
 		var oldTime = glfwGetTime()
 		repeat {
 			let newTime = glfwGetTime()

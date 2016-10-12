@@ -1,4 +1,5 @@
-
+// swiftlint:disable force_cast
+// swiftlint:disable force_try
 
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil

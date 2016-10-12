@@ -1,4 +1,4 @@
-
+import SwiftGL
 
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
@@ -7,7 +7,7 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	private var objectIndex: Int? = nil
+	fileprivate var objectIndex: Int? = nil
 
 	public var matrixComponent = EKGLMatrixComponent()
 	public let vertexComponent: EKGLVertexComponent?
@@ -54,7 +54,7 @@ extension EKGLObject {
 		let x = GLint(pixel.x)
 		let y = GLint(pixel.y)
 		glReadPixels(x, y, 1, 1,
-		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index)
 		return EKGLObject.allObjects[Int(index)]
 	}
 }

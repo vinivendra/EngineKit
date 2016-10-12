@@ -48,7 +48,6 @@ public protocol EKColorType: class {
 					 alpha: Double) { get }
 }
 
-@warn_unused_result
 public func == (lhs: EKColorType, rhs: EKColorType) -> Bool {
 	let r1: Double, g1: Double, b1: Double, a1: Double
 	let r2: Double, g2: Double, b2: Double, a2: Double
@@ -57,7 +56,6 @@ public func == (lhs: EKColorType, rhs: EKColorType) -> Bool {
 	return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
 }
 
-@warn_unused_result
 public func != (lhs: EKColorType, rhs: EKColorType) -> Bool {
 	return !(lhs == rhs)
 }

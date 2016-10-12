@@ -1,4 +1,4 @@
-extension Array where Element: IntegerLiteralConvertible {
+extension Array where Element: ExpressibleByIntegerLiteral {
 	subscript(one index: Int) -> Element {
 		get {
 			if count > index {
@@ -32,7 +32,7 @@ extension Array where Element: IntegerLiteralConvertible {
 	}
 }
 
-extension Dictionary where Value: IntegerLiteralConvertible {
+extension Dictionary where Value: ExpressibleByIntegerLiteral {
 	subscript(one index: Key) -> Value {
 		get {
 			return self[index] ?? 1
@@ -77,7 +77,7 @@ extension UnicodeScalar {
 		get {
 			switch value {
 			case 97...122:
-				return UnicodeScalar(value - 32)
+				return UnicodeScalar(value - 32)!
 			default:
 				return self
 			}
@@ -131,7 +131,7 @@ extension String {
 				array.append(string)
 				string = ""
 			} else {
-				string.append(char)
+				string.append("\(char)")
 			}
 		}
 

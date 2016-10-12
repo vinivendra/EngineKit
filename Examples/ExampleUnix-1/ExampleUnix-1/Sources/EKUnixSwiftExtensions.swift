@@ -1,4 +1,4 @@
-extension UnicodeScalar: StringLiteralConvertible {
+extension UnicodeScalar: ExpressibleByStringLiteral {
 	public init(stringLiteral value: StringLiteralType) {
 		self.init(value.unicodeScalars.first!)
 	}

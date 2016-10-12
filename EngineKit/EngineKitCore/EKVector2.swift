@@ -17,12 +17,10 @@ public protocol EKVector2Type: class,
 }
 
 //
-@warn_unused_result
 public func == (lhs: EKVector2, rhs: EKVector2) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
-@warn_unused_result
 public func != (lhs: EKVector2, rhs: EKVector2) -> Bool {
 	return !(lhs == rhs)
 }

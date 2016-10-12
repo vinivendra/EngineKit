@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+
 #if os(Linux)
 	import Glibc
 #else
@@ -17,12 +19,10 @@ EKLanguageCompatible {
 }
 
 //
-@warn_unused_result
 public func == (lhs: EKVector3, rhs: EKVector3) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
 }
 
-@warn_unused_result
 public func != (lhs: EKVector3, rhs: EKVector3) -> Bool {
 	return !(lhs == rhs)
 }

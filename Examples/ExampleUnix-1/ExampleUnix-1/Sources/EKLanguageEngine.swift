@@ -5,15 +5,16 @@ public protocol EKLanguageEngine {
 
 	func addClass<T: EKLanguageCompatible>(_ class: T.Type,
 	              withName className: String,
-	                       constructor: (() -> (T)) )
+	              constructor: @escaping(() -> (T)) )
 	func addObject<T: EKLanguageCompatible>(_ object: T,
 	               withName name: String) throws
 }
 
 extension EKLanguageEngine {
-	public func addClass<T: EKLanguageCompatible where T: Initable>(
-		_ class: T.Type,
-		withName className: String) {
+	public func addClass<T: EKLanguageCompatible>
+		(_ class: T.Type,
+		 withName className: String)
+		where T: Initable {
 
 		addClass(T.self, withName: className, constructor: T.init)
 	}
@@ -35,7 +36,7 @@ extension String {
 			}
 		}
 
-		let result = "EK" + String(copy)
+		let result = "EK" + String(describing: copy)
 		return result
 	}
 }
