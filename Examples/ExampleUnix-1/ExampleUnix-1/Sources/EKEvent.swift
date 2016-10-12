@@ -22,7 +22,7 @@ public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
 		} else {
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
-				"\(type(of: argument))."
+			"\(type(of: argument))."
 			throw EKError.invalidArgumentTypeError(message: message)
 		}
 	}
@@ -53,7 +53,7 @@ public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
 		} else {
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
-				"\(type(of: argument))."
+			"\(type(of: argument))."
 			throw EKError.invalidArgumentTypeError(message: message)
 		}
 	}
@@ -108,7 +108,7 @@ public class EKEventCenter {
 	}
 
 	public func register(forEventNamed name: String,
-	                                   callback: @escaping(EKEvent) -> ()) throws {
+	                     callback: @escaping(EKEvent) -> ()) throws {
 		do {
 			let callback = EKFunctionAction(closure: callback)
 			let className = eventName(forExternalName: name)
@@ -130,7 +130,7 @@ public class EKEventCenter {
 	}
 
 	func register(forEventNamed eventName: String,
-	                            action: EKAction) throws {
+	              action: EKAction) throws {
 		if allActions[eventName] == nil {
 			throw EKError.eventRegistryError(
 				message: "No addons have been registered to fire " + eventName +
@@ -183,7 +183,7 @@ public class EKEventScreenInput: EKEvent {
 public class EKEventScreenInputContinuous: EKEventScreenInput {
 	override public func createSuperclassEvent() -> EKEvent? {
 		return EKEventScreenInput(position: position,
-		                                    touches: touches)
+		                          touches: touches)
 	}
 
 	public let state: EKEventInputState
@@ -199,15 +199,15 @@ public class EKEventScreenInputContinuous: EKEventScreenInput {
 public class EKEventTap: EKEventScreenInput {
 	override public func createSuperclassEvent() -> EKEvent? {
 		return EKEventScreenInput(position: position,
-		                                    touches: touches)
+		                          touches: touches)
 	}
 }
 
 public class EKEventPan: EKEventScreenInputContinuous {
 	override public func createSuperclassEvent() -> EKEvent? {
 		return EKEventScreenInputContinuous(position: position,
-		                                              touches: touches,
-		                                              state: state)
+		                                    touches: touches,
+		                                    state: state)
 	}
 
 	public let displacement: EKVector2
@@ -224,8 +224,8 @@ public class EKEventPan: EKEventScreenInputContinuous {
 public class EKEventPinch: EKEventScreenInputContinuous {
 	override public func createSuperclassEvent() -> EKEvent? {
 		return EKEventScreenInputContinuous(position: position,
-		                                              touches: touches,
-		                                              state: state)
+		                                    touches: touches,
+		                                    state: state)
 	}
 
 	public let scale: Double
@@ -242,8 +242,8 @@ public class EKEventPinch: EKEventScreenInputContinuous {
 public class EKEventRotation: EKEventScreenInputContinuous {
 	override public func createSuperclassEvent() -> EKEvent? {
 		return EKEventScreenInputContinuous(position: position,
-		                                              touches: touches,
-		                                              state: state)
+		                                    touches: touches,
+		                                    state: state)
 	}
 
 	public let angle: Double
@@ -260,8 +260,8 @@ public class EKEventRotation: EKEventScreenInputContinuous {
 public class EKEventLongPress: EKEventScreenInputContinuous {
 	override public func createSuperclassEvent() -> EKEvent? {
 		return EKEventScreenInputContinuous(position: position,
-		                                              touches: touches,
-		                                              state: state)
+		                                    touches: touches,
+		                                    state: state)
 	}
 
 	public let displacement: EKVector2

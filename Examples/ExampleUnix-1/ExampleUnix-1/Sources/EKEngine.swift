@@ -57,7 +57,7 @@ public class EKEngine {
 	}
 
 	public func register(forEventNamed eventName: String,
-	                                   callback: @escaping(EKEvent) -> ()) throws {
+	                     callback: @escaping(EKEvent) -> ()) throws {
 		do {
 			try eventCenter.register(forEventNamed: eventName,
 			                         callback: callback)
@@ -77,12 +77,12 @@ public class EKEngine {
 
 	public func addClass<T: EKLanguageCompatible>(_ class: T.Type,
 	                     withName className: String?,
-	                              constructor: @escaping(() -> (T)) ) {
+	                     constructor: @escaping(() -> (T)) ) {
 		let className = className ?? "\(T.self)".toEKPrefixClassName()
 
 		languageEngine.addClass(T.self,
-		                         withName: className,
-		                         constructor: constructor)
+		                        withName: className,
+		                        constructor: constructor)
 	}
 
 	public func addObject<T: EKLanguageCompatible>(_ object: T,
@@ -105,7 +105,7 @@ extension EKEngine {
 	public func addClass<T: EKLanguageCompatible
 		where T: Initable>(_ class: T.Type,
 
-	                     withName className: String?) {
+		                   withName className: String?) {
 		addClass(T.self, withName: className, constructor: T.init)
 	}
 }
