@@ -123,7 +123,7 @@ public final class EKScreenInputHandler {
 
 		state = .Standby
 	}
-	
+
 	public func mouseDown(atPosition position: EKVector2) {
 		state = .Detected
 

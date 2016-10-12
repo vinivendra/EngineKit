@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+
 #if os(Linux)
 	import Glibc
 #else
@@ -9,6 +11,7 @@ let EKUsesOpenGLOrientedMath = true
 public protocol EKMatrixType: class,
 EKLanguageCompatible {
 
+	// swiftlint:disable:next function_parameter_count
 	static func createMatrix(
 		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,
@@ -33,8 +36,8 @@ EKLanguageCompatible {
 	var m44: Double { get }
 }
 
-public func * (l: EKMatrix, r: EKMatrix) -> EKMatrix {
-	return EKUsesOpenGLOrientedMath ? r.times(l) : l.times(r)
+public func * (lhs: EKMatrix, rhs: EKMatrix) -> EKMatrix {
+	return EKUsesOpenGLOrientedMath ? rhs.times(lhs) : lhs.times(rhs)
 }
 
 public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {

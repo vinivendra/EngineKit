@@ -54,6 +54,7 @@ public enum EKTimingFunction {
 	case EaseInOut
 	case Other(EKInterpolationFunction)
 
+	// swiftlint:disable variable_name
 	private static let linear = { (x: Double) -> Double in
 		return x
 	}
@@ -69,6 +70,7 @@ public enum EKTimingFunction {
 	private static let easeOut = { (x: Double) -> Double in
 		return 1 - ((1 - x) * (1 - x))
 	}
+	// swiftlint:enable variable_name
 
 	public func getFunction() -> (EKInterpolationFunction) {
 		switch self {

@@ -12,9 +12,9 @@ public final class EKTimer {
 	public weak var delegate: EKTimerDelegate? = nil
 
 	//
-	public static func updateTimers(deltaTime dt: Double) {
+	public static func updateTimers(deltaTime: Double) {
 		for timer in pool {
-			timer.update(deltaTime: dt)
+			timer.update(deltaTime: deltaTime)
 		}
 	}
 
@@ -88,16 +88,16 @@ public final class EKTimer {
 }
 
 extension EKTimer {
-	fileprivate func update(deltaTime dt: Double) {
-		elapsedTime = elapsedTime + dt
+	fileprivate func update(deltaTime: Double) {
+		elapsedTime = elapsedTime + deltaTime
 		if elapsedTime < duration {
 			delegate?.timerHasUpdated(self,
 			                         currentTime: elapsedTime,
-			                         deltaTime: dt)
+			                         deltaTime: deltaTime)
 		} else {
 			delegate?.timerHasUpdated(self,
 			                         currentTime: duration,
-			                         deltaTime: dt)
+			                         deltaTime: deltaTime)
 
 			do {
 				_ = try action?.callWithArgument(argument)

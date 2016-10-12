@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+
 public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 
 	public let x: Double
@@ -91,6 +93,7 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 }
 
 public class EKMatrix: EKMatrixType, EKLanguageCompatible {
+	// swiftlint:disable:next function_parameter_count
 	public static func createMatrix(
 		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,
@@ -102,6 +105,7 @@ public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 		                m41: m41, m42: m42, m43: m43, m44: m44)
 	}
 
+	// swiftlint:disable:next function_parameter_count
 	init(m11: Double, m12: Double, m13: Double, m14: Double,
 	     m21: Double, m22: Double, m23: Double, m24: Double,
 	     m31: Double, m32: Double, m33: Double, m34: Double,

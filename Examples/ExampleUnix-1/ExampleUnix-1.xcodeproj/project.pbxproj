@@ -160,7 +160,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/$PROJECT_NAME\n# rm -r .build/debug/main*\nswift build -Xlinker -L/usr/local/lib";
+			shellScript = "cd $SRCROOT/$PROJECT_NAME\nswiftlint\n# rm -r .build/debug/main*\nswift build -Xlinker -L/usr/local/lib";
 		};
 /* End PBXShellScriptBuildPhase section */
 

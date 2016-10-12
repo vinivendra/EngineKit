@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+
 #if os(Linux)
 	import Glibc
 #else
@@ -238,25 +240,23 @@ extension EKVector4 {
 	}
 
 	func multiplyAsQuaternion(quaternion q: EKVector4) -> EKVector4 {
-		return EKVector4(x: self.w * q.x + self.x * q.w + self.y * q.z -
-			self.z * q.y,
-		                 y: self.w * q.y + self.y * q.w - self.x * q.z +
-							self.z * q.x,
-		                 z: self.w * q.z + self.z * q.w + self.x * q.y -
-							self.y * q.x,
-		                 w: self.w * q.w - self.x * q.x - self.y * q.y -
-							self.z * q.z)
+		return EKVector4(
+			x: self.w * q.x + self.x * q.w + self.y * q.z - self.z * q.y,
+			y: self.w * q.y + self.y * q.w - self.x * q.z + self.z * q.x,
+			z: self.w * q.z + self.z * q.w + self.x * q.y - self.y * q.x,
+			w: self.w * q.w - self.x * q.x - self.y * q.y - self.z * q.z)
 	}
 
-	func conjugate(quaternion q: EKVector4) -> EKVector4 {
+	func conjugate(quaternion: EKVector4) -> EKVector4 {
 		let opposite = self.oppositeQuaternion()
-		let step = self.multiplyAsQuaternion(quaternion: q)
+		let step = self.multiplyAsQuaternion(quaternion: quaternion)
 		return step.multiplyAsQuaternion(quaternion: opposite)
 	}
 
-	func conjugate(vector v: EKVector3) -> EKVector4 {
+	func conjugate(vector: EKVector3) -> EKVector4 {
 		let opposite = self.oppositeQuaternion()
-		let step = self.multiplyAsQuaternion(quaternion: v.toHomogeneousVector())
+		let step = self.multiplyAsQuaternion(
+			quaternion: vector.toHomogeneousVector())
 		return step.multiplyAsQuaternion(quaternion: opposite)
 	}
 

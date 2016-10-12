@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+
 #if os(Linux)
 	import Glibc
 #else

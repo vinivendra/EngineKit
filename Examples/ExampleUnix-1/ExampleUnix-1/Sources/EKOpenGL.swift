@@ -54,7 +54,7 @@ extension EKGLObject {
 		let x = GLint(pixel.x)
 		let y = GLint(pixel.y)
 		glReadPixels(x, y, 1, 1,
-		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index)
 		return EKGLObject.allObjects[Int(index)]
 	}
 }
