@@ -1,6 +1,8 @@
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
 
+import SwiftyJSON
+
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil
 

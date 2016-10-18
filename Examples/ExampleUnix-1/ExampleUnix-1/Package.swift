@@ -15,8 +15,3 @@ package.dependencies.append(
 	.Package(url: "../SwiftGL",
 	         majorVersion: 1)
 )
-
-package.dependencies.append(
-    .Package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git",
-             majorVersion: 3)
-)
