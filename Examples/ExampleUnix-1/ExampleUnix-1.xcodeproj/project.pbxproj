@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
-		249423DD1D2CB3B6009F2100 /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKCBridging.swift; path = Sources/EKCBridging.swift; sourceTree = "<group>"; };
-		249423E31D2CB3B6009F2100 /* EKMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMath.swift; path = Sources/EKMath.swift; sourceTree = "<group>"; };
 		249423E51D2CB3B6009F2100 /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGL.swift; path = Sources/EKOpenGL.swift; sourceTree = "<group>"; };
 		249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = Sources/EKOpenGLAddon.swift; sourceTree = "<group>"; };
 		249423E71D2CB3B6009F2100 /* EKOpenGLCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLCBridging.swift; path = Sources/EKOpenGLCBridging.swift; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		24C9B63D1DB679D60020D8AF /* EKVector2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector2.swift; path = EngineKitCore/EKVector2.swift; sourceTree = "<group>"; };
 		24C9B63E1DB679D60020D8AF /* EKVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector3.swift; path = EngineKitCore/EKVector3.swift; sourceTree = "<group>"; };
 		24C9B63F1DB679D60020D8AF /* EKVector4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKVector4.swift; path = EngineKitCore/EKVector4.swift; sourceTree = "<group>"; };
+		24C9B6401DB67B930020D8AF /* EKCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKCBridging.swift; path = EngineKitCore/EKCBridging.swift; sourceTree = "<group>"; };
+		24C9B6411DB67B930020D8AF /* EKMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKMath.swift; path = EngineKitCore/EKMath.swift; sourceTree = "<group>"; };
 		24CFC8021D18B6BE0025C437 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 		24CFC8031D18B6BE0025C437 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,16 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				24B14F111D0750B700B38098 /* EngineKitCore */,
-				249423DD1D2CB3B6009F2100 /* EKCBridging.swift */,
-				249423E31D2CB3B6009F2100 /* EKMath.swift */,
-				249423E51D2CB3B6009F2100 /* EKOpenGL.swift */,
-				249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */,
-				249423E71D2CB3B6009F2100 /* EKOpenGLCBridging.swift */,
-				249423E81D2CB3B6009F2100 /* EKOpenGLComponents.swift */,
-				249423EA1D2CB3B6009F2100 /* EKResourcePool.swift */,
-				249423ED1D2CB3B6009F2100 /* EKTimer.swift */,
-				249423F71D2CB3B6009F2100 /* main.swift */,
 				24D297251D1B072A0093E04D /* EngineKitUnix */,
+				249423F71D2CB3B6009F2100 /* main.swift */,
 				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
 				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
 			);
@@ -86,11 +78,13 @@
 			children = (
 				24C9B6321DB679D60020D8AF /* EKAddon.swift */,
 				24C9B6331DB679D60020D8AF /* EKAnimation.swift */,
+				24C9B6401DB67B930020D8AF /* EKCBridging.swift */,
 				24C9B6341DB679D60020D8AF /* EKColor.swift */,
 				24C9B6351DB679D60020D8AF /* EKEngine.swift */,
 				24C9B6361DB679D60020D8AF /* EKEvent.swift */,
 				24C9B6371DB679D60020D8AF /* EKFileManager.swift */,
 				24C9B6381DB679D60020D8AF /* EKLanguageEngine.swift */,
+				24C9B6411DB67B930020D8AF /* EKMath.swift */,
 				24C9B6391DB679D60020D8AF /* EKMatrix.swift */,
 				24C9B63A1DB679D60020D8AF /* EKOSFactory.swift */,
 				24C9B63B1DB679D60020D8AF /* EKSwiftEngine.swift */,
@@ -106,6 +100,12 @@
 		24D297251D1B072A0093E04D /* EngineKitUnix */ = {
 			isa = PBXGroup;
 			children = (
+				249423E51D2CB3B6009F2100 /* EKOpenGL.swift */,
+				249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */,
+				249423E71D2CB3B6009F2100 /* EKOpenGLCBridging.swift */,
+				249423E81D2CB3B6009F2100 /* EKOpenGLComponents.swift */,
+				249423EA1D2CB3B6009F2100 /* EKResourcePool.swift */,
+				249423ED1D2CB3B6009F2100 /* EKTimer.swift */,
 				249423EE1D2CB3B6009F2100 /* EKUnixDataClasses.swift */,
 				249423EF1D2CB3B6009F2100 /* EKUnixFactory.swift */,
 				249423F01D2CB3B6009F2100 /* EKUnixFileManager.swift */,
