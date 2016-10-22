@@ -92,7 +92,7 @@ public enum EKTimingFunction {
 private var EKAnimationPool = EKResourcePool<Any>()
 
 public final class EKAnimation
-	<InterpolatedType: Interpolable>: EKTimerDelegate {
+<InterpolatedType: Interpolable>: EKTimerDelegate {
 
 	private var poolIndex: Int? = nil
 
@@ -102,10 +102,12 @@ public final class EKAnimation
 	private let timingFunction: EKInterpolationFunction
 
 	public let duration: Double
-	public let startValue: InterpolatedType
+	public private(set) var startValue: InterpolatedType
 	public let endValue: InterpolatedType
 	public let repeats: Bool
 	public let autoreverses: Bool
+
+	public var chainAnimation: EKAnimation<InterpolatedType>?
 
 	//
 	public init(duration: Double,
@@ -114,7 +116,7 @@ public final class EKAnimation
 	            repeats: Bool = false,
 	            autoreverses: Bool = false,
 	            timingFunction: EKTimingFunction = .EaseInOut,
-	            action: @escaping(InterpolatedType) -> ()) {
+	            action: @escaping((InterpolatedType) -> ())) {
 		self.duration = duration
 		self.startValue = startValue
 		self.endValue = endValue
@@ -141,13 +143,13 @@ public final class EKAnimation
 	}
 
 	public func timerHasUpdated(_ timer: EKTimer,
-	                     currentTime: Double,
-	                     deltaTime: Double) {
+	                            currentTime: Double,
+	                            deltaTime: Double) {
 		do {
 			let interpolatedValue = currentTime / duration
 			let reversedValue = isReversed ?
 				1.0 - interpolatedValue :
-				interpolatedValue
+			interpolatedValue
 			let animationValue = timingFunction(reversedValue)
 			try action.callWithArgument(InterpolatedType.interpolate(
 				start: startValue,
@@ -162,11 +164,19 @@ public final class EKAnimation
 		if let poolIndex = poolIndex {
 			EKAnimationPool.deleteResource(atIndex: poolIndex)
 		}
+		chain()
 	}
 
 	public func timerWillRepeat(_ timer: EKTimer) {
 		if autoreverses {
 			isReversed = !isReversed
 		}
+	}
+
+	@discardableResult
+	func chain() {
+		guard let chainAnimation = chainAnimation else { return }
+		chainAnimation.startValue = self.endValue
+		chainAnimation.start()
 	}
 }

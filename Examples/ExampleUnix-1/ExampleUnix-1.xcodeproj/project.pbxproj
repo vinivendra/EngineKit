@@ -34,6 +34,7 @@
 		249423F21D2CB3B6009F2100 /* EKUnixSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixSwiftExtensions.swift; path = Sources/EKUnixSwiftExtensions.swift; sourceTree = "<group>"; };
 		249423F71D2CB3B6009F2100 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = Sources/main.swift; sourceTree = "<group>"; };
 		249703B71DBBBC8D00816191 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "ExampleUnix-1/Package.swift"; sourceTree = "<group>"; };
+		249703B81DBBBEDB00816191 /* EKJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKJSON.swift; path = Sources/EKJSON.swift; sourceTree = "<group>"; };
 		24C9B6321DB679D60020D8AF /* EKAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAddon.swift; path = EngineKitCore/EKAddon.swift; sourceTree = "<group>"; };
 		24C9B6331DB679D60020D8AF /* EKAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAnimation.swift; path = EngineKitCore/EKAnimation.swift; sourceTree = "<group>"; };
 		24C9B6341DB679D60020D8AF /* EKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKColor.swift; path = EngineKitCore/EKColor.swift; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 				249423F01D2CB3B6009F2100 /* EKUnixFileManager.swift */,
 				249423F11D2CB3B6009F2100 /* EKUnixInputAddon.swift */,
 				249423F21D2CB3B6009F2100 /* EKUnixSwiftExtensions.swift */,
+				249703B81DBBBEDB00816191 /* EKJSON.swift */,
 			);
 			name = EngineKitUnix;
 			sourceTree = "<group>";

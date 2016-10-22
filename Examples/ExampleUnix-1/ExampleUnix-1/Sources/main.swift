@@ -1,7 +1,7 @@
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
 
-import SwiftyJSON
+import Foundation
 
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil
@@ -21,6 +21,27 @@ class MyEngine: EKSwiftEngine {
 		ball.addChild(ball2)
 
 		EKGLCamera.mainCamera.position = EKVector3(x: 0, y: 0, z: 10)
+
+		let jsonTargets = [[1.5, 2.6, 3.7], [0, 0, 1], [-2, -1, 0]]
+		let jsonCommand: [[String: Any]] =
+			[
+				[ // action: translate
+					"action": "translate",
+					"parameters": [
+						"id": 987654321,
+						"targets": jsonTargets
+					]
+				]
+			]
+
+		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
+		let json = try! JSONSerialization.jsonObject(with: data)
+		let actionsArray = json as! [[String: Any]]
+		let action = actionsArray[0]
+
+		let command = EKCommandCreate(fromJSON: action)!
+
+		command.apply(to: ball2)
 
 		//
 		openGL.loopOpenGL()
