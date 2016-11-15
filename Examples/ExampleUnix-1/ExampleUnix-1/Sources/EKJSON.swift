@@ -40,7 +40,6 @@ public struct EKCommandRotate: EKCommand {
 	// swiftlint:disable:next variable_name
 	public func apply(to object: EKGLObject) {
 		guard let target = targets.first else { return }
-		// FIXME: this should be a slerp, not a lerp
 		let firstAnimation = EKAnimation(
 			duration: 1.0,
 			startValue: object.rotation,
