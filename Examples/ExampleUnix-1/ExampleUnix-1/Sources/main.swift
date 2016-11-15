@@ -22,8 +22,9 @@ class MyEngine: EKSwiftEngine {
 
 		EKGLCamera.mainCamera.position = EKVector3(x: 0, y: 0, z: 10)
 
-		let jsonTranslateTargets = [[1.5, 2.6, 3.7], [0, 0, 1], [-2, -1, 0]]
+		let jsonTranslateTargets = [[-1, 1, 1], [0, 0, 0.5], [-2, -1, 0]]
 		let jsonRotateTargets = [[0, 1, 0, 1], [1, 0, 0, 1], [0, 0, 1, 0]]
+		let jsonScaleTargets = [[0.5, 0.5, 0.5], [0.5, 2, 0.5], [1, 1, 1]]
 		let jsonCommand: [[String: Any]] =
 			[
 				[ // action: translate
@@ -39,19 +40,24 @@ class MyEngine: EKSwiftEngine {
 						"id": 987654321,
 						"targets": jsonRotateTargets
 					]
+				],
+				[ // action: scale
+					"action": "scale",
+					"parameters": [
+						"id": 987654321,
+						"targets": jsonScaleTargets
+					]
 				]
 			]
 
 		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
 		let json = try! JSONSerialization.jsonObject(with: data)
 		let actionsArray = json as! [[String: Any]]
-		let actionTranslate = actionsArray[0]
-		let actionRotate = actionsArray[1]
 
-		let commandTranslate = EKCommandCreate(fromJSON: actionTranslate)!
-		commandTranslate.apply(to: ball2)
-		let commandRotate = EKCommandCreate(fromJSON: actionRotate)!
-		commandRotate.apply(to: ball2)
+		for action in actionsArray {
+			let command = EKCommandCreate(fromJSON: action)!
+			command.apply(to: ball2)
+		}
 
 		//
 		openGL.loopOpenGL()

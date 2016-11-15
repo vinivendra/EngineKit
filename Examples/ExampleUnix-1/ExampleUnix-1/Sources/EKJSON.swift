@@ -8,7 +8,6 @@ public protocol EKCommand {
 public struct EKCommandTranslate: EKCommand {
 	let targets: [[Double]]
 
-	// swiftlint:disable:next variable_name
 	public func apply(to object: EKGLObject) {
 		guard let target = targets.first else { return }
 		let firstAnimation = EKAnimation(
@@ -37,7 +36,6 @@ public struct EKCommandTranslate: EKCommand {
 public struct EKCommandRotate: EKCommand {
 	let targets: [[Double]]
 
-	// swiftlint:disable:next variable_name
 	public func apply(to object: EKGLObject) {
 		guard let target = targets.first else { return }
 		let firstAnimation = EKAnimation(
@@ -63,6 +61,35 @@ public struct EKCommandRotate: EKCommand {
 	}
 }
 
+public struct EKCommandScale: EKCommand {
+	let targets: [[Double]]
+
+	public func apply(to object: EKGLObject) {
+		guard let target = targets.first else { return }
+
+		let firstAnimation = EKAnimation(
+			duration: 1.0,
+			startValue: object.scale,
+			endValue: EKVector3.createVector(fromArray: target)) {
+				object.scale = $0
+		}
+
+		var latestAnimation = firstAnimation
+		for target in targets.dropFirst() {
+			let newAnimation = EKAnimation(
+				duration: 1.0,
+				startValue: object.scale,
+				endValue: EKVector3.createVector(fromArray: target)) {
+					object.scale = $0
+			}
+			latestAnimation.chainAnimation = newAnimation
+			latestAnimation = newAnimation
+		}
+
+		firstAnimation.start()
+	}
+}
+
 func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 	guard let rootDictionary = JSONObject as? [String: Any],
 		let actionString = rootDictionary["action"] as? String,
@@ -78,6 +105,10 @@ func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 		guard let targets = parameters["targets"] as? [[Double]]
 			else { return nil }
 		return EKCommandRotate(targets: targets)
+	case "scale":
+		guard let targets = parameters["targets"] as? [[Double]]
+			else { return nil }
+		return EKCommandScale(targets: targets)
 	default:
 		return nil
 	}
