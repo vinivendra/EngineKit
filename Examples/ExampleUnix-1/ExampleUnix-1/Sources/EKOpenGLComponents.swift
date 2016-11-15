@@ -11,7 +11,7 @@ public struct EKGLMatrixComponent {
 			_modelMatrix = nil
 		}
 	}
-	public var rotation = EKVector4(x: 1, y: 0, z: 0, w: 0) {
+	public var rotation = EKRotation(x: 0, y: 0, z: 0, w: 1) {
 		didSet {
 			_modelMatrix = nil
 		}
@@ -23,24 +23,20 @@ public struct EKGLMatrixComponent {
 		guard let modelMatrix = _modelMatrix else {
 			_modelMatrix = position.translationToMatrix() *
 				scale.scaleToMatrix() *
-				rotation.rotationToMatrix()
+				rotation.toMatrix()
 			return _modelMatrix!
 		}
 		return modelMatrix
 	}
 
-	init () {
-		position = EKVector3(x: 0, y: 0, z: 0)
-		scale = EKVector3(x: 1, y: 1, z: 1)
-		rotation = EKVector4(x: 1, y: 0, z: 0, w: 0)
-	}
+	init () { }
 }
 
 protocol EKGLMatrixComposer: class {
 	var matrixComponent: EKGLMatrixComponent { get set }
 	var position: EKVector3 { get set }
 	var scale: EKVector3 { get set }
-	var rotation: EKVector4 { get set }
+	var rotation: EKRotation { get set }
 	var modelMatrix: EKMatrix { get }
 }
 
@@ -63,7 +59,7 @@ extension EKGLMatrixComposer {
 		}
 	}
 
-	var rotation: EKVector4 {
+	var rotation: EKRotation {
 		get {
 			return matrixComponent.rotation
 		}

@@ -11,9 +11,9 @@ public protocol EKVector4Type: EKLanguageCompatible,
 	CustomStringConvertible {
 
 	static func createVector(x: Double,
-	                           y: Double,
-	                           z: Double,
-	                           w: Double) -> EKVector4
+	                         y: Double,
+	                         z: Double,
+	                         w: Double) -> EKVector4
 
 	var x: Double { get }
 	var y: Double { get }
@@ -77,7 +77,7 @@ extension EKVector4 {
 		return sqrt(self.normSquared())
 	}
 
-	public func normalize() -> EKVector4 {
+	public func normalized() -> EKVector4 {
 		let norm = self.norm()
 		if norm == 0 {
 			return self
@@ -97,13 +97,13 @@ extension EKVector4 {
 		                              z: self.z * vector.z,
 		                              w: self.w)
 	}
-}
 
-extension EKVector4 {
 	public func notZero() -> Bool {
 		return !(x == 0 && y == 0 && z == 0)
 	}
+}
 
+extension EKVector4 {
 	public static func origin() -> EKVector4 {
 		return EKVector4.createVector(x: 0, y: 0, z: 0, w: 1)
 	}
@@ -168,105 +168,17 @@ extension EKVector4 {
 		return EKVector3(x: x, y: y, z: z)
 	}
 
-	public func rotationToQuaternion() -> EKVector4 {
-		let halfAngle = w / 2
-		let cosine = cos(halfAngle)
-		let sine = sin(halfAngle)
-		return EKVector4(x: sine * x,
-		                 y: sine * y,
-		                 z: sine * z,
-		                 w: cosine)
+	public func toRotation() -> EKRotation {
+		return EKRotation(x: x, y: y, z: z, w: w)
 	}
+}
 
-	public func quaternionToRotation() -> EKVector4 {
-		let s = sqrt(1 - w * w)
-		if s < 0.0001 {
-			return EKVector4(x: 1, y: 1, z: 1, w: 0)
-		} else {
-			return EKVector4(x: x / s,
-			                 y: y / s,
-			                 z: z / s,
-			                 w: 2 * acos(w))
-		}
-	}
-
-	public func quaternionToMatrix() -> EKMatrix {
-		return EKMatrix(m11: 1 - 2*y*y - 2*z*z,
-		                m12: 2*x*y - 2*z*w,
-		                m13: 2*x*z + 2*y*w, m14: 0,
-		                m21: 2*x*y + 2*z*w,
-		                m22: 1 - 2*x*x - 2*z*z,
-		                m23: 2*y*z - 2*x*w, m24: 0,
-		                m31: 2*x*z - 2*y*w,
-		                m32: 2*y*z + 2*x*w,
-		                m33: 1 - 2*x*x - 2*y*y, m34: 0,
-		                m41: 0, m42: 0, m43: 0, m44: 1)
-	}
-
-	public func rotationToMatrix() -> EKMatrix {
-		return rotationToQuaternion().quaternionToMatrix()
-	}
-
-	public func rotate(matrix: EKMatrix) -> EKMatrix {
-		return rotationToMatrix() * matrix
-	}
-
-	public func rotate(_ vector: AnyObject) -> EKVector3 {
-		let v = EKVector3.createVector(fromObject: vector)
-		let q = self.rotationToQuaternion()
-		let p = EKVector4(
-			x: q.w * v.x + q.y * v.z - q.z * v.y,
-			y: q.w * v.y - q.x * v.z + q.z * v.x,
-			z: q.w * v.z + q.x * v.y - q.y * v.x,
-			w: -q.x * v.x - q.y * v.y - q.z * v.z)
-		let o = q.opposite()
-		let result = EKVector3(
-			x: p.w * o.x + p.x * o.w + p.y * o.z - p.z * o.y,
-			y: p.w * o.y - p.x * o.z + p.y * o.w + p.z * o.x,
-			z: p.w * o.z + p.x * o.y - p.y * o.x + p.z * o.w)
-		return result
-	}
-
+extension EKVector4 {
 	public func translate(matrix: EKMatrix) -> EKMatrix {
 		return translationToMatrix() * matrix
 	}
 
 	public func translationToMatrix() -> EKMatrix {
 		return EKMatrix.createTranslation(self.toEKVector3())
-	}
-
-	func multiplyAsQuaternion(vector: EKVector3) -> EKVector4 {
-		return multiplyAsQuaternion(quaternion: vector.toHomogeneousVector())
-	}
-
-	func multiplyAsQuaternion(quaternion q: EKVector4) -> EKVector4 {
-		return EKVector4(
-			x: self.w * q.x + self.x * q.w + self.y * q.z - self.z * q.y,
-			y: self.w * q.y + self.y * q.w - self.x * q.z + self.z * q.x,
-			z: self.w * q.z + self.z * q.w + self.x * q.y - self.y * q.x,
-			w: self.w * q.w - self.x * q.x - self.y * q.y - self.z * q.z)
-	}
-
-	func conjugate(quaternion: EKVector4) -> EKVector4 {
-		let opposite = self.oppositeQuaternion()
-		let step = self.multiplyAsQuaternion(quaternion: quaternion)
-		return step.multiplyAsQuaternion(quaternion: opposite)
-	}
-
-	func conjugate(vector: EKVector3) -> EKVector4 {
-		let opposite = self.oppositeQuaternion()
-		let step = self.multiplyAsQuaternion(
-			quaternion: vector.toHomogeneousVector())
-		return step.multiplyAsQuaternion(quaternion: opposite)
-	}
-
-	func oppositeQuaternion() -> EKVector4 {
-		return EKVector4(x: -self.x, y: -self.y, z: -self.z, w: self.w)
-	}
-
-	public func unitQuaternion() -> EKVector4 {
-		let normSquared = x*x + y*y + z*z + w*w
-		let norm = sqrt(normSquared)
-		return EKVector4(x: x / norm, y: y / norm, z: z / norm, w: w / norm)
 	}
 }

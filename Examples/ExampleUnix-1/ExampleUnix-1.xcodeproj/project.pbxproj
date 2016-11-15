@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		243344981DD8E90A00E851AD /* EKRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKRotation.swift; path = EngineKitCore/EKRotation.swift; sourceTree = "<group>"; };
 		249423E51D2CB3B6009F2100 /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGL.swift; path = Sources/EKOpenGL.swift; sourceTree = "<group>"; };
 		249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = Sources/EKOpenGLAddon.swift; sourceTree = "<group>"; };
 		249423E71D2CB3B6009F2100 /* EKOpenGLCBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLCBridging.swift; path = Sources/EKOpenGLCBridging.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 				24C9B63D1DB679D60020D8AF /* EKVector2.swift */,
 				24C9B63E1DB679D60020D8AF /* EKVector3.swift */,
 				24C9B63F1DB679D60020D8AF /* EKVector4.swift */,
+				243344981DD8E90A00E851AD /* EKRotation.swift */,
 			);
 			name = EngineKitCore;
 			path = ..;
@@ -126,7 +128,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Vinicius Vendramini";
 				TargetAttributes = {
 					24CFC7DD1D18B2280025C437 = {
@@ -183,8 +185,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -228,8 +232,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";

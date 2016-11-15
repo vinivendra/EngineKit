@@ -23,7 +23,6 @@ public class EKEngine {
 
 	var addons = [EKAddon]()
 
-
 	public init() {}
 
 	public func loadAddon(_ addon: EKAddon) {

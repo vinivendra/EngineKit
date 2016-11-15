@@ -22,14 +22,22 @@ class MyEngine: EKSwiftEngine {
 
 		EKGLCamera.mainCamera.position = EKVector3(x: 0, y: 0, z: 10)
 
-		let jsonTargets = [[1.5, 2.6, 3.7], [0, 0, 1], [-2, -1, 0]]
+		let jsonTranslateTargets = [[1.5, 2.6, 3.7], [0, 0, 1], [-2, -1, 0]]
+		let jsonRotateTargets = [[0, 1, 0, 1], [1, 0, 0, 1], [0, 0, 1, 0]]
 		let jsonCommand: [[String: Any]] =
 			[
 				[ // action: translate
 					"action": "translate",
 					"parameters": [
 						"id": 987654321,
-						"targets": jsonTargets
+						"targets": jsonTranslateTargets
+					]
+				],
+				[ // action: rotate
+					"action": "rotate",
+					"parameters": [
+						"id": 987654321,
+						"targets": jsonRotateTargets
 					]
 				]
 			]
@@ -37,11 +45,13 @@ class MyEngine: EKSwiftEngine {
 		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
 		let json = try! JSONSerialization.jsonObject(with: data)
 		let actionsArray = json as! [[String: Any]]
-		let action = actionsArray[0]
+		let actionTranslate = actionsArray[0]
+		let actionRotate = actionsArray[1]
 
-		let command = EKCommandCreate(fromJSON: action)!
-
-		command.apply(to: ball2)
+		let commandTranslate = EKCommandCreate(fromJSON: actionTranslate)!
+		commandTranslate.apply(to: ball2)
+		let commandRotate = EKCommandCreate(fromJSON: actionRotate)!
+		commandRotate.apply(to: ball2)
 
 		//
 		openGL.loopOpenGL()
@@ -75,7 +85,7 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 				   camera.yAxis.times(-resized.x))
 		let rot = EKVector4(x: axis.x, y: axis.y, z: axis.z,
 							w: resized.normSquared())
-		camera.rotate(rot.normalize(), around: EKVector3.origin())
+		camera.rotate(rot.normalized(), around: EKVector3.origin())
 	}
 }
 

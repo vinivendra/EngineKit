@@ -11,7 +11,7 @@ public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 	}
 
 	public static func createVector(x: Double,
-	                                  y: Double) -> EKVector2 {
+	                                y: Double) -> EKVector2 {
 		return EKVector2(x: x, y: y)
 	}
 
@@ -41,8 +41,8 @@ public final class EKVector3: EKVector3Type, EKLanguageCompatible {
 	}
 
 	public static func createVector(x: Double,
-	                                  y: Double,
-	                                  z: Double) -> EKVector3 {
+	                                y: Double,
+	                                z: Double) -> EKVector3 {
 		return EKVector3(x: x, y: y, z: z)
 	}
 
@@ -73,10 +73,43 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 	}
 
 	public static func createVector(x: Double,
+	                                y: Double,
+	                                z: Double,
+	                                w: Double) -> EKVector4 {
+		return EKVector4(x: x, y: y, z: z, w: w)
+	}
+
+	public var debugDescription: String {
+		get {
+			return "x: \(x), y: \(y), z: \(z), w: \(w)"
+		}
+	}
+
+	public var description: String {
+		get {
+			return debugDescription
+		}
+	}
+}
+
+public final class EKRotation: EKRotationType, EKLanguageCompatible {
+	public let x: Double
+	public let y: Double
+	public let z: Double
+	public let w: Double
+
+	init(x: Double, y: Double, z: Double, w: Double) {
+		self.x = x
+		self.y = y
+		self.z = z
+		self.w = w
+	}
+
+	public static func createRotation(x: Double,
 	                                  y: Double,
 	                                  z: Double,
-	                                  w: Double) -> EKVector4 {
-		return EKVector4(x: x, y: y, z: z, w: w)
+	                                  w: Double) -> EKRotation {
+		return EKRotation(x: x, y: y, z: z, w: w)
 	}
 
 	public var debugDescription: String {
@@ -147,7 +180,7 @@ public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 
 	public var debugDescription: String {
 		return "((\(m11) \(m12) \(m13) \(m14)) (\(m21) \(m22) \(m23) \(m24))" +
-			"(\(m31) \(m32) \(m33) \(m34)) (\(m41) \(m42) \(m43) \(m44)))"
+		"(\(m31) \(m32) \(m33) \(m34)) (\(m41) \(m42) \(m43) \(m44)))"
 	}
 
 	public var description: String {

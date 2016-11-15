@@ -1,3 +1,6 @@
+// Needed for trigonometric functions but may be replaced by Glibc/Darwin
+import Foundation
+
 public protocol Interpolable {
 	static func interpolate(start: Self,
 	                        end: Self,
@@ -42,6 +45,42 @@ extension EKVector4: Interpolable {
 	                               interpolatedValue: Double) -> EKVector4 {
 		return start.plus( ( end.minus(start) ).times(interpolatedValue) )
 	}
+}
+
+extension EKRotation: Interpolable {
+	// swiftlint:disable variable_name
+	public static func interpolate(start a: EKRotation,
+	                               end b: EKRotation,
+	                               interpolatedValue t: Double) -> EKRotation {
+		let cosHalfAngle = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w
+
+		// if a=b or a=-b then angle=0 and we can return a
+		if abs(cosHalfAngle) >= 1.0 {
+			return a
+		}
+
+		let halfAngle = acos(cosHalfAngle)
+		let sinHalfAngle = sqrt(1.0 - cosHalfAngle * cosHalfAngle)
+
+		// if theta = 180 degrees then result is not fully defined
+		// we could rotate around any axis normal to a or b
+		// FIXME: not sure if this really is interpolated, it's independent in t
+		if abs(sinHalfAngle) < 0.001 {
+			return EKRotation(x: a.x/2 + b.x/2,
+			                  y: a.y/2 + b.y/2,
+			                  z: a.z/2 + b.z/2,
+			                  w: a.w/2 + b.w/2)
+		}
+
+		let ratioA = sin((1 - t) * halfAngle) / sinHalfAngle
+		let ratioB = sin(t * halfAngle) / sinHalfAngle
+
+		return EKRotation(x: a.x * ratioA + b.x * ratioB,
+		                  y: a.y * ratioA + b.y * ratioB,
+		                  z: a.z * ratioA + b.z * ratioB,
+		                  w: a.w * ratioA + b.w * ratioB)
+	}
+	// swiftlint:enable variable_name
 }
 
 //

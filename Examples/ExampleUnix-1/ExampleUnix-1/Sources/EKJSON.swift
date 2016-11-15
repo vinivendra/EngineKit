@@ -1,7 +1,5 @@
 // swiftlint:disable force_try
 
-import Foundation
-
 public protocol EKCommand {
 	// swiftlint:disable:next variable_name
 	func apply(to: EKGLObject)
@@ -36,6 +34,36 @@ public struct EKCommandTranslate: EKCommand {
 	}
 }
 
+public struct EKCommandRotate: EKCommand {
+	let targets: [[Double]]
+
+	// swiftlint:disable:next variable_name
+	public func apply(to object: EKGLObject) {
+		guard let target = targets.first else { return }
+		// FIXME: this should be a slerp, not a lerp
+		let firstAnimation = EKAnimation(
+			duration: 1.0,
+			startValue: object.rotation,
+			endValue: EKRotation.createRotation(fromArray: target)) {
+				object.rotation = $0
+		}
+
+		var latestAnimation = firstAnimation
+		for target in targets.dropFirst() {
+			let newAnimation = EKAnimation(
+				duration: 1.0,
+				startValue: object.rotation,
+				endValue: EKRotation.createRotation(fromArray: target)) {
+					object.rotation = $0
+			}
+			latestAnimation.chainAnimation = newAnimation
+			latestAnimation = newAnimation
+		}
+
+		firstAnimation.start()
+	}
+}
+
 func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 	guard let rootDictionary = JSONObject as? [String: Any],
 		let actionString = rootDictionary["action"] as? String,
@@ -47,6 +75,10 @@ func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 		guard let targets = parameters["targets"] as? [[Double]]
 			else { return nil }
 		return EKCommandTranslate(targets: targets)
+	case "rotate":
+		guard let targets = parameters["targets"] as? [[Double]]
+			else { return nil }
+		return EKCommandRotate(targets: targets)
 	default:
 		return nil
 	}

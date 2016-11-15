@@ -9,7 +9,7 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	fileprivate var objectIndex: Int? = nil
 
-	public var matrixComponent = EKGLMatrixComponent()
+	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public let vertexComponent: EKGLVertexComponent?
 
 	public var color: EKColorType? = nil
@@ -134,34 +134,27 @@ extension EKGLObject {
 extension EKGLObject {
 	func rotate(_ rotationObject: AnyObject,
 	                   around anchorPoint: AnyObject) {
-		// TODO: This doesn't rotate around the anchor
-		let orientation = rotation.rotationToQuaternion()
-
-		let rotationOperation = EKVector4.createVector(
+		// FIXME: This doesn't rotate around the anchor
+		let rotationOperation = EKRotation.createRotation(
 			fromObject: rotationObject)
-		let quaternion = rotationOperation.rotationToQuaternion()
-			.unitQuaternion()
+		let quaternion = rotationOperation.normalized()
 
-		let newPosition = quaternion.conjugate(vector: position)
-		let newOrientation = quaternion.multiplyAsQuaternion(
-			quaternion: orientation)
+		let newPosition = quaternion.conjugate(vector:
+			position.toHomogeneousVector())
+		let newRotation = quaternion * rotation
 
 		position = newPosition.toEKVector3()
-		rotation = newOrientation.quaternionToRotation()
+		rotation = newRotation
 	}
 
 	func rotate(_ rotationObject: AnyObject) {
-		let orientation = rotation.rotationToQuaternion()
-
-		let rotationOperation = EKVector4.createVector(
+		let rotationOperation = EKRotation.createRotation(
 			fromObject: rotationObject)
-		let quaternion = rotationOperation.rotationToQuaternion()
-			.unitQuaternion()
+		let quaternion = rotationOperation.normalized()
 
-		let newOrientation = quaternion.multiplyAsQuaternion(
-			quaternion: orientation)
+		let newRotation = quaternion * rotation
 
-		rotation = newOrientation.quaternionToRotation()
+		rotation = newRotation
 	}
 }
 
