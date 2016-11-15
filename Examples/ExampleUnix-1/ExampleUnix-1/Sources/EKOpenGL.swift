@@ -12,7 +12,7 @@ public class EKGLObject: EKGLMatrixComposer {
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public let vertexComponent: EKGLVertexComponent?
 
-	public var color: EKColorType? = nil
+	public var color: EKColorType = EKVector4.whiteColor()
 
 	public var name: String? = nil
 
@@ -62,7 +62,6 @@ extension EKGLObject {
 extension EKGLObject {
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
 		guard let vertexComponent = vertexComponent else { return }
-		let color = self.color ?? EKVector4.whiteColor()
 
 		//
 		let completeMask: GLuint = 0xff

@@ -90,6 +90,35 @@ public struct EKCommandScale: EKCommand {
 	}
 }
 
+public struct EKCommandChangeColor: EKCommand {
+	let targets: [[Double]]
+
+	public func apply(to object: EKGLObject) {
+		guard let target = targets.first else { return }
+
+		let firstAnimation = EKAnimation(
+			duration: 1.0,
+			startValue: object.color.toEKVector4(),
+			endValue: EKVector4.createVector(fromArray: target)) {
+				object.color = $0
+		}
+
+		var latestAnimation = firstAnimation
+		for target in targets.dropFirst() {
+			let newAnimation = EKAnimation(
+				duration: 1.0,
+				startValue: object.color.toEKVector4(),
+				endValue: EKVector4.createVector(fromArray: target)) {
+					object.color = $0
+			}
+			latestAnimation.chainAnimation = newAnimation
+			latestAnimation = newAnimation
+		}
+
+		firstAnimation.start()
+	}
+}
+
 func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 	guard let rootDictionary = JSONObject as? [String: Any],
 		let actionString = rootDictionary["action"] as? String,
@@ -109,6 +138,10 @@ func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 		guard let targets = parameters["targets"] as? [[Double]]
 			else { return nil }
 		return EKCommandScale(targets: targets)
+	case "changecolor":
+		guard let targets = parameters["targets"] as? [[Double]]
+			else { return nil }
+		return EKCommandChangeColor(targets: targets)
 	default:
 		return nil
 	}

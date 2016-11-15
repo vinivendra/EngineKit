@@ -38,9 +38,9 @@ extension EKVector4: EKColorType {
 
 public protocol EKColorType: class {
 	static func createColor(red: Double,
-	                            green: Double,
-	                            blue: Double,
-	                            alpha: Double) -> EKColorType
+	                        green: Double,
+	                        blue: Double,
+	                        alpha: Double) -> EKColorType
 
 	var components: (red: Double,
 					 green: Double,
@@ -58,6 +58,16 @@ public func == (lhs: EKColorType, rhs: EKColorType) -> Bool {
 
 public func != (lhs: EKColorType, rhs: EKColorType) -> Bool {
 	return !(lhs == rhs)
+}
+
+extension EKColorType {
+	func toEKVector4() -> EKVector4 {
+		let components = self.components
+		return EKVector4.createVector(x: components.red,
+		                              y: components.green,
+		                              z: components.blue,
+		                              w: components.alpha)
+	}
 }
 
 extension EKColorType {
@@ -161,5 +171,4 @@ extension EKColorType {
 	static func clearColor() -> EKColorType {
 		return createColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 	}
-
 }

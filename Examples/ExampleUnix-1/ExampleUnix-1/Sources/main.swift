@@ -25,6 +25,7 @@ class MyEngine: EKSwiftEngine {
 		let jsonTranslateTargets = [[-1, 1, 1], [0, 0, 0.5], [-2, -1, 0]]
 		let jsonRotateTargets = [[0, 1, 0, 1], [1, 0, 0, 1], [0, 0, 1, 0]]
 		let jsonScaleTargets = [[0.5, 0.5, 0.5], [0.5, 2, 0.5], [1, 1, 1]]
+		let jsonColorTargets = [[0.2, 0.3, 0.4], [0.5, 0.4, 0.3], [0.5, 0.2, 0.3]]
 		let jsonCommand: [[String: Any]] =
 			[
 				[ // action: translate
@@ -46,6 +47,13 @@ class MyEngine: EKSwiftEngine {
 					"parameters": [
 						"id": 987654321,
 						"targets": jsonScaleTargets
+					]
+				],
+				[ // action: scale
+					"action": "changeColor",
+					"parameters": [
+						"id": 987654321,
+						"targets": jsonColorTargets
 					]
 				]
 			]
