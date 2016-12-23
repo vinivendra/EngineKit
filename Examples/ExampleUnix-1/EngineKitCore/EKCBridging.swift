@@ -34,8 +34,8 @@ extension String {
 		-> ReturnType {
 
 			let cString = CString(self)
-			return withUnsafePointer(to: &(cString.buffer)) {
-				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
+			return withUnsafePointer(to: &(cString.buffer))
+			{ (pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
 				-> ReturnType in
 				let foo = unsafeBitCast(
 					pointer, to: UnsafePointer<UnsafePointer<Int8>>.self)
@@ -48,8 +48,8 @@ extension String {
 		-> ReturnType {
 
 			let cString = CString(self)
-			return withUnsafePointer(to: &(cString.buffer)) {
-				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
+			return withUnsafePointer(to: &(cString.buffer))
+			{ (pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
 				-> ReturnType in
 				let foo = unsafeBitCast(
 					pointer, to: UnsafePointer<UnsafePointer<Int8>>.self)

@@ -24,7 +24,7 @@ public class CString {
 	}
 
 	deinit {
-        buffer.deallocate(capacity: len)
+		buffer.deallocate(capacity: len)
 	}
 }
 
@@ -34,7 +34,7 @@ extension String {
 		-> ReturnType {
 
 			let cString = CString(self)
-            return withUnsafePointer(to: &(cString.buffer)) {
+			return withUnsafePointer(to: &(cString.buffer)) {
 				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
 				-> ReturnType in
 				let foo = unsafeBitCast(
@@ -48,7 +48,7 @@ extension String {
 		-> ReturnType {
 
 			let cString = CString(self)
-            return withUnsafePointer(to: &(cString.buffer)) {
+			return withUnsafePointer(to: &(cString.buffer)) {
 				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
 				-> ReturnType in
 				let foo = unsafeBitCast(
