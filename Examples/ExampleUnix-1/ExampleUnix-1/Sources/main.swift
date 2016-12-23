@@ -1,5 +1,4 @@
 // TODO: Consider adding swimat
-// TODO: Check braces in new lines and lines over 80 chars
 
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
