@@ -8,7 +8,7 @@
 
 public protocol EKRotationType: EKLanguageCompatible,
 	CustomDebugStringConvertible,
-	CustomStringConvertible {
+CustomStringConvertible {
 
 	static func createRotation(x: Double,
 	                           y: Double,

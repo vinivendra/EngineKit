@@ -68,7 +68,7 @@ extension EKGLObject {
 		glStencilFunc(GL_ALWAYS, GLint(objectIndex!), completeMask)
 
 		let projectionViewMatrix = projectionViewMatrix ??
-								   EKGLObject.projectionViewMatrix
+			EKGLObject.projectionViewMatrix
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
@@ -93,8 +93,8 @@ extension EKGLObject {
 
 		color.withGLFloatArray {
 			glUniform3fv(location: EKGLObject.colorID,
-						 count: 1,
-						 value: $0)
+			             count: 1,
+			             value: $0)
 		}
 
 		//
@@ -132,7 +132,7 @@ extension EKGLObject {
 
 extension EKGLObject {
 	func rotate(_ rotationObject: AnyObject,
-	                   around anchorPoint: AnyObject) {
+	            around anchorPoint: AnyObject) {
 		// FIXME: This doesn't rotate around the anchor
 		let rotationOperation = EKRotation.createRotation(
 			fromObject: rotationObject)

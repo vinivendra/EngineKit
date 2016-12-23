@@ -92,12 +92,12 @@ extension EKTimer {
 		elapsedTime = elapsedTime + deltaTime
 		if elapsedTime < duration {
 			delegate?.timerHasUpdated(self,
-			                         currentTime: elapsedTime,
-			                         deltaTime: deltaTime)
+			                          currentTime: elapsedTime,
+			                          deltaTime: deltaTime)
 		} else {
 			delegate?.timerHasUpdated(self,
-			                         currentTime: duration,
-			                         deltaTime: deltaTime)
+			                          currentTime: duration,
+			                          deltaTime: deltaTime)
 
 			do {
 				_ = try action?.callWithArgument(argument)

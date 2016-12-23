@@ -53,11 +53,12 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		glBindVertexArray(vertexArrayID)
 
 		//
-		guard let programID = loadShaders(vertexFilePath: "../../vertex.glsl",
-		                            fragmentFilePath: "../../fragment.glsl")
+		guard let programID = loadShaders(
+			vertexFilePath: "../../vertex.glsl",
+			fragmentFilePath: "../../fragment.glsl")
 			else {
-			print("Error compiling shaders.")
-			return
+				print("Error compiling shaders.")
+				return
 		}
 		glUseProgram(programID)
 
@@ -109,8 +110,8 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		let shaderID = glCreateShader(type: shaderType)
 		guard let shaderCode = fileManager.getContentsFromFile(filePath)
 			else {
-			print("Error reading shader \(filePath)")
-			return nil
+				print("Error reading shader \(filePath)")
+				return nil
 		}
 
 		shaderCode.withCStringPointerAndLength { pointer, length in
@@ -156,28 +157,28 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	}
 
 	private func loadShaders(vertexFilePath vertexPath: String,
-							 fragmentFilePath fragmentPath: String) -> GLuint? {
+	                         fragmentFilePath fragmentPath: String) -> GLuint? {
 		guard let vertexShaderID = compileShader(ofType: GL_VERTEX_SHADER,
-												 inFilePath: vertexPath)
+		                                         inFilePath: vertexPath)
 			else {
-			print("Error compiling vertex shader.")
-			return nil
+				print("Error compiling vertex shader.")
+				return nil
 		}
 		defer { glDeleteShader(vertexShaderID) }
 
 		guard let fragmentShaderID = compileShader(ofType: GL_FRAGMENT_SHADER,
 		                                           inFilePath: fragmentPath)
 			else {
-			print("Error compiling fragment shader.")
-			return nil
+				print("Error compiling fragment shader.")
+				return nil
 		}
 		defer { glDeleteShader(fragmentShaderID) }
 
 		guard let programID = linkShaders(vertexShaderID: vertexShaderID,
 		                                  fragmentShaderID: fragmentShaderID)
 			else {
-			print("Error linking shaders.")
-			return nil
+				print("Error linking shaders.")
+				return nil
 		}
 
 		return programID
@@ -192,13 +193,12 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 			inputHandler?.update()
 
 			EKGLObject.projectionViewMatrix = projection *
-											  EKGLCamera.mainCamera.viewMatrix
+				EKGLCamera.mainCamera.viewMatrix
 
 			glClearStencil(0)
-			glClear(
-				GL_COLOR_BUFFER_BIT |
-				GL_DEPTH_BUFFER_BIT |
-				GL_STENCIL_BUFFER_BIT)
+			glClear(GL_COLOR_BUFFER_BIT
+				| GL_DEPTH_BUFFER_BIT
+				| GL_STENCIL_BUFFER_BIT)
 
 			for object in EKGLObject.allObjects where object.parent == nil {
 				object.draw()
@@ -210,7 +210,6 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 			oldTime = newTime
 		} while glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 			glfwWindowShouldClose(window) == 0
-
 		glfwTerminate()
 		glfwDestroyWindow(window)
 	}

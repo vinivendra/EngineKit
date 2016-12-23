@@ -151,7 +151,6 @@ extension String {
 				return false
 			}
 		}
-
 		return true
 	}
 }

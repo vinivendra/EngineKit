@@ -1,4 +1,5 @@
 // TODO: Consider adding swimat
+// TODO: Check braces in new lines and lines over 80 chars
 
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
@@ -58,7 +59,7 @@ class MyEngine: EKSwiftEngine {
 						"targets": jsonColorTargets
 					]
 				]
-			]
+		]
 
 		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
 		let json = try! JSONSerialization.jsonObject(with: data)
@@ -87,7 +88,7 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	if let object = object {
 		let resized = eventPan.displacement.times(0.01)
 		let translation = camera.xAxis.times(resized.x).plus(
-						  camera.yAxis.times(resized.y))
+			camera.yAxis.times(resized.y))
 		let distance = object.position.minus(camera.position)
 		let ratio = distance.norm() / 7.5
 
@@ -98,9 +99,9 @@ try! engine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 		let resized = eventPan.displacement.times(0.01)
 
 		let axis = camera.xAxis.times(resized.y).plus(
-				   camera.yAxis.times(-resized.x))
+			camera.yAxis.times(-resized.x))
 		let rot = EKVector4(x: axis.x, y: axis.y, z: axis.z,
-							w: resized.normSquared())
+		                    w: resized.normSquared())
 		camera.rotate(rot.normalized(), around: EKVector3.origin())
 	}
 }
