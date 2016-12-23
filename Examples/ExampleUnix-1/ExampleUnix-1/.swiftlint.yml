@@ -1,5 +1,6 @@
 disabled_rules:
   - todo
+  - opening_brace
 
 line_length:
   - 80  # warning
