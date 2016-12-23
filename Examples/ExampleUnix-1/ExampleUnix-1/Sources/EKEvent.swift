@@ -165,9 +165,9 @@ public class EKEvent: EKLanguageCompatible {
 
 //
 public enum EKEventInputState: String, RawRepresentable, EKLanguageCompatible {
-	case Began = "Began"
-	case Changed = "Changed"
-	case Ended = "Ended"
+	case Began
+	case Changed
+	case Ended
 }
 
 public class EKEventScreenInput: EKEvent {
