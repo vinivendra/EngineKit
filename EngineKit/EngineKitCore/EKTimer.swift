@@ -29,7 +29,7 @@ public final class EKTimer {
 
 	public init(duration: Double,
 	            repeats: Bool = false,
-	            action: () -> ()) {
+	            action: () -> Void) {
 		self.argument = nil
 		self.action = EKFunctionVoidAction(closure: action)
 		self.duration = duration
@@ -39,7 +39,7 @@ public final class EKTimer {
 	public init<Argument>(duration: Double,
 	            repeats: Bool = false,
 	            argument: Argument,
-	            action: (Argument) -> ()) {
+	            action: (Argument) -> Void) {
 		self.argument = argument
 		self.action = EKFunctionAction(closure: action)
 		self.duration = duration
@@ -50,7 +50,7 @@ public final class EKTimer {
 	            repeats: Bool = false,
 	            argument: Argument,
 	            target: Target,
-	            action: (Target) -> (Argument) -> ()) {
+	            action: (Target) -> (Argument) -> Void) {
 		self.argument = argument
 		self.action = EKMethodAction(object: target, method: action)
 		self.duration = duration
@@ -60,7 +60,7 @@ public final class EKTimer {
 	public init<Target>(duration: Double,
 	            repeats: Bool = false,
 	            target: Target,
-	            action: (Target) -> () -> ()) {
+	            action: (Target) -> Void -> Void) {
 		self.argument = nil
 		self.action = EKMethodVoidAction(object: target, method: action)
 		self.duration = duration
