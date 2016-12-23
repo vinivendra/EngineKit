@@ -104,9 +104,9 @@ extension EKVector3 {
 
 	public static func createVector(withUniformNumbers xyz: Double)
 		-> EKVector3 {
-		return EKVector3.createVector(x: xyz,
-		                              y: xyz,
-		                              z: xyz)
+			return EKVector3.createVector(x: xyz,
+			                              y: xyz,
+			                              z: xyz)
 	}
 
 	public static func createVector(fromArray array: [Double]) -> EKVector3 {
@@ -118,9 +118,9 @@ extension EKVector3 {
 	public static func createVector(fromDictionary dictionary: [String: Double])
 		-> EKVector3 {
 
-		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
-		                         y: dictionary[zero: ["1", "y", "Y"]],
-		                         z: dictionary[zero: ["2", "z", "Z"]])
+			return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
+			                         y: dictionary[zero: ["1", "y", "Y"]],
+			                         z: dictionary[zero: ["2", "z", "Z"]])
 	}
 
 	public static func createVector(fromString string: String) -> EKVector3 {

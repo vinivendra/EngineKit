@@ -16,15 +16,11 @@ public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y)"
-		}
+		return "x: \(x), y: \(y)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
 	}
 }
 
@@ -47,15 +43,11 @@ public final class EKVector3: EKVector3Type, EKLanguageCompatible {
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y), z: \(z)"
-		}
+		return "x: \(x), y: \(y), z: \(z)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
 	}
 }
 
@@ -80,15 +72,11 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y), z: \(z), w: \(w)"
-		}
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
 	}
 }
 
@@ -113,15 +101,11 @@ public final class EKRotation: EKRotationType, EKLanguageCompatible {
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y), z: \(z), w: \(w)"
-		}
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
 	}
 }
 

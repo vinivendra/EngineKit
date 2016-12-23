@@ -17,9 +17,7 @@ public final class EKUnixInputAddon: EKEventAddon {
 	}
 
 	public var firesEventsOfTypes: [EKEvent.Type] {
-		get {
-			return handler.firesEventsOfTypes
-		}
+		return handler.firesEventsOfTypes
 	}
 
 	var oldMouseButtonState: CInt = GLFW_RELEASE
@@ -66,13 +64,11 @@ public final class EKScreenInputHandler {
 	weak public var eventCenter: EKEventCenter?
 
 	public var firesEventsOfTypes: [EKEvent.Type] {
-		get {
-			return [EKEventScreenInput.self,
-			        EKEventScreenInputContinuous.self,
-			        EKEventTap.self,
-			        EKEventPan.self,
-			        EKEventLongPress.self]
-		}
+		return [EKEventScreenInput.self,
+		        EKEventScreenInputContinuous.self,
+		        EKEventTap.self,
+		        EKEventPan.self,
+		        EKEventLongPress.self]
 	}
 
 	var longPressTriggered = false
@@ -129,12 +125,13 @@ public final class EKScreenInputHandler {
 
 		longPressTriggered = false
 
-//		NSTimer.scheduledTimerWithTimeInterval(
-//			0.5,
-//			target: self,
-//			selector: #selector(longPressDelayExpired),
-//			userInfo: nil,
-//			repeats: false)
+		// FIXME:
+		//		NSTimer.scheduledTimerWithTimeInterval(
+		//			0.5,
+		//			target: self,
+		//			selector: #selector(longPressDelayExpired),
+		//			userInfo: nil,
+		//			repeats: false)
 	}
 
 	public func mouseDragged(atPosition position: EKVector2,
@@ -168,7 +165,6 @@ public final class EKScreenInputHandler {
 					displacement: displacement,
 					state: stateOfEventToFire)
 			}
-
 			eventCenter?.fireEvent(eventToFire)
 		}
 	}

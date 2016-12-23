@@ -7,9 +7,7 @@ public struct EKResourcePool<T>: Sequence {
 	public var count = 0
 
 	private var isFull: Bool {
-		get {
-			return firstAvailableIndex == 0
-		}
+		return firstAvailableIndex == 0
 	}
 
 	private var firstAvailableIndex: Int {
@@ -22,9 +20,7 @@ public struct EKResourcePool<T>: Sequence {
 	}
 
 	public subscript(index: Int) -> T? {
-		get {
-			return resources[index].value
-		}
+		return resources[index].value
 	}
 
 	//

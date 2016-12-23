@@ -69,9 +69,7 @@ extension EKGLMatrixComposer {
 	}
 
 	var modelMatrix: EKMatrix {
-		get {
-			return matrixComponent.getMatrix()
-		}
+		return matrixComponent.getMatrix()
 	}
 }
 

@@ -6,13 +6,14 @@
 	import Darwin
 #endif
 
-public protocol EKVector2Type: class,
+public protocol EKVector2Type:
+	class,
 	EKLanguageCompatible,
 	CustomDebugStringConvertible,
-	CustomStringConvertible {
+CustomStringConvertible {
 
 	static func createVector(x: Double,
-	                           y: Double) -> EKVector2
+	                         y: Double) -> EKVector2
 
 	var x: Double { get }
 	var y: Double { get }
@@ -98,8 +99,8 @@ extension EKVector2 {
 		return EKVector2.createVector(x: 0, y: 0)
 	}
 
-	public static func createVector(withUniformNumbers xy: Double)
-		-> EKVector2 {
+	public static func createVector(withUniformNumbers xy: Double) -> EKVector2
+	{
 		return EKVector2.createVector(x: xy,
 		                              y: xy)
 	}
@@ -110,7 +111,8 @@ extension EKVector2 {
 	}
 
 	public static func createVector(fromDictionary dictionary: [String: Double])
-		-> EKVector2 {
+		-> EKVector2
+	{
 		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
 		                         y: dictionary[zero: ["1", "y", "Y"]])
 	}

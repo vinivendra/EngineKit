@@ -24,36 +24,34 @@ public class CString {
 	}
 
 	deinit {
-        buffer.deallocate(capacity: len)
+		buffer.deallocate(capacity: len)
 	}
 }
 
 extension String {
 	func withCStringPointer<ReturnType>(
 		closure: (UnsafePointer<UnsafePointer<Int8>>) -> ReturnType)
-		-> ReturnType {
-
-			let cString = CString(self)
-            return withUnsafePointer(to: &(cString.buffer)) {
-				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
-				-> ReturnType in
-				let foo = unsafeBitCast(
-					pointer, to: UnsafePointer<UnsafePointer<Int8>>.self)
-				return closure(foo)
-			}
+		-> ReturnType
+	{
+		let cString = CString(self)
+		return withUnsafePointer(to: &(cString.buffer))
+		{ (pointer: UnsafePointer<UnsafeMutablePointer<Int8>>) -> ReturnType in
+			let foo = unsafeBitCast(
+				pointer, to: UnsafePointer<UnsafePointer<Int8>>.self)
+			return closure(foo)
+		}
 	}
 
 	func withCStringPointerAndLength<ReturnType>(
 		closure: (UnsafePointer<UnsafePointer<Int8>>, Int) -> ReturnType)
-		-> ReturnType {
-
-			let cString = CString(self)
-            return withUnsafePointer(to: &(cString.buffer)) {
-				(pointer: UnsafePointer<UnsafeMutablePointer<Int8>>)
-				-> ReturnType in
-				let foo = unsafeBitCast(
-					pointer, to: UnsafePointer<UnsafePointer<Int8>>.self)
-				return closure(foo, cString.len)
-			}
+		-> ReturnType
+	{
+		let cString = CString(self)
+		return withUnsafePointer(to: &(cString.buffer))
+		{ (pointer: UnsafePointer<UnsafeMutablePointer<Int8>>) -> ReturnType in
+			let foo = unsafeBitCast(
+				pointer, to: UnsafePointer<UnsafePointer<Int8>>.self)
+			return closure(foo, cString.len)
+		}
 	}
 }

@@ -68,7 +68,7 @@ extension EKGLObject {
 		glStencilFunc(GL_ALWAYS, GLint(objectIndex!), completeMask)
 
 		let projectionViewMatrix = projectionViewMatrix ??
-								   EKGLObject.projectionViewMatrix
+			EKGLObject.projectionViewMatrix
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
@@ -93,8 +93,8 @@ extension EKGLObject {
 
 		color.withGLFloatArray {
 			glUniform3fv(location: EKGLObject.colorID,
-						 count: 1,
-						 value: $0)
+			             count: 1,
+			             value: $0)
 		}
 
 		//
@@ -132,7 +132,7 @@ extension EKGLObject {
 
 extension EKGLObject {
 	func rotate(_ rotationObject: AnyObject,
-	                   around anchorPoint: AnyObject) {
+	            around anchorPoint: AnyObject) {
 		// FIXME: This doesn't rotate around the anchor
 		let rotationOperation = EKRotation.createRotation(
 			fromObject: rotationObject)
@@ -173,29 +173,21 @@ class EKGLCamera: EKGLObject {
 	static var mainCamera = EKGLCamera()
 
 	var viewMatrix: EKMatrix {
-		get {
-			let oldCenter = EKVector3(x: 0, y: 0, z: -1)
-			let center = rotation.rotate(oldCenter).plus(position)
-			let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-			return EKMatrix.createLookAt(eye: position, center: center, up: up)
-		}
+		let oldCenter = EKVector3(x: 0, y: 0, z: -1)
+		let center = rotation.rotate(oldCenter).plus(position)
+		let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
+		return EKMatrix.createLookAt(eye: position, center: center, up: up)
 	}
 
 	var xAxis: EKVector3 {
-		get {
-			return rotation.rotate(EKVector3(x: 1, y: 0, z: 0))
-		}
+		return rotation.rotate(EKVector3(x: 1, y: 0, z: 0))
 	}
 
 	var yAxis: EKVector3 {
-		get {
-			return rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-		}
+		return rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
 	}
 
 	var zAxis: EKVector3 {
-		get {
-			return rotation.rotate(EKVector3(x: 0, y: 0, z: 1))
-		}
+		return rotation.rotate(EKVector3(x: 0, y: 0, z: 1))
 	}
 }

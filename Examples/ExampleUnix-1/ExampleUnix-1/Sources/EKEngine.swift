@@ -33,7 +33,7 @@ public class EKEngine {
 
 	public func register<T>(forEventNamed eventName: String,
 	                     target: T,
-	                     method: @escaping(T) -> (EKEvent) -> ()) throws {
+	                     method: @escaping(T) -> (EKEvent) -> Void) throws {
 		do {
 			try eventCenter.register(forEventNamed: eventName,
 			                         target: target,
@@ -45,7 +45,7 @@ public class EKEngine {
 
 	public func register<Event: EKEvent, T>(forEvent type: Event.Type,
 	                     target: T,
-	                     method: @escaping(T) -> (Event) -> ()) throws {
+	                     method: @escaping(T) -> (Event) -> Void) throws {
 		do {
 			try eventCenter.register(forEvent: type,
 			                         target: target,
@@ -56,7 +56,7 @@ public class EKEngine {
 	}
 
 	public func register(forEventNamed eventName: String,
-	                     callback: @escaping(EKEvent) -> ()) throws {
+	                     callback: @escaping(EKEvent) -> Void) throws {
 		do {
 			try eventCenter.register(forEventNamed: eventName,
 			                         callback: callback)
@@ -66,7 +66,7 @@ public class EKEngine {
 	}
 
 	public func register<Event: EKEvent>(forEvent type: Event.Type,
-	                     callback: @escaping(Event) -> ()) throws {
+	                     callback: @escaping(Event) -> Void) throws {
 		do {
 			try eventCenter.register(forEvent: type, callback: callback)
 		} catch let error {

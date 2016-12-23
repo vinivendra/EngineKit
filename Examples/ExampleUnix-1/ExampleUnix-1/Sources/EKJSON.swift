@@ -15,7 +15,7 @@ public struct EKCommandTranslate: EKCommand {
 			startValue: object.position,
 			endValue: EKVector3.createVector(fromArray: target)) {
 				object.position = $0
-			}
+		}
 
 		var latestAnimation = firstAnimation
 		for target in targets.dropFirst() {

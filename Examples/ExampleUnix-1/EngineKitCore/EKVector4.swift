@@ -8,7 +8,7 @@
 
 public protocol EKVector4Type: EKLanguageCompatible,
 	CustomDebugStringConvertible,
-	CustomStringConvertible {
+CustomStringConvertible {
 
 	static func createVector(x: Double,
 	                         y: Double,
@@ -108,7 +108,8 @@ extension EKVector4 {
 		return EKVector4.createVector(x: 0, y: 0, z: 0, w: 1)
 	}
 
-	public static func createVector(withUniformNumbers xyz: Double) -> EKVector4 {
+	public static func createVector(withUniformNumbers xyz: Double) -> EKVector4
+	{
 		return EKVector4.createVector(x: xyz,
 		                              y: xyz,
 		                              z: xyz,
@@ -125,10 +126,11 @@ extension EKVector4 {
 	public static func createVector(fromDictionary dictionary: [String: Double])
 		-> EKVector4 {
 
-		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
-		                         y: dictionary[zero: ["1", "y", "Y"]],
-		                         z: dictionary[zero: ["2", "z", "Z"]],
-		                         w: dictionary[zero: ["3", "w", "W", "a", "A"]])
+			return self.createVector(
+				x: dictionary[zero: ["0", "x", "X"]],
+				y: dictionary[zero: ["1", "y", "Y"]],
+				z: dictionary[zero: ["2", "z", "Z"]],
+				w: dictionary[zero: ["3", "w", "W", "a", "A"]])
 	}
 
 	public static func createVector(fromString string: String) -> EKVector4 {

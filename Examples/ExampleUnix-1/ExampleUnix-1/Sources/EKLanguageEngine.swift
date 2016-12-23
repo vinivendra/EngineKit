@@ -11,11 +11,11 @@ public protocol EKLanguageEngine {
 }
 
 extension EKLanguageEngine {
-	public func addClass<T: EKLanguageCompatible>
-		(_ class: T.Type,
-		 withName className: String)
-		where T: Initable {
-
+	public func addClass<T: EKLanguageCompatible> (
+		_ type: T.Type,
+		withName className: String)
+		where T: Initable
+	{
 		addClass(T.self, withName: className, constructor: T.init)
 	}
 }
