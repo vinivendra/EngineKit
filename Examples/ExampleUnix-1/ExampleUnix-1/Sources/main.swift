@@ -1,5 +1,3 @@
-// TODO: Consider adding swimat
-
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
 
