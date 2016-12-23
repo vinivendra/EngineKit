@@ -31,9 +31,7 @@ extension EKVector4: EKColorType {
 		green: Double,
 		blue: Double,
 		alpha: Double) {
-		get {
-			return (x, y, z, w)
-		}
+		return (x, y, z, w)
 	}
 }
 

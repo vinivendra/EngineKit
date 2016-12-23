@@ -34,37 +34,29 @@ extension Array where Element: ExpressibleByIntegerLiteral {
 
 extension Dictionary where Value: ExpressibleByIntegerLiteral {
 	subscript(one index: Key) -> Value {
-		get {
-			return self[index] ?? 1
-		}
+		return self[index] ?? 1
 	}
 
 	subscript(zero index: Key) -> Value {
-		get {
-			return self[index] ?? 0
-		}
+		return self[index] ?? 0
 	}
 
 	subscript(one indexes: [Key]) -> Value {
-		get {
-			for index in indexes {
-				if let result = self[index] {
-					return result
-				}
+		for index in indexes {
+			if let result = self[index] {
+				return result
 			}
-			return 1
 		}
+		return 1
 	}
 
 	subscript(zero indexes: [Key]) -> Value {
-		get {
-			for index in indexes {
-				if let result = self[index] {
-					return result
-				}
+		for index in indexes {
+			if let result = self[index] {
+				return result
 			}
-			return 0
 		}
+		return 0
 	}
 
 	func zero(_ index: Key) -> Value {
@@ -74,50 +66,44 @@ extension Dictionary where Value: ExpressibleByIntegerLiteral {
 
 extension UnicodeScalar {
 	var capitalized: UnicodeScalar {
-		get {
-			switch value {
-			case 97...122:
-				return UnicodeScalar(value - 32)!
-			default:
-				return self
-			}
+		switch value {
+		case 97...122:
+			return UnicodeScalar(value - 32)!
+		default:
+			return self
 		}
 	}
 
 	var isLetter: Bool {
-		get {
-			switch value {
-			case 97...122, 65...90:
-				return true
-			default:
-				return false
-			}
+		switch value {
+		case 97...122, 65...90:
+			return true
+		default:
+			return false
 		}
 	}
 }
 
 extension String {
 	var capitalizedString: String {
-		get {
-			var result = ""
-			var shouldCapitalizeNextChar = true
+		var result = ""
+		var shouldCapitalizeNextChar = true
 
-			for char in self.unicodeScalars {
-				if shouldCapitalizeNextChar {
-					result = result + "\(char.capitalized)"
-				} else {
-					result = result + "\(char)"
-				}
-
-				if !char.isLetter {
-					shouldCapitalizeNextChar = true
-				} else {
-					shouldCapitalizeNextChar = false
-				}
+		for char in self.unicodeScalars {
+			if shouldCapitalizeNextChar {
+				result = result + "\(char.capitalized)"
+			} else {
+				result = result + "\(char)"
 			}
 
-			return result
+			if !char.isLetter {
+				shouldCapitalizeNextChar = true
+			} else {
+				shouldCapitalizeNextChar = false
+			}
 		}
+
+		return result
 	}
 }
 
