@@ -6,13 +6,14 @@ import Foundation
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil
 
+	// swiftlint:disable:next function_body_length
 	override func runProgram() {
 		openGL = objects["OpenGL"] as! EKOpenGLAddon
 
 		//
 		let ball = EKGLCube()
 		ball.color = EKVector4.whiteColor()
-		ball.position = EKVector3(x: 1, y: 1, z: 0)
+		ball.position = EKVector3(x: -1, y: 1, z: 0)
 		ball.name = "white"
 		let ball2 = EKGLCube()
 		ball2.color = EKVector4.grayColor()
@@ -70,7 +71,7 @@ class MyEngine: EKSwiftEngine {
 
 		for action in actionsArray {
 			let command = EKCommandCreate(fromJSON: action)!
-			command.apply(to: ball2)
+			command.apply(to: ball3)
 		}
 
 		//

@@ -10,7 +10,7 @@ public class EKGLObject: EKGLMatrixComposer {
 	fileprivate var objectIndex: Int? = nil
 
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
-	public let vertexComponent: EKGLVertexComponent?
+	public var vertexComponent: EKGLVertexComponent?
 
 	public var color: EKColorType = EKVector4.whiteColor()
 
@@ -36,22 +36,7 @@ public class EKGLObject: EKGLMatrixComposer {
 		self.destroy()
 	}
 
-	public func destroy() {
-		self.removeFromParent()
-
-		if let objectIndex = objectIndex {
-			EKGLObject.allObjects.deleteResource(atIndex: objectIndex)
-			self.objectIndex = nil
-		}
-	}
-
 	//
-	public func copy() -> EKGLObject {
-		let object = EKGLObject(vertexComponent: vertexComponent)
-		copyInfo(to: object)
-		return object
-	}
-
 	public func copyInfo(to object: EKGLObject) {
 		object.matrixComponent = matrixComponent
 		object.color = color
@@ -59,6 +44,23 @@ public class EKGLObject: EKGLMatrixComposer {
 
 		for child in children {
 			object.addChild(child.copy())
+		}
+	}
+}
+
+extension EKGLObject {
+	public func copy() -> EKGLObject {
+		let object = EKGLObject(vertexComponent: vertexComponent)
+		copyInfo(to: object)
+		return object
+	}
+
+	public func destroy() {
+		self.removeFromParent()
+
+		if let objectIndex = objectIndex {
+			EKGLObject.allObjects.deleteResource(atIndex: objectIndex)
+			self.objectIndex = nil
 		}
 	}
 }
@@ -177,10 +179,9 @@ public class EKGLCube: EKGLObject {
 		super.init(vertexComponent: EKGLVertexComponent.Cube)
 	}
 
-	override public func copy() -> EKGLCube {
-		let object = EKGLCube()
-		copyInfo(to: object)
-		return object
+	override public func copyInfo(to object: EKGLObject) {
+		super.copyInfo(to: object)
+		object.vertexComponent = EKGLVertexComponent.Cube
 	}
 }
 

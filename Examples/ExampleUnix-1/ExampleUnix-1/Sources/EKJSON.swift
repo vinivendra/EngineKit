@@ -125,7 +125,7 @@ public struct EKCommandRemove: EKCommand {
 	}
 }
 
-// swiftlint:disable cyclomatic_complexity
+// swiftlint:disable:next cyclomatic_complexity
 func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 	guard let rootDictionary = JSONObject as? [String: Any],
 		let actionString = rootDictionary["action"] as? String,
