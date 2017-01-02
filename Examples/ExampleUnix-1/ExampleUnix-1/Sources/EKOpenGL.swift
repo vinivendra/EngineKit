@@ -19,6 +19,7 @@ public class EKGLObject: EKGLMatrixComposer {
 	public var children = [EKGLObject]()
 	public var parent: EKGLObject? = nil
 
+	//
 	internal init(vertexComponent: EKGLVertexComponent?) {
 		self.vertexComponent = vertexComponent
 
@@ -31,6 +32,20 @@ public class EKGLObject: EKGLMatrixComposer {
 		self.init(vertexComponent: nil)
 	}
 
+	deinit {
+		self.destroy()
+	}
+
+	public func destroy() {
+		self.removeFromParent()
+
+		if let objectIndex = objectIndex {
+			EKGLObject.allObjects.deleteResource(atIndex: objectIndex)
+			self.objectIndex = nil
+		}
+	}
+
+	//
 	public func copy() -> EKGLObject {
 		let object = EKGLObject(vertexComponent: vertexComponent)
 		copyInfo(to: object)
