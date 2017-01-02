@@ -1,6 +1,3 @@
-// TODO: Refactor EKCommand.
-// commands should be switched via enum; consider subclassing for DRY.
-
 public enum EKCommand: String {
 	case translate
 	case rotate
@@ -19,7 +16,7 @@ public enum EKCommand: String {
 
 		switch command {
 		case .translate:
-			EKCommandTranslate.apply(withParameters: parameters)
+			applyTranslation(withParameters: parameters)
 		case .rotate:
 			EKCommandRotate.apply(withParameters: parameters)
 		case .scale:
@@ -30,27 +27,32 @@ public enum EKCommand: String {
 			EKCommandRemove.apply(withParameters: parameters)
 		}
 	}
-}
 
-public struct EKCommandTranslate {
-	public static func apply(withParameters parameters: [String: Any]) {
-		guard let targets = parameters["targets"] as? [[Double]],
-			let objectID = parameters["id"] as? Int,
-			let object = EKGLObject.object(withID: objectID)
+	static func getTargets(_ parameters: [String: Any]) -> [[Double]]? {
+		return parameters["targets"] as? [[Double]]
+	}
+
+	static func getObject(_ parameters: [String: Any]) -> EKGLObject? {
+		guard let objectID = parameters["id"] as? Int else { return nil }
+		return EKGLObject.object(withID: objectID)
+	}
+
+	//
+	// TODO: Refactor other commands just like translation
+	static func applyTranslation(withParameters parameters: [String: Any]) {
+		guard let targets = getTargets(parameters),
+			let object = getObject(parameters)
 			else {
 				return
 		}
 
 		let animationTargets = targets.map(EKVector3.createVector(fromArray:))
 
-		let animation = EKAnimation(
+		EKAnimationTranslate(
 			duration: 1.0,
-			startValue: object.position,
-			chainValues: animationTargets) {
-				object.position = $0
-		}
-
-		animation?.start()
+			chainValues: animationTargets,
+			object: object
+			)?.start()
 	}
 }
 

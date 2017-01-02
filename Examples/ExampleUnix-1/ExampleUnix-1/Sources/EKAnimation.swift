@@ -130,9 +130,7 @@ public enum EKTimingFunction {
 //
 private var EKAnimationPool = EKResourcePool<Any>()
 
-// TODO: Refactor EKCommands into EKAnimations
-// Add domain specific animations such as Translate, maybe as subclasses
-public final class EKAnimation
+public class EKAnimation
 <InterpolatedType: Interpolable>: EKTimerDelegate {
 
 	private var poolIndex: Int? = nil
@@ -169,7 +167,7 @@ public final class EKAnimation
 		timer.delegate = self
 	}
 
-	public convenience init?(duration: Double,
+	public init?(duration: Double,
 	                         startValue: InterpolatedType,
 	                         chainValues: [InterpolatedType],
 	                         repeats: Bool = false,
@@ -179,14 +177,15 @@ public final class EKAnimation
 		guard let firstChainValue = chainValues.first
 			else { return nil }
 
-		self.init(
-			duration: duration,
-			startValue: startValue,
-			endValue: firstChainValue,
-			repeats: repeats,
-			autoreverses: autoreverses,
-			timingFunction: timingFunction,
-			action: action)
+		self.duration = duration
+		self.startValue = startValue
+		self.endValue = firstChainValue
+		self.repeats = repeats
+		self.autoreverses = autoreverses
+		self.timingFunction = timingFunction.getFunction()
+		self.action = EKFunctionAction(closure: action)
+		self.timer = EKTimer(duration: duration, repeats: repeats)
+		timer.delegate = self
 
 		let chainAnimation = EKAnimation(
 			duration: duration,
