@@ -32,35 +32,35 @@ class MyEngine: EKSwiftEngine {
 				[
 					"action": "translate",
 					"parameters": [
-						"id": 987654321,
+						"id": ball2.objectID!,
 						"targets": jsonTranslateTargets
 					]
 				],
 				[
 					"action": "rotate",
 					"parameters": [
-						"id": 987654321,
+						"id": ball2.objectID!,
 						"targets": jsonRotateTargets
 					]
 				],
 				[
 					"action": "scale",
 					"parameters": [
-						"id": 987654321,
+						"id": ball2.objectID!,
 						"targets": jsonScaleTargets
 					]
 				],
 				[
 					"action": "changeColor",
 					"parameters": [
-						"id": 987654321,
+						"id": ball2.objectID!,
 						"targets": jsonColorTargets
 					]
 				]
 //				,[
 //					"action": "remove",
 //					"parameters": [
-//						"id": 987654321
+//						"id": ball2.objectID!
 //					]
 //				]
 		]
@@ -71,7 +71,7 @@ class MyEngine: EKSwiftEngine {
 
 		for action in actionsArray {
 			let command = EKCommandCreate(fromJSON: action)!
-			command.apply(to: ball3)
+			command.apply()
 		}
 
 		//

@@ -7,7 +7,7 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	fileprivate var objectIndex: Int? = nil
+	fileprivate(set) public var objectID: Int? = nil
 
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public var vertexComponent: EKGLVertexComponent?
@@ -23,8 +23,8 @@ public class EKGLObject: EKGLMatrixComposer {
 	internal init(vertexComponent: EKGLVertexComponent?) {
 		self.vertexComponent = vertexComponent
 
-		if objectIndex == nil {
-			objectIndex = EKGLObject.allObjects.addResourceAndGetIndex(self)
+		if objectID == nil {
+			objectID = EKGLObject.allObjects.addResourceAndGetIndex(self)
 		}
 	}
 
@@ -49,6 +49,12 @@ public class EKGLObject: EKGLMatrixComposer {
 }
 
 extension EKGLObject {
+	public static func object(withID objectID: Int) -> EKGLObject? {
+		return EKGLObject.allObjects[objectID]
+	}
+}
+
+extension EKGLObject {
 	public func copy() -> EKGLObject {
 		let object = EKGLObject(vertexComponent: vertexComponent)
 		copyInfo(to: object)
@@ -58,9 +64,9 @@ extension EKGLObject {
 	public func destroy() {
 		self.removeFromParent()
 
-		if let objectIndex = objectIndex {
-			EKGLObject.allObjects.deleteResource(atIndex: objectIndex)
-			self.objectIndex = nil
+		if let objectID = objectID {
+			EKGLObject.allObjects.deleteResource(atIndex: objectID)
+			self.objectID = nil
 		}
 	}
 }
@@ -82,7 +88,7 @@ extension EKGLObject {
 
 		//
 		let completeMask: GLuint = 0xff
-		glStencilFunc(GL_ALWAYS, GLint(objectIndex!), completeMask)
+		glStencilFunc(GL_ALWAYS, GLint(objectID!), completeMask)
 
 		let projectionViewMatrix = projectionViewMatrix ??
 			EKGLObject.projectionViewMatrix
@@ -137,7 +143,7 @@ extension EKGLObject {
 		guard let parent = parent else { return }
 
 		for (index, sibling) in parent.children.enumerated() {
-			if sibling.objectIndex == self.objectIndex {
+			if sibling.objectID == self.objectID {
 				parent.children.remove(at: index)
 				break
 			}
