@@ -57,99 +57,67 @@ public struct EKCommandTranslate {
 public struct EKCommandRotate {
 	public static func apply(withParameters parameters: [String: Any]) {
 		guard let targets = parameters["targets"] as? [[Double]],
-			let target = targets.first,
 			let objectID = parameters["id"] as? Int,
 			let object = EKGLObject.object(withID: objectID)
 			else {
 				return
 		}
 
-		let firstAnimation = EKAnimation(
+		let animationTargets = targets.map(
+			EKRotation.createRotation(fromArray:))
+
+		let animation = EKAnimation(
 			duration: 1.0,
 			startValue: object.rotation,
-			endValue: EKRotation.createRotation(fromArray: target)) {
+			chainValues: animationTargets) {
 				object.rotation = $0
 		}
 
-		var latestAnimation = firstAnimation
-		for target in targets.dropFirst() {
-			let newAnimation = EKAnimation(
-				duration: 1.0,
-				startValue: object.rotation,
-				endValue: EKRotation.createRotation(fromArray: target)) {
-					object.rotation = $0
-			}
-			latestAnimation.chainAnimation = newAnimation
-			latestAnimation = newAnimation
-		}
-
-		firstAnimation.start()
+		animation?.start()
 	}
 }
 
 public struct EKCommandScale {
 	public static func apply(withParameters parameters: [String: Any]) {
 		guard let targets = parameters["targets"] as? [[Double]],
-			let target = targets.first,
 			let objectID = parameters["id"] as? Int,
 			let object = EKGLObject.object(withID: objectID)
 			else {
 				return
 		}
 
-		let firstAnimation = EKAnimation(
+		let animationTargets = targets.map(EKVector3.createVector(fromArray:))
+
+		let animation = EKAnimation(
 			duration: 1.0,
 			startValue: object.scale,
-			endValue: EKVector3.createVector(fromArray: target)) {
+			chainValues: animationTargets) {
 				object.scale = $0
 		}
 
-		var latestAnimation = firstAnimation
-		for target in targets.dropFirst() {
-			let newAnimation = EKAnimation(
-				duration: 1.0,
-				startValue: object.scale,
-				endValue: EKVector3.createVector(fromArray: target)) {
-					object.scale = $0
-			}
-			latestAnimation.chainAnimation = newAnimation
-			latestAnimation = newAnimation
-		}
-
-		firstAnimation.start()
+		animation?.start()
 	}
 }
 
 public struct EKCommandChangeColor {
 	public static func apply(withParameters parameters: [String: Any]) {
 		guard let targets = parameters["targets"] as? [[Double]],
-			let target = targets.first,
 			let objectID = parameters["id"] as? Int,
 			let object = EKGLObject.object(withID: objectID)
 			else {
 				return
 		}
 
-		let firstAnimation = EKAnimation(
+		let animationTargets = targets.map(EKVector4.createVector(fromArray:))
+
+		let animation = EKAnimation(
 			duration: 1.0,
 			startValue: object.color.toEKVector4(),
-			endValue: EKVector4.createVector(fromArray: target)) {
+			chainValues: animationTargets) {
 				object.color = $0
 		}
 
-		var latestAnimation = firstAnimation
-		for target in targets.dropFirst() {
-			let newAnimation = EKAnimation(
-				duration: 1.0,
-				startValue: object.color.toEKVector4(),
-				endValue: EKVector4.createVector(fromArray: target)) {
-					object.color = $0
-			}
-			latestAnimation.chainAnimation = newAnimation
-			latestAnimation = newAnimation
-		}
-
-		firstAnimation.start()
+		animation?.start()
 	}
 }
 
