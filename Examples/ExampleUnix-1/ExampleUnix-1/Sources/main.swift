@@ -70,8 +70,7 @@ class MyEngine: EKSwiftEngine {
 		let actionsArray = json as! [[String: Any]]
 
 		for action in actionsArray {
-			let command = EKCommandCreate(fromJSON: action)!
-			command.apply()
+			EKCommand.applyCommand(fromJSON: action)
 		}
 
 		//
