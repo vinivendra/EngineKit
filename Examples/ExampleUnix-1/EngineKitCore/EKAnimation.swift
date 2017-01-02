@@ -87,41 +87,41 @@ extension EKRotation: Interpolable {
 public typealias EKInterpolationFunction = (Double) -> Double
 
 public enum EKTimingFunction {
-	case Linear
-	case EaseIn
-	case EaseOut
-	case EaseInOut
-	case Other(EKInterpolationFunction)
+	case linear
+	case easeIn
+	case easeOut
+	case easeInOut
+	case other(EKInterpolationFunction)
 
 	// swiftlint:disable variable_name
-	private static let linear = { (x: Double) -> Double in
+	private static let linearFunction = { (x: Double) -> Double in
 		return x
 	}
 
-	private static let easeInOut = { (x: Double) -> Double in
+	private static let easeInOutFunction = { (x: Double) -> Double in
 		return (x * x * x * (x * (x * 6 - 15) + 10))
 	}
 
-	private static let easeIn = { (x: Double) -> Double in
+	private static let easeInFunction = { (x: Double) -> Double in
 		return x * x
 	}
 
-	private static let easeOut = { (x: Double) -> Double in
+	private static let easeOutFunction = { (x: Double) -> Double in
 		return 1 - ((1 - x) * (1 - x))
 	}
 	// swiftlint:enable variable_name
 
 	public func getFunction() -> (EKInterpolationFunction) {
 		switch self {
-		case .Linear:
-			return EKTimingFunction.linear
-		case .EaseIn:
-			return EKTimingFunction.easeIn
-		case .EaseOut:
-			return EKTimingFunction.easeOut
-		case .EaseInOut:
-			return EKTimingFunction.easeInOut
-		case .Other(let function):
+		case .linear:
+			return EKTimingFunction.linearFunction
+		case .easeIn:
+			return EKTimingFunction.easeInFunction
+		case .easeOut:
+			return EKTimingFunction.easeOutFunction
+		case .easeInOut:
+			return EKTimingFunction.easeInOutFunction
+		case .other(let function):
 			return function
 		}
 	}
@@ -130,6 +130,9 @@ public enum EKTimingFunction {
 //
 private var EKAnimationPool = EKResourcePool<Any>()
 
+// TODO: Refactor EKCommands into EKAnimations
+// Add a chained animation init for an array of values
+// Add domain specific animations such as Translate, maybe as subclasses
 public final class EKAnimation
 <InterpolatedType: Interpolable>: EKTimerDelegate {
 
@@ -154,7 +157,7 @@ public final class EKAnimation
 	            endValue: InterpolatedType,
 	            repeats: Bool = false,
 	            autoreverses: Bool = false,
-	            timingFunction: EKTimingFunction = .EaseInOut,
+	            timingFunction: EKTimingFunction = .easeInOut,
 	            action: @escaping((InterpolatedType) -> Void)) {
 		self.duration = duration
 		self.startValue = startValue
