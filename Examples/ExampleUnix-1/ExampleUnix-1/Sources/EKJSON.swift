@@ -35,33 +35,22 @@ public enum EKCommand: String {
 public struct EKCommandTranslate {
 	public static func apply(withParameters parameters: [String: Any]) {
 		guard let targets = parameters["targets"] as? [[Double]],
-			let target = targets.first,
 			let objectID = parameters["id"] as? Int,
 			let object = EKGLObject.object(withID: objectID)
 			else {
 				return
 		}
 
-		let firstAnimation = EKAnimation(
+		let animationTargets = targets.map(EKVector3.createVector(fromArray:))
+
+		let animation = EKAnimation(
 			duration: 1.0,
 			startValue: object.position,
-			endValue: EKVector3.createVector(fromArray: target)) {
+			chainValues: animationTargets) {
 				object.position = $0
 		}
 
-		var latestAnimation = firstAnimation
-		for target in targets.dropFirst() {
-			let newAnimation = EKAnimation(
-				duration: 1.0,
-				startValue: object.position,
-				endValue: EKVector3.createVector(fromArray: target)) {
-					object.position = $0
-			}
-			latestAnimation.chainAnimation = newAnimation
-			latestAnimation = newAnimation
-		}
-
-		firstAnimation.start()
+		animation?.start()
 	}
 }
 

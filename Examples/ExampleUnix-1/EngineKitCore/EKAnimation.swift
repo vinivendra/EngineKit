@@ -131,7 +131,6 @@ public enum EKTimingFunction {
 private var EKAnimationPool = EKResourcePool<Any>()
 
 // TODO: Refactor EKCommands into EKAnimations
-// Add a chained animation init for an array of values
 // Add domain specific animations such as Translate, maybe as subclasses
 public final class EKAnimation
 <InterpolatedType: Interpolable>: EKTimerDelegate {
@@ -170,6 +169,71 @@ public final class EKAnimation
 		timer.delegate = self
 	}
 
+	public convenience init?(duration: Double,
+	                         startValue: InterpolatedType,
+	                         chainValues: [InterpolatedType],
+	                         repeats: Bool = false,
+	                         autoreverses: Bool = false,
+	                         timingFunction: EKTimingFunction = .easeInOut,
+	                         action: @escaping((InterpolatedType) -> Void)) {
+		guard let firstChainValue = chainValues.first
+			else { return nil }
+
+		self.init(
+			duration: duration,
+			startValue: startValue,
+			endValue: firstChainValue,
+			repeats: repeats,
+			autoreverses: autoreverses,
+			timingFunction: timingFunction,
+			action: action)
+
+		let chainAnimation = EKAnimation(
+			duration: duration,
+			chainValues: ArraySlice<InterpolatedType>(chainValues),
+			repeats: repeats,
+			autoreverses: autoreverses,
+			timingFunction: timingFunction,
+			action: action)
+
+		self.chainAnimation = chainAnimation
+	}
+
+	convenience init?(duration: Double,
+	            chainValues: ArraySlice<InterpolatedType>,
+	            repeats: Bool = false,
+	            autoreverses: Bool = false,
+	            timingFunction: EKTimingFunction = .easeInOut,
+	            action: @escaping((InterpolatedType) -> Void)) {
+		let otherChainValues = chainValues.dropFirst()
+
+		guard let start = chainValues.first,
+			let end = otherChainValues.first
+			else {
+				return nil
+		}
+
+		self.init(
+			duration: duration,
+			startValue: start,
+			endValue: end,
+			repeats: repeats,
+			autoreverses: autoreverses,
+			timingFunction: timingFunction,
+			action: action)
+
+		let chainAnimation = EKAnimation(
+			duration: duration,
+			chainValues: otherChainValues,
+			repeats: repeats,
+			autoreverses: autoreverses,
+			timingFunction: timingFunction,
+			action: action)
+
+		self.chainAnimation = chainAnimation
+	}
+
+	//
 	public func start() {
 		if poolIndex == nil {
 			poolIndex = EKAnimationPool.addResourceAndGetIndex(self)
