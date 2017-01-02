@@ -119,6 +119,13 @@ public struct EKCommandChangeColor: EKCommand {
 	}
 }
 
+public struct EKCommandRemove: EKCommand {
+	public func apply(to object: EKGLObject) {
+		object.destroy()
+	}
+}
+
+// swiftlint:disable cyclomatic_complexity
 func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 	guard let rootDictionary = JSONObject as? [String: Any],
 		let actionString = rootDictionary["action"] as? String,
@@ -142,6 +149,8 @@ func EKCommandCreate(fromJSON JSONObject: Any) -> EKCommand? {
 		guard let targets = parameters["targets"] as? [[Double]]
 			else { return nil }
 		return EKCommandChangeColor(targets: targets)
+	case "remove":
+		return EKCommandRemove()
 	default:
 		return nil
 	}

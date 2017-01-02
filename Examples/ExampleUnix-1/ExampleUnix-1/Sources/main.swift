@@ -28,34 +28,40 @@ class MyEngine: EKSwiftEngine {
 		let jsonColorTargets = [[0.2, 0.3, 0.4], [0.5, 0.4, 0.3], [0.5, 0.2, 0.3]]
 		let jsonCommand: [[String: Any]] =
 			[
-				[ // action: translate
+				[
 					"action": "translate",
 					"parameters": [
 						"id": 987654321,
 						"targets": jsonTranslateTargets
 					]
 				],
-				[ // action: rotate
+				[
 					"action": "rotate",
 					"parameters": [
 						"id": 987654321,
 						"targets": jsonRotateTargets
 					]
 				],
-				[ // action: scale
+				[
 					"action": "scale",
 					"parameters": [
 						"id": 987654321,
 						"targets": jsonScaleTargets
 					]
 				],
-				[ // action: scale
+				[
 					"action": "changeColor",
 					"parameters": [
 						"id": 987654321,
 						"targets": jsonColorTargets
 					]
 				]
+//				,[
+//					"action": "remove",
+//					"parameters": [
+//						"id": 987654321
+//					]
+//				]
 		]
 
 		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
