@@ -18,13 +18,13 @@ public enum EKCommand: String {
 		case .translate:
 			applyTranslation(withParameters: parameters)
 		case .rotate:
-			EKCommandRotate.apply(withParameters: parameters)
+			applyRotation(withParameters: parameters)
 		case .scale:
-			EKCommandScale.apply(withParameters: parameters)
+			applyScale(withParameters: parameters)
 		case .changeColor:
-			EKCommandChangeColor.apply(withParameters: parameters)
+			applyChangeColor(withParameters: parameters)
 		case .remove:
-			EKCommandRemove.apply(withParameters: parameters)
+			applyRemove(withParameters: parameters)
 		}
 	}
 
@@ -38,7 +38,6 @@ public enum EKCommand: String {
 	}
 
 	//
-	// TODO: Refactor other commands just like translation
 	static func applyTranslation(withParameters parameters: [String: Any]) {
 		guard let targets = getTargets(parameters),
 			let object = getObject(parameters)
@@ -54,13 +53,10 @@ public enum EKCommand: String {
 			object: object
 			)?.start()
 	}
-}
 
-public struct EKCommandRotate {
-	public static func apply(withParameters parameters: [String: Any]) {
-		guard let targets = parameters["targets"] as? [[Double]],
-			let objectID = parameters["id"] as? Int,
-			let object = EKGLObject.object(withID: objectID)
+	static func applyRotation(withParameters parameters: [String: Any]) {
+		guard let targets = getTargets(parameters),
+			let object = getObject(parameters)
 			else {
 				return
 		}
@@ -68,65 +64,47 @@ public struct EKCommandRotate {
 		let animationTargets = targets.map(
 			EKRotation.createRotation(fromArray:))
 
-		let animation = EKAnimation(
+		EKAnimationRotate(
 			duration: 1.0,
-			startValue: object.rotation,
-			chainValues: animationTargets) {
-				object.rotation = $0
-		}
-
-		animation?.start()
+			chainValues: animationTargets,
+			object: object
+			)?.start()
 	}
-}
 
-public struct EKCommandScale {
-	public static func apply(withParameters parameters: [String: Any]) {
-		guard let targets = parameters["targets"] as? [[Double]],
-			let objectID = parameters["id"] as? Int,
-			let object = EKGLObject.object(withID: objectID)
+	static func applyScale(withParameters parameters: [String: Any]) {
+		guard let targets = getTargets(parameters),
+			let object = getObject(parameters)
 			else {
 				return
 		}
 
 		let animationTargets = targets.map(EKVector3.createVector(fromArray:))
 
-		let animation = EKAnimation(
+		EKAnimationScale(
 			duration: 1.0,
-			startValue: object.scale,
-			chainValues: animationTargets) {
-				object.scale = $0
-		}
-
-		animation?.start()
+			chainValues: animationTargets,
+			object: object
+			)?.start()
 	}
-}
 
-public struct EKCommandChangeColor {
-	public static func apply(withParameters parameters: [String: Any]) {
-		guard let targets = parameters["targets"] as? [[Double]],
-			let objectID = parameters["id"] as? Int,
-			let object = EKGLObject.object(withID: objectID)
+	static func applyChangeColor(withParameters parameters: [String: Any]) {
+		guard let targets = getTargets(parameters),
+			let object = getObject(parameters)
 			else {
 				return
 		}
 
 		let animationTargets = targets.map(EKVector4.createVector(fromArray:))
 
-		let animation = EKAnimation(
+		EKAnimationChangeColor(
 			duration: 1.0,
-			startValue: object.color.toEKVector4(),
-			chainValues: animationTargets) {
-				object.color = $0
-		}
-
-		animation?.start()
+			chainValues: animationTargets,
+			object: object
+			)?.start()
 	}
-}
 
-public struct EKCommandRemove {
-	public static func apply(withParameters parameters: [String: Any]) {
-		guard let objectID = parameters["id"] as? Int,
-			let object = EKGLObject.object(withID: objectID)
+	static func applyRemove(withParameters parameters: [String: Any]) {
+		guard let object = getObject(parameters)
 			else {
 				return
 		}
