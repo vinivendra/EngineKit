@@ -9,6 +9,7 @@ public enum EKCommand: String {
 % for (command, Command, transform) in commands:
     case ${command}
 %end
+	case changeName
 	case remove
 
 	static func applyCommand(fromJSON JSONObject: Any) {
@@ -25,6 +26,8 @@ public enum EKCommand: String {
 		case .${command}:
 			apply${Command}(withParameters: parameters)
 %end
+		case .changeName:
+			applyChangeName(withParameters: parameters)
 		case .remove:
 			applyRemove(withParameters: parameters)
 		}
@@ -58,12 +61,22 @@ public enum EKCommand: String {
 	}
 
 %end
-	static func applyRemove(withParameters parameters: [String: Any]) {
-		guard let object = getObject(parameters)
+	static func applyChangeName(withParameters parameters: [String: Any]) {
+		guard let newName = parameters["name"] as? String,
+			let object = getObject(parameters)
 			else {
 				return
 		}
 
-		object.destroy()
+		object.name = newName
+	}
+
+	static func applyRemove(withParameters parameters: [String: Any]) {
+		guard let object = getObject(parameters)
+			else {
+				return
+			}
+
+			object.destroy()
 	}
 }

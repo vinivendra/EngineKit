@@ -4,6 +4,7 @@ public enum EKCommand: String {
     case rotate
     case scale
     case changeColor
+	case changeName
 	case remove
 
 	static func applyCommand(fromJSON JSONObject: Any) {
@@ -24,6 +25,8 @@ public enum EKCommand: String {
 			applyScale(withParameters: parameters)
 		case .changeColor:
 			applyChangeColor(withParameters: parameters)
+		case .changeName:
+			applyChangeName(withParameters: parameters)
 		case .remove:
 			applyRemove(withParameters: parameters)
 		}
@@ -103,12 +106,22 @@ public enum EKCommand: String {
 			)?.start()
 	}
 
-	static func applyRemove(withParameters parameters: [String: Any]) {
-		guard let object = getObject(parameters)
+	static func applyChangeName(withParameters parameters: [String: Any]) {
+		guard let newName = parameters["name"] as? String,
+			let object = getObject(parameters)
 			else {
 				return
 		}
 
-		object.destroy()
+		object.name = newName
+	}
+
+	static func applyRemove(withParameters parameters: [String: Any]) {
+		guard let object = getObject(parameters)
+			else {
+				return
+			}
+
+			object.destroy()
 	}
 }

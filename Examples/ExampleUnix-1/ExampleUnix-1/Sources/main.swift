@@ -18,7 +18,7 @@ class MyEngine: EKSwiftEngine {
 		let ball2 = EKGLCube()
 		ball2.color = EKVector4.grayColor()
 		ball2.position = EKVector3(x: -2, y: -1, z: 0)
-		ball2.name = "gray"
+		ball2.name = "gray ball"
 		ball.addChild(ball2)
 
 		EKGLCamera.mainCamera.position = EKVector3(x: 0, y: 0, z: 10)
@@ -56,6 +56,13 @@ class MyEngine: EKSwiftEngine {
 						"id": ball2.objectID!,
 						"targets": jsonColorTargets
 					]
+				],
+				[
+					"action": "changeName",
+					"parameters": [
+						"id": ball2.objectID!,
+						"name": "my new name"
+					]
 				]
 //				,[
 //					"action": "remove",
@@ -65,6 +72,8 @@ class MyEngine: EKSwiftEngine {
 //				]
 		]
 
+		print("Old name = \(ball2.name)")
+
 		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
 		let json = try! JSONSerialization.jsonObject(with: data)
 		let actionsArray = json as! [[String: Any]]
@@ -72,6 +81,8 @@ class MyEngine: EKSwiftEngine {
 		for action in actionsArray {
 			EKCommand.applyCommand(fromJSON: action)
 		}
+
+		print("New name = \(ball2.name)")
 
 		//
 		openGL.loopOpenGL()
