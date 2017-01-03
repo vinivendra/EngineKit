@@ -1,11 +1,11 @@
 %{
-  animations = [('Translate', 'EKVector3', 'position', ''),
-                ('Rotate', 'EKRotation', 'rotation', ''),
-                ('Scale', 'EKVector3', 'scale', ''),
-                ('ChangeColor', 'EKVector4', 'color', '.toEKVector4()')]
+animations = [('Translate', 'EKVector3', 'position', ''),
+			  ('Rotate', 'EKRotation', 'rotation', ''),
+			  ('Scale', 'EKVector3', 'scale', ''),
+			  ('ChangeColor', 'EKVector4', 'color', '.toEKVector4()')]
 }%
 % for animationData in animations:
-    % name, type, property, getter = animationData
+	% name, type, property, getter = animationData
 public class EKAnimation${name}: EKAnimation<${type}> {
 	init(duration: Double,
 	     endValue: ${type},
