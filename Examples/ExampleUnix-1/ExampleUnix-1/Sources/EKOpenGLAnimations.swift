@@ -33,7 +33,6 @@ public class EKAnimationTranslate: EKAnimation<EKVector3> {
 		})
 	}
 }
-
 public class EKAnimationRotate: EKAnimation<EKRotation> {
 	init(duration: Double,
 	     endValue: EKRotation,
@@ -69,7 +68,6 @@ public class EKAnimationRotate: EKAnimation<EKRotation> {
 		})
 	}
 }
-
 public class EKAnimationScale: EKAnimation<EKVector3> {
 	init(duration: Double,
 	     endValue: EKVector3,
@@ -105,7 +103,6 @@ public class EKAnimationScale: EKAnimation<EKVector3> {
 		})
 	}
 }
-
 public class EKAnimationChangeColor: EKAnimation<EKVector4> {
 	init(duration: Double,
 	     endValue: EKVector4,
