@@ -1,0 +1,68 @@
+%{
+commands = [('translate', 'Translate', 'EKVector3.createVector(fromArray:)'),
+			('rotate', 'Rotate', 'EKRotation.createRotation(fromArray:)'),
+			('scale', 'Scale', 'EKVector3.createVector(fromArray:)'),
+			('changeColor', 'ChangeColor', 'EKVector4.createVector(fromArray:)')]
+}%
+public enum EKCommand: String {
+% for (command, Command, transform) in commands:
+    case ${command}
+%end
+	case remove
+
+	static func applyCommand(fromJSON JSONObject: Any) {
+		guard let rootDictionary = JSONObject as? [String: Any],
+			let actionString = rootDictionary["action"] as? String,
+			let command = EKCommand(rawValue: actionString),
+			let parameters = rootDictionary["parameters"] as? [String: Any]
+			else {
+				return
+		}
+
+		switch command {
+% for (command, Command, transform) in commands:
+		case .${command}:
+			apply${Command}(withParameters: parameters)
+%end
+		case .remove:
+			applyRemove(withParameters: parameters)
+		}
+	}
+
+	static func getTargets(_ parameters: [String: Any]) -> [[Double]]? {
+		return parameters["targets"] as? [[Double]]
+	}
+
+	static func getObject(_ parameters: [String: Any]) -> EKGLObject? {
+		guard let objectID = parameters["id"] as? Int else { return nil }
+		return EKGLObject.object(withID: objectID)
+	}
+
+	//
+% for (command, Command, transform) in commands:
+	static func apply${Command}(withParameters parameters: [String: Any]) {
+		guard let targets = getTargets(parameters),
+			let object = getObject(parameters)
+			else {
+				return
+		}
+
+		let animationTargets = targets.map(${transform})
+
+		EKAnimation${Command}(
+			duration: 1.0,
+			chainValues: animationTargets,
+			object: object
+			)?.start()
+	}
+
+%end
+	static func applyRemove(withParameters parameters: [String: Any]) {
+		guard let object = getObject(parameters)
+			else {
+				return
+		}
+
+		object.destroy()
+	}
+}

@@ -1,14 +1,14 @@
 public enum EKCommand: String {
-	case translate
-	case rotate
-	case scale
-	case changeColor = "changecolor"
+    case translate
+    case rotate
+    case scale
+    case changeColor
 	case remove
 
 	static func applyCommand(fromJSON JSONObject: Any) {
 		guard let rootDictionary = JSONObject as? [String: Any],
 			let actionString = rootDictionary["action"] as? String,
-			let command = EKCommand(rawValue: actionString.lowercased()),
+			let command = EKCommand(rawValue: actionString),
 			let parameters = rootDictionary["parameters"] as? [String: Any]
 			else {
 				return
@@ -16,9 +16,9 @@ public enum EKCommand: String {
 
 		switch command {
 		case .translate:
-			applyTranslation(withParameters: parameters)
+			applyTranslate(withParameters: parameters)
 		case .rotate:
-			applyRotation(withParameters: parameters)
+			applyRotate(withParameters: parameters)
 		case .scale:
 			applyScale(withParameters: parameters)
 		case .changeColor:
@@ -38,7 +38,7 @@ public enum EKCommand: String {
 	}
 
 	//
-	static func applyTranslation(withParameters parameters: [String: Any]) {
+	static func applyTranslate(withParameters parameters: [String: Any]) {
 		guard let targets = getTargets(parameters),
 			let object = getObject(parameters)
 			else {
@@ -54,15 +54,14 @@ public enum EKCommand: String {
 			)?.start()
 	}
 
-	static func applyRotation(withParameters parameters: [String: Any]) {
+	static func applyRotate(withParameters parameters: [String: Any]) {
 		guard let targets = getTargets(parameters),
 			let object = getObject(parameters)
 			else {
 				return
 		}
 
-		let animationTargets = targets.map(
-			EKRotation.createRotation(fromArray:))
+		let animationTargets = targets.map(EKRotation.createRotation(fromArray:))
 
 		EKAnimationRotate(
 			duration: 1.0,
