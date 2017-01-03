@@ -63,6 +63,26 @@ class MyEngine: EKSwiftEngine {
 						"id": ball2.objectID!,
 						"name": "my new name"
 					]
+				],
+				[
+					"action": "add",
+					"parameters": [
+						"mesh": "cube",
+						"color": "purple",
+						"name": "json object",
+						"position": [2, 1, 0],
+						"scale": 0.7,
+						"rotation": [0.3, 0.3, 0.3, 0.3],
+						"children": [
+							["mesh": "cube",
+							 "color": "orange",
+							 "name": "json object 2",
+							 "position": [2, 1, 0],
+							 "scale": 0.7,
+							 "rotation": [0.3, 0.3, 0.3, 0.3]
+							]
+						]
+					]
 				]
 //				,[
 //					"action": "remove",

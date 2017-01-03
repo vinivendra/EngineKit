@@ -94,6 +94,30 @@ public struct EKGLVertexComponent {
 	}
 
 	//
+	public enum GeometricComponent: String {
+		case cube
+	}
+
+	public static func component(forGeometryNamed string: String)
+		-> EKGLVertexComponent?
+	{
+		guard let geometry = GeometricComponent(rawValue: string)
+			else {
+				return nil
+		}
+		return component(forGeometry: geometry)
+	}
+
+	public static func component(forGeometry geometry: GeometricComponent)
+		-> EKGLVertexComponent
+	{
+		switch geometry {
+		case .cube:
+			return EKGLVertexComponent.Cube
+		}
+	}
+
+	//
 	public static let Cube = EKGLVertexComponent(vertices:
 		[
 			-1.0, -1.0, -1.0,

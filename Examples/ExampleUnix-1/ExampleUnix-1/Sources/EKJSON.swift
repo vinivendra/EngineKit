@@ -6,6 +6,7 @@ public enum EKCommand: String {
     case changeColor
 	case changeName
 	case remove
+	case add
 
 	static func applyCommand(fromJSON JSONObject: Any) {
 		guard let rootDictionary = JSONObject as? [String: Any],
@@ -29,6 +30,8 @@ public enum EKCommand: String {
 			applyChangeName(withParameters: parameters)
 		case .remove:
 			applyRemove(withParameters: parameters)
+		case .add:
+			applyAdd(withParameters: parameters)
 		}
 	}
 
@@ -123,5 +126,52 @@ public enum EKCommand: String {
 			}
 
 			object.destroy()
+	}
+
+	@discardableResult
+	static func applyAdd(withParameters parameters: [String: Any])
+		-> EKGLObject?
+	{
+		guard let meshName = parameters["mesh"] as? String,
+			let vertexComponent = EKGLVertexComponent.component(
+				forGeometryNamed: meshName)
+			else {
+				return nil
+			}
+		let object = EKGLObject(vertexComponent: vertexComponent)
+
+		if let position = parameters["position"] {
+			let vector = EKVector3.createVector(
+				fromObject: position as AnyObject)
+			object.position = vector
+		}
+		if let scale = parameters["scale"] {
+			let vector = EKVector3.createVector(
+				fromObject: scale as AnyObject)
+			object.scale = vector
+		}
+		if let rotation = parameters["rotation"] {
+			let vector = EKRotation.createRotation(
+				fromObject: rotation as AnyObject)
+			object.rotation = vector
+		}
+		if let color = parameters["color"] {
+			let vector = EKVector4.createColor(object: color)
+			object.color = vector
+		}
+		if let name = parameters["name"] as? String {
+			object.name = name
+		}
+
+		if let children = parameters["children"] as? [[String: Any]] {
+			for child in children {
+				let childObject = applyAdd(withParameters: child)
+				if let childObject = childObject {
+					object.addChild(childObject)
+				}
+			}
+		}
+
+		return object
 	}
 }

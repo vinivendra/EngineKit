@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		24120A651E1AC705005CF397 /* EKOpenGLAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKOpenGLAnimations.swift; path = Sources/EKOpenGLAnimations.swift; sourceTree = "<group>"; };
 		24120A6A1E1BFCF9005CF397 /* EKOpenGLAnimations.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EKOpenGLAnimations.swift.gyb; path = Sources/EKOpenGLAnimations.swift.gyb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.python; };
-		24120A6B1E1C0069005CF397 /* EKJSON.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EKJSON.swift.gyb; path = Sources/EKJSON.swift.gyb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.python; };
+		24120A6B1E1C0069005CF397 /* EKJSON.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EKJSON.swift.gyb; path = Sources/EKJSON.swift.gyb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		243344981DD8E90A00E851AD /* EKRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKRotation.swift; path = EngineKitCore/EKRotation.swift; sourceTree = "<group>"; };
 		249423E51D2CB3B6009F2100 /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGL.swift; path = Sources/EKOpenGL.swift; sourceTree = "<group>"; };
 		249423E61D2CB3B6009F2100 /* EKOpenGLAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLAddon.swift; path = Sources/EKOpenGLAddon.swift; sourceTree = "<group>"; };
