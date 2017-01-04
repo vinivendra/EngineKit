@@ -105,6 +105,13 @@ class MyEngine: EKSwiftEngine {
 		print("New name = \(ball2.name)")
 
 		//
+//		let ballJSON = ball.exportToJSON()
+//		ball.destroy()
+//		let jsonAction: [String: Any] = ["action": "add",
+//		                                 "parameters": ballJSON]
+//		EKCommand.applyCommand(fromJSON: jsonAction)
+
+		//
 		openGL.loopOpenGL()
 	}
 }

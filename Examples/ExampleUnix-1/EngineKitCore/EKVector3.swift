@@ -179,9 +179,11 @@ extension EKVector3 {
 	public func toHomogeneousVector() -> EKVector4 {
 		return EKVector4(x: x, y: y, z: z, w: 0)
 	}
-}
 
-extension EKVector3 {
+	public func toArray() -> [Double] {
+		return [x, y, z]
+	}
+
 	public func cross(_ other: EKVector3) -> EKVector3 {
 		return EKVector3(x: self.y * other.z - other.y * self.z,
 		                 y: self.z * other.x - other.z * self.x,

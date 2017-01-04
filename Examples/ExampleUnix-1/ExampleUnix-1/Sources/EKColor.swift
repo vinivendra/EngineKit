@@ -61,12 +61,20 @@ public func != (lhs: EKColorType, rhs: EKColorType) -> Bool {
 }
 
 extension EKColorType {
-	func toEKVector4() -> EKVector4 {
+	public func toEKVector4() -> EKVector4 {
 		let components = self.components
 		return EKVector4.createVector(x: components.red,
 		                              y: components.green,
 		                              z: components.blue,
 		                              w: components.alpha)
+	}
+
+	public func toArray() -> [Double] {
+		let components = self.components
+		return [components.red,
+		        components.green,
+		        components.blue,
+		        components.alpha]
 	}
 }
 

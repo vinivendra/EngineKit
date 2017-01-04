@@ -58,8 +58,8 @@ extension EKRotation {
 	}
 
 	public static func createRotation(fromDictionary
-		dictionary: [String: Double]) -> EKRotation {
-
+		dictionary: [String: Double]) -> EKRotation
+	{
 		let axis = EKVector3.createVector(fromDictionary: dictionary)
 		return self.createRotation(
 			axis: axis,
@@ -191,5 +191,12 @@ extension EKRotation {
 			                        z: z / s),
 			        angle: 2 * acos(w))
 		}
+	}
+
+	public func toArray() -> [Double] {
+		let (axis, angle) = self.toAxisRotation()
+		var result = axis.toArray()
+		result.append(angle)
+		return result
 	}
 }

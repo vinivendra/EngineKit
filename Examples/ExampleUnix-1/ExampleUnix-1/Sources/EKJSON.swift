@@ -35,15 +35,6 @@ public enum EKCommand: String {
 		}
 	}
 
-	static func getTargets(_ parameters: [String: Any]) -> [[Double]]? {
-		return parameters["targets"] as? [[Double]]
-	}
-
-	static func getObject(_ parameters: [String: Any]) -> EKGLObject? {
-		guard let objectID = parameters["id"] as? Int else { return nil }
-		return EKGLObject.object(withID: objectID)
-	}
-
 	//
 	static func applyTranslate(withParameters parameters: [String: Any]) {
 		guard let targets = getTargets(parameters),
@@ -173,5 +164,44 @@ public enum EKCommand: String {
 		}
 
 		return object
+	}
+
+	//
+	static func getTargets(_ parameters: [String: Any]) -> [[Double]]? {
+		return parameters["targets"] as? [[Double]]
+	}
+
+	static func getObject(_ parameters: [String: Any]) -> EKGLObject? {
+		guard let objectID = parameters["id"] as? Int else { return nil }
+		return EKGLObject.object(withID: objectID)
+	}
+}
+
+extension EKGLObject {
+	public func exportToJSON() -> [String: Any] {
+		var json = [String: Any]()
+		if let vertexComponent = self.vertexComponent {
+			json["mesh"] = vertexComponent.meshName
+		}
+
+		json["name"] = self.name
+
+		json["color"] = self.color.toArray()
+
+		json["position"] = self.position.toArray()
+		json["scale"] = self.scale.toArray()
+		json["rotation"] = self.rotation.toArray()
+
+		if self.children.count > 0 {
+			var childrenJSON = [[String: Any]]()
+
+			for child in self.children {
+				childrenJSON.append(child.exportToJSON())
+			}
+
+			json["children"] = childrenJSON
+		}
+
+		return json
 	}
 }

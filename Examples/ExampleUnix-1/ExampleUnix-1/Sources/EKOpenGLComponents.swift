@@ -79,9 +79,13 @@ public struct EKGLVertexComponent {
 	public let bufferID: GLuint
 	public let numberOfVertices: GLsizei
 
-	public init(vertices: [GLfloat]) {
+	public let meshName: String
+
+	public init(meshName: String, vertices: [GLfloat]) {
 		self.vertices = vertices
 		self.numberOfVertices = GLsizei(vertices.count) / 3
+
+		self.meshName = meshName
 
 		var tempBufferID: GLuint = 0
 		glGenBuffers(n: 1, buffers: &tempBufferID)
@@ -118,8 +122,9 @@ public struct EKGLVertexComponent {
 	}
 
 	//
-	public static let Cube = EKGLVertexComponent(vertices:
-		[
+	public static let Cube = EKGLVertexComponent(
+		meshName: "cube",
+		vertices: [
 			-1.0, -1.0, -1.0,
 			-1.0, -1.0, 1.0,
 			-1.0, 1.0, 1.0,

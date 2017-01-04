@@ -173,6 +173,10 @@ extension EKVector4 {
 	public func toRotation() -> EKRotation {
 		return EKRotation(x: x, y: y, z: z, w: w)
 	}
+
+	public func toArray() -> [Double] {
+		return [x, y, z, w]
+	}
 }
 
 extension EKVector4 {
