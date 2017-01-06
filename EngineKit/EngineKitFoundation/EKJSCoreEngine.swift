@@ -33,7 +33,7 @@ enum EKJSCoreState {
 
 public class EKJSCoreEngine: EKLanguageEngine {
 	let context = JSContext()!
-	var evaluationError: ErrorProtocol?
+	var evaluationError: Error?
 
 	var state: EKJSCoreState = .callback
 

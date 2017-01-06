@@ -10,19 +10,17 @@ public protocol EKVector2Type: class,
 	CustomStringConvertible {
 
 	static func createVector(x: Double,
-	                           y: Double) -> EKVector2
+	                         y: Double) -> EKVector2
 
 	var x: Double { get }
 	var y: Double { get }
 }
 
 //
-@warn_unused_result
 public func == (lhs: EKVector2, rhs: EKVector2) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
-@warn_unused_result
 public func != (lhs: EKVector2, rhs: EKVector2) -> Bool {
 	return !(lhs == rhs)
 }
@@ -100,8 +98,8 @@ extension EKVector2 {
 
 	public static func createVector(withUniformNumbers xy: Double)
 		-> EKVector2 {
-		return EKVector2.createVector(x: xy,
-		                              y: xy)
+			return EKVector2.createVector(x: xy,
+			                              y: xy)
 	}
 
 	public static func createVector(fromArray array: [Double]) -> EKVector2 {
@@ -111,8 +109,8 @@ extension EKVector2 {
 
 	public static func createVector(fromDictionary dictionary: [String: Double])
 		-> EKVector2 {
-		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
-		                         y: dictionary[zero: ["1", "y", "Y"]])
+			return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
+			                         y: dictionary[zero: ["1", "y", "Y"]])
 	}
 
 	public static func createVector(fromString string: String) -> EKVector2 {
@@ -142,7 +140,7 @@ extension EKVector2 {
 		} else if let number = object as? Double {
 			return createVector(withUniformNumbers: number)
 		}
-
+		
 		return origin()
 	}
 }

@@ -1,4 +1,4 @@
-
+import SwiftGL
 
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
@@ -7,23 +7,24 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	private var objectIndex: Int? = nil
+	fileprivate(set) public var objectID: Int? = nil
 
-	public var matrixComponent = EKGLMatrixComponent()
-	public let vertexComponent: EKGLVertexComponent?
+	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
+	public var vertexComponent: EKGLVertexComponent?
 
-	public var color: EKColorType? = nil
+	public var color: EKColorType = EKVector4.whiteColor()
 
 	public var name: String? = nil
 
 	public var children = [EKGLObject]()
 	public var parent: EKGLObject? = nil
 
+	//
 	internal init(vertexComponent: EKGLVertexComponent?) {
 		self.vertexComponent = vertexComponent
 
-		if objectIndex == nil {
-			objectIndex = EKGLObject.allObjects.addResourceAndGetIndex(self)
+		if objectID == nil {
+			objectID = EKGLObject.allObjects.addResourceAndGetIndex(self)
 		}
 	}
 
@@ -31,12 +32,11 @@ public class EKGLObject: EKGLMatrixComposer {
 		self.init(vertexComponent: nil)
 	}
 
-	public func copy() -> EKGLObject {
-		let object = EKGLObject(vertexComponent: vertexComponent)
-		copyInfo(to: object)
-		return object
+	deinit {
+		self.destroy()
 	}
 
+	//
 	public func copyInfo(to object: EKGLObject) {
 		object.matrixComponent = matrixComponent
 		object.color = color
@@ -49,12 +49,35 @@ public class EKGLObject: EKGLMatrixComposer {
 }
 
 extension EKGLObject {
+	public static func object(withID objectID: Int) -> EKGLObject? {
+		return EKGLObject.allObjects[objectID]
+	}
+}
+
+extension EKGLObject {
+	public func copy() -> EKGLObject {
+		let object = EKGLObject(vertexComponent: vertexComponent)
+		copyInfo(to: object)
+		return object
+	}
+
+	public func destroy() {
+		self.removeFromParent()
+
+		if let objectID = objectID {
+			EKGLObject.allObjects.deleteResource(atIndex: objectID)
+			self.objectID = nil
+		}
+	}
+}
+
+extension EKGLObject {
 	public static func object(atPixel pixel: EKVector2) -> EKGLObject? {
 		var index: GLuint = 0
 		let x = GLint(pixel.x)
 		let y = GLint(pixel.y)
 		glReadPixels(x, y, 1, 1,
-		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index);
+		             GL_STENCIL_INDEX, GL_UNSIGNED_INT, &index)
 		return EKGLObject.allObjects[Int(index)]
 	}
 }
@@ -62,14 +85,13 @@ extension EKGLObject {
 extension EKGLObject {
 	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
 		guard let vertexComponent = vertexComponent else { return }
-		let color = self.color ?? EKVector4.whiteColor()
 
 		//
 		let completeMask: GLuint = 0xff
-		glStencilFunc(GL_ALWAYS, GLint(objectIndex!), completeMask)
+		glStencilFunc(GL_ALWAYS, GLint(objectID!), completeMask)
 
 		let projectionViewMatrix = projectionViewMatrix ??
-								   EKGLObject.projectionViewMatrix
+			EKGLObject.projectionViewMatrix
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
@@ -94,8 +116,8 @@ extension EKGLObject {
 
 		color.withGLFloatArray {
 			glUniform3fv(location: EKGLObject.colorID,
-						 count: 1,
-						 value: $0)
+			             count: 1,
+			             value: $0)
 		}
 
 		//
@@ -121,7 +143,7 @@ extension EKGLObject {
 		guard let parent = parent else { return }
 
 		for (index, sibling) in parent.children.enumerated() {
-			if sibling.objectIndex == self.objectIndex {
+			if sibling.objectID == self.objectID {
 				parent.children.remove(at: index)
 				break
 			}
@@ -133,35 +155,28 @@ extension EKGLObject {
 
 extension EKGLObject {
 	func rotate(_ rotationObject: AnyObject,
-	                   around anchorPoint: AnyObject) {
-		// TODO: This doesn't rotate around the anchor
-		let orientation = rotation.rotationToQuaternion()
-
-		let rotationOperation = EKVector4.createVector(
+	            around anchorPoint: AnyObject) {
+		// FIXME: This doesn't rotate around the anchor
+		let rotationOperation = EKRotation.createRotation(
 			fromObject: rotationObject)
-		let quaternion = rotationOperation.rotationToQuaternion()
-			.unitQuaternion()
+		let quaternion = rotationOperation.normalized()
 
-		let newPosition = quaternion.conjugate(vector: position)
-		let newOrientation = quaternion.multiplyAsQuaternion(
-			quaternion: orientation)
+		let newPosition = quaternion.conjugate(vector:
+			position.toHomogeneousVector())
+		let newRotation = quaternion * rotation
 
 		position = newPosition.toEKVector3()
-		rotation = newOrientation.quaternionToRotation()
+		rotation = newRotation
 	}
 
 	func rotate(_ rotationObject: AnyObject) {
-		let orientation = rotation.rotationToQuaternion()
-
-		let rotationOperation = EKVector4.createVector(
+		let rotationOperation = EKRotation.createRotation(
 			fromObject: rotationObject)
-		let quaternion = rotationOperation.rotationToQuaternion()
-			.unitQuaternion()
+		let quaternion = rotationOperation.normalized()
 
-		let newOrientation = quaternion.multiplyAsQuaternion(
-			quaternion: orientation)
+		let newRotation = quaternion * rotation
 
-		rotation = newOrientation.quaternionToRotation()
+		rotation = newRotation
 	}
 }
 
@@ -170,10 +185,9 @@ public class EKGLCube: EKGLObject {
 		super.init(vertexComponent: EKGLVertexComponent.Cube)
 	}
 
-	override public func copy() -> EKGLCube {
-		let object = EKGLCube()
-		copyInfo(to: object)
-		return object
+	override public func copyInfo(to object: EKGLObject) {
+		super.copyInfo(to: object)
+		object.vertexComponent = EKGLVertexComponent.Cube
 	}
 }
 
@@ -181,29 +195,21 @@ class EKGLCamera: EKGLObject {
 	static var mainCamera = EKGLCamera()
 
 	var viewMatrix: EKMatrix {
-		get {
-			let oldCenter = EKVector3(x: 0, y: 0, z: -1)
-			let center = rotation.rotate(oldCenter).plus(position)
-			let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-			return EKMatrix.createLookAt(eye: position, center: center, up: up)
-		}
+		let oldCenter = EKVector3(x: 0, y: 0, z: -1)
+		let center = rotation.rotate(oldCenter).plus(position)
+		let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
+		return EKMatrix.createLookAt(eye: position, center: center, up: up)
 	}
 
 	var xAxis: EKVector3 {
-		get {
-			return rotation.rotate(EKVector3(x: 1, y: 0, z: 0))
-		}
+		return rotation.rotate(EKVector3(x: 1, y: 0, z: 0))
 	}
 
 	var yAxis: EKVector3 {
-		get {
-			return rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-		}
+		return rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
 	}
 
 	var zAxis: EKVector3 {
-		get {
-			return rotation.rotate(EKVector3(x: 0, y: 0, z: 1))
-		}
+		return rotation.rotate(EKVector3(x: 0, y: 0, z: 1))
 	}
 }

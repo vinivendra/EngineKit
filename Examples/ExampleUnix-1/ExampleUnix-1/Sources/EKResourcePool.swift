@@ -1,15 +1,13 @@
 public struct EKResourcePool<T>: Sequence {
 	typealias Element = T
 
-	private var resources = [EKResource<T>(value: nil, next: 0)]
+	fileprivate var resources = [EKResource<T>(value: nil, next: 0)]
 
 	private var arrayCapacity = 1
 	public var count = 0
 
 	private var isFull: Bool {
-		get {
-			return firstAvailableIndex == 0
-		}
+		return firstAvailableIndex == 0
 	}
 
 	private var firstAvailableIndex: Int {
@@ -22,9 +20,7 @@ public struct EKResourcePool<T>: Sequence {
 	}
 
 	public subscript(index: Int) -> T? {
-		get {
-			return resources[index].value
-		}
+		return resources[index].value
 	}
 
 	//

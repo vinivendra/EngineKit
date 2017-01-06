@@ -36,10 +36,10 @@ public typealias GLfloat = Float
 public typealias GLclampf = Float
 public typealias GLdouble = Double
 public typealias GLclampd = Double
-public typealias GLeglImageOES = UnsafeMutablePointer<Void>
+public typealias GLeglImageOES = UnsafeMutableRawPointer
 public typealias GLchar = Int8
 public typealias GLcharARB = Int8
-public typealias GLhandleARB = UnsafeMutablePointer<Void>
+public typealias GLhandleARB = UnsafeMutableRawPointer
 public typealias GLhalfARB = UInt16
 public typealias GLhalf = UInt16
 public typealias GLfixed = Int32
@@ -56,13 +56,13 @@ public typealias GLhalfNV = UInt16
 public typealias GLvdpauSurfaceNV = Int
 
 public typealias GLDEBUGPROC = @convention(c)
-    (GLenum, GLenum, GLuint, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafePointer<Void>) -> Void
+    (GLenum, GLenum, GLuint, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafeRawPointer) -> Void
 public typealias GLDEBUGPROCARB = @convention(c)
-    (GLenum, GLenum, GLuint, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafePointer<Void>) -> Void
+    (GLenum, GLenum, GLuint, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafeRawPointer) -> Void
 public typealias GLDEBUGPROCKHR = @convention(c)
-    (GLenum, GLenum, GLuint, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafePointer<Void>) -> Void
+    (GLenum, GLenum, GLuint, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafeRawPointer) -> Void
 public typealias GLDEBUGPROCAMD = @convention(c)
-    (GLuint, GLenum, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafeMutablePointer<Void>) -> Void
+    (GLuint, GLenum, GLenum, GLsizei, UnsafePointer<GLchar>, UnsafeMutableRawPointer) -> Void
 
 
 class CommandInfo : CustomStringConvertible {
@@ -77,8 +77,7 @@ class CommandInfo : CustomStringConvertible {
     }
 }
 
-@noreturn
-private func buildError(_ info: CommandInfo) {
+private func buildError(_ info: CommandInfo) -> Never {
     var adds = ""
     var rems = ""
     var exts = ""
@@ -117,7 +116,7 @@ private func buildError(_ info: CommandInfo) {
     fatalError(s)
 }
 
-func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
+func getAddress(_ info: CommandInfo) -> UnsafeMutableRawPointer {
     let optionalFP = lookupAddress(info)
 	guard let fp = optionalFP else { buildError(info) }
     return fp
@@ -131,9 +130,9 @@ func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
     import Darwin
 
     let openGLframework = "/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL"
-    var dlopenHandle: UnsafeMutablePointer<Void>? = nil
+    var dlopenHandle: UnsafeMutableRawPointer? = nil
 
-    func lookupAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void>? {
+    func lookupAddress(_ info: CommandInfo) -> UnsafeMutableRawPointer? {
         if dlopenHandle == nil {
             dlopenHandle = dlopen(openGLframework, RTLD_LAZY)
         }
@@ -147,10 +146,10 @@ func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
 
     import Glibc
 
-    var dlopenHandle: UnsafeMutablePointer<Void>? = nil
-    var glXGetProcAddress:(@convention(c) (UnsafePointer<GLchar>) -> UnsafeMutablePointer<Void>)? = nil
+    var dlopenHandle: UnsafeMutableRawPointer? = nil
+    var glXGetProcAddress:(@convention(c) (UnsafePointer<GLchar>) -> UnsafeMutableRawPointer)? = nil
     
-    func lookupAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void>? {
+    func lookupAddress(_ info: CommandInfo) -> UnsafeMutableRawPointer? {
         if dlopenHandle == nil {
             dlopenHandle = dlopen(nil, RTLD_LAZY | RTLD_LOCAL)
         }
@@ -160,13 +159,13 @@ func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
         if glXGetProcAddress == nil {
             let fp = dlsym(dlopenHandle, "glXGetProcAddressARB")
             if fp != nil {
-                glXGetProcAddress = unsafeBitCast(fp, to: glXGetProcAddress.dynamicType)
+                glXGetProcAddress = unsafeBitCast(fp, to: type(of: glXGetProcAddress))
             }
         }
         if glXGetProcAddress == nil {
             let fp = dlsym(dlopenHandle, "glXGetProcAddress")
             if fp != nil {
-                glXGetProcAddress = unsafeBitCast(fp, to: glXGetProcAddress.dynamicType)
+                glXGetProcAddress = unsafeBitCast(fp, to: type(of: glXGetProcAddress))
             }
         }
         if glXGetProcAddress == nil {
@@ -177,7 +176,7 @@ func getAddress(_ info: CommandInfo) -> UnsafeMutablePointer<Void> {
     
 #else
 
-    func lookupAddress(info: commandInfo) -> UnsafeMutablePointer<Void> {
+    func lookupAddress(info: commandInfo) -> UnsafeMutableRawPointer {
         fatalError("Unsupported OS")
     }
 

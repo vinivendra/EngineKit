@@ -1,5 +1,6 @@
 .DS_Store
 
+*.pyc
 
 EngineKit/EngineKit.xcodeproj/project.xcworkspace/xcuserdata/
 EngineKit/EngineKit.xcodeproj/xcuserdata/

@@ -1,3 +1,5 @@
+// swiftlint:disable variable_name
+
 public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 
 	public let x: Double
@@ -9,20 +11,16 @@ public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 	}
 
 	public static func createVector(x: Double,
-	                                  y: Double) -> EKVector2 {
+	                                y: Double) -> EKVector2 {
 		return EKVector2(x: x, y: y)
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y)"
-		}
+		return "x: \(x), y: \(y)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
 	}
 }
 
@@ -39,21 +37,17 @@ public final class EKVector3: EKVector3Type, EKLanguageCompatible {
 	}
 
 	public static func createVector(x: Double,
-	                                  y: Double,
-	                                  z: Double) -> EKVector3 {
+	                                y: Double,
+	                                z: Double) -> EKVector3 {
 		return EKVector3(x: x, y: y, z: z)
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y), z: \(z)"
-		}
+		return "x: \(x), y: \(y), z: \(z)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
 	}
 }
 
@@ -71,26 +65,52 @@ public final class EKVector4: EKVector4Type, EKLanguageCompatible {
 	}
 
 	public static func createVector(x: Double,
-	                                  y: Double,
-	                                  z: Double,
-	                                  w: Double) -> EKVector4 {
+	                                y: Double,
+	                                z: Double,
+	                                w: Double) -> EKVector4 {
 		return EKVector4(x: x, y: y, z: z, w: w)
 	}
 
 	public var debugDescription: String {
-		get {
-			return "x: \(x), y: \(y), z: \(z), w: \(w)"
-		}
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
 	}
 
 	public var description: String {
-		get {
-			return debugDescription
-		}
+		return debugDescription
+	}
+}
+
+public final class EKRotation: EKRotationType, EKLanguageCompatible {
+	public let x: Double
+	public let y: Double
+	public let z: Double
+	public let w: Double
+
+	init(x: Double, y: Double, z: Double, w: Double) {
+		self.x = x
+		self.y = y
+		self.z = z
+		self.w = w
+	}
+
+	public static func createRotation(x: Double,
+	                                  y: Double,
+	                                  z: Double,
+	                                  w: Double) -> EKRotation {
+		return EKRotation(x: x, y: y, z: z, w: w)
+	}
+
+	public var debugDescription: String {
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
+	}
+
+	public var description: String {
+		return debugDescription
 	}
 }
 
 public class EKMatrix: EKMatrixType, EKLanguageCompatible {
+	// swiftlint:disable:next function_parameter_count
 	public static func createMatrix(
 		m11: Double, m12: Double, m13: Double, m14: Double,
 		m21: Double, m22: Double, m23: Double, m24: Double,
@@ -102,6 +122,7 @@ public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 		                m41: m41, m42: m42, m43: m43, m44: m44)
 	}
 
+	// swiftlint:disable:next function_parameter_count
 	init(m11: Double, m12: Double, m13: Double, m14: Double,
 	     m21: Double, m22: Double, m23: Double, m24: Double,
 	     m31: Double, m32: Double, m33: Double, m34: Double,
@@ -143,7 +164,7 @@ public class EKMatrix: EKMatrixType, EKLanguageCompatible {
 
 	public var debugDescription: String {
 		return "((\(m11) \(m12) \(m13) \(m14)) (\(m21) \(m22) \(m23) \(m24))" +
-			"(\(m31) \(m32) \(m33) \(m34)) (\(m41) \(m42) \(m43) \(m44)))"
+		"(\(m31) \(m32) \(m33) \(m34)) (\(m41) \(m42) \(m43) \(m44)))"
 	}
 
 	public var description: String {

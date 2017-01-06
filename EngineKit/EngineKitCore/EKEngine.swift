@@ -1,4 +1,4 @@
-enum EKError: ErrorProtocol {
+enum EKError: Error {
 	case scriptEvaluationError(message: String)
 	case scriptConversionError(message: String)
 	case eventRegistryError(message: String)
@@ -34,7 +34,7 @@ public class EKEngine {
 
 	public func register<T>(forEventNamed eventName: String,
 	                     target: T,
-	                     method: (T) -> (EKEvent) -> ()) throws {
+	                     method: (T) -> (EKEvent) -> Void) throws {
 		do {
 			try eventCenter.register(forEventNamed: eventName,
 			                         target: target,
@@ -46,7 +46,7 @@ public class EKEngine {
 
 	public func register<Event: EKEvent, T>(forEvent type: Event.Type,
 	                     target: T,
-	                     method: (T) -> (Event) -> ()) throws {
+	                     method: (T) -> (Event) -> Void) throws {
 		do {
 			try eventCenter.register(forEvent: type,
 			                         target: target,
@@ -57,7 +57,7 @@ public class EKEngine {
 	}
 
 	public func register(forEventNamed eventName: String,
-	                                   callback: (EKEvent) -> ()) throws {
+	                                   callback: (EKEvent) -> Void) throws {
 		do {
 			try eventCenter.register(forEventNamed: eventName,
 			                         callback: callback)
@@ -67,7 +67,7 @@ public class EKEngine {
 	}
 
 	public func register<Event: EKEvent>(forEvent type: Event.Type,
-	                     callback: (Event) -> ()) throws {
+	                     callback: (Event) -> Void) throws {
 		do {
 			try eventCenter.register(forEvent: type, callback: callback)
 		} catch let error {
