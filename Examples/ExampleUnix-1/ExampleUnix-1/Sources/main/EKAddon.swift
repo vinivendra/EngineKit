@@ -1,10 +1,10 @@
 public protocol EKAddon: class {
-	func setup(onEngine engine: EKEngine)
+	func setup(onEngine: EKEngine)
 }
 
 //
 public protocol EKScriptAddon: EKAddon {
-	func addFunctionality(toEngine engine: EKEngine)
+	func addFunctionality(toEngine: EKEngine)
 }
 
 extension EKScriptAddon {
