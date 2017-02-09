@@ -6,21 +6,6 @@
 	import Darwin
 #endif
 
-public protocol EKVector4Type: EKLanguageCompatible,
-	CustomDebugStringConvertible,
-CustomStringConvertible {
-
-	static func createVector(x: Double,
-	                         y: Double,
-	                         z: Double,
-	                         w: Double) -> EKVector4
-
-	var x: Double { get }
-	var y: Double { get }
-	var z: Double { get }
-	var w: Double { get }
-}
-
 public func == (lhs: EKVector4, rhs: EKVector4) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
 }
@@ -32,25 +17,25 @@ public func != (lhs: EKVector4, rhs: EKVector4) -> Bool {
 extension EKVector4 {
 	public func plus(_ object: Any) -> EKVector4 {
 		let vector = EKVector4.createVector(fromObject: object)
-		return EKVector4.createVector(x: self.x + vector.x,
-		                              y: self.y + vector.y,
-		                              z: self.z + vector.z,
-		                              w: min(self.w + vector.w, 1))
+		return EKVector4(x: self.x + vector.x,
+		                 y: self.y + vector.y,
+		                 z: self.z + vector.z,
+		                 w: min(self.w + vector.w, 1))
 	}
 
 	public func minus(_ object: Any) -> EKVector4 {
 		let vector = EKVector4.createVector(fromObject: object)
-		return EKVector4.createVector(x: self.x - vector.x,
-		                              y: self.y - vector.y,
-		                              z: self.z - vector.z,
-		                              w: max(self.w - vector.w, 0))
+		return EKVector4(x: self.x - vector.x,
+		                 y: self.y - vector.y,
+		                 z: self.z - vector.z,
+		                 w: max(self.w - vector.w, 0))
 	}
 
 	public func times(_ scalar: Double) -> EKVector4 {
-		return EKVector4.createVector(x: self.x * scalar,
-		                              y: self.y * scalar,
-		                              z: self.z * scalar,
-		                              w: self.w)
+		return EKVector4(x: self.x * scalar,
+		                 y: self.y * scalar,
+		                 z: self.z * scalar,
+		                 w: self.w)
 	}
 
 	public func over(_ scalar: Double) -> EKVector4 {
@@ -58,10 +43,10 @@ extension EKVector4 {
 	}
 
 	public func opposite() -> EKVector4 {
-		return EKVector4.createVector(x: -self.x,
-		                              y: -self.y,
-		                              z: -self.z,
-		                              w: self.w)
+		return EKVector4(x: -self.x,
+		                 y: -self.y,
+		                 z: -self.z,
+		                 w: self.w)
 	}
 
 	public func dot(_ object: Any) -> Double {
@@ -92,10 +77,10 @@ extension EKVector4 {
 
 	public func scale(_ object: Any) -> EKVector4 {
 		let vector = EKVector4.createVector(fromObject: object)
-		return EKVector4.createVector(x: self.x * vector.x,
-		                              y: self.y * vector.y,
-		                              z: self.z * vector.z,
-		                              w: self.w)
+		return EKVector4(x: self.x * vector.x,
+		                 y: self.y * vector.y,
+		                 z: self.z * vector.z,
+		                 w: self.w)
 	}
 
 	public func notZero() -> Bool {
@@ -105,28 +90,25 @@ extension EKVector4 {
 
 extension EKVector4 {
 	public static func origin() -> EKVector4 {
-		return EKVector4.createVector(x: 0, y: 0, z: 0, w: 1)
+		return EKVector4(x: 0, y: 0, z: 0, w: 1)
 	}
 
 	public static func createVector(withUniformNumbers xyz: Double) -> EKVector4
 	{
-		return EKVector4.createVector(x: xyz,
-		                              y: xyz,
-		                              z: xyz,
-		                              w: 0)
+		return EKVector4(x: xyz, y: xyz, z: xyz, w: 0)
 	}
 
 	public static func createVector(fromArray array: [Double]) -> EKVector4 {
-		return self.createVector(x: array[zero: 0],
-		                         y: array[zero: 1],
-		                         z: array[zero: 2],
-		                         w: array[zero: 3])
+		return EKVector4(x: array[zero: 0],
+		                 y: array[zero: 1],
+		                 z: array[zero: 2],
+		                 w: array[zero: 3])
 	}
 
 	public static func createVector(fromDictionary dictionary: [String: Double])
 		-> EKVector4 {
 
-			return self.createVector(
+			return EKVector4(
 				x: dictionary[zero: ["0", "x", "X"]],
 				y: dictionary[zero: ["1", "y", "Y"]],
 				z: dictionary[zero: ["2", "z", "Z"]],

@@ -31,32 +31,19 @@ CustomStringConvertible, CustomDebugStringConvertible {
 	}
 }
 
-public final class EKVector4: EKVector4Type, EKLanguageCompatible {
+public struct EKVector4: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
 	public let x: Double
 	public let y: Double
 	public let z: Double
 	public let w: Double
 
-	init(x: Double, y: Double, z: Double, w: Double) {
-		self.x = x
-		self.y = y
-		self.z = z
-		self.w = w
-	}
-
-	public static func createVector(x: Double,
-	                                y: Double,
-	                                z: Double,
-	                                w: Double) -> EKVector4 {
-		return EKVector4(x: x, y: y, z: z, w: w)
-	}
-
 	public var debugDescription: String {
-		return "x: \(x), y: \(y), z: \(z), w: \(w)"
+		return "<EKVector4> " + self.description
 	}
 
 	public var description: String {
-		return debugDescription
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
 	}
 }
 

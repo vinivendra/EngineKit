@@ -1,4 +1,4 @@
-// TODO: Rename EKVector4/2, EKRotation
+// TODO: Refactor EKRotation
 // TODO: Remove `object` labels from methods in data classes
 
 // swiftlint:disable force_cast
