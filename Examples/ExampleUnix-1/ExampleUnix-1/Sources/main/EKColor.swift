@@ -18,165 +18,151 @@ let EKColorDictionary: [String: Any] =
 	 "brown": [0.6, 0.4, 0.2],
 	 "clear": [0.0, 0.0, 0.0, 0.0]]
 
-extension EKVector4: EKColorType {
-	public static func createColor(red: Double,
-	                               green: Double,
-	                               blue: Double,
-	                               alpha: Double) -> EKColorType {
-		return EKVector4(x: red, y: green, z: blue, w: alpha)
-	}
-
-	public var components:(
-		red: Double,
-		green: Double,
-		blue: Double,
-		alpha: Double) {
-		return (x, y, z, w)
-	}
+public func == (lhs: EKColor, rhs: EKColor) -> Bool {
+	return lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b && lhs.a == rhs.a
 }
 
-public protocol EKColorType {
-	static func createColor(red: Double,
-	                        green: Double,
-	                        blue: Double,
-	                        alpha: Double) -> EKColorType
-
-	var components: (
-		red: Double,
-		green: Double,
-		blue: Double,
-		alpha: Double) { get }
-}
-
-public func == (lhs: EKColorType, rhs: EKColorType) -> Bool {
-	let r1: Double, g1: Double, b1: Double, a1: Double
-	let r2: Double, g2: Double, b2: Double, a2: Double
-	(r1, g1, b1, a1) = lhs.components
-	(r2, g2, b2, a2) = rhs.components
-	return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
-}
-
-public func != (lhs: EKColorType, rhs: EKColorType) -> Bool {
+public func != (lhs: EKColor, rhs: EKColor) -> Bool {
 	return !(lhs == rhs)
 }
 
-extension EKColorType {
+extension EKColor {
 	public func toEKVector4() -> EKVector4 {
-		let components = self.components
-		return EKVector4(x: components.red,
-		                 y: components.green,
-		                 z: components.blue,
-		                 w: components.alpha)
+		return EKVector4(x: r, y: g, z: b, w: a)
 	}
 
 	public func toArray() -> [Double] {
-		let components = self.components
-		return [components.red,
-		        components.green,
-		        components.blue,
-		        components.alpha]
+		return [r, g, b, a]
 	}
 }
 
-extension EKColorType {
-	static func createColor(red: Double,
-	                        green: Double,
-	                        blue: Double) -> EKColorType {
-		return createColor(red: red, green: green, blue: blue, alpha: 1.0)
+extension EKColor {
+	public func plus(_ color: EKColor) -> EKColor {
+		return EKColor(withRed: self.r + color.r,
+		               green: self.g + color.g,
+		               blue: self.b + color.b,
+		               alpha: self.a + color.a)
 	}
 
-	static func createColor(grayscale: Double) -> EKColorType {
-		return createColor(red: grayscale,
-		                   green: grayscale,
-		                   blue: grayscale)
+	public func minus(_ color: EKColor) -> EKColor {
+		return EKColor(withRed: self.r - color.r,
+		               green: self.g - color.g,
+		               blue: self.b - color.b,
+		               alpha: self.a - color.a)
 	}
 
-	static func createColor(array: [Double]) -> EKColorType {
-		return createColor(red: array[zero: 0],
-		                   green: array[zero: 1],
-		                   blue: array[zero: 2],
-		                   alpha: array[one: 3])
+	public func times(_ scalar: Double) -> EKColor {
+		return EKColor(withRed: self.r * scalar,
+		               green: self.g * scalar,
+		               blue: self.b * scalar,
+		               alpha: self.a * scalar)
 	}
 
-	static func createColor(object: Any) -> EKColorType {
-		if let color = object as? EKColorType {
-			return color
-		} else if let array = object as? [Double] {
-			return createColor(array: array)
-		} else if let grayscale = object as? Double {
-			return createColor(grayscale: grayscale)
-		} else if let name = object as? String {
-			return createColor(name: name)
+	public func over(_ scalar: Double) -> EKColor {
+		return self.times(1/scalar)
+	}
+}
+
+extension EKColor {
+	init(withRed red: Double,
+	     green: Double,
+	     blue: Double) {
+		self.init(withRed: red, green: green, blue: blue, alpha: 1.0)
+	}
+
+	init(inGrayscale grayscale: Double) {
+		self.init(withRed: grayscale, green: grayscale, blue: grayscale)
+	}
+
+	init(fromArray array: [Double]) {
+		self.init(withRed: array[zero: 0],
+		               green: array[zero: 1],
+		               blue: array[zero: 2],
+		               alpha: array[one: 3])
+	}
+
+	init(fromValue value: Any) {
+		if let color = value as? EKColor {
+			self.init(withRed: color.r,
+			          green: color.g,
+			          blue: color.b,
+			          alpha: color.a)
+		} else if let array = value as? [Double] {
+			self.init(fromArray: array)
+		} else if let grayscale = value as? Double {
+			self.init(inGrayscale: grayscale)
+		} else if let name = value as? String {
+			self.init(withName: name)
+		} else {
+			self.init(withName: "clear")
 		}
-
-		return clearColor()
 	}
 
-	static func createColor(name: String) -> EKColorType {
-		if let object = EKColorDictionary[name] {
-			return createColor(object: object)
+	init(withName name: String) {
+		if let value = EKColorDictionary[name] {
+			self.init(fromValue: value)
+		} else {
+			self.init(withName: "clear")
 		}
-
-		return clearColor()
 	}
 
-	static func blackColor() -> EKColorType {
-		return createColor(grayscale: 0)
+	static func blackColor() -> EKColor {
+		return EKColor(inGrayscale: 0)
 	}
 
-	static func darkGrayColor() -> EKColorType {
-		return createColor(grayscale: 0.333)
+	static func darkGrayColor() -> EKColor {
+		return EKColor(inGrayscale: 0.333)
 	}
 
-	static func lightGrayColor() -> EKColorType {
-		return createColor(grayscale: 0.667)
+	static func lightGrayColor() -> EKColor {
+		return EKColor(inGrayscale: 0.667)
 	}
 
-	static func whiteColor() -> EKColorType {
-		return createColor(grayscale: 1.0)
+	static func whiteColor() -> EKColor {
+		return EKColor(inGrayscale: 1.0)
 	}
 
-	static func grayColor() -> EKColorType {
-		return createColor(grayscale: 0.5)
+	static func grayColor() -> EKColor {
+		return EKColor(inGrayscale: 0.5)
 	}
 
-	static func redColor() -> EKColorType {
-		return createColor(red: 1.0, green: 0.0, blue: 0.0)
+	static func redColor() -> EKColor {
+		return EKColor(withRed: 1.0, green: 0.0, blue: 0.0)
 	}
 
-	static func greenColor() -> EKColorType {
-		return createColor(red: 0.0, green: 1.0, blue: 0.0)
+	static func greenColor() -> EKColor {
+		return EKColor(withRed: 0.0, green: 1.0, blue: 0.0)
 	}
 
-	static func blueColor() -> EKColorType {
-		return createColor(red: 0.0, green: 0.0, blue: 1.0)
+	static func blueColor() -> EKColor {
+		return EKColor(withRed: 0.0, green: 0.0, blue: 1.0)
 	}
 
-	static func cyanColor() -> EKColorType {
-		return createColor(red: 0.0, green: 1.0, blue: 1.0)
+	static func cyanColor() -> EKColor {
+		return EKColor(withRed: 0.0, green: 1.0, blue: 1.0)
 	}
 
-	static func yellowColor() -> EKColorType {
-		return createColor(red: 1.0, green: 1.0, blue: 0.0)
+	static func yellowColor() -> EKColor {
+		return EKColor(withRed: 1.0, green: 1.0, blue: 0.0)
 	}
 
-	static func magentaColor() -> EKColorType {
-		return createColor(red: 1.0, green: 0.0, blue: 1.0)
+	static func magentaColor() -> EKColor {
+		return EKColor(withRed: 1.0, green: 0.0, blue: 1.0)
 	}
 
-	static func orangeColor() -> EKColorType {
-		return createColor(red: 1.0, green: 0.5, blue: 0.0)
+	static func orangeColor() -> EKColor {
+		return EKColor(withRed: 1.0, green: 0.5, blue: 0.0)
 	}
 
-	static func purpleColor() -> EKColorType {
-		return createColor(red: 0.5, green: 0.0, blue: 0.5)
+	static func purpleColor() -> EKColor {
+		return EKColor(withRed: 0.5, green: 0.0, blue: 0.5)
 	}
 
-	static func brownColor() -> EKColorType {
-		return createColor(red: 0.6, green: 0.4, blue: 0.2)
+	static func brownColor() -> EKColor {
+		return EKColor(withRed: 0.6, green: 0.4, blue: 0.2)
 	}
 
-	static func clearColor() -> EKColorType {
-		return createColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+	static func clearColor() -> EKColor {
+		return EKColor(withRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 	}
 }

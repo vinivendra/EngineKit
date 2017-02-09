@@ -83,6 +83,14 @@ extension EKRotation: Interpolable {
 	// swiftlint:enable variable_name
 }
 
+extension EKColor: Interpolable {
+	public static func interpolate(start: EKColor,
+	                               end: EKColor,
+	                               interpolatedValue: Double) -> EKColor {
+		return start.plus( ( end.minus(start) ).times(interpolatedValue) )
+	}
+}
+
 //
 public typealias EKInterpolationFunction = (Double) -> Double
 

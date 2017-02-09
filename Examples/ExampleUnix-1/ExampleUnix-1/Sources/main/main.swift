@@ -1,4 +1,8 @@
-// TODO: Refactor EKRotation
+// Refactor EKColor
+// Refactor EKMatrix
+// Refactor `create` methods into initializers
+// Refactor arithmetic methods to take the struct itself instead of `Any`
+// Refactor Data Classes into EK core
 // TODO: Remove `object` labels from methods in data classes
 
 // swiftlint:disable force_cast
@@ -18,11 +22,11 @@ class MyEngine: EKSwiftEngine {
 
 		//
 		let ball = EKGLCube()
-		ball.color = EKVector4.whiteColor()
+		ball.color = EKColor.whiteColor()
 		ball.position = EKVector3(x: -1, y: 1, z: 0)
 		ball.name = "white"
 		let ball2 = EKGLCube()
-		ball2.color = EKVector4.grayColor()
+		ball2.color = EKColor.grayColor()
 		ball2.position = EKVector3(x: -2, y: -1, z: 0)
 		ball2.name = "gray ball"
 		ball.addChild(ball2)

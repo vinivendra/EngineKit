@@ -15,16 +15,12 @@ extension EKMatrix {
 	}
 }
 
-extension EKColorType {
+extension EKColor {
 	public func withGLFloatArray<ReturnType>(
-		closure: (UnsafePointer<GLfloat>) -> ReturnType) -> ReturnType {
+		closure: @escaping (UnsafePointer<GLfloat>) -> ReturnType) -> ReturnType
+	{
 
-		let components = self.components
-
-		let array: [GLfloat] =
-			[GLfloat(components.red),
-			 GLfloat(components.green),
-			 GLfloat(components.blue)]
+		let array = self.toArray().map { GLfloat($0) }
 		return array.withUnsafeBufferPointer {
 			return closure($0.baseAddress!)
 		}

@@ -12,7 +12,7 @@ public class EKGLObject: EKGLMatrixComposer {
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public var vertexComponent: EKGLVertexComponent?
 
-	public var color: EKColorType = EKVector4.whiteColor()
+	public var color: EKColor = EKColor.whiteColor()
 
 	public var name: String? = nil
 

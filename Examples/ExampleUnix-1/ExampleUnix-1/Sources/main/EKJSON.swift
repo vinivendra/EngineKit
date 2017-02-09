@@ -91,7 +91,7 @@ public enum EKCommand: String {
 				return
 		}
 
-		let animationTargets = targets.map(EKVector4.createVector(fromArray:))
+		let animationTargets = targets.map(EKColor.init(fromArray:))
 
 		EKAnimationChangeColor(
 			duration: 1.0,
@@ -147,7 +147,7 @@ public enum EKCommand: String {
 			object.rotation = vector
 		}
 		if let color = parameters["color"] {
-			let vector = EKVector4.createColor(object: color)
+			let vector = EKColor(fromValue: color)
 			object.color = vector
 		}
 		if let name = parameters["name"] as? String {
