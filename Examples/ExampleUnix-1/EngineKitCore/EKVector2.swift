@@ -6,19 +6,6 @@
 	import Darwin
 #endif
 
-public protocol EKVector2Type:
-	class,
-	EKLanguageCompatible,
-	CustomDebugStringConvertible,
-CustomStringConvertible {
-
-	static func createVector(x: Double,
-	                         y: Double) -> EKVector2
-
-	var x: Double { get }
-	var y: Double { get }
-}
-
 //
 public func == (lhs: EKVector2, rhs: EKVector2) -> Bool {
 	return lhs.x == rhs.x && lhs.y == rhs.y
@@ -32,19 +19,19 @@ public func != (lhs: EKVector2, rhs: EKVector2) -> Bool {
 extension EKVector2 {
 	public func plus(_ object: Any) -> EKVector2 {
 		let vector = EKVector2.createVector(fromObject: object)
-		return EKVector2.createVector(x: self.x + vector.x,
-		                              y: self.y + vector.y)
+		return EKVector2(x: self.x + vector.x,
+		                 y: self.y + vector.y)
 	}
 
 	public func minus(_ object: Any) -> EKVector2 {
 		let vector = EKVector2.createVector(fromObject: object)
-		return EKVector2.createVector(x: self.x - vector.x,
-		                              y: self.y - vector.y)
+		return EKVector2(x: self.x - vector.x,
+		                 y: self.y - vector.y)
 	}
 
 	public func times(_ scalar: Double) -> EKVector2 {
-		return EKVector2.createVector(x: self.x * scalar,
-		                              y: self.y * scalar)
+		return EKVector2(x: self.x * scalar,
+		                 y: self.y * scalar)
 	}
 
 	public func over(_ scalar: Double) -> EKVector2 {
@@ -52,8 +39,8 @@ extension EKVector2 {
 	}
 
 	public func opposite() -> EKVector2 {
-		return EKVector2.createVector(x: -self.x,
-		                              y: -self.y)
+		return EKVector2(x: -self.x,
+		                 y: -self.y)
 	}
 
 	public func dot(_ object: Any) -> Double {
@@ -84,8 +71,8 @@ extension EKVector2 {
 
 	public func scale(_ object: Any) -> EKVector2 {
 		let vector = EKVector2.createVector(fromObject: object)
-		return EKVector2.createVector(x: self.x * vector.x,
-		                              y: self.y * vector.y)
+		return EKVector2(x: self.x * vector.x,
+		                 y: self.y * vector.y)
 	}
 }
 
@@ -96,25 +83,25 @@ extension EKVector2 {
 	}
 
 	public static func origin() -> EKVector2 {
-		return EKVector2.createVector(x: 0, y: 0)
+		return EKVector2(x: 0, y: 0)
 	}
 
 	public static func createVector(withUniformNumbers xy: Double) -> EKVector2
 	{
-		return EKVector2.createVector(x: xy,
-		                              y: xy)
+		return EKVector2(x: xy,
+		                 y: xy)
 	}
 
 	public static func createVector(fromArray array: [Double]) -> EKVector2 {
-		return self.createVector(x: array[zero: 0],
-		                         y: array[zero: 1])
+		return EKVector2(x: array[zero: 0],
+		                 y: array[zero: 1])
 	}
 
 	public static func createVector(fromDictionary dictionary: [String: Double])
 		-> EKVector2
 	{
-		return self.createVector(x: dictionary[zero: ["0", "x", "X"]],
-		                         y: dictionary[zero: ["1", "y", "Y"]])
+		return EKVector2(x: dictionary[zero: ["0", "x", "X"]],
+		                 y: dictionary[zero: ["1", "y", "Y"]])
 	}
 
 	public static func createVector(fromString string: String) -> EKVector2 {

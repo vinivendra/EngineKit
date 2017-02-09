@@ -1,31 +1,22 @@
 // swiftlint:disable variable_name
 
-public final class EKVector2: EKVector2Type, EKLanguageCompatible {
+public struct EKVector2: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
 
 	public let x: Double
 	public let y: Double
 
-	init(x: Double, y: Double) {
-		self.x = x
-		self.y = y
-	}
-
-	public static func createVector(x: Double,
-	                                y: Double) -> EKVector2 {
-		return EKVector2(x: x, y: y)
-	}
-
 	public var debugDescription: String {
-		return "x: \(x), y: \(y)"
+		return "<EKVector2> " + self.description
 	}
 
 	public var description: String {
-		return debugDescription
+		return "x: \(x), y: \(y)"
 	}
 }
 
 public struct EKVector3: EKLanguageCompatible,
-	CustomStringConvertible, CustomDebugStringConvertible {
+CustomStringConvertible, CustomDebugStringConvertible {
 
 	public let x: Double
 	public let y: Double
