@@ -24,30 +24,19 @@ public final class EKVector2: EKVector2Type, EKLanguageCompatible {
 	}
 }
 
-public final class EKVector3: EKVector3Type, EKLanguageCompatible {
+public struct EKVector3: EKLanguageCompatible,
+	CustomStringConvertible, CustomDebugStringConvertible {
 
 	public let x: Double
 	public let y: Double
 	public let z: Double
 
-	init(x: Double, y: Double, z: Double) {
-		self.x = x
-		self.y = y
-		self.z = z
-	}
-
-	public static func createVector(x: Double,
-	                                y: Double,
-	                                z: Double) -> EKVector3 {
-		return EKVector3(x: x, y: y, z: z)
-	}
-
 	public var debugDescription: String {
-		return "x: \(x), y: \(y), z: \(z)"
+		return "<EKVector3> " + self.description
 	}
 
 	public var description: String {
-		return debugDescription
+		return "x: \(x), y: \(y), z: \(z)"
 	}
 }
 

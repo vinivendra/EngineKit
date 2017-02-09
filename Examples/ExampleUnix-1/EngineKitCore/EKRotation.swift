@@ -82,7 +82,7 @@ extension EKRotation {
 	}
 
 	public static func createRotation(fromObject
-		object: AnyObject) -> EKRotation {
+		object: Any) -> EKRotation {
 
 		if let rotation = object as? EKRotation {
 			return rotation
@@ -147,7 +147,7 @@ extension EKRotation {
 		return self * quaternion * self.opposite()
 	}
 
-	public func rotate(_ vector: AnyObject) -> EKVector3 {
+	public func rotate(_ vector: Any) -> EKVector3 {
 		let v = EKVector3.createVector(fromObject: vector)
 		let q = self
 		let p = EKVector4(

@@ -30,7 +30,7 @@ public func != (lhs: EKVector4, rhs: EKVector4) -> Bool {
 }
 
 extension EKVector4 {
-	public func plus(_ object: AnyObject) -> EKVector4 {
+	public func plus(_ object: Any) -> EKVector4 {
 		let vector = EKVector4.createVector(fromObject: object)
 		return EKVector4.createVector(x: self.x + vector.x,
 		                              y: self.y + vector.y,
@@ -38,7 +38,7 @@ extension EKVector4 {
 		                              w: min(self.w + vector.w, 1))
 	}
 
-	public func minus(_ object: AnyObject) -> EKVector4 {
+	public func minus(_ object: Any) -> EKVector4 {
 		let vector = EKVector4.createVector(fromObject: object)
 		return EKVector4.createVector(x: self.x - vector.x,
 		                              y: self.y - vector.y,
@@ -64,7 +64,7 @@ extension EKVector4 {
 		                              w: self.w)
 	}
 
-	public func dot(_ object: AnyObject) -> Double {
+	public func dot(_ object: Any) -> Double {
 		let vector = EKVector4.createVector(fromObject: object)
 		return self.x * vector.x + self.y * vector.y + self.z * vector.z
 	}
@@ -86,11 +86,11 @@ extension EKVector4 {
 		}
 	}
 
-	public func translate(_ object: AnyObject) -> EKVector4 {
+	public func translate(_ object: Any) -> EKVector4 {
 		return self.plus(object)
 	}
 
-	public func scale(_ object: AnyObject) -> EKVector4 {
+	public func scale(_ object: Any) -> EKVector4 {
 		let vector = EKVector4.createVector(fromObject: object)
 		return EKVector4.createVector(x: self.x * vector.x,
 		                              y: self.y * vector.y,
@@ -148,7 +148,7 @@ extension EKVector4 {
 		return createVector(fromArray: doubles)
 	}
 
-	public static func createVector(fromObject object: AnyObject) -> EKVector4 {
+	public static func createVector(fromObject object: Any) -> EKVector4 {
 		if let vector = object as? EKVector4 {
 			return vector
 		} else if let array = object as? [Double] {

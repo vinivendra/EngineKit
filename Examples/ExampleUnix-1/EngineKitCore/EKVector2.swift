@@ -30,13 +30,13 @@ public func != (lhs: EKVector2, rhs: EKVector2) -> Bool {
 
 //
 extension EKVector2 {
-	public func plus(_ object: AnyObject) -> EKVector2 {
+	public func plus(_ object: Any) -> EKVector2 {
 		let vector = EKVector2.createVector(fromObject: object)
 		return EKVector2.createVector(x: self.x + vector.x,
 		                              y: self.y + vector.y)
 	}
 
-	public func minus(_ object: AnyObject) -> EKVector2 {
+	public func minus(_ object: Any) -> EKVector2 {
 		let vector = EKVector2.createVector(fromObject: object)
 		return EKVector2.createVector(x: self.x - vector.x,
 		                              y: self.y - vector.y)
@@ -56,7 +56,7 @@ extension EKVector2 {
 		                              y: -self.y)
 	}
 
-	public func dot(_ object: AnyObject) -> Double {
+	public func dot(_ object: Any) -> Double {
 		let vector = EKVector2.createVector(fromObject: object)
 		return self.x * vector.x + self.y * vector.y
 	}
@@ -78,11 +78,11 @@ extension EKVector2 {
 		}
 	}
 
-	public func translate(_ object: AnyObject) -> EKVector2 {
+	public func translate(_ object: Any) -> EKVector2 {
 		return self.plus(object)
 	}
 
-	public func scale(_ object: AnyObject) -> EKVector2 {
+	public func scale(_ object: Any) -> EKVector2 {
 		let vector = EKVector2.createVector(fromObject: object)
 		return EKVector2.createVector(x: self.x * vector.x,
 		                              y: self.y * vector.y)
@@ -132,7 +132,7 @@ extension EKVector2 {
 		return createVector(fromArray: doubles)
 	}
 
-	public static func createVector(fromObject object: AnyObject) -> EKVector2 {
+	public static func createVector(fromObject object: Any) -> EKVector2 {
 		if let vector = object as? EKVector2 {
 			return vector
 		} else if let array = object as? [Double] {
