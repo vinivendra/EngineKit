@@ -1,8 +1,6 @@
-// Refactor EKColor
-// Refactor EKMatrix
-// Refactor `create` methods into initializers
-// Refactor arithmetic methods to take the struct itself instead of `Any`
-// Refactor Data Classes into EK core
+// TODO: Refactor `create` methods into initializers
+// TODO: Refactor arithmetic methods to take the struct itself instead of `Any`
+// TODO: Refactor Data Classes into EK core
 // TODO: Remove `object` labels from methods in data classes
 
 // swiftlint:disable force_cast

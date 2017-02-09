@@ -6,38 +6,8 @@
 	import Darwin
 #endif
 
-let EKUsesOpenGLOrientedMath = true
-
-public protocol EKMatrixType: class,
-EKLanguageCompatible {
-
-	// swiftlint:disable:next function_parameter_count
-	static func createMatrix(
-		m11: Double, m12: Double, m13: Double, m14: Double,
-		m21: Double, m22: Double, m23: Double, m24: Double,
-		m31: Double, m32: Double, m33: Double, m34: Double,
-		m41: Double, m42: Double, m43: Double, m44: Double) -> EKMatrix
-
-	var m11: Double { get }
-	var m12: Double { get }
-	var m13: Double { get }
-	var m14: Double { get }
-	var m21: Double { get }
-	var m22: Double { get }
-	var m23: Double { get }
-	var m24: Double { get }
-	var m31: Double { get }
-	var m32: Double { get }
-	var m33: Double { get }
-	var m34: Double { get }
-	var m41: Double { get }
-	var m42: Double { get }
-	var m43: Double { get }
-	var m44: Double { get }
-}
-
 public func * (lhs: EKMatrix, rhs: EKMatrix) -> EKMatrix {
-	return EKUsesOpenGLOrientedMath ? rhs.times(lhs) : lhs.times(rhs)
+	return rhs.times(lhs)
 }
 
 public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {
@@ -56,7 +26,7 @@ public func * (m: EKMatrix, v: EKVector4) -> EKVector4 {
 
 extension EKMatrix {
 	public static func identity() -> EKMatrix {
-		return EKMatrix.createMatrix(
+		return EKMatrix(
 			m11: 1, m12: 0, m13: 0, m14: 0,
 			m21: 0, m22: 1, m23: 0, m24: 0,
 			m31: 0, m32: 0, m33: 1, m34: 0,
@@ -92,10 +62,10 @@ extension EKMatrix {
 
 	public static func createScale(x: Double, y: Double, z: Double)
 		-> EKMatrix {
-			return EKMatrix.createMatrix(m11: x, m12: 0, m13: 0, m14: 0,
-			                             m21: 0, m22: y, m23: 0, m24: 0,
-			                             m31: 0, m32: 0, m33: z, m34: 0,
-			                             m41: 0, m42: 0, m43: 0, m44: 1)
+			return EKMatrix(m11: x, m12: 0, m13: 0, m14: 0,
+			                m21: 0, m22: y, m23: 0, m24: 0,
+			                m31: 0, m32: 0, m33: z, m34: 0,
+			                m41: 0, m42: 0, m43: 0, m44: 1)
 	}
 
 	public static func createTranslation(_ vector: EKVector3) -> EKMatrix {
@@ -104,17 +74,10 @@ extension EKMatrix {
 
 	public static func createTranslation(x: Double, y: Double, z: Double)
 		-> EKMatrix {
-			if EKUsesOpenGLOrientedMath {
-				return EKMatrix.createMatrix(m11: 1, m12: 0, m13: 0, m14: 0,
-				                             m21: 0, m22: 1, m23: 0, m24: 0,
-				                             m31: 0, m32: 0, m33: 1, m34: 0,
-				                             m41: x, m42: y, m43: z, m44: 1)
-			} else {
-				return EKMatrix.createMatrix(m11: 1, m12: 0, m13: 0, m14: x,
-				                             m21: 0, m22: 1, m23: 0, m24: y,
-				                             m31: 0, m32: 0, m33: 1, m34: z,
-				                             m41: 0, m42: 0, m43: 0, m44: 1)
-			}
+			return EKMatrix(m11: 1, m12: 0, m13: 0, m14: 0,
+			                m21: 0, m22: 1, m23: 0, m24: 0,
+			                m31: 0, m32: 0, m33: 1, m34: 0,
+			                m41: x, m42: y, m43: z, m44: 1)
 	}
 
 	public static func createPerspective(fieldOfViewY fov: Double,
@@ -126,7 +89,7 @@ extension EKMatrix {
 
 		let tanHalfFov = tan(fov / 2) // 0.557
 
-		let result = EKMatrix.createMatrix(
+		return EKMatrix(
 			m11: 1 / (aspect * tanHalfFov),
 			m12: 0, m13: 0, m14: 0, m21: 0,
 			m22: 1 / (tanHalfFov),
@@ -136,8 +99,6 @@ extension EKMatrix {
 			m41: 0, m42: 0,
 			m43: -(2 * zFar * zNear) / (zFar - zNear),
 			m44: 0)
-
-		return EKUsesOpenGLOrientedMath ? result : result.transpose()
 	}
 
 	public static func createLookAt(eye: EKVector3,
@@ -147,22 +108,21 @@ extension EKMatrix {
 		let s = f.cross(up).normalize()
 		let u = s.cross(f)
 
-		let result = EKMatrix.createMatrix(
+		return EKMatrix(
 			m11: s.x, m12: u.x, m13: -f.x, m14: 0,
 			m21: s.y, m22: u.y, m23: -f.y, m24: 0,
 			m31: s.z, m32: u.z, m33: -f.z, m34: 0,
 			m41: -s.dot(eye),
 			m42: -u.dot(eye),
 			m43:  f.dot(eye), m44: 1)
-		return EKUsesOpenGLOrientedMath ? result : result.transpose()
 	}
 }
 
 extension EKMatrix {
 	public func transpose() -> EKMatrix {
-		return EKMatrix.createMatrix(m11: m11, m12: m21, m13: m31, m14: m41,
-		                             m21: m12, m22: m22, m23: m32, m24: m42,
-		                             m31: m13, m32: m23, m33: m33, m34: m43,
-		                             m41: m14, m42: m24, m43: m34, m44: m44)
+		return EKMatrix(m11: m11, m12: m21, m13: m31, m14: m41,
+		                m21: m12, m22: m22, m23: m32, m24: m42,
+		                m31: m13, m32: m23, m33: m33, m34: m43,
+		                m41: m14, m42: m24, m43: m34, m44: m44)
 	}
 }
