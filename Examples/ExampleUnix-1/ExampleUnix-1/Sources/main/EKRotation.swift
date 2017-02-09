@@ -6,21 +6,6 @@
 	import Darwin
 #endif
 
-public protocol EKRotationType: EKLanguageCompatible,
-	CustomDebugStringConvertible,
-CustomStringConvertible {
-
-	static func createRotation(x: Double,
-	                           y: Double,
-	                           z: Double,
-	                           w: Double) -> EKRotation
-
-	var x: Double { get }
-	var y: Double { get }
-	var z: Double { get }
-	var w: Double { get }
-}
-
 public func == (lhs: EKRotation, rhs: EKRotation) -> Bool {
 	if lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w {
 		return true
@@ -45,23 +30,23 @@ extension EKRotation {
 		let halfAngle = angle / 2
 		let cosine = cos(halfAngle)
 		let sine = sin(halfAngle)
-		return EKRotation.createRotation(x: sine * axis.x,
-		                                 y: sine * axis.y,
-		                                 z: sine * axis.z,
-		                                 w: cosine)
+		return EKRotation(x: sine * axis.x,
+		                  y: sine * axis.y,
+		                  z: sine * axis.z,
+		                  w: cosine)
 	}
 
 	public static func createRotation(fromArray array: [Double]) -> EKRotation {
 		let axis = EKVector3.createVector(fromArray: array)
-		return self.createRotation(axis: axis,
-		                           angle: array[zero: 3])
+		return EKRotation.createRotation(axis: axis,
+		                                 angle: array[zero: 3])
 	}
 
 	public static func createRotation(fromDictionary
 		dictionary: [String: Double]) -> EKRotation
 	{
 		let axis = EKVector3.createVector(fromDictionary: dictionary)
-		return self.createRotation(
+		return EKRotation.createRotation(
 			axis: axis,
 			angle: dictionary[zero: ["3", "w", "W", "a", "A"]])
 	}
@@ -78,7 +63,7 @@ extension EKRotation {
 
 		let doubles = strings.flatMap(Double.init)
 
-		return createRotation(fromArray: doubles)
+		return EKRotation.createRotation(fromArray: doubles)
 	}
 
 	public static func createRotation(fromObject
@@ -87,18 +72,18 @@ extension EKRotation {
 		if let rotation = object as? EKRotation {
 			return rotation
 		} else if let array = object as? [Double] {
-			return createRotation(fromArray: array)
+			return EKRotation.createRotation(fromArray: array)
 		} else if let string = object as? String {
-			return createRotation(fromString: string)
+			return EKRotation.createRotation(fromString: string)
 		} else if let dictionary = object as? [String: Double] {
-			return createRotation(fromDictionary: dictionary)
+			return EKRotation.createRotation(fromDictionary: dictionary)
 		}
 
 		return nullRotation()
 	}
 
 	public static func nullRotation() -> EKRotation {
-		return EKRotation.createRotation(x: 0, y: 0, z: 0, w: 1)
+		return EKRotation(x: 0, y: 0, z: 0, w: 1)
 	}
 }
 
@@ -108,7 +93,7 @@ extension EKRotation {
 	}
 
 	public func times(_ q: EKRotation) -> EKRotation {
-		return EKRotation.createRotation(
+		return EKRotation(
 			x: self.w * q.x + self.x * q.w + self.y * q.z - self.z * q.y,
 			y: self.w * q.y + self.y * q.w - self.x * q.z + self.z * q.x,
 			z: self.w * q.z + self.z * q.w + self.x * q.y - self.y * q.x,
@@ -128,15 +113,15 @@ extension EKRotation {
 		if norm == 0 {
 			return self
 		} else {
-			return EKRotation.createRotation(x: x / norm,
-			                                 y: y / norm,
-			                                 z: z / norm,
-			                                 w: w / norm)
+			return EKRotation(x: x / norm,
+			                  y: y / norm,
+			                  z: z / norm,
+			                  w: w / norm)
 		}
 	}
 
 	public func opposite() -> EKRotation {
-		return EKRotation.createRotation(x: -x, y: -y, z: -z, w: w)
+		return EKRotation(x: -x, y: -y, z: -z, w: w)
 	}
 
 	func conjugate(vector: EKVector4) -> EKRotation {

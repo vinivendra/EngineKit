@@ -47,32 +47,19 @@ CustomStringConvertible, CustomDebugStringConvertible {
 	}
 }
 
-public final class EKRotation: EKRotationType, EKLanguageCompatible {
+public struct EKRotation: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
 	public let x: Double
 	public let y: Double
 	public let z: Double
 	public let w: Double
 
-	init(x: Double, y: Double, z: Double, w: Double) {
-		self.x = x
-		self.y = y
-		self.z = z
-		self.w = w
-	}
-
-	public static func createRotation(x: Double,
-	                                  y: Double,
-	                                  z: Double,
-	                                  w: Double) -> EKRotation {
-		return EKRotation(x: x, y: y, z: z, w: w)
-	}
-
 	public var debugDescription: String {
-		return "x: \(x), y: \(y), z: \(z), w: \(w)"
+		return "<EKRotation> " + self.description
 	}
 
 	public var description: String {
-		return debugDescription
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
 	}
 }
 
