@@ -26,6 +26,7 @@ CustomStringConvertible, CustomDebugStringConvertible {
 	public let alpha: Double
 
 	init(withRed red: Double, green: Double, blue: Double, alpha: Double) {
+		precondition(0 <= red ≤= 1)
 		self.red = red
 		self.green = green
 		self.blue = blue

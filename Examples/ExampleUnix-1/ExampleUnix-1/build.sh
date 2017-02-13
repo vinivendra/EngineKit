@@ -8,6 +8,12 @@ do
 	./gyb --line-directive '' -o $output $f
 done
 
+for f in ../EngineKitCore/*.gyb
+do
+	output=${f%.gyb}
+	./gyb --line-directive '' -o $output $f
+done
+
 # Lint
 swiftlint
 
