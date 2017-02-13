@@ -79,6 +79,13 @@ extension EKColor {
 }
 
 extension EKColor {
+	init(copying sourceColor: EKColor) {
+		self.init(withRed: sourceColor.red,
+		          green: sourceColor.green,
+		          blue: sourceColor.blue,
+		          alpha: sourceColor.alpha)
+	}
+
 	init(withRed red: Double,
 	     green: Double,
 	     blue: Double) {
@@ -97,11 +104,8 @@ extension EKColor {
 	}
 
 	init(fromValue value: Any) {
-		if let color = value as? EKColor { // FIXME: create copy init
-			self.init(withRed: color.red,
-			          green: color.green,
-			          blue: color.blue,
-			          alpha: color.alpha)
+		if let color = value as? EKColor {
+			self.init(copying: color)
 		} else if let array = value as? [Double] {
 			self.init(fromArray: array)
 		} else if let grayscale = value as? Double {
