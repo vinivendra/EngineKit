@@ -1,3 +1,4 @@
+// TODO: Add checks for values in EKColor base init
 // TODO: Refactor `create` methods into initializers
 // TODO: Refactor arithmetic methods to take the struct itself instead of `Any`
 // TODO: Refactor Data Classes into EK core

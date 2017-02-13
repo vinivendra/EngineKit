@@ -91,26 +91,3 @@ CustomStringConvertible, CustomDebugStringConvertible {
 		"\(m31) \(m32) \(m33) \(m34)\n(\(m41) \(m42) \(m43) \(m44)"
 	}
 }
-
-public struct EKColor: EKLanguageCompatible,
-CustomStringConvertible, CustomDebugStringConvertible {
-	public let r: Double
-	public let g: Double
-	public let b: Double
-	public let a: Double
-
-	init(withRed red: Double, green: Double, blue: Double, alpha: Double) {
-		self.r = red
-		self.g = green
-		self.b = blue
-		self.a = alpha
-	}
-
-	public var debugDescription: String {
-		return "<EKColor> " + self.description
-	}
-
-	public var description: String {
-		return "r: \(r), g: \(g), b: \(b), a: \(a)"
-	}
-}

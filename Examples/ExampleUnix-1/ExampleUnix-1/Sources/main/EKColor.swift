@@ -18,44 +18,59 @@ let EKColorDictionary: [String: Any] =
 	 "brown": [0.6, 0.4, 0.2],
 	 "clear": [0.0, 0.0, 0.0, 0.0]]
 
-public func == (lhs: EKColor, rhs: EKColor) -> Bool {
-	return lhs.r == rhs.r && lhs.g == rhs.g && lhs.b == rhs.b && lhs.a == rhs.a
-}
+public struct EKColor: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
+	public let red: Double
+	public let green: Double
+	public let blue: Double
+	public let alpha: Double
 
-public func != (lhs: EKColor, rhs: EKColor) -> Bool {
-	return !(lhs == rhs)
+	init(withRed red: Double, green: Double, blue: Double, alpha: Double) {
+		self.red = red
+		self.green = green
+		self.blue = blue
+		self.alpha = alpha
+	}
+
+	public var debugDescription: String {
+		return "<EKColor> " + self.description
+	}
+
+	public var description: String {
+		return "r: \(red), g: \(green), b: \(blue), a: \(alpha)"
+	}
 }
 
 extension EKColor {
 	public func toEKVector4() -> EKVector4 {
-		return EKVector4(x: r, y: g, z: b, w: a)
+		return EKVector4(x: red, y: green, z: blue, w: alpha)
 	}
 
 	public func toArray() -> [Double] {
-		return [r, g, b, a]
+		return [red, green, blue, alpha]
 	}
 }
 
 extension EKColor {
 	public func plus(_ color: EKColor) -> EKColor {
-		return EKColor(withRed: self.r + color.r,
-		               green: self.g + color.g,
-		               blue: self.b + color.b,
-		               alpha: self.a + color.a)
+		return EKColor(withRed: self.red + color.red,
+		               green: self.green + color.green,
+		               blue: self.blue + color.blue,
+		               alpha: self.alpha + color.alpha)
 	}
 
 	public func minus(_ color: EKColor) -> EKColor {
-		return EKColor(withRed: self.r - color.r,
-		               green: self.g - color.g,
-		               blue: self.b - color.b,
-		               alpha: self.a - color.a)
+		return EKColor(withRed: self.red - color.red,
+		               green: self.green - color.green,
+		               blue: self.blue - color.blue,
+		               alpha: self.alpha - color.alpha)
 	}
 
 	public func times(_ scalar: Double) -> EKColor {
-		return EKColor(withRed: self.r * scalar,
-		               green: self.g * scalar,
-		               blue: self.b * scalar,
-		               alpha: self.a * scalar)
+		return EKColor(withRed: self.red * scalar,
+		               green: self.green * scalar,
+		               blue: self.blue * scalar,
+		               alpha: self.alpha * scalar)
 	}
 
 	public func over(_ scalar: Double) -> EKColor {
@@ -82,11 +97,11 @@ extension EKColor {
 	}
 
 	init(fromValue value: Any) {
-		if let color = value as? EKColor {
-			self.init(withRed: color.r,
-			          green: color.g,
-			          blue: color.b,
-			          alpha: color.a)
+		if let color = value as? EKColor { // FIXME: create copy init
+			self.init(withRed: color.red,
+			          green: color.green,
+			          blue: color.blue,
+			          alpha: color.alpha)
 		} else if let array = value as? [Double] {
 			self.init(fromArray: array)
 		} else if let grayscale = value as? Double {
@@ -165,4 +180,15 @@ extension EKColor {
 	static func clearColor() -> EKColor {
 		return EKColor(withRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 	}
+}
+
+public func == (lhs: EKColor, rhs: EKColor) -> Bool {
+	return lhs.red == rhs.red
+		&& lhs.green == rhs.green
+		&& lhs.blue == rhs.blue
+		&& lhs.alpha == rhs.alpha
+}
+
+public func != (lhs: EKColor, rhs: EKColor) -> Bool {
+	return !(lhs == rhs)
 }
