@@ -15,22 +15,6 @@ CustomStringConvertible, CustomDebugStringConvertible {
 	}
 }
 
-public struct EKVector3: EKLanguageCompatible,
-CustomStringConvertible, CustomDebugStringConvertible {
-
-	public let x: Double
-	public let y: Double
-	public let z: Double
-
-	public var debugDescription: String {
-		return "<EKVector3> " + self.description
-	}
-
-	public var description: String {
-		return "x: \(x), y: \(y), z: \(z)"
-	}
-}
-
 public struct EKVector4: EKLanguageCompatible,
 CustomStringConvertible, CustomDebugStringConvertible {
 	public let x: Double
