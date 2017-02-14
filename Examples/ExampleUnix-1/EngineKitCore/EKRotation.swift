@@ -147,7 +147,7 @@ extension EKRotation {
 	}
 
 	public func rotate(matrix: EKMatrix) -> EKMatrix {
-		return self.toMatrix() * matrix
+		return self.toMatrix().times(matrix)
 	}
 
 	public func toMatrix() -> EKMatrix {

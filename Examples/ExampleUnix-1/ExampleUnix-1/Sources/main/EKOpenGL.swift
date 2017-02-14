@@ -105,7 +105,7 @@ extension EKGLObject {
 			pointer: NULL) // offset
 
 		//
-		let mvp = projectionViewMatrix * modelMatrix
+		let mvp = projectionViewMatrix.times(modelMatrix)
 
 		mvp.withGLFloatArray {
 			glUniformMatrix4fv(location: EKGLObject.mvpMatrixID,

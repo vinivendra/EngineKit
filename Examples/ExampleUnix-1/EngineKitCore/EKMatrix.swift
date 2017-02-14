@@ -6,10 +6,6 @@
 	import Darwin
 #endif
 
-public func * (lhs: EKMatrix, rhs: EKMatrix) -> EKMatrix {
-	return rhs.times(lhs)
-}
-
 public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {
 	return EKVector4(x: v.x * m.m11 + v.y * m.m21 + v.z * m.m31 + v.w * m.m41,
 	                 y: v.x * m.m12 + v.y * m.m22 + v.z * m.m32 + v.w * m.m42,
@@ -36,22 +32,22 @@ extension EKMatrix {
 	public func times(_ r: EKMatrix) -> EKMatrix {
 		let l = self
 		return EKMatrix(
-			m11: l.m11 * r.m11 + l.m12 * r.m21 + l.m13 * r.m31 + l.m14 * r.m41,
-			m12: l.m11 * r.m12 + l.m12 * r.m22 + l.m13 * r.m32 + l.m14 * r.m42,
-			m13: l.m11 * r.m13 + l.m12 * r.m23 + l.m13 * r.m33 + l.m14 * r.m43,
-			m14: l.m11 * r.m14 + l.m12 * r.m24 + l.m13 * r.m34 + l.m14 * r.m44,
-			m21: l.m21 * r.m11 + l.m22 * r.m21 + l.m23 * r.m31 + l.m24 * r.m41,
-			m22: l.m21 * r.m12 + l.m22 * r.m22 + l.m23 * r.m32 + l.m24 * r.m42,
-			m23: l.m21 * r.m13 + l.m22 * r.m23 + l.m23 * r.m33 + l.m24 * r.m43,
-			m24: l.m21 * r.m14 + l.m22 * r.m24 + l.m23 * r.m34 + l.m24 * r.m44,
-			m31: l.m31 * r.m11 + l.m32 * r.m21 + l.m33 * r.m31 + l.m34 * r.m41,
-			m32: l.m31 * r.m12 + l.m32 * r.m22 + l.m33 * r.m32 + l.m34 * r.m42,
-			m33: l.m31 * r.m13 + l.m32 * r.m23 + l.m33 * r.m33 + l.m34 * r.m43,
-			m34: l.m31 * r.m14 + l.m32 * r.m24 + l.m33 * r.m34 + l.m34 * r.m44,
-			m41: l.m41 * r.m11 + l.m42 * r.m21 + l.m43 * r.m31 + l.m44 * r.m41,
-			m42: l.m41 * r.m12 + l.m42 * r.m22 + l.m43 * r.m32 + l.m44 * r.m42,
-			m43: l.m41 * r.m13 + l.m42 * r.m23 + l.m43 * r.m33 + l.m44 * r.m43,
-			m44: l.m41 * r.m14 + l.m42 * r.m24 + l.m43 * r.m34 + l.m44 * r.m44)
+			m11: r.m11 * l.m11 + r.m12 * l.m21 + r.m13 * l.m31 + r.m14 * l.m41,
+			m12: r.m11 * l.m12 + r.m12 * l.m22 + r.m13 * l.m32 + r.m14 * l.m42,
+			m13: r.m11 * l.m13 + r.m12 * l.m23 + r.m13 * l.m33 + r.m14 * l.m43,
+			m14: r.m11 * l.m14 + r.m12 * l.m24 + r.m13 * l.m34 + r.m14 * l.m44,
+			m21: r.m21 * l.m11 + r.m22 * l.m21 + r.m23 * l.m31 + r.m24 * l.m41,
+			m22: r.m21 * l.m12 + r.m22 * l.m22 + r.m23 * l.m32 + r.m24 * l.m42,
+			m23: r.m21 * l.m13 + r.m22 * l.m23 + r.m23 * l.m33 + r.m24 * l.m43,
+			m24: r.m21 * l.m14 + r.m22 * l.m24 + r.m23 * l.m34 + r.m24 * l.m44,
+			m31: r.m31 * l.m11 + r.m32 * l.m21 + r.m33 * l.m31 + r.m34 * l.m41,
+			m32: r.m31 * l.m12 + r.m32 * l.m22 + r.m33 * l.m32 + r.m34 * l.m42,
+			m33: r.m31 * l.m13 + r.m32 * l.m23 + r.m33 * l.m33 + r.m34 * l.m43,
+			m34: r.m31 * l.m14 + r.m32 * l.m24 + r.m33 * l.m34 + r.m34 * l.m44,
+			m41: r.m41 * l.m11 + r.m42 * l.m21 + r.m43 * l.m31 + r.m44 * l.m41,
+			m42: r.m41 * l.m12 + r.m42 * l.m22 + r.m43 * l.m32 + r.m44 * l.m42,
+			m43: r.m41 * l.m13 + r.m42 * l.m23 + r.m43 * l.m33 + r.m44 * l.m43,
+			m44: r.m41 * l.m14 + r.m42 * l.m24 + r.m43 * l.m34 + r.m44 * l.m44)
 	}
 }
 

@@ -174,7 +174,7 @@ extension EKVector4 {
 
 extension EKVector4 {
 	public func translate(matrix: EKMatrix) -> EKMatrix {
-		return translationToMatrix() * matrix
+		return translationToMatrix().times(matrix)
 	}
 
 	public func translationToMatrix() -> EKMatrix {

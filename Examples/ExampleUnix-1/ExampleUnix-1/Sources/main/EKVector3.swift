@@ -156,11 +156,11 @@ extension EKVector3 {
 	}
 
 	public func translate(matrix: EKMatrix) -> EKMatrix {
-		return translationToMatrix() * matrix
+		return translationToMatrix().times(matrix)
 	}
 
 	public func scale(matrix: EKMatrix) -> EKMatrix {
-		return scaleToMatrix() * matrix
+		return scaleToMatrix().times(matrix)
 	}
 
 	public func translationToMatrix() -> EKMatrix {
