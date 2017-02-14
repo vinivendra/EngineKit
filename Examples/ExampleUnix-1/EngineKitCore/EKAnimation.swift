@@ -1,5 +1,8 @@
-// Needed for trigonometric functions but may be replaced by Glibc/Darwin
-import Foundation
+#if os(Linux)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 public protocol Interpolable {
 	static func interpolate(start: Self,
