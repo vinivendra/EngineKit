@@ -90,8 +90,8 @@ extension EKVector3 {
 }
 
 extension EKVector3 {
-	public static func origin() -> EKVector3 {
-		return EKVector3(0)
+	init() {
+		self.init(0)
 	}
 
 	init(_ vector: EKVector3) {
@@ -133,7 +133,7 @@ extension EKVector3 {
 		self.init(doubles)
 	}
 
-	init(fromValue value: Any) {
+	init?(fromValue value: Any) {
 		if let vector = value as? EKVector3 {
 			self.init(vector)
 		} else if let array = value as? [Double] {
@@ -145,7 +145,7 @@ extension EKVector3 {
 		} else if let number = value as? Double {
 			self.init(number)
 		} else {
-			self.init(0)
+			return nil
 		}
 	}
 }

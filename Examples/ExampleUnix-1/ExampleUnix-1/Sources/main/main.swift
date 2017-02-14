@@ -152,7 +152,7 @@ try! ekEngine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 			camera.yAxis.times(-resized.x))
 		let rot = EKVector4(x: axis.x, y: axis.y, z: axis.z,
 		                    w: resized.normSquared())
-		camera.rotate(rot.normalized(), around: EKVector3.origin())
+		camera.rotate(rot.normalized(), around: EKVector3())
 	}
 }
 

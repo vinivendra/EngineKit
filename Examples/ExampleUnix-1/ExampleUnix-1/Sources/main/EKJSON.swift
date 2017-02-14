@@ -59,7 +59,7 @@ public enum EKCommand: String {
 				return
 		}
 
-		let animationTargets = targets.map(EKRotation.createRotation(fromArray:))
+		let animationTargets = targets.map(EKRotation.init)
 
 		EKAnimationRotate(
 			duration: 1.0,
@@ -132,16 +132,15 @@ public enum EKCommand: String {
 		let object = EKGLObject(vertexComponent: vertexComponent)
 
 		if let position = parameters["position"] {
-			let vector = EKVector3(fromValue: position)
+			let vector = EKVector3(fromValue: position)!
 			object.position = vector
 		}
 		if let scale = parameters["scale"] {
-			let vector = EKVector3(fromValue: scale)
+			let vector = EKVector3(fromValue: scale)!
 			object.scale = vector
 		}
 		if let rotation = parameters["rotation"] {
-			let vector = EKRotation.createRotation(
-				fromObject: rotation as AnyObject)
+			let vector = EKRotation(fromValue: rotation)!
 			object.rotation = vector
 		}
 		if let color = parameters["color"] {

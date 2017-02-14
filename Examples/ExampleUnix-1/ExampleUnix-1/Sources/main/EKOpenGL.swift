@@ -157,24 +157,22 @@ extension EKGLObject {
 	func rotate(_ rotationObject: Any,
 	            around anchorPoint: Any) {
 		// FIXME: This doesn't rotate around the anchor
-		let rotationOperation = EKRotation.createRotation(
-			fromObject: rotationObject)
+		let rotationOperation = EKRotation(fromValue: rotationObject)!
 		let quaternion = rotationOperation.normalized()
 
 		let newPosition = quaternion.conjugate(vector:
 			position.toHomogeneousVector())
-		let newRotation = quaternion * rotation
+		let newRotation = quaternion.times(rotation)
 
 		position = newPosition.toEKVector3()
 		rotation = newRotation
 	}
 
 	func rotate(_ rotationObject: Any) {
-		let rotationOperation = EKRotation.createRotation(
-			fromObject: rotationObject)
+		let rotationOperation = EKRotation(fromValue: rotationObject)!
 		let quaternion = rotationOperation.normalized()
 
-		let newRotation = quaternion * rotation
+		let newRotation = quaternion.times(rotation)
 
 		rotation = newRotation
 	}

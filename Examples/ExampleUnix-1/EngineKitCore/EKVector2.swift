@@ -80,8 +80,8 @@ extension EKVector2 {
 
 //
 extension EKVector2 {
-	public static func origin() -> EKVector2 {
-		return EKVector2(x: 0, y: 0)
+	init() {
+		self.init(0)
 	}
 
 	init(_ vector: EKVector2) {

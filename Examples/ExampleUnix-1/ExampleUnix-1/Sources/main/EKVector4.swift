@@ -6,25 +6,31 @@
 	import Darwin
 #endif
 
-public func == (lhs: EKVector4, rhs: EKVector4) -> Bool {
-	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
-}
+public struct EKVector4: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
+	public let x: Double
+	public let y: Double
+	public let z: Double
+	public let w: Double
 
-public func != (lhs: EKVector4, rhs: EKVector4) -> Bool {
-	return !(lhs == rhs)
+	public var debugDescription: String {
+		return "<EKVector4> " + self.description
+	}
+
+	public var description: String {
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
+	}
 }
 
 extension EKVector4 {
-	public func plus(_ object: Any) -> EKVector4 {
-		let vector = EKVector4.createVector(fromObject: object)
+	public func plus(_ vector: EKVector4) -> EKVector4 {
 		return EKVector4(x: self.x + vector.x,
 		                 y: self.y + vector.y,
 		                 z: self.z + vector.z,
 		                 w: min(self.w + vector.w, 1))
 	}
 
-	public func minus(_ object: Any) -> EKVector4 {
-		let vector = EKVector4.createVector(fromObject: object)
+	public func minus(_ vector: EKVector4) -> EKVector4 {
 		return EKVector4(x: self.x - vector.x,
 		                 y: self.y - vector.y,
 		                 z: self.z - vector.z,
@@ -49,8 +55,7 @@ extension EKVector4 {
 		                 w: self.w)
 	}
 
-	public func dot(_ object: Any) -> Double {
-		let vector = EKVector4.createVector(fromObject: object)
+	public func dot(_ vector: EKVector4) -> Double {
 		return self.x * vector.x + self.y * vector.y + self.z * vector.z
 	}
 
@@ -71,12 +76,11 @@ extension EKVector4 {
 		}
 	}
 
-	public func translate(_ object: Any) -> EKVector4 {
-		return self.plus(object)
+	public func translate(_ vector: EKVector4) -> EKVector4 {
+		return self.plus(vector)
 	}
 
-	public func scale(_ object: Any) -> EKVector4 {
-		let vector = EKVector4.createVector(fromObject: object)
+	public func scale(_ vector: EKVector4) -> EKVector4 {
 		return EKVector4(x: self.x * vector.x,
 		                 y: self.y * vector.y,
 		                 z: self.z * vector.z,
@@ -89,33 +93,40 @@ extension EKVector4 {
 }
 
 extension EKVector4 {
-	public static func origin() -> EKVector4 {
-		return EKVector4(x: 0, y: 0, z: 0, w: 1)
+	init() {
+		self.init(x: 0, y: 0, z: 0, w: 1)
 	}
 
-	public static func createVector(withUniformNumbers xyz: Double) -> EKVector4
-	{
-		return EKVector4(x: xyz, y: xyz, z: xyz, w: 0)
+	init(_ v: EKVector4) {
+		self.init(x: v.x,
+		          y: v.y,
+		          z: v.z,
+		          w: v.w)
 	}
 
-	public static func createVector(fromArray array: [Double]) -> EKVector4 {
-		return EKVector4(x: array[zero: 0],
-		                 y: array[zero: 1],
-		                 z: array[zero: 2],
-		                 w: array[zero: 3])
+	init(_ xyz: Double) {
+		self.init(x: xyz,
+		          y: xyz,
+		          z: xyz,
+		          w: 0)
 	}
 
-	public static func createVector(fromDictionary dictionary: [String: Double])
-		-> EKVector4 {
-
-			return EKVector4(
-				x: dictionary[zero: ["0", "x", "X"]],
-				y: dictionary[zero: ["1", "y", "Y"]],
-				z: dictionary[zero: ["2", "z", "Z"]],
-				w: dictionary[zero: ["3", "w", "W", "a", "A"]])
+	init(_ array: [Double]) {
+		self.init(x: array[0],
+		          y: array[1],
+		          z: array[2],
+		          w: array[3])
 	}
 
-	public static func createVector(fromString string: String) -> EKVector4 {
+	init(_ dictionary: [String: Double]) {
+		self.init(
+			x: dictionary[["0", "x", "X"]]!,
+			y: dictionary[["1", "y", "Y"]]!,
+			z: dictionary[["2", "z", "Z"]]!,
+			w: dictionary[["3", "w", "W", "a", "A"]]!)
+	}
+
+	init(_ string: String) {
 		var strings = [string]
 
 		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
@@ -127,23 +138,23 @@ extension EKVector4 {
 
 		let doubles = strings.flatMap(Double.init)
 
-		return createVector(fromArray: doubles)
+		self.init(doubles)
 	}
 
-	public static func createVector(fromObject object: Any) -> EKVector4 {
-		if let vector = object as? EKVector4 {
-			return vector
-		} else if let array = object as? [Double] {
-			return createVector(fromArray: array)
-		} else if let string = object as? String {
-			return createVector(fromString: string)
-		} else if let dictionary = object as? [String: Double] {
-			return createVector(fromDictionary: dictionary)
-		} else if let number = object as? Double {
-			return createVector(withUniformNumbers: number)
+	init?(fromValue value: Any) {
+		if let vector = value as? EKVector4 {
+			self.init(vector)
+		} else if let array = value as? [Double] {
+			self.init(array)
+		} else if let string = value as? String {
+			self.init(string)
+		} else if let dictionary = value as? [String: Double] {
+			self.init(dictionary)
+		} else if let number = value as? Double {
+			self.init(number)
+		} else {
+			return nil
 		}
-
-		return origin()
 	}
 }
 
@@ -169,4 +180,12 @@ extension EKVector4 {
 	public func translationToMatrix() -> EKMatrix {
 		return EKMatrix.createTranslation(self.toEKVector3())
 	}
+}
+
+public func == (lhs: EKVector4, rhs: EKVector4) -> Bool {
+	return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z
+}
+
+public func != (lhs: EKVector4, rhs: EKVector4) -> Bool {
+	return !(lhs == rhs)
 }

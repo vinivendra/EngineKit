@@ -1,6 +1,6 @@
 %{
 commands = [('translate', 'Translate', 'EKVector3.init'),
-			('rotate', 'Rotate', 'EKRotation.createRotation(fromArray:)'),
+			('rotate', 'Rotate', 'EKRotation.init'),
 			('scale', 'Scale', 'EKVector3.init'),
 			('changeColor', 'ChangeColor', 'EKColor.init(fromArray:)')]
 }%
@@ -87,16 +87,15 @@ public enum EKCommand: String {
 		let object = EKGLObject(vertexComponent: vertexComponent)
 
 		if let position = parameters["position"] {
-			let vector = EKVector3(fromValue: position)
+			let vector = EKVector3(fromValue: position)!
 			object.position = vector
 		}
 		if let scale = parameters["scale"] {
-			let vector = EKVector3(fromValue: scale)
+			let vector = EKVector3(fromValue: scale)!
 			object.scale = vector
 		}
 		if let rotation = parameters["rotation"] {
-			let vector = EKRotation.createRotation(
-				fromObject: rotation as AnyObject)
+			let vector = EKRotation(fromValue: rotation)!
 			object.rotation = vector
 		}
 		if let color = parameters["color"] {

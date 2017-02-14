@@ -1,7 +1,7 @@
 import SwiftGL
 
 public struct EKGLMatrixComponent {
-	public var position = EKVector3.origin() {
+	public var position = EKVector3() {
 		didSet {
 			_modelMatrix = nil
 		}

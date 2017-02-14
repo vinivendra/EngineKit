@@ -1,37 +1,5 @@
 // swiftlint:disable variable_name
 
-public struct EKVector4: EKLanguageCompatible,
-CustomStringConvertible, CustomDebugStringConvertible {
-	public let x: Double
-	public let y: Double
-	public let z: Double
-	public let w: Double
-
-	public var debugDescription: String {
-		return "<EKVector4> " + self.description
-	}
-
-	public var description: String {
-		return "x: \(x), y: \(y), z: \(z), w: \(w)"
-	}
-}
-
-public struct EKRotation: EKLanguageCompatible,
-CustomStringConvertible, CustomDebugStringConvertible {
-	public let x: Double
-	public let y: Double
-	public let z: Double
-	public let w: Double
-
-	public var debugDescription: String {
-		return "<EKRotation> " + self.description
-	}
-
-	public var description: String {
-		return "x: \(x), y: \(y), z: \(z), w: \(w)"
-	}
-}
-
 public struct EKMatrix: EKLanguageCompatible,
 CustomStringConvertible, CustomDebugStringConvertible {
 	public let m11: Double
