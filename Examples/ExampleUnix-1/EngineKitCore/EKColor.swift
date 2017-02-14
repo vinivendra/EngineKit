@@ -135,7 +135,9 @@ extension EKColor {
 			self.init(withName: "clear")
 		}
 	}
+}
 
+extension EKColor {
 	static func blackColor() -> EKColor {
 		return EKColor(inGrayscale: 0)
 	}
@@ -198,9 +200,9 @@ extension EKColor {
 }
 
 public func == (lhs: EKColor, rhs: EKColor) -> Bool {
-	return lhs.red == rhs.red
+	return lhs.red   == rhs.red
 		&& lhs.green == rhs.green
-		&& lhs.blue == rhs.blue
+		&& lhs.blue  == rhs.blue
 		&& lhs.alpha == rhs.alpha
 }
 
