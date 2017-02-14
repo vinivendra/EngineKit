@@ -26,7 +26,10 @@ CustomStringConvertible, CustomDebugStringConvertible {
 	public let alpha: Double
 
 	init(withRed red: Double, green: Double, blue: Double, alpha: Double) {
-		precondition(0 <= red ≤= 1)
+		precondition(0 <= red   ≤= 1,	"Invalid color value: \(red)")
+		precondition(0 <= green ≤= 1,	"Invalid color value: \(green)")
+		precondition(0 <= blue  ≤= 1,	"Invalid color value: \(blue)")
+		precondition(0 <= alpha ≤= 1,	"Invalid color value: \(alpha)")
 		self.red = red
 		self.green = green
 		self.blue = blue
@@ -85,6 +88,13 @@ extension EKColor {
 		          green: sourceColor.green,
 		          blue: sourceColor.blue,
 		          alpha: sourceColor.alpha)
+	}
+
+	init(copying sourceVector: EKVector4) {
+		self.init(withRed: sourceVector.x,
+		          green: sourceVector.y,
+		          blue: sourceVector.z,
+		          alpha: sourceVector.w)
 	}
 
 	init(withRed red: Double,

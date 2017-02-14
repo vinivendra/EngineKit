@@ -84,10 +84,14 @@ extension EKRotation: Interpolable {
 }
 
 extension EKColor: Interpolable {
-	public static func interpolate(start: EKColor,
-	                               end: EKColor,
+	public static func interpolate(start startColor: EKColor,
+	                               end endColor: EKColor,
 	                               interpolatedValue: Double) -> EKColor {
-		return start.plus( ( end.minus(start) ).times(interpolatedValue) )
+		let start = startColor.toEKVector4()
+		let end = endColor.toEKVector4()
+		let result =
+			start.plus( ( end.minus(start) ).times(interpolatedValue) )
+		return EKColor(copying: result)
 	}
 }
 
