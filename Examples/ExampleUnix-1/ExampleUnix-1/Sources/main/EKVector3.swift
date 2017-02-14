@@ -23,15 +23,13 @@ CustomStringConvertible, CustomDebugStringConvertible {
 
 //
 extension EKVector3 {
-	public func plus(_ object: Any) -> EKVector3 {
-		let vector = EKVector3(fromObject: object)
+	public func plus(_ vector: EKVector3) -> EKVector3 {
 		return EKVector3(x: self.x + vector.x,
 		                 y: self.y + vector.y,
 		                 z: self.z + vector.z)
 	}
 
-	public func minus(_ object: Any) -> EKVector3 {
-		let vector = EKVector3(fromObject: object)
+	public func minus(_ vector: EKVector3) -> EKVector3 {
 		return EKVector3(x: self.x - vector.x,
 		                 y: self.y - vector.y,
 		                 z: self.z - vector.z)
@@ -53,8 +51,7 @@ extension EKVector3 {
 		                 z: -self.z)
 	}
 
-	public func dot(_ object: Any) -> Double {
-		let vector = EKVector3(fromObject: object)
+	public func dot(_ vector: EKVector3) -> Double {
 		return self.x * vector.x + self.y * vector.y + self.z * vector.z
 	}
 
@@ -81,12 +78,11 @@ extension EKVector3 {
 		                 z: self.x * other.y - other.x * self.y)
 	}
 
-	public func translate(_ object: Any) -> EKVector3 {
-		return self.plus(object)
+	public func translate(_ vector: EKVector3) -> EKVector3 {
+		return self.plus(vector)
 	}
 
-	public func scale(_ object: Any) -> EKVector3 {
-		let vector = EKVector3(fromObject: object)
+	public func scale(_ vector: EKVector3) -> EKVector3 {
 		return EKVector3(x: self.x * vector.x,
 		                 y: self.y * vector.y,
 		                 z: self.z * vector.z)
