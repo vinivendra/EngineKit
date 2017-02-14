@@ -91,34 +91,34 @@ extension EKVector3 {
 
 extension EKVector3 {
 	public static func origin() -> EKVector3 {
-		return EKVector3(withXYAndZ: 0)
+		return EKVector3(0)
 	}
 
-	init(copying vector: EKVector3) {
+	init(_ vector: EKVector3) {
 		self.init(x: vector.x,
 		          y: vector.y,
 		          z: vector.z)
 	}
 
-	init(withXYAndZ xyz: Double) {
+	init(_ xyz: Double) {
 		self.init(x: xyz,
 		          y: xyz,
 		          z: xyz)
 	}
 
-	init(fromArray array: [Double]) {
+	init(_ array: [Double]) {
 		self.init(x: array[zero: 0],
 		          y: array[zero: 1],
 		          z: array[zero: 2])
 	}
 
-	init(fromDictionary dictionary: [String: Double]) {
+	init(_ dictionary: [String: Double]) {
 		self.init(x: dictionary[zero: ["0", "x", "X"]],
 		          y: dictionary[zero: ["1", "y", "Y"]],
 		          z: dictionary[zero: ["2", "z", "Z"]])
 	}
 
-	init(fromString string: String) {
+	init(_ string: String) {
 		var strings = [string]
 
 		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
@@ -130,22 +130,22 @@ extension EKVector3 {
 
 		let doubles = strings.flatMap(Double.init)
 
-		self.init(fromArray: doubles)
+		self.init(doubles)
 	}
 
-	init(fromObject object: Any) {
-		if let vector = object as? EKVector3 {
-			self.init(copying: vector)
-		} else if let array = object as? [Double] {
-			self.init(fromArray: array)
-		} else if let string = object as? String {
-			self.init(fromString: string)
-		} else if let dictionary = object as? [String: Double] {
-			self.init(fromDictionary: dictionary)
-		} else if let number = object as? Double {
-			self.init(withXYAndZ: number)
+	init(fromValue value: Any) {
+		if let vector = value as? EKVector3 {
+			self.init(vector)
+		} else if let array = value as? [Double] {
+			self.init(array)
+		} else if let string = value as? String {
+			self.init(string)
+		} else if let dictionary = value as? [String: Double] {
+			self.init(dictionary)
+		} else if let number = value as? Double {
+			self.init(number)
 		} else {
-			self.init(withXYAndZ: 0)
+			self.init(0)
 		}
 	}
 }

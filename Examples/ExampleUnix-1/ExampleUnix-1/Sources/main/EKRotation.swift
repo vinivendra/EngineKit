@@ -37,7 +37,7 @@ extension EKRotation {
 	}
 
 	public static func createRotation(fromArray array: [Double]) -> EKRotation {
-		let axis = EKVector3(fromArray: array)
+		let axis = EKVector3(array)
 		return EKRotation.createRotation(axis: axis,
 		                                 angle: array[zero: 3])
 	}
@@ -45,7 +45,7 @@ extension EKRotation {
 	public static func createRotation(fromDictionary
 		dictionary: [String: Double]) -> EKRotation
 	{
-		let axis = EKVector3(fromDictionary: dictionary)
+		let axis = EKVector3(dictionary)
 		return EKRotation.createRotation(
 			axis: axis,
 			angle: dictionary[zero: ["3", "w", "W", "a", "A"]])
@@ -133,7 +133,7 @@ extension EKRotation {
 	}
 
 	public func rotate(_ vector: Any) -> EKVector3 {
-		let v = EKVector3(fromObject: vector)
+		let v = EKVector3(fromValue: vector)
 		let q = self
 		let p = EKVector4(
 			x: q.w * v.x + q.y * v.z - q.z * v.y,
