@@ -6,29 +6,36 @@
 	import Darwin
 #endif
 
-public func * (v: EKVector4, m: EKMatrix) -> EKVector4 {
-	return EKVector4(x: v.x * m.m11 + v.y * m.m21 + v.z * m.m31 + v.w * m.m41,
-	                 y: v.x * m.m12 + v.y * m.m22 + v.z * m.m32 + v.w * m.m42,
-	                 z: v.x * m.m13 + v.y * m.m23 + v.z * m.m33 + v.w * m.m43,
-	                 w: v.x * m.m14 + v.y * m.m24 + v.z * m.m34 + v.w * m.m44)
-}
+public struct EKMatrix: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
+	public let m11: Double
+	public let m12: Double
+	public let m13: Double
+	public let m14: Double
+	public let m21: Double
+	public let m22: Double
+	public let m23: Double
+	public let m24: Double
+	public let m31: Double
+	public let m32: Double
+	public let m33: Double
+	public let m34: Double
+	public let m41: Double
+	public let m42: Double
+	public let m43: Double
+	public let m44: Double
 
-public func * (m: EKMatrix, v: EKVector4) -> EKVector4 {
-	return EKVector4(x: v.x * m.m11 + v.y * m.m12 + v.z * m.m13 + v.w * m.m14,
-	                 y: v.x * m.m21 + v.y * m.m22 + v.z * m.m23 + v.w * m.m24,
-	                 z: v.x * m.m31 + v.y * m.m32 + v.z * m.m33 + v.w * m.m34,
-	                 w: v.x * m.m41 + v.y * m.m42 + v.z * m.m43 + v.w * m.m44)
+	public var debugDescription: String {
+		return "<EKMatrix>: [\n \(self.description)]"
+	}
+
+	public var description: String {
+		return "\(m11) \(m12) \(m13) \(m14)\n\(m21) \(m22) \(m23) \(m24)\n" +
+		"\(m31) \(m32) \(m33) \(m34)\n(\(m41) \(m42) \(m43) \(m44)"
+	}
 }
 
 extension EKMatrix {
-	public static func identity() -> EKMatrix {
-		return EKMatrix(
-			m11: 1, m12: 0, m13: 0, m14: 0,
-			m21: 0, m22: 1, m23: 0, m24: 0,
-			m31: 0, m32: 0, m33: 1, m34: 0,
-			m41: 0, m42: 0, m43: 0, m44: 1)
-	}
-
 	public func times(_ r: EKMatrix) -> EKMatrix {
 		let l = self
 		return EKMatrix(
@@ -52,40 +59,46 @@ extension EKMatrix {
 }
 
 extension EKMatrix {
-	public static func createScale(_ vector: EKVector3) -> EKMatrix {
-		return createScale(x: vector.x, y: vector.y, z: vector.z)
+	init() {
+		self.init(
+			m11: 1, m12: 0, m13: 0, m14: 0,
+			m21: 0, m22: 1, m23: 0, m24: 0,
+			m31: 0, m32: 0, m33: 1, m34: 0,
+			m41: 0, m42: 0, m43: 0, m44: 1)
 	}
 
-	public static func createScale(x: Double, y: Double, z: Double)
-		-> EKMatrix {
-			return EKMatrix(m11: x, m12: 0, m13: 0, m14: 0,
-			                m21: 0, m22: y, m23: 0, m24: 0,
-			                m31: 0, m32: 0, m33: z, m34: 0,
-			                m41: 0, m42: 0, m43: 0, m44: 1)
+	init(scale vector: EKVector3) {
+		self.init(scaleX: vector.x, y: vector.y, z: vector.z)
 	}
 
-	public static func createTranslation(_ vector: EKVector3) -> EKMatrix {
-		return createTranslation(x: vector.x, y: vector.y, z: vector.z)
+	init(scaleX x: Double, y: Double, z: Double) {
+		self.init(m11: x, m12: 0, m13: 0, m14: 0,
+		          m21: 0, m22: y, m23: 0, m24: 0,
+		          m31: 0, m32: 0, m33: z, m34: 0,
+		          m41: 0, m42: 0, m43: 0, m44: 1)
 	}
 
-	public static func createTranslation(x: Double, y: Double, z: Double)
-		-> EKMatrix {
-			return EKMatrix(m11: 1, m12: 0, m13: 0, m14: 0,
-			                m21: 0, m22: 1, m23: 0, m24: 0,
-			                m31: 0, m32: 0, m33: 1, m34: 0,
-			                m41: x, m42: y, m43: z, m44: 1)
+	init(translation vector: EKVector3) {
+		self.init(translationX: vector.x, y: vector.y, z: vector.z)
 	}
 
-	public static func createPerspective(fieldOfViewY fov: Double,
-	                                     aspect: Double,
-	                                     zNear: Double,
-	                                     zFar: Double) -> EKMatrix {
+	init(translationX x: Double, y: Double, z: Double) {
+		self.init(m11: 1, m12: 0, m13: 0, m14: 0,
+		          m21: 0, m22: 1, m23: 0, m24: 0,
+		          m31: 0, m32: 0, m33: 1, m34: 0,
+		          m41: x, m42: y, m43: z, m44: 1)
+	}
+
+	init(perspectiveWithYFieldOfView fov: Double,
+	     aspect: Double,
+	     zNear: Double,
+	     zFar: Double) {
 		assert(aspect != 0)
 		assert(zFar != zNear)
 
 		let tanHalfFov = tan(fov / 2) // 0.557
 
-		return EKMatrix(
+		self.init(
 			m11: 1 / (aspect * tanHalfFov),
 			m12: 0, m13: 0, m14: 0, m21: 0,
 			m22: 1 / (tanHalfFov),
@@ -97,14 +110,14 @@ extension EKMatrix {
 			m44: 0)
 	}
 
-	public static func createLookAt(eye: EKVector3,
-	                                center: EKVector3,
-	                                up: EKVector3) -> EKMatrix {
+	init(lookAtWithEye eye: EKVector3,
+	     center: EKVector3,
+	     up: EKVector3) {
 		let f = center.minus(eye).normalize()
 		let s = f.cross(up).normalize()
 		let u = s.cross(f)
 
-		return EKMatrix(
+		self.init(
 			m11: s.x, m12: u.x, m13: -f.x, m14: 0,
 			m21: s.y, m22: u.y, m23: -f.y, m24: 0,
 			m31: s.z, m32: u.z, m33: -f.z, m34: 0,
@@ -120,5 +133,14 @@ extension EKMatrix {
 		                m21: m12, m22: m22, m23: m32, m24: m42,
 		                m31: m13, m32: m23, m33: m33, m34: m43,
 		                m41: m14, m42: m24, m43: m34, m44: m44)
+	}
+
+	public func times(_ v: EKVector4) -> EKVector4 {
+		let m = self
+		return EKVector4(
+			x: v.x * m.m11 + v.y * m.m12 + v.z * m.m13 + v.w * m.m14,
+			y: v.x * m.m21 + v.y * m.m22 + v.z * m.m23 + v.w * m.m24,
+			z: v.x * m.m31 + v.y * m.m32 + v.z * m.m33 + v.w * m.m34,
+			w: v.x * m.m41 + v.y * m.m42 + v.z * m.m43 + v.w * m.m44)
 	}
 }

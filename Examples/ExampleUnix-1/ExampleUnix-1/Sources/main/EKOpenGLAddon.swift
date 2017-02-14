@@ -8,8 +8,8 @@ let EKOpenGLWindowHeight: GLfloat = 768
 let NULL = UnsafeMutablePointer<Int32>(bitPattern: 4)!.predecessor()
 
 public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
-	public let projection = EKMatrix.createPerspective(
-		fieldOfViewY: EKToRadians(45),
+	public let projection = EKMatrix(
+		perspectiveWithYFieldOfView: EKToRadians(45),
 		aspect: Double(EKOpenGLWindowWidth / EKOpenGLWindowHeight),
 		zNear: 0.1,
 		zFar: 100)

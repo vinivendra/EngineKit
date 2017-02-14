@@ -164,11 +164,11 @@ extension EKVector3 {
 	}
 
 	public func translationToMatrix() -> EKMatrix {
-		return EKMatrix.createTranslation(self)
+		return EKMatrix(translation: self)
 	}
 
 	public func scaleToMatrix() -> EKMatrix {
-		return EKMatrix.createScale(self)
+		return EKMatrix(scale: self)
 	}
 
 	public func toHomogeneousPoint() -> EKVector4 {

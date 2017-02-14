@@ -173,12 +173,21 @@ extension EKVector4 {
 }
 
 extension EKVector4 {
+	public func times(_ m: EKMatrix) -> EKVector4 {
+		let v = self
+		return EKVector4(
+			x: v.x * m.m11 + v.y * m.m21 + v.z * m.m31 + v.w * m.m41,
+			y: v.x * m.m12 + v.y * m.m22 + v.z * m.m32 + v.w * m.m42,
+			z: v.x * m.m13 + v.y * m.m23 + v.z * m.m33 + v.w * m.m43,
+			w: v.x * m.m14 + v.y * m.m24 + v.z * m.m34 + v.w * m.m44)
+	}
+
 	public func translate(matrix: EKMatrix) -> EKMatrix {
 		return translationToMatrix().times(matrix)
 	}
 
 	public func translationToMatrix() -> EKMatrix {
-		return EKMatrix.createTranslation(self.toEKVector3())
+		return EKMatrix(translation: self.toEKVector3())
 	}
 }
 

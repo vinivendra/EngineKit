@@ -3,7 +3,7 @@ import SwiftGL
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
 	public static var colorID: GLint! = nil
-	public static var projectionViewMatrix = EKMatrix.identity()
+	public static var projectionViewMatrix = EKMatrix()
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
@@ -196,7 +196,7 @@ class EKGLCamera: EKGLObject {
 		let oldCenter = EKVector3(x: 0, y: 0, z: -1)
 		let center = rotation.rotate(oldCenter).plus(position)
 		let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-		return EKMatrix.createLookAt(eye: position, center: center, up: up)
+		return EKMatrix(lookAtWithEye: position, center: center, up: up)
 	}
 
 	var xAxis: EKVector3 {
