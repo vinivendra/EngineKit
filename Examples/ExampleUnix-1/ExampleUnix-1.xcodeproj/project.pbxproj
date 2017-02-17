@@ -31,7 +31,6 @@
 		2429D07D1E20030F0027D17A /* EKOpenGLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGLComponents.swift; path = Sources/main/EKOpenGLComponents.swift; sourceTree = "<group>"; };
 		2429D07E1E20030F0027D17A /* EKResourcePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKResourcePool.swift; path = Sources/main/EKResourcePool.swift; sourceTree = "<group>"; };
 		2429D07F1E20030F0027D17A /* EKTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKTimer.swift; path = Sources/main/EKTimer.swift; sourceTree = "<group>"; };
-		2429D0801E20030F0027D17A /* EKUnixDataClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixDataClasses.swift; path = Sources/main/EKUnixDataClasses.swift; sourceTree = "<group>"; };
 		2429D0811E20030F0027D17A /* EKUnixFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixFactory.swift; path = Sources/main/EKUnixFactory.swift; sourceTree = "<group>"; };
 		2429D0821E20030F0027D17A /* EKUnixFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixFileManager.swift; path = Sources/main/EKUnixFileManager.swift; sourceTree = "<group>"; };
 		2429D0831E20030F0027D17A /* EKUnixInputAddon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKUnixInputAddon.swift; path = Sources/main/EKUnixInputAddon.swift; sourceTree = "<group>"; };
@@ -142,7 +141,6 @@
 				2429D07D1E20030F0027D17A /* EKOpenGLComponents.swift */,
 				2429D07E1E20030F0027D17A /* EKResourcePool.swift */,
 				2429D07F1E20030F0027D17A /* EKTimer.swift */,
-				2429D0801E20030F0027D17A /* EKUnixDataClasses.swift */,
 				2429D0811E20030F0027D17A /* EKUnixFactory.swift */,
 				2429D0821E20030F0027D17A /* EKUnixFileManager.swift */,
 				2429D0831E20030F0027D17A /* EKUnixInputAddon.swift */,
