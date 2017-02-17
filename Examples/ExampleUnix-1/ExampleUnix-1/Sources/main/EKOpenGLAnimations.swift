@@ -104,15 +104,15 @@ public class EKAnimationScale: EKAnimation<EKVector3> {
 		})
 	}
 }
-public class EKAnimationChangeColor: EKAnimation<EKVector4> {
+public class EKAnimationChangeColor: EKAnimation<EKColor> {
 	init(duration: Double,
-	     endValue: EKVector4,
+	     endValue: EKColor,
 	     repeats: Bool = false,
 	     autoreverses: Bool = false,
 	     timingFunction: EKTimingFunction = .easeInOut,
 	     object: EKGLObject) {
 		super.init(duration: duration,
-		           startValue: object.color.toEKVector4(),
+		           startValue: object.color,
 		           endValue: endValue,
 		           repeats: repeats,
 		           autoreverses: autoreverses,
@@ -123,13 +123,13 @@ public class EKAnimationChangeColor: EKAnimation<EKVector4> {
 	}
 
 	public init?(duration: Double,
-	             chainValues: [EKVector4],
+	             chainValues: [EKColor],
 	             repeats: Bool = false,
 	             autoreverses: Bool = false,
 	             timingFunction: EKTimingFunction = .easeInOut,
 	             object: EKGLObject) {
 		super.init(duration: duration,
-		           startValue: object.color.toEKVector4(),
+		           startValue: object.color,
 		           chainValues: chainValues,
 		           repeats: repeats,
 		           autoreverses: autoreverses,

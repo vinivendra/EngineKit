@@ -1,5 +1,8 @@
-// Needed for trigonometric functions but may be replaced by Glibc/Darwin
-import Foundation
+#if os(Linux)
+	import Glibc
+#else
+	import Darwin
+#endif
 
 public protocol Interpolable {
 	static func interpolate(start: Self,
@@ -81,6 +84,18 @@ extension EKRotation: Interpolable {
 		                  w: a.w * ratioA + b.w * ratioB)
 	}
 	// swiftlint:enable variable_name
+}
+
+extension EKColor: Interpolable {
+	public static func interpolate(start startColor: EKColor,
+	                               end endColor: EKColor,
+	                               interpolatedValue: Double) -> EKColor {
+		let start = startColor.toEKVector4()
+		let end = endColor.toEKVector4()
+		let result =
+			start.plus( ( end.minus(start) ).times(interpolatedValue) )
+		return EKColor(copying: result)
+	}
 }
 
 //

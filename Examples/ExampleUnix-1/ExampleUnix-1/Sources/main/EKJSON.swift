@@ -43,7 +43,7 @@ public enum EKCommand: String {
 				return
 		}
 
-		let animationTargets = targets.map(EKVector3.createVector(fromArray:))
+		let animationTargets = targets.map(EKVector3.init)
 
 		EKAnimationTranslate(
 			duration: 1.0,
@@ -59,7 +59,7 @@ public enum EKCommand: String {
 				return
 		}
 
-		let animationTargets = targets.map(EKRotation.createRotation(fromArray:))
+		let animationTargets = targets.map(EKRotation.init)
 
 		EKAnimationRotate(
 			duration: 1.0,
@@ -75,7 +75,7 @@ public enum EKCommand: String {
 				return
 		}
 
-		let animationTargets = targets.map(EKVector3.createVector(fromArray:))
+		let animationTargets = targets.map(EKVector3.init)
 
 		EKAnimationScale(
 			duration: 1.0,
@@ -91,7 +91,7 @@ public enum EKCommand: String {
 				return
 		}
 
-		let animationTargets = targets.map(EKVector4.createVector(fromArray:))
+		let animationTargets = targets.map(EKColor.init(fromArray:))
 
 		EKAnimationChangeColor(
 			duration: 1.0,
@@ -132,22 +132,19 @@ public enum EKCommand: String {
 		let object = EKGLObject(vertexComponent: vertexComponent)
 
 		if let position = parameters["position"] {
-			let vector = EKVector3.createVector(
-				fromObject: position as AnyObject)
+			let vector = EKVector3(fromValue: position)!
 			object.position = vector
 		}
 		if let scale = parameters["scale"] {
-			let vector = EKVector3.createVector(
-				fromObject: scale as AnyObject)
+			let vector = EKVector3(fromValue: scale)!
 			object.scale = vector
 		}
 		if let rotation = parameters["rotation"] {
-			let vector = EKRotation.createRotation(
-				fromObject: rotation as AnyObject)
+			let vector = EKRotation(fromValue: rotation)!
 			object.rotation = vector
 		}
 		if let color = parameters["color"] {
-			let vector = EKVector4.createColor(object: color)
+			let vector = EKColor(fromValue: color)
 			object.color = vector
 		}
 		if let name = parameters["name"] as? String {

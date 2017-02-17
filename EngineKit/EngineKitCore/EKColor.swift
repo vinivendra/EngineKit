@@ -20,32 +20,34 @@ let EKColorDictionary: [String: Any] =
 
 extension EKVector4: EKColorType {
 	public static func createColor(red: Double,
-	                                   green: Double,
-	                                   blue: Double,
-	                                   alpha: Double) -> EKColorType {
+	                               green: Double,
+	                               blue: Double,
+	                               alpha: Double) -> EKColorType {
 		return EKVector4(x: red, y: green, z: blue, w: alpha)
 	}
 
-	public var components: (red: Double,
-							green: Double,
-							blue: Double,
-							alpha: Double) {
+	public var components:
+		(red: Double,
+		green: Double,
+		blue: Double,
+		alpha: Double) {
 		get {
 			return (x, y, z, w)
 		}
 	}
 }
 
-public protocol EKColorType: class {
+public protocol EKColorType {
 	static func createColor(red: Double,
-	                            green: Double,
-	                            blue: Double,
-	                            alpha: Double) -> EKColorType
+	                        green: Double,
+	                        blue: Double,
+	                        alpha: Double) -> EKColorType
 
-	var components: (red: Double,
-					 green: Double,
-					 blue: Double,
-					 alpha: Double) { get }
+	var components:
+		(red: Double,
+		green: Double,
+		blue: Double,
+		alpha: Double) { get }
 }
 
 public func == (lhs: EKColorType, rhs: EKColorType) -> Bool {
@@ -62,8 +64,8 @@ public func != (lhs: EKColorType, rhs: EKColorType) -> Bool {
 
 extension EKColorType {
 	static func createColor(red: Double,
-	                            green: Double,
-	                            blue: Double) -> EKColorType {
+	                        green: Double,
+	                        blue: Double) -> EKColorType {
 		return createColor(red: red, green: green, blue: blue, alpha: 1.0)
 	}
 
@@ -161,5 +163,5 @@ extension EKColorType {
 	static func clearColor() -> EKColorType {
 		return createColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 	}
-
+	
 }

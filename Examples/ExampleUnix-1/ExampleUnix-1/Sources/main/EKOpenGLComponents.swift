@@ -1,7 +1,7 @@
 import SwiftGL
 
 public struct EKGLMatrixComponent {
-	public var position = EKVector3.origin() {
+	public var position = EKVector3() {
 		didSet {
 			_modelMatrix = nil
 		}
@@ -21,9 +21,9 @@ public struct EKGLMatrixComponent {
 
 	public mutating func getMatrix() -> EKMatrix {
 		guard let modelMatrix = _modelMatrix else {
-			_modelMatrix = position.translationToMatrix() *
-				scale.scaleToMatrix() *
-				rotation.toMatrix()
+			_modelMatrix = position.translationToMatrix().times(
+				scale.scaleToMatrix().times(
+				rotation.toMatrix()))
 			return _modelMatrix!
 		}
 		return modelMatrix

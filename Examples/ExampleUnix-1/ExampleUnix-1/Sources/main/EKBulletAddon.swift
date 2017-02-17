@@ -23,7 +23,7 @@ public class EKBulletAddon: EKAddon, EKTimerDelegate {
 	public func timerHasUpdated(_ timer: EKTimer,
 	                     currentTime: Double,
 	                     deltaTime: Double) {
-		cBulletStep(deltaçime)
+		cBulletStep(deltaTime)
 
 		object.position = EKVector3(x: object.position.x,
 		                            y: cBulletGetHeight() / 10.0,

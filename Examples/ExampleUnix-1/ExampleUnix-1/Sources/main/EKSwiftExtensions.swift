@@ -33,6 +33,15 @@ extension Array where Element: ExpressibleByIntegerLiteral {
 }
 
 extension Dictionary where Value: ExpressibleByIntegerLiteral {
+	subscript(indexes: [Key]) -> Value? {
+		for index in indexes {
+			if let result = self[index] {
+				return result
+			}
+		}
+		return nil
+	}
+
 	subscript(one index: Key) -> Value {
 		return self[index] ?? 1
 	}
@@ -42,21 +51,11 @@ extension Dictionary where Value: ExpressibleByIntegerLiteral {
 	}
 
 	subscript(one indexes: [Key]) -> Value {
-		for index in indexes {
-			if let result = self[index] {
-				return result
-			}
-		}
-		return 1
+		return self[indexes] ?? 1
 	}
 
 	subscript(zero indexes: [Key]) -> Value {
-		for index in indexes {
-			if let result = self[index] {
-				return result
-			}
-		}
-		return 0
+		return self[indexes] ?? 0
 	}
 
 	func zero(_ index: Key) -> Value {
