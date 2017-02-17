@@ -56,6 +56,13 @@ extension EKMatrix {
 			m43: r.m41 * l.m13 + r.m42 * l.m23 + r.m43 * l.m33 + r.m44 * l.m43,
 			m44: r.m41 * l.m14 + r.m42 * l.m24 + r.m43 * l.m34 + r.m44 * l.m44)
 	}
+
+	public func transpose() -> EKMatrix {
+		return EKMatrix(m11: m11, m12: m21, m13: m31, m14: m41,
+		                m21: m12, m22: m22, m23: m32, m24: m42,
+		                m31: m13, m32: m23, m33: m33, m34: m43,
+		                m41: m14, m42: m24, m43: m34, m44: m44)
+	}
 }
 
 extension EKMatrix {
@@ -128,13 +135,6 @@ extension EKMatrix {
 }
 
 extension EKMatrix {
-	public func transpose() -> EKMatrix {
-		return EKMatrix(m11: m11, m12: m21, m13: m31, m14: m41,
-		                m21: m12, m22: m22, m23: m32, m24: m42,
-		                m31: m13, m32: m23, m33: m33, m34: m43,
-		                m41: m14, m42: m24, m43: m34, m44: m44)
-	}
-
 	public func times(_ v: EKVector4) -> EKVector4 {
 		let m = self
 		return EKVector4(
