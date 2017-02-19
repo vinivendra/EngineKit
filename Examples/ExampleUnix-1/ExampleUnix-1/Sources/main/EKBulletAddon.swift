@@ -66,7 +66,7 @@ public class EKBulletComponent: EKPhysicsComponent {
 		let p = object.position
 		let r = object.rotation
 		self.cBody = cBulletCreateBody(p.x, p.y, p.z,
-		                               r.x, r.y, r.z, r.w)
+		                               r.x, r.y, r.z, -r.w)
 	}
 
 	public func fetchLatestInfo()
@@ -85,7 +85,7 @@ public class EKBulletComponent: EKPhysicsComponent {
 		                    &rx, &ry, &rz, &rw)
 
 		return (position: EKVector3(x: px, y: py, z: pz),
-		        rotation: EKRotation(x: rx, y: ry, z: rz, w: rw))
+		        rotation: EKRotation(x: rx, y: ry, z: rz, w: -rw))
 	}
 
 	//
