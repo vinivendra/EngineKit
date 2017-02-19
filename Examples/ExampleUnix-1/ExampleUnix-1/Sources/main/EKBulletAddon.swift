@@ -37,7 +37,10 @@ public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 
 		for object in EKGLObject.allObjects {
 			if let physicsComponent = object.physicsComponent {
-				physicsComponent.update(object: object)
+				let (newPosition, newRotation) =
+					physicsComponent.fetchLatestInfo()
+				object.position = newPosition
+				object.rotation = newRotation
 			}
 		}
 	}
@@ -48,7 +51,7 @@ public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 }
 
 public protocol EKPhysicsComponent {
-	func update(object: EKGLObject)
+	func fetchLatestInfo() -> (position: EKVector3, rotation: EKRotation)
 }
 
 public protocol EKPhysicsAddon: EKAddon {
@@ -66,7 +69,9 @@ public class EKBulletComponent: EKPhysicsComponent {
 		                               r.x, r.y, r.z, r.w)
 	}
 
-	public func update(object: EKGLObject) {
+	public func fetchLatestInfo()
+		-> (position: EKVector3, rotation: EKRotation)
+	{
 		var px: Double = 0.0
 		var py: Double = 0.0
 		var pz: Double = 0.0
@@ -79,7 +84,8 @@ public class EKBulletComponent: EKPhysicsComponent {
 		                    &px, &py, &pz,
 		                    &rx, &ry, &rz, &rw)
 
-		object.position = EKVector3(x: px, y: py, z: pz)
+		return (position: EKVector3(x: px, y: py, z: pz),
+		        rotation: EKRotation(x: rx, y: ry, z: rz, w: rw))
 	}
 
 	//
