@@ -63,7 +63,8 @@ void cBulletGetTransform(CPhysicsBody physicsBody,
 
 CPhysicsBody cBulletCreateBody(double px, double py, double pz,
 							   double rx, double ry, double rz, double rw) {
-	btCollisionShape *shape = new btSphereShape(1);
+	btVector3 halfBoxSize = btVector3(1, 1, 1);
+	btCollisionShape *shape = new btBoxShape(halfBoxSize);
 	btDefaultMotionState *motionState =
 		new btDefaultMotionState(btTransform(btQuaternion(rx, ry, rz, rw),
 											 btVector3(px, py, pz)));

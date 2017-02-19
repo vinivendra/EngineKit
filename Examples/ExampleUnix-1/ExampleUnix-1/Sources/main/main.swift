@@ -13,11 +13,18 @@ class MyEngine: EKSwiftEngine {
 		openGL = objects["OpenGL"] as! EKOpenGLAddon
 
 		//
-		let ball = EKGLCube()
+		var ball = EKGLCube()
 		ball.color = EKColor.whiteColor()
-		ball.position = EKVector3(x: 0, y: 3, z: 0)
+		ball.position = EKVector3(x: 0, y: 3, z: -10)
 		ball.name = "white cube"
 		ball.setupPhysicsComponent()
+
+		ball = EKGLCube()
+		ball.color = EKColor.whiteColor()
+		ball.position = EKVector3(x: 0.9, y: 6, z: -10)
+		ball.name = "white cube"
+		ball.setupPhysicsComponent()
+
 //		let ball2 = EKGLCube()
 //		ball2.color = EKColor.grayColor()
 //		ball2.position = EKVector3(x: -2, y: -1, z: 0)
