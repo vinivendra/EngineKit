@@ -75,14 +75,18 @@ extension EKGLMatrixComposer {
 
 public struct EKGLVertexComponent {
 	private let vertices: [GLfloat]
+	private let normals: [GLfloat]
 
-	public let bufferID: GLuint
+	public let vertexBufferID: GLuint
 	public let numberOfVertices: GLsizei
 
 	public let meshName: String
 
-	public init(meshName: String, vertices: [GLfloat]) {
+	public init(meshName: String,
+	            vertices: [GLfloat],
+	            normals: [GLfloat]) {
 		self.vertices = vertices
+		self.normals = normals
 		self.numberOfVertices = GLsizei(vertices.count) / 3
 
 		self.meshName = meshName
@@ -94,12 +98,15 @@ public struct EKGLVertexComponent {
 		             size: MemoryLayout<[GLfloat]>.size * vertices.count,
 		             data: vertices,
 		             usage: GL_DYNAMIC_DRAW)
-		self.bufferID = tempBufferID
+		self.vertexBufferID = tempBufferID
 	}
 
 	public init(fromFile filename: String) {
 		var rawVertices = [[GLfloat]]()
 		var vertices = [GLfloat]()
+
+		var rawNormals = [[GLfloat]]()
+		var normals = [GLfloat]()
 
 		let fileManager = OSFactory.createFileManager()
 		let fileContents = fileManager.getContentsFromFile("../../" + filename)!
@@ -110,22 +117,35 @@ public struct EKGLVertexComponent {
 			                    GLfloat(match.getMatch(atIndex: 3)!)!])
 		}
 
-		let vertex = "([^/]+)/[^\\s]+"
+		for match in fileContents =~ "vn ([^\\s]+) ([^\\s]+) ([^\\s]+)" {
+			rawNormals.append([GLfloat(match.getMatch(atIndex: 1)!)!,
+			                   GLfloat(match.getMatch(atIndex: 2)!)!,
+			                   GLfloat(match.getMatch(atIndex: 3)!)!])
+		}
+
+		let vertex = "([^/]+)/([^/]+)[^\\s]+"
 		for match in fileContents =~ "f \(vertex) \(vertex) \(vertex)" {
-			let index1 = Int(match.getMatch(atIndex: 1)!)! - 1
-			let index2 = Int(match.getMatch(atIndex: 2)!)! - 1
-			let index3 = Int(match.getMatch(atIndex: 3)!)! - 1
-			vertices.append(contentsOf: rawVertices[index1])
-			vertices.append(contentsOf: rawVertices[index2])
-			vertices.append(contentsOf: rawVertices[index3])
-			print(index1)
-			print(index2)
-			print(index3)
+			let vertex1 = Int(match.getMatch(atIndex: 1)!)! - 1
+			let normal1 = Int(match.getMatch(atIndex: 2)!)! - 1
+
+			let vertex2 = Int(match.getMatch(atIndex: 3)!)! - 1
+			let normal2 = Int(match.getMatch(atIndex: 4)!)! - 1
+
+			let vertex3 = Int(match.getMatch(atIndex: 5)!)! - 1
+			let normal3 = Int(match.getMatch(atIndex: 6)!)! - 1
+
+			vertices.append(contentsOf: rawVertices[vertex1])
+			vertices.append(contentsOf: rawVertices[vertex2])
+			vertices.append(contentsOf: rawVertices[vertex3])
+
+			normals.append(contentsOf: rawNormals[normal1])
+			normals.append(contentsOf: rawNormals[normal2])
+			normals.append(contentsOf: rawNormals[normal3])
 		}
 
 		let meshName = filename.split(character: ".").first!
 
-		self.init(meshName: meshName, vertices: vertices)
+		self.init(meshName: meshName, vertices: vertices, normals: normals)
 	}
 
 	//
@@ -154,44 +174,4 @@ public struct EKGLVertexComponent {
 
 	//
 	public static let Cube = EKGLVertexComponent(fromFile: "cube.obj")
-//		EKGLVertexComponent(
-//		meshName: "cube",
-//		vertices: [
-//			-1.0, -1.0, -1.0,
-//			-1.0, -1.0, 1.0,
-//			-1.0, 1.0, 1.0,
-//			1.0, 1.0, -1.0,
-//			-1.0, -1.0, -1.0,
-//			-1.0, 1.0, -1.0,
-//			1.0, -1.0, 1.0,
-//			-1.0, -1.0, -1.0,
-//			1.0, -1.0, -1.0,
-//			1.0, 1.0, -1.0,
-//			1.0, -1.0, -1.0,
-//			-1.0, -1.0, -1.0,
-//			-1.0, -1.0, -1.0,
-//			-1.0, 1.0, 1.0,
-//			-1.0, 1.0, -1.0,
-//			1.0, -1.0, 1.0,
-//			-1.0, -1.0, 1.0,
-//			-1.0, -1.0, -1.0,
-//			-1.0, 1.0, 1.0,
-//			-1.0, -1.0, 1.0,
-//			1.0, -1.0, 1.0,
-//			1.0, 1.0, 1.0,
-//			1.0, -1.0, -1.0,
-//			1.0, 1.0, -1.0,
-//			1.0, -1.0, -1.0,
-//			1.0, 1.0, 1.0,
-//			1.0, -1.0, 1.0,
-//			1.0, 1.0, 1.0,
-//			1.0, 1.0, -1.0,
-//			-1.0, 1.0, -1.0,
-//			1.0, 1.0, 1.0,
-//			-1.0, 1.0, -1.0,
-//			-1.0, 1.0, 1.0,
-//			1.0, 1.0, 1.0,
-//			-1.0, 1.0, 1.0,
-//			1.0, -1.0, 1.0
-//		])
 }

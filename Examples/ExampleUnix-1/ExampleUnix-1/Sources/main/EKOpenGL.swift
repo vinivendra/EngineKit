@@ -103,7 +103,7 @@ extension EKGLObject {
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
-		             buffer: vertexComponent.bufferID)
+		             buffer: vertexComponent.vertexBufferID)
 		glVertexAttribPointer(
 			index: 0, // Matching shader
 			size: 3,
