@@ -90,15 +90,12 @@ public final class EKTimer {
 extension EKTimer {
 	fileprivate func update(deltaTime: Double) {
 		elapsedTime = elapsedTime + deltaTime
-		if elapsedTime < duration {
-			delegate?.timerHasUpdated(self,
-			                          currentTime: elapsedTime,
-			                          deltaTime: deltaTime)
-		} else {
-			delegate?.timerHasUpdated(self,
-			                          currentTime: duration,
-			                          deltaTime: deltaTime)
 
+		delegate?.timerHasUpdated(self,
+		                          currentTime: elapsedTime,
+		                          deltaTime: deltaTime)
+
+		while elapsedTime >= duration {
 			do {
 				_ = try action?.callWithArgument(argument)
 			} catch {
@@ -110,6 +107,7 @@ extension EKTimer {
 				delegate?.timerWillRepeat(self)
 			} else {
 				self.invalidate()
+				return
 			}
 		}
 	}

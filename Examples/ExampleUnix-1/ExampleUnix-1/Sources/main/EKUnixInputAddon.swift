@@ -21,7 +21,7 @@ public final class EKUnixInputAddon: EKEventAddon {
 	}
 
 	var oldMouseButtonState: CInt = GLFW_RELEASE
-	var oldMousePosition = EKVector2.origin()
+	var oldMousePosition = EKVector2()
 
 	//
 	init(window: OpaquePointer) {
@@ -100,13 +100,13 @@ public final class EKScreenInputHandler {
 				eventToFire = EKEventLongPress(
 					position: position,
 					touches: 1,
-					displacement: EKVector2.origin(),
+					displacement: EKVector2(),
 					state: .Ended)
 			} else {
 				eventToFire = EKEventPan(
 					position: position,
 					touches: 1,
-					displacement: EKVector2.origin(),
+					displacement: EKVector2(),
 					state: .Ended)
 			}
 		default:

@@ -1,5 +1,6 @@
 import CGLFW3
 import SwiftGL
+import CBullet
 
 let EKOpenGLWindowWidth: GLfloat = 1024
 let EKOpenGLWindowHeight: GLfloat = 768
@@ -7,8 +8,8 @@ let EKOpenGLWindowHeight: GLfloat = 768
 let NULL = UnsafeMutablePointer<Int32>(bitPattern: 4)!.predecessor()
 
 public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
-	public let projection = EKMatrix.createPerspective(
-		fieldOfViewY: EKToRadians(45),
+	public let projection = EKMatrix(
+		perspectiveWithYFieldOfView: EKToRadians(45),
 		aspect: Double(EKOpenGLWindowWidth / EKOpenGLWindowHeight),
 		zNear: 0.1,
 		zFar: 100)
@@ -17,7 +18,16 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 	private var inputHandler: EKUnixInputAddon! = nil
 
 	public func setup(onEngine engine: EKEngine) {
+		setupOpenGL()
+		compileShaders()
 
+		engine.loadAddon(EKUnixInputAddon(window: window))
+
+		// swiftlint:disable:next force_try
+		try! engine.addObject(self, withName: "OpenGL")
+	}
+
+	private func setupOpenGL() {
 		if glfwInit() == 0 {
 			print("Error: glfwInit")
 			fatalError()
@@ -46,19 +56,20 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		glDepthFunc(GL_LESS)
 		glEnable(GL_STENCIL_TEST)
 		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE)
+	}
 
-		/////////////////////
+	private func compileShaders() {
 		var vertexArrayID: GLuint = 0
 		glGenVertexArrays(n: 1, arrays: &vertexArrayID)
 		glBindVertexArray(vertexArrayID)
 
 		//
 		guard let programID = loadShaders(
-			vertexFilePath: "../../vertex.glsl",
-			fragmentFilePath: "../../fragment.glsl")
-			else {
-				print("Error compiling shaders.")
-				return
+		vertexFilePath: "../../vertex.glsl",
+		fragmentFilePath: "../../fragment.glsl")
+		else {
+		print("Error compiling shaders.")
+		return
 		}
 		glUseProgram(programID)
 
@@ -68,13 +79,6 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		EKGLObject.mvpMatrixID = matrixID
 		EKGLObject.colorID = colorID
-
-		//
-		inputHandler = EKUnixInputAddon(window: window)
-		engine.loadAddon(inputHandler)
-
-		// swiftlint:disable:next force_try
-		try! engine.addObject(self, withName: "OpenGL")
 	}
 
 	private func checkCompilerStatus(forID shaderID: GLuint,
@@ -186,14 +190,15 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 	public func loopOpenGL() {
 		var oldTime = glfwGetTime()
+
 		repeat {
 			let newTime = glfwGetTime()
 			let deltaTime = newTime - oldTime
 			EKTimer.updateTimers(deltaTime: deltaTime)
 			inputHandler?.update()
 
-			EKGLObject.projectionViewMatrix = projection *
-				EKGLCamera.mainCamera.viewMatrix
+			EKGLObject.projectionViewMatrix = projection.times(
+				EKGLCamera.mainCamera.viewMatrix)
 
 			glClearStencil(0)
 			glClear(GL_COLOR_BUFFER_BIT

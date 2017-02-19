@@ -3,7 +3,7 @@ import SwiftGL
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
 	public static var colorID: GLint! = nil
-	public static var projectionViewMatrix = EKMatrix.identity()
+	public static var projectionViewMatrix = EKMatrix()
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
@@ -11,8 +11,9 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public var vertexComponent: EKGLVertexComponent?
+	public var physicsComponent: EKPhysicsComponent? = nil
 
-	public var color: EKColorType = EKVector4.whiteColor()
+	public var color: EKColor = EKColor.whiteColor()
 
 	public var name: String? = nil
 
@@ -37,8 +38,15 @@ public class EKGLObject: EKGLMatrixComposer {
 	}
 
 	//
+	public func setupPhysicsComponent() {
+		self.physicsComponent =
+			ekPhysicsAddon?.createPhysicsComponent(fromObject: self)
+	}
+
+	//
 	public func copyInfo(to object: EKGLObject) {
 		object.matrixComponent = matrixComponent
+		object.physicsComponent = physicsComponent
 		object.color = color
 		object.name = name
 
@@ -105,7 +113,7 @@ extension EKGLObject {
 			pointer: NULL) // offset
 
 		//
-		let mvp = projectionViewMatrix * modelMatrix
+		let mvp = projectionViewMatrix.times(modelMatrix)
 
 		mvp.withGLFloatArray {
 			glUniformMatrix4fv(location: EKGLObject.mvpMatrixID,
@@ -154,27 +162,25 @@ extension EKGLObject {
 }
 
 extension EKGLObject {
-	func rotate(_ rotationObject: AnyObject,
-	            around anchorPoint: AnyObject) {
+	func rotate(_ rotationObject: Any,
+	            around anchorPoint: Any) {
 		// FIXME: This doesn't rotate around the anchor
-		let rotationOperation = EKRotation.createRotation(
-			fromObject: rotationObject)
+		let rotationOperation = EKRotation(fromValue: rotationObject)!
 		let quaternion = rotationOperation.normalized()
 
 		let newPosition = quaternion.conjugate(vector:
 			position.toHomogeneousVector())
-		let newRotation = quaternion * rotation
+		let newRotation = quaternion.times(rotation)
 
 		position = newPosition.toEKVector3()
 		rotation = newRotation
 	}
 
-	func rotate(_ rotationObject: AnyObject) {
-		let rotationOperation = EKRotation.createRotation(
-			fromObject: rotationObject)
+	func rotate(_ rotationObject: Any) {
+		let rotationOperation = EKRotation(fromValue: rotationObject)!
 		let quaternion = rotationOperation.normalized()
 
-		let newRotation = quaternion * rotation
+		let newRotation = quaternion.times(rotation)
 
 		rotation = newRotation
 	}
@@ -198,7 +204,7 @@ class EKGLCamera: EKGLObject {
 		let oldCenter = EKVector3(x: 0, y: 0, z: -1)
 		let center = rotation.rotate(oldCenter).plus(position)
 		let up = rotation.rotate(EKVector3(x: 0, y: 1, z: 0))
-		return EKMatrix.createLookAt(eye: position, center: center, up: up)
+		return EKMatrix(lookAtWithEye: position, center: center, up: up)
 	}
 
 	var xAxis: EKVector3 {

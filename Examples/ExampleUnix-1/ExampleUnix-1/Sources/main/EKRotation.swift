@@ -6,67 +6,57 @@
 	import Darwin
 #endif
 
-public protocol EKRotationType: EKLanguageCompatible,
-	CustomDebugStringConvertible,
-CustomStringConvertible {
+public struct EKRotation: EKLanguageCompatible,
+CustomStringConvertible, CustomDebugStringConvertible {
+	public let x: Double
+	public let y: Double
+	public let z: Double
+	public let w: Double
 
-	static func createRotation(x: Double,
-	                           y: Double,
-	                           z: Double,
-	                           w: Double) -> EKRotation
-
-	var x: Double { get }
-	var y: Double { get }
-	var z: Double { get }
-	var w: Double { get }
-}
-
-public func == (lhs: EKRotation, rhs: EKRotation) -> Bool {
-	if lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w {
-		return true
+	public var debugDescription: String {
+		return "<EKRotation> " + self.description
 	}
-	let lUnit = lhs.normalized()
-	let rUnit = rhs.normalized()
-	return lUnit.x == rUnit.x && lUnit.y == rUnit.y &&
-		lUnit.z == rUnit.z && lUnit.w == rUnit.w
-}
 
-public func != (lhs: EKRotation, rhs: EKRotation) -> Bool {
-	return !(lhs == rhs)
-}
-
-public func * (lhs: EKRotation, rhs: EKRotation) -> EKRotation {
-	return lhs.times(rhs)
+	public var description: String {
+		return "x: \(x), y: \(y), z: \(z), w: \(w)"
+	}
 }
 
 extension EKRotation {
-	static func createRotation(axis: EKVector3,
-	                           angle: Double) -> EKRotation {
+	init() {
+		self.init(x: 0, y: 0, z: 0, w: 1)
+	}
+
+	init(_ rotation: EKRotation) {
+		self.init(x: rotation.x,
+		          y: rotation.y,
+		          z: rotation.z,
+		          w: rotation.w)
+	}
+
+	init(axis: EKVector3, angle: Double) {
 		let halfAngle = angle / 2
 		let cosine = cos(halfAngle)
 		let sine = sin(halfAngle)
-		return EKRotation.createRotation(x: sine * axis.x,
-		                                 y: sine * axis.y,
-		                                 z: sine * axis.z,
-		                                 w: cosine)
+		self.init(x: sine * axis.x,
+		          y: sine * axis.y,
+		          z: sine * axis.z,
+		          w: cosine)
 	}
 
-	public static func createRotation(fromArray array: [Double]) -> EKRotation {
-		let axis = EKVector3.createVector(fromArray: array)
-		return self.createRotation(axis: axis,
-		                           angle: array[zero: 3])
+	init(_ array: [Double]) {
+		let axis = EKVector3(array)
+		self.init(axis: axis,
+		          angle: array[zero: 3])
 	}
 
-	public static func createRotation(fromDictionary
-		dictionary: [String: Double]) -> EKRotation
-	{
-		let axis = EKVector3.createVector(fromDictionary: dictionary)
-		return self.createRotation(
-			axis: axis,
-			angle: dictionary[zero: ["3", "w", "W", "a", "A"]])
+	init(_ dictionary: [String: Double]) {
+		let axis = EKVector3(dictionary)
+		self.init(axis: axis,
+		          angle: dictionary[zero: ["3", "w", "W", "a", "A"]])
 	}
 
-	public static func createRotation(fromString string: String) -> EKRotation {
+	init(_ string: String) {
 		var strings = [string]
 
 		let separators: [UnicodeScalar] = [",", " ", "[", "]", "{", "}"]
@@ -78,27 +68,21 @@ extension EKRotation {
 
 		let doubles = strings.flatMap(Double.init)
 
-		return createRotation(fromArray: doubles)
+		self.init(doubles)
 	}
 
-	public static func createRotation(fromObject
-		object: AnyObject) -> EKRotation {
-
-		if let rotation = object as? EKRotation {
-			return rotation
-		} else if let array = object as? [Double] {
-			return createRotation(fromArray: array)
-		} else if let string = object as? String {
-			return createRotation(fromString: string)
-		} else if let dictionary = object as? [String: Double] {
-			return createRotation(fromDictionary: dictionary)
+	init?(fromValue value: Any) {
+		if let rotation = value as? EKRotation {
+			self.init(rotation)
+		} else if let array = value as? [Double] {
+			self.init(array)
+		} else if let string = value as? String {
+			self.init(string)
+		} else if let dictionary = value as? [String: Double] {
+			self.init(dictionary)
+		} else {
+			return nil
 		}
-
-		return nullRotation()
-	}
-
-	public static func nullRotation() -> EKRotation {
-		return EKRotation.createRotation(x: 0, y: 0, z: 0, w: 1)
 	}
 }
 
@@ -108,7 +92,7 @@ extension EKRotation {
 	}
 
 	public func times(_ q: EKRotation) -> EKRotation {
-		return EKRotation.createRotation(
+		return EKRotation(
 			x: self.w * q.x + self.x * q.w + self.y * q.z - self.z * q.y,
 			y: self.w * q.y + self.y * q.w - self.x * q.z + self.z * q.x,
 			z: self.w * q.z + self.z * q.w + self.x * q.y - self.y * q.x,
@@ -128,15 +112,15 @@ extension EKRotation {
 		if norm == 0 {
 			return self
 		} else {
-			return EKRotation.createRotation(x: x / norm,
-			                                 y: y / norm,
-			                                 z: z / norm,
-			                                 w: w / norm)
+			return EKRotation(x: x / norm,
+			                  y: y / norm,
+			                  z: z / norm,
+			                  w: w / norm)
 		}
 	}
 
 	public func opposite() -> EKRotation {
-		return EKRotation.createRotation(x: -x, y: -y, z: -z, w: w)
+		return EKRotation(x: -x, y: -y, z: -z, w: w)
 	}
 
 	func conjugate(vector: EKVector4) -> EKRotation {
@@ -144,11 +128,10 @@ extension EKRotation {
 	}
 
 	func conjugate(quaternion: EKRotation) -> EKRotation {
-		return self * quaternion * self.opposite()
+		return self.times(quaternion.times(self.opposite()))
 	}
 
-	public func rotate(_ vector: AnyObject) -> EKVector3 {
-		let v = EKVector3.createVector(fromObject: vector)
+	public func rotate(_ v: EKVector3) -> EKVector3 {
 		let q = self
 		let p = EKVector4(
 			x: q.w * v.x + q.y * v.z - q.z * v.y,
@@ -164,7 +147,7 @@ extension EKRotation {
 	}
 
 	public func rotate(matrix: EKMatrix) -> EKMatrix {
-		return self.toMatrix() * matrix
+		return self.toMatrix().times(matrix)
 	}
 
 	public func toMatrix() -> EKMatrix {
@@ -199,4 +182,18 @@ extension EKRotation {
 		result.append(angle)
 		return result
 	}
+}
+
+public func == (lhs: EKRotation, rhs: EKRotation) -> Bool {
+	if lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w {
+		return true
+	}
+	let lUnit = lhs.normalized()
+	let rUnit = rhs.normalized()
+	return lUnit.x == rUnit.x && lUnit.y == rUnit.y &&
+		lUnit.z == rUnit.z && lUnit.w == rUnit.w
+}
+
+public func != (lhs: EKRotation, rhs: EKRotation) -> Bool {
+	return !(lhs == rhs)
 }
