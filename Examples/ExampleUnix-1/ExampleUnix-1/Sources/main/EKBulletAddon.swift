@@ -14,6 +14,12 @@ public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 	}
 
 	deinit {
+		for object in EKGLObject.allObjects {
+			if object.physicsComponent is EKBulletComponent {
+				object.physicsComponent = nil
+			}
+		}
+
 		cBulletDestroy()
 	}
 
@@ -74,5 +80,14 @@ public class EKBulletComponent: EKPhysicsComponent {
 		                    &rx, &ry, &rz, &rw)
 
 		object.position = EKVector3(x: px, y: py, z: pz)
+	}
+
+	//
+	deinit {
+		destroyCData()
+	}
+
+	func destroyCData() {
+		cBulletDestroyObject(cBody)
 	}
 }

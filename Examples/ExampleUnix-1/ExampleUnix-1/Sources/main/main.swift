@@ -1,5 +1,3 @@
-// TODO: Add objects to destroy
-
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
 

@@ -63,8 +63,8 @@ void cBulletGetTransform(CPhysicsBody physicsBody,
 
 CPhysicsBody cBulletCreateBody(double px, double py, double pz,
 							   double rx, double ry, double rz, double rw) {
-	btCollisionShape* shape = new btSphereShape(1);
-	btDefaultMotionState* motionState =
+	btCollisionShape *shape = new btSphereShape(1);
+	btDefaultMotionState *motionState =
 		new btDefaultMotionState(btTransform(btQuaternion(rx, ry, rz, rw),
 											 btVector3(px, py, pz)));
 	btScalar mass = 1;
@@ -84,16 +84,20 @@ CPhysicsBody cBulletCreateBody(double px, double py, double pz,
 	return physicsBody;
 }
 
+void cBulletDestroyObject(CPhysicsBody physicsBody) {
+	btRigidBody *body = (btRigidBody *)physicsBody.body;
+	btCollisionShape *shape = (btCollisionShape *)physicsBody.shape;
+	dynamicsWorld->removeRigidBody(body);
+	delete body->getMotionState();
+	delete body;
+
+	delete shape;
+}
+
 void cBulletDestroy() {
-	//	dynamicsWorld->removeRigidBody(rigidBody);
-	//	delete rigidBody->getMotionState();
-	//	delete rigidBody;
-	
 	dynamicsWorld->removeRigidBody(groundRigidBody);
 	delete groundRigidBody->getMotionState();
 	delete groundRigidBody;
-
-	//	delete shape;
 	
 	delete groundShape;
 
