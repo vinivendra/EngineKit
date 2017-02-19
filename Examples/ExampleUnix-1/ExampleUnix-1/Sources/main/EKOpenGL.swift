@@ -11,6 +11,7 @@ public class EKGLObject: EKGLMatrixComposer {
 
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public var vertexComponent: EKGLVertexComponent?
+	public var physicsComponent: EKPhysicsComponent? = nil
 
 	public var color: EKColor = EKColor.whiteColor()
 
@@ -37,8 +38,15 @@ public class EKGLObject: EKGLMatrixComposer {
 	}
 
 	//
+	public func setupPhysicsComponent() {
+		self.physicsComponent =
+			ekPhysicsAddon?.createPhysicsComponent(fromObject: self)
+	}
+
+	//
 	public func copyInfo(to object: EKGLObject) {
 		object.matrixComponent = matrixComponent
+		object.physicsComponent = physicsComponent
 		object.color = color
 		object.name = name
 

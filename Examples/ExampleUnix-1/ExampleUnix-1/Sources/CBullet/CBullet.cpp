@@ -2,72 +2,104 @@
 #include <iostream>
 #include <btBulletDynamicsCommon.h>
 
+btBroadphaseInterface* broadphase;
+btDefaultCollisionConfiguration* collisionConfiguration;
+btCollisionDispatcher* dispatcher;
+btSequentialImpulseConstraintSolver* solver;
 btDiscreteDynamicsWorld* dynamicsWorld;
-btRigidBody* fallRigidBody;
+
+btCollisionShape* groundShape;
+btRigidBody* groundRigidBody;
 
 void cBulletInit() {
-	btBroadphaseInterface* broadphase = new btDbvtBroadphase();
-
-	btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
-	btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
-
-	btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver;
-
-	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
+	// Init bullet
+	broadphase = new btDbvtBroadphase();
+	collisionConfiguration = new btDefaultCollisionConfiguration();
+	dispatcher = new btCollisionDispatcher(collisionConfiguration);
+	solver = new btSequentialImpulseConstraintSolver;
+	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher,
+												broadphase,
+												solver,
+												collisionConfiguration);
 
 	dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
-
-	btCollisionShape* groundShape = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
-
-	btCollisionShape* fallShape = new btSphereShape(1);
-
-
-	btDefaultMotionState* groundMotionState = new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, -1, 0)));
+	// Create ground shape
+	groundShape = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
+	btDefaultMotionState* groundMotionState =
+		new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
+											 btVector3(0, -1, 0)));
 	btRigidBody::btRigidBodyConstructionInfo
-	groundRigidBodyCI(0, groundMotionState, groundShape, btVector3(0, 0, 0));
-	btRigidBody* groundRigidBody = new btRigidBody(groundRigidBodyCI);
+	groundRigidBodyCI(0,
+					  groundMotionState,
+					  groundShape,
+					  btVector3(0, 0, 0));
+	groundRigidBody = new btRigidBody(groundRigidBodyCI);
 	dynamicsWorld->addRigidBody(groundRigidBody);
-
-
-	btDefaultMotionState* fallMotionState =
-	new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1), btVector3(0, 20, 0)));
-	btScalar mass = 1;
-	btVector3 fallInertia(0, 0, 0);
-	fallShape->calculateLocalInertia(mass, fallInertia);
-	btRigidBody::btRigidBodyConstructionInfo fallRigidBodyCI(mass, fallMotionState, fallShape, fallInertia);
-	fallRigidBody = new btRigidBody(fallRigidBodyCI);
-	dynamicsWorld->addRigidBody(fallRigidBody);
 }
 
 void cBulletStep(double deltaTime) {
 	dynamicsWorld->stepSimulation(deltaTime, 10);
 }
 
-double cBulletGetHeight() {
+void cBulletGetTransform(CPhysicsBody physicsBody,
+						 double *px, double *py, double *pz,
+						 double *rx, double *ry, double *rz, double *rw) {
+	btRigidBody *rigidBody = (btRigidBody *)physicsBody.body;
 	btTransform trans;
-	fallRigidBody->getMotionState()->getWorldTransform(trans);
-	return trans.getOrigin().getY();
+
+	rigidBody->getMotionState()->getWorldTransform(trans);
+	btVector3 position = trans.getOrigin();
+	btQuaternion rotation = trans.getRotation();
+	*px = position.getX();
+	*py = position.getY();
+	*pz = position.getZ();
+
+	*rx = rotation.getX();
+	*ry = rotation.getY();
+	*rz = rotation.getZ();
+	*rw = rotation.getW();
+}
+
+CPhysicsBody cBulletCreateBody(double px, double py, double pz,
+							   double rx, double ry, double rz, double rw) {
+	btCollisionShape* shape = new btSphereShape(1);
+	btDefaultMotionState* motionState =
+		new btDefaultMotionState(btTransform(btQuaternion(rx, ry, rz, rw),
+											 btVector3(px, py, pz)));
+	btScalar mass = 1;
+	btVector3 inertia(0, 0, 0);
+	shape->calculateLocalInertia(mass, inertia);
+	btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(mass,
+														 motionState,
+														 shape,
+														 inertia);
+	btRigidBody *rigidBody = new btRigidBody(rigidBodyCI);
+	dynamicsWorld->addRigidBody(rigidBody);
+
+	CPhysicsBody physicsBody;
+	physicsBody.body = rigidBody;
+	physicsBody.shape = shape;
+
+	return physicsBody;
 }
 
 void cBulletDestroy() {
-//	dynamicsWorld->removeRigidBody(fallRigidBody);
-//	delete fallRigidBody->getMotionState();
-//	delete fallRigidBody;
-//
-//	dynamicsWorld->removeRigidBody(groundRigidBody);
-//	delete groundRigidBody->getMotionState();
-//	delete groundRigidBody;
-//
-//
-//	delete fallShape;
-//
-//	delete groundShape;
-//
-//
-//	delete dynamicsWorld;
-//	delete solver;
-//	delete collisionConfiguration;
-//	delete dispatcher;
-//	delete broadphase;
+	//	dynamicsWorld->removeRigidBody(rigidBody);
+	//	delete rigidBody->getMotionState();
+	//	delete rigidBody;
+	
+	dynamicsWorld->removeRigidBody(groundRigidBody);
+	delete groundRigidBody->getMotionState();
+	delete groundRigidBody;
+
+	//	delete shape;
+	
+	delete groundShape;
+
+	delete dynamicsWorld;
+	delete solver;
+	delete collisionConfiguration;
+	delete dispatcher;
+	delete broadphase;
 }

@@ -1,7 +1,8 @@
+// TODO: Add objects to destroy
+
 // swiftlint:disable force_cast
 // swiftlint:disable force_try
 
-import CBullet
 import Foundation
 
 let ekEngine = EKEngine()
@@ -16,97 +17,98 @@ class MyEngine: EKSwiftEngine {
 		//
 		let ball = EKGLCube()
 		ball.color = EKColor.whiteColor()
-		ball.position = EKVector3(x: -1, y: 1, z: 0)
-		ball.name = "white"
-		let ball2 = EKGLCube()
-		ball2.color = EKColor.grayColor()
-		ball2.position = EKVector3(x: -2, y: -1, z: 0)
-		ball2.name = "gray ball"
-		ball.addChild(ball2)
+		ball.position = EKVector3(x: 0, y: 3, z: 0)
+		ball.name = "white cube"
+		ball.setupPhysicsComponent()
+//		let ball2 = EKGLCube()
+//		ball2.color = EKColor.grayColor()
+//		ball2.position = EKVector3(x: -2, y: -1, z: 0)
+//		ball2.name = "gray cube"
+//		ball.addChild(ball2)
 
 		EKGLCamera.mainCamera.position = EKVector3(x: 0, y: 0, z: 10)
 
-		let jsonTranslateTargets = [[-1, 1, 1], [0, 0, 0.5], [-2, -1, 0]]
-		let jsonRotateTargets = [[0, 1, 0, 1], [1, 0, 0, 1], [0, 0, 1, 0]]
-		let jsonScaleTargets = [[0.5, 0.5, 0.5], [0.5, 2, 0.5], [1, 1, 1]]
-		let jsonColorTargets = [[0.2, 0.3, 0.4], [0.5, 0.4, 0.3], [0.5, 0.2, 0.3]]
-		let jsonCommand: [[String: Any]] =
-			[
-				[
-					"action": "translate",
-					"parameters": [
-						"id": ball2.objectID!,
-						"targets": jsonTranslateTargets
-					]
-				],
-				[
-					"action": "rotate",
-					"parameters": [
-						"id": ball2.objectID!,
-						"targets": jsonRotateTargets
-					]
-				],
-				[
-					"action": "scale",
-					"parameters": [
-						"id": ball2.objectID!,
-						"targets": jsonScaleTargets
-					]
-				],
-				[
-					"action": "changeColor",
-					"parameters": [
-						"id": ball2.objectID!,
-						"targets": jsonColorTargets
-					]
-				],
-				[
-					"action": "changeName",
-					"parameters": [
-						"id": ball2.objectID!,
-						"name": "my new name"
-					]
-				],
-				[
-					"action": "add",
-					"parameters": [
-						"mesh": "cube",
-						"color": "purple",
-						"name": "json object",
-						"position": [2, 1, 0],
-						"scale": 0.7,
-						"rotation": [0.3, 0.3, 0.3, 0.3],
-						"children": [
-							["mesh": "cube",
-							 "color": "orange",
-							 "name": "json object 2",
-							 "position": [2, 1, 0],
-							 "scale": 0.7,
-							 "rotation": [0.3, 0.3, 0.3, 0.3]
-							]
-						]
-					]
-				]
-				//				,[
-				//					"action": "remove",
-				//					"parameters": [
-				//						"id": ball2.objectID!
-				//					]
-				//				]
-		]
-
-		print("Old name = \(ball2.name)")
-
-		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
-		let json = try! JSONSerialization.jsonObject(with: data)
-		let actionsArray = json as! [[String: Any]]
-
-		for action in actionsArray {
-			EKCommand.applyCommand(fromJSON: action)
-		}
-
-		print("New name = \(ball2.name)")
-
+//		let jsonTranslateTargets = [[-1, 1, 1], [0, 0, 0.5], [-2, -1, 0]]
+//		let jsonRotateTargets = [[0, 1, 0, 1], [1, 0, 0, 1], [0, 0, 1, 0]]
+//		let jsonScaleTargets = [[0.5, 0.5, 0.5], [0.5, 2, 0.5], [1, 1, 1]]
+//		let jsonColorTargets = [[0.2, 0.3, 0.4], [0.5, 0.4, 0.3], [0.5, 0.2, 0.3]]
+//		let jsonCommand: [[String: Any]] =
+//			[
+//				[
+//					"action": "translate",
+//					"parameters": [
+//						"id": ball2.objectID!,
+//						"targets": jsonTranslateTargets
+//					]
+//				],
+//				[
+//					"action": "rotate",
+//					"parameters": [
+//						"id": ball2.objectID!,
+//						"targets": jsonRotateTargets
+//					]
+//				],
+//				[
+//					"action": "scale",
+//					"parameters": [
+//						"id": ball2.objectID!,
+//						"targets": jsonScaleTargets
+//					]
+//				],
+//				[
+//					"action": "changeColor",
+//					"parameters": [
+//						"id": ball2.objectID!,
+//						"targets": jsonColorTargets
+//					]
+//				],
+//				[
+//					"action": "changeName",
+//					"parameters": [
+//						"id": ball2.objectID!,
+//						"name": "my new name"
+//					]
+//				],
+//				[
+//					"action": "add",
+//					"parameters": [
+//						"mesh": "cube",
+//						"color": "purple",
+//						"name": "json object",
+//						"position": [2, 1, 0],
+//						"scale": 0.7,
+//						"rotation": [0.3, 0.3, 0.3, 0.3],
+//						"children": [
+//							["mesh": "cube",
+//							 "color": "orange",
+//							 "name": "json object 2",
+//							 "position": [2, 1, 0],
+//							 "scale": 0.7,
+//							 "rotation": [0.3, 0.3, 0.3, 0.3]
+//							]
+//						]
+//					]
+//				]
+//				//				,[
+//				//					"action": "remove",
+//				//					"parameters": [
+//				//						"id": ball2.objectID!
+//				//					]
+//				//				]
+//		]
+//
+//		print("Old name = \(ball2.name)")
+//
+//		let data = try! JSONSerialization.data(withJSONObject: jsonCommand)
+//		let json = try! JSONSerialization.jsonObject(with: data)
+//		let actionsArray = json as! [[String: Any]]
+//
+//		for action in actionsArray {
+//			EKCommand.applyCommand(fromJSON: action)
+//		}
+//
+//		print("New name = \(ball2.name)")
+//
 		//
 		//		let ballJSON = ball.exportToJSON()
 		//		ball.destroy()
@@ -115,7 +117,6 @@ class MyEngine: EKSwiftEngine {
 		//		EKCommand.applyCommand(fromJSON: jsonAction)
 
 		//
-		ekEngine.loadAddon(EKBulletAddon(object: ball))
 
 		openGL.loopOpenGL()
 	}
@@ -124,6 +125,7 @@ class MyEngine: EKSwiftEngine {
 let swiftEngine = MyEngine(engine: ekEngine)
 ekEngine.languageEngine = swiftEngine
 ekEngine.loadAddon(EKOpenGLAddon())
+ekEngine.loadAddon(EKBulletAddon())
 
 try! ekEngine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 	let object = EKGLObject.object(atPixel: eventPan.position)
