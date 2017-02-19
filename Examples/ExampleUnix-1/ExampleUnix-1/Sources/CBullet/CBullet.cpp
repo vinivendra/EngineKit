@@ -28,7 +28,7 @@ void cBulletInit() {
 	groundShape = new btStaticPlaneShape(btVector3(0, 1, 0), 1);
 	btDefaultMotionState* groundMotionState =
 		new btDefaultMotionState(btTransform(btQuaternion(0, 0, 0, 1),
-											 btVector3(0, -1, 0)));
+											 btVector3(0, -4, 0)));
 	btRigidBody::btRigidBodyConstructionInfo
 	groundRigidBodyCI(0,
 					  groundMotionState,
