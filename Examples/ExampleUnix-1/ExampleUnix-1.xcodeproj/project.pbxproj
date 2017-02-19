@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXFileReference section */
+		240E17691E59E06400660EE1 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
+		240E176A1E59E2CA00660EE1 /* EKFoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKFoundationExtensions.swift; path = EngineKitCore/EKFoundationExtensions.swift; sourceTree = SOURCE_ROOT; };
 		2429D0761E20030F0027D17A /* EKJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKJSON.swift; path = Sources/main/EKJSON.swift; sourceTree = "<group>"; };
 		2429D0771E20030F0027D17A /* EKJSON.swift.gyb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EKJSON.swift.gyb; path = Sources/main/EKJSON.swift.gyb; sourceTree = "<group>"; };
 		2429D0781E20030F0027D17A /* EKOpenGL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKOpenGL.swift; path = Sources/main/EKOpenGL.swift; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 				2429D0851E20030F0027D17A /* main.swift */,
 				24CFC8021D18B6BE0025C437 /* fragment.glsl */,
 				24CFC8031D18B6BE0025C437 /* vertex.glsl */,
+				240E17691E59E06400660EE1 /* cube.obj */,
+				240E176A1E59E2CA00660EE1 /* EKFoundationExtensions.swift */,
 			);
 			path = "ExampleUnix-1";
 			sourceTree = "<group>";

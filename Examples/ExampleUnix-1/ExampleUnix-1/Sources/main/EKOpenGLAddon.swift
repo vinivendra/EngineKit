@@ -65,11 +65,12 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		//
 		guard let programID = loadShaders(
-		vertexFilePath: "../../vertex.glsl",
-		fragmentFilePath: "../../fragment.glsl")
-		else {
-		print("Error compiling shaders.")
-		return
+			vertexFilePath: "../../vertex.glsl",
+			fragmentFilePath: "../../fragment.glsl")
+			else
+		{
+			print("Error compiling shaders.")
+			return
 		}
 		glUseProgram(programID)
 

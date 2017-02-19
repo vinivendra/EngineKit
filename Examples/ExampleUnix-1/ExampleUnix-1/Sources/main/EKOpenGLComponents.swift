@@ -97,6 +97,37 @@ public struct EKGLVertexComponent {
 		self.bufferID = tempBufferID
 	}
 
+	public init(fromFile filename: String) {
+		var rawVertices = [[GLfloat]]()
+		var vertices = [GLfloat]()
+
+		let fileManager = OSFactory.createFileManager()
+		let fileContents = fileManager.getContentsFromFile("../../" + filename)!
+
+		for match in fileContents =~ "v ([^\\s]+) ([^\\s]+) ([^\\s]+)" {
+			rawVertices.append([GLfloat(match.getMatch(atIndex: 1)!)!,
+			                    GLfloat(match.getMatch(atIndex: 2)!)!,
+			                    GLfloat(match.getMatch(atIndex: 3)!)!])
+		}
+
+		let vertex = "([^/]+)/[^\\s]+"
+		for match in fileContents =~ "f \(vertex) \(vertex) \(vertex)" {
+			let index1 = Int(match.getMatch(atIndex: 1)!)! - 1
+			let index2 = Int(match.getMatch(atIndex: 2)!)! - 1
+			let index3 = Int(match.getMatch(atIndex: 3)!)! - 1
+			vertices.append(contentsOf: rawVertices[index1])
+			vertices.append(contentsOf: rawVertices[index2])
+			vertices.append(contentsOf: rawVertices[index3])
+			print(index1)
+			print(index2)
+			print(index3)
+		}
+
+		let meshName = filename.split(character: ".").first!
+
+		self.init(meshName: meshName, vertices: vertices)
+	}
+
 	//
 	public enum GeometricComponent: String {
 		case cube
@@ -122,44 +153,45 @@ public struct EKGLVertexComponent {
 	}
 
 	//
-	public static let Cube = EKGLVertexComponent(
-		meshName: "cube",
-		vertices: [
-			-1.0, -1.0, -1.0,
-			-1.0, -1.0, 1.0,
-			-1.0, 1.0, 1.0,
-			1.0, 1.0, -1.0,
-			-1.0, -1.0, -1.0,
-			-1.0, 1.0, -1.0,
-			1.0, -1.0, 1.0,
-			-1.0, -1.0, -1.0,
-			1.0, -1.0, -1.0,
-			1.0, 1.0, -1.0,
-			1.0, -1.0, -1.0,
-			-1.0, -1.0, -1.0,
-			-1.0, -1.0, -1.0,
-			-1.0, 1.0, 1.0,
-			-1.0, 1.0, -1.0,
-			1.0, -1.0, 1.0,
-			-1.0, -1.0, 1.0,
-			-1.0, -1.0, -1.0,
-			-1.0, 1.0, 1.0,
-			-1.0, -1.0, 1.0,
-			1.0, -1.0, 1.0,
-			1.0, 1.0, 1.0,
-			1.0, -1.0, -1.0,
-			1.0, 1.0, -1.0,
-			1.0, -1.0, -1.0,
-			1.0, 1.0, 1.0,
-			1.0, -1.0, 1.0,
-			1.0, 1.0, 1.0,
-			1.0, 1.0, -1.0,
-			-1.0, 1.0, -1.0,
-			1.0, 1.0, 1.0,
-			-1.0, 1.0, -1.0,
-			-1.0, 1.0, 1.0,
-			1.0, 1.0, 1.0,
-			-1.0, 1.0, 1.0,
-			1.0, -1.0, 1.0
-		])
+	public static let Cube = EKGLVertexComponent(fromFile: "cube.obj")
+//		EKGLVertexComponent(
+//		meshName: "cube",
+//		vertices: [
+//			-1.0, -1.0, -1.0,
+//			-1.0, -1.0, 1.0,
+//			-1.0, 1.0, 1.0,
+//			1.0, 1.0, -1.0,
+//			-1.0, -1.0, -1.0,
+//			-1.0, 1.0, -1.0,
+//			1.0, -1.0, 1.0,
+//			-1.0, -1.0, -1.0,
+//			1.0, -1.0, -1.0,
+//			1.0, 1.0, -1.0,
+//			1.0, -1.0, -1.0,
+//			-1.0, -1.0, -1.0,
+//			-1.0, -1.0, -1.0,
+//			-1.0, 1.0, 1.0,
+//			-1.0, 1.0, -1.0,
+//			1.0, -1.0, 1.0,
+//			-1.0, -1.0, 1.0,
+//			-1.0, -1.0, -1.0,
+//			-1.0, 1.0, 1.0,
+//			-1.0, -1.0, 1.0,
+//			1.0, -1.0, 1.0,
+//			1.0, 1.0, 1.0,
+//			1.0, -1.0, -1.0,
+//			1.0, 1.0, -1.0,
+//			1.0, -1.0, -1.0,
+//			1.0, 1.0, 1.0,
+//			1.0, -1.0, 1.0,
+//			1.0, 1.0, 1.0,
+//			1.0, 1.0, -1.0,
+//			-1.0, 1.0, -1.0,
+//			1.0, 1.0, 1.0,
+//			-1.0, 1.0, -1.0,
+//			-1.0, 1.0, 1.0,
+//			1.0, 1.0, 1.0,
+//			-1.0, 1.0, 1.0,
+//			1.0, -1.0, 1.0
+//		])
 }
