@@ -5,19 +5,28 @@ layout(location = 0) in vec3 vertex;
 layout(location = 1) in vec3 normal;
 
 // Output data ; will be interpolated for each fragment.
-out vec3 fragmentColor;
 out vec4 fragmentNormal;
+out vec3 fragmentToCamera;
+out vec3 fragmentColor;
 
 // Values that stay constant for the whole mesh.
-uniform mat4 MVP;
-uniform mat4 normalMat;
+uniform mat4 modelMatrix;
+uniform mat4 viewProjectionMatrix;
+uniform mat4 normalMatrix;
+uniform vec3 cameraPosition;
 uniform vec3 color;
 
 void main() {
 
-	// Output position of the vertex, in clip space : MVP * position
-	gl_Position =  MVP * vec4(vertex, 1);
+	vec4 modelPosition = vec4(vertex, 1);
+	vec4 worldPosition = modelMatrix * modelPosition;
 
-	fragmentNormal = normalMat * vec4(normal, 0);
+	mat4 MVP = viewProjectionMatrix * modelMatrix;
+
+	fragmentNormal = normalMatrix * vec4(normal, 0);
+	fragmentToCamera = normalize(cameraPosition - worldPosition.xyz);
 	fragmentColor = color;
+
+	// Output position of the vertex, in clip space : MVP * position
+	gl_Position =  MVP * modelPosition;
 }

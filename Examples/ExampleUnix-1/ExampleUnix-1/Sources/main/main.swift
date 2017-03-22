@@ -25,6 +25,12 @@ class MyEngine: EKSwiftEngine {
 		ball.name = "white cube"
 		ball.setupPhysicsComponent()
 
+		let ball2 = EKGLCube()
+		ball2.color = EKColor.grayColor()
+		ball2.position = EKVector3(x: 3, y: 0, z: 0)
+		ball2.name = "white cube"
+		ball.addChild(ball2)
+
 //		let ball2 = EKGLCube()
 //		ball2.color = EKColor.grayColor()
 //		ball2.position = EKVector3(x: -2, y: -1, z: 0)

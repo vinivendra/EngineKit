@@ -75,16 +75,21 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		glUseProgram(programID)
 
 		//
-		let matrixID = glGetUniformLocation(program: programID,
-		                                    name: "MVP")
-		let normalID = glGetUniformLocation(program: programID,
-		                                    name: "normalMat")
-		let colorID = glGetUniformLocation(program: programID,
-		                                   name: "color")
-
-		EKGLObject.mvpMatrixID = matrixID
-		EKGLObject.normalID = normalID
-		EKGLObject.colorID = colorID
+		EKGLObject.modelMatrixID = glGetUniformLocation(
+			program: programID,
+			name: "modelMatrix")
+		EKGLObject.viewProjectionMatrixID = glGetUniformLocation(
+			program: programID,
+			name: "viewProjectionMatrix")
+		EKGLObject.normalMatrixID = glGetUniformLocation(
+			program: programID,
+			name: "normalMatrix")
+		EKGLObject.cameraPositionID = glGetUniformLocation(
+			program: programID,
+			name: "cameraPosition")
+		EKGLObject.colorID = glGetUniformLocation(
+			program: programID,
+			name: "color")
 	}
 
 	private func checkCompilerStatus(forID shaderID: GLuint,

@@ -31,7 +31,31 @@ CustomStringConvertible, CustomDebugStringConvertible {
 
 	public var description: String {
 		return "\(m11) \(m12) \(m13) \(m14)\n\(m21) \(m22) \(m23) \(m24)\n" +
-		"\(m31) \(m32) \(m33) \(m34)\n(\(m41) \(m42) \(m43) \(m44)"
+		"\(m31) \(m32) \(m33) \(m34)\n\(m41) \(m42) \(m43) \(m44)"
+	}
+
+	public var simpleDescription: String {
+		return "\(m11._2) \(m12._2) \(m13._2) \(m14._2)\n" +
+			"\(m21._2) \(m22._2) \(m23._2) \(m24._2)\n" +
+			"\(m31._2) \(m32._2) \(m33._2) \(m34._2)\n" +
+		"\(m41._2) \(m42._2) \(m43._2) \(m44._2)"
+	}
+}
+
+private extension Double {
+	var _2: String {
+		let result: String
+		if self >= 0 {
+			result = String(format: " %.2f", self)
+		} else {
+			result = String(format: "%.2f", self)
+		}
+
+		if result == "-0.00" {
+			return " 0.00"
+		} else {
+			return result
+		}
 	}
 }
 
@@ -192,13 +216,12 @@ extension EKMatrix {
 }
 
 extension EKMatrix {
-	init() {
-		self.init(
+	public static let identity =
+		EKMatrix(
 			m11: 1, m12: 0, m13: 0, m14: 0,
 			m21: 0, m22: 1, m23: 0, m24: 0,
 			m31: 0, m32: 0, m33: 1, m34: 0,
 			m41: 0, m42: 0, m43: 0, m44: 1)
-	}
 
 	init(scale vector: EKVector3) {
 		self.init(scaleX: vector.x, y: vector.y, z: vector.z)

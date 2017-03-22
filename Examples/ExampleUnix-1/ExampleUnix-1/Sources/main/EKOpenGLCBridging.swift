@@ -26,3 +26,15 @@ extension EKColor {
 		}
 	}
 }
+
+extension EKVector3 {
+	public func withGLFloatArray<ReturnType>(
+		closure: @escaping (UnsafePointer<GLfloat>) -> ReturnType) -> ReturnType
+	{
+
+		let array = self.toArray().map { GLfloat($0) }
+		return array.withUnsafeBufferPointer {
+			return closure($0.baseAddress!)
+		}
+	}
+}
