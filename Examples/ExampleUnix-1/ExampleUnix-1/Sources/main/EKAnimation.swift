@@ -148,7 +148,7 @@ private var EKAnimationPool = EKResourcePool<Any>()
 public class EKAnimation
 <InterpolatedType: Interpolable>: EKTimerDelegate {
 
-	private var poolIndex: Int? = nil
+	private var poolIndex: Int?
 
 	private var isReversed = false
 	private let timer: EKTimer
@@ -183,12 +183,12 @@ public class EKAnimation
 	}
 
 	public init?(duration: Double,
-	                         startValue: InterpolatedType,
-	                         chainValues: [InterpolatedType],
-	                         repeats: Bool = false,
-	                         autoreverses: Bool = false,
-	                         timingFunction: EKTimingFunction = .easeInOut,
-	                         action: @escaping((InterpolatedType) -> Void)) {
+	             startValue: InterpolatedType,
+	             chainValues: [InterpolatedType],
+	             repeats: Bool = false,
+	             autoreverses: Bool = false,
+	             timingFunction: EKTimingFunction = .easeInOut,
+	             action: @escaping((InterpolatedType) -> Void)) {
 		guard let firstChainValue = chainValues.first
 			else { return nil }
 
@@ -214,11 +214,11 @@ public class EKAnimation
 	}
 
 	convenience init?(duration: Double,
-	            chainValues: ArraySlice<InterpolatedType>,
-	            repeats: Bool = false,
-	            autoreverses: Bool = false,
-	            timingFunction: EKTimingFunction = .easeInOut,
-	            action: @escaping((InterpolatedType) -> Void)) {
+	                  chainValues: ArraySlice<InterpolatedType>,
+	                  repeats: Bool = false,
+	                  autoreverses: Bool = false,
+	                  timingFunction: EKTimingFunction = .easeInOut,
+	                  action: @escaping((InterpolatedType) -> Void)) {
 		let otherChainValues = chainValues.dropFirst()
 
 		guard let start = chainValues.first,
@@ -293,7 +293,6 @@ public class EKAnimation
 		}
 	}
 
-	@discardableResult
 	func chain() {
 		guard let chainAnimation = chainAnimation else { return }
 		chainAnimation.startValue = self.endValue

@@ -6,8 +6,11 @@ layout(location = 1) in vec3 normal;
 
 // Output data ; will be interpolated for each fragment.
 out vec3 fragmentColor;
+out vec4 fragmentNormal;
+
 // Values that stay constant for the whole mesh.
 uniform mat4 MVP;
+uniform mat4 normalMat;
 uniform vec3 color;
 
 void main() {
@@ -15,7 +18,6 @@ void main() {
 	// Output position of the vertex, in clip space : MVP * position
 	gl_Position =  MVP * vec4(vertex, 1);
 
-	// The color of each vertex will be interpolated
-	// to produce the color of each fragment
+	fragmentNormal = normalMat * vec4(normal, 0);
 	fragmentColor = color;
 }

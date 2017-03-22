@@ -17,7 +17,7 @@ public struct EKGLMatrixComponent {
 		}
 	}
 
-	private var _modelMatrix: EKMatrix? = nil
+	private var _modelMatrix: EKMatrix?
 
 	public mutating func getMatrix() -> EKMatrix {
 		guard let modelMatrix = _modelMatrix else {
@@ -78,6 +78,7 @@ public struct EKGLVertexComponent {
 	private let normals: [GLfloat]
 
 	public let vertexBufferID: GLuint
+	public let normalBufferID: GLuint
 	public let numberOfVertices: GLsizei
 
 	public let meshName: String
@@ -91,14 +92,25 @@ public struct EKGLVertexComponent {
 
 		self.meshName = meshName
 
-		var tempBufferID: GLuint = 0
-		glGenBuffers(n: 1, buffers: &tempBufferID)
-		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: tempBufferID)
+		// Vertex buffer
+		var vertexBufferID: GLuint = 0
+		glGenBuffers(n: 1, buffers: &vertexBufferID)
+		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: vertexBufferID)
 		glBufferData(target: GL_ARRAY_BUFFER,
 		             size: MemoryLayout<[GLfloat]>.size * vertices.count,
 		             data: vertices,
 		             usage: GL_DYNAMIC_DRAW)
-		self.vertexBufferID = tempBufferID
+		self.vertexBufferID = vertexBufferID
+
+		// Normal buffer
+		var normalBufferID: GLuint = 0
+		glGenBuffers(n: 1, buffers: &normalBufferID)
+		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: normalBufferID)
+		glBufferData(target: GL_ARRAY_BUFFER,
+		             size: MemoryLayout<[GLfloat]>.size * vertices.count,
+		             data: vertices,
+		             usage: GL_DYNAMIC_DRAW)
+		self.normalBufferID = normalBufferID
 	}
 
 	public init(fromFile filename: String) {

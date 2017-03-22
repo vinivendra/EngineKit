@@ -90,9 +90,9 @@ extension String {
 
 		for char in self.unicodeScalars {
 			if shouldCapitalizeNextChar {
-				result = result + "\(char.capitalized)"
+				result += "\(char.capitalized)"
 			} else {
-				result = result + "\(char)"
+				result += "\(char)"
 			}
 
 			if !char.isLetter {

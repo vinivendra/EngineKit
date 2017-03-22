@@ -75,10 +75,15 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		glUseProgram(programID)
 
 		//
-		let matrixID = glGetUniformLocation(program: programID, name: "MVP")
-		let colorID = glGetUniformLocation(program: programID, name: "color")
+		let matrixID = glGetUniformLocation(program: programID,
+		                                    name: "MVP")
+		let normalID = glGetUniformLocation(program: programID,
+		                                    name: "normalMat")
+		let colorID = glGetUniformLocation(program: programID,
+		                                   name: "color")
 
 		EKGLObject.mvpMatrixID = matrixID
+		EKGLObject.normalID = normalID
 		EKGLObject.colorID = colorID
 	}
 

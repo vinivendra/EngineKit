@@ -1,6 +1,6 @@
 public final class EKTimer {
 	private static var pool = EKResourcePool<EKTimer>()
-	private var poolIndex: Int? = nil
+	private var poolIndex: Int?
 
 	fileprivate let argument: Any?
 	fileprivate let action: EKAction?
@@ -9,7 +9,7 @@ public final class EKTimer {
 	fileprivate let duration: Double
 	fileprivate let repeats: Bool
 
-	public weak var delegate: EKTimerDelegate? = nil
+	public weak var delegate: EKTimerDelegate?
 
 	//
 	public static func updateTimers(deltaTime: Double) {
@@ -36,31 +36,37 @@ public final class EKTimer {
 		self.repeats = repeats
 	}
 
-	public init<Argument>(duration: Double,
-	            repeats: Bool = false,
-	            argument: Argument,
-	            action: @escaping(Argument) -> Void) {
+	public init<Argument>(
+		duration: Double,
+		repeats: Bool = false,
+		argument: Argument,
+		action: @escaping(Argument) -> Void)
+	{
 		self.argument = argument
 		self.action = EKFunctionAction(closure: action)
 		self.duration = duration
 		self.repeats = repeats
 	}
 
-	public init<Argument, Target>(duration: Double,
-	            repeats: Bool = false,
-	            argument: Argument,
-	            target: Target,
-	            action: @escaping(Target) -> (Argument) -> Void) {
+	public init<Argument, Target>(
+		duration: Double,
+		repeats: Bool = false,
+		argument: Argument,
+		target: Target,
+		action: @escaping(Target) -> (Argument) -> Void)
+	{
 		self.argument = argument
 		self.action = EKMethodAction(object: target, method: action)
 		self.duration = duration
 		self.repeats = repeats
 	}
 
-	public init<Target>(duration: Double,
-	            repeats: Bool = false,
-	            target: Target,
-	            action: @escaping(Target) -> () -> Void) {
+	public init<Target>(
+		duration: Double,
+		repeats: Bool = false,
+		target: Target,
+		action: @escaping(Target) -> () -> Void)
+	{
 		self.argument = nil
 		self.action = EKMethodVoidAction(object: target, method: action)
 		self.duration = duration
@@ -89,7 +95,7 @@ public final class EKTimer {
 
 extension EKTimer {
 	fileprivate func update(deltaTime: Double) {
-		elapsedTime = elapsedTime + deltaTime
+		elapsedTime += deltaTime
 
 		delegate?.timerHasUpdated(self,
 		                          currentTime: elapsedTime,
@@ -103,7 +109,7 @@ extension EKTimer {
 			}
 
 			if repeats {
-				elapsedTime = elapsedTime - duration
+				elapsedTime -= duration
 				delegate?.timerWillRepeat(self)
 			} else {
 				self.invalidate()

@@ -2,23 +2,24 @@ import SwiftGL
 
 public class EKGLObject: EKGLMatrixComposer {
 	public static var mvpMatrixID: GLint! = nil
+	public static var normalID: GLint! = nil
 	public static var colorID: GLint! = nil
 	public static var projectionViewMatrix = EKMatrix()
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	fileprivate(set) public var objectID: Int? = nil
+	fileprivate(set) public var objectID: Int?
 
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public var vertexComponent: EKGLVertexComponent?
-	public var physicsComponent: EKPhysicsComponent? = nil
+	public var physicsComponent: EKPhysicsComponent?
 
 	public var color: EKColor = EKColor.whiteColor()
 
-	public var name: String? = nil
+	public var name: String?
 
 	public var children = [EKGLObject]()
-	public var parent: EKGLObject? = nil
+	public var parent: EKGLObject?
 
 	//
 	internal init(vertexComponent: EKGLVertexComponent?) {
@@ -91,15 +92,8 @@ extension EKGLObject {
 }
 
 extension EKGLObject {
-	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
+	private func configureShaderBuffers() {
 		guard let vertexComponent = vertexComponent else { return }
-
-		//
-		let completeMask: GLuint = 0xff
-		glStencilFunc(GL_ALWAYS, GLint(objectID!), completeMask)
-
-		let projectionViewMatrix = projectionViewMatrix ??
-			EKGLObject.projectionViewMatrix
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
@@ -112,11 +106,31 @@ extension EKGLObject {
 			stride: 0,
 			pointer: NULL) // offset
 
-		//
-		let mvp = projectionViewMatrix.times(modelMatrix)
+		glEnableVertexAttribArray(1)
+		glBindBuffer(target: GL_ARRAY_BUFFER,
+		             buffer: vertexComponent.normalBufferID)
+		glVertexAttribPointer(
+			index: 1, // Matching shader
+			size: 3,
+			type: GL_FLOAT,
+			normalized: false,
+			stride: 0,
+			pointer: NULL) // offset
+	}
 
+	private func configureShaderUniforms(
+		withModelViewProjectionMatrix mvp: EKMatrix)
+	{
 		mvp.withGLFloatArray {
 			glUniformMatrix4fv(location: EKGLObject.mvpMatrixID,
+			                   count: 1,
+			                   transpose: false,
+			                   value: $0)
+		}
+
+		let normalMat = mvp.inverse().transpose()
+		normalMat.withGLFloatArray {
+			glUniformMatrix4fv(location: EKGLObject.normalID,
 			                   count: 1,
 			                   transpose: false,
 			                   value: $0)
@@ -127,6 +141,25 @@ extension EKGLObject {
 			             count: 1,
 			             value: $0)
 		}
+	}
+
+	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
+		guard let vertexComponent = vertexComponent else { return }
+
+		//
+		let completeMask: GLuint = 0xff
+		glStencilFunc(GL_ALWAYS, GLint(objectID!), completeMask)
+
+		//
+		configureShaderBuffers()
+
+		//
+		let projectionViewMatrix = projectionViewMatrix ??
+			EKGLObject.projectionViewMatrix
+		let modelViewProjectionMatrix = projectionViewMatrix.times(modelMatrix)
+
+		configureShaderUniforms(
+			withModelViewProjectionMatrix: modelViewProjectionMatrix)
 
 		//
 		glDrawArrays(mode: GL_TRIANGLES,
@@ -136,7 +169,7 @@ extension EKGLObject {
 
 		//
 		for child in children {
-			child.draw(withProjectionViewMatrix: mvp)
+			child.draw(withProjectionViewMatrix: modelViewProjectionMatrix)
 		}
 	}
 }

@@ -3,11 +3,13 @@ public protocol EKLanguageEngine {
 
 	init(engine: EKEngine)
 
-	func addClass<T: EKLanguageCompatible>(_ class: T.Type,
-	              withName className: String,
-	              constructor: @escaping(() -> (T)) )
-	func addObject<T: EKLanguageCompatible>(_ object: T,
-	               withName name: String) throws
+	func addClass<T: EKLanguageCompatible>(
+		_ class: T.Type,
+		withName className: String,
+		constructor: @escaping(() -> (T)) )
+	func addObject<T: EKLanguageCompatible>(
+		_ object: T,
+		withName name: String) throws
 }
 
 extension EKLanguageEngine {

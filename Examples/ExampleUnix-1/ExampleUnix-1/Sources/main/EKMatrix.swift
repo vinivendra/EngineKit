@@ -63,6 +63,132 @@ extension EKMatrix {
 		                m31: m13, m32: m23, m33: m33, m34: m43,
 		                m41: m14, m42: m24, m43: m34, m44: m44)
 	}
+
+	// swiftlint:disable:next function_body_length
+	public func inverse() -> EKMatrix {
+		let inv0 = m22 * m33 * m44 -
+			m22 * m34 * m43 -
+			m32 * m23 * m44 +
+			m32 * m24 * m43 +
+			m42 * m23 * m34 -
+			m42 * m24 * m33
+
+		let inv4 = -m21 * m33 * m44 +
+			m21 * m34 * m43 +
+			m31 * m23 * m44 -
+			m31 * m24 * m43 -
+			m41 * m23 * m34 +
+			m41 * m24 * m33
+
+		let inv8 = m21 * m32 * m44 -
+			m21 * m34 * m42 -
+			m31 * m22 * m44 +
+			m31 * m24 * m42 +
+			m41 * m22 * m34 -
+			m41 * m24 * m32
+
+		let inv12 = -m21 * m32 * m43 +
+			m21 * m33 * m42 +
+			m31 * m22 * m43 -
+			m31 * m23 * m42 -
+			m41 * m22 * m33 +
+			m41 * m23 * m32
+
+		let inv1 = -m12 * m33 * m44 +
+			m12 * m34 * m43 +
+			m32 * m13 * m44 -
+			m32 * m14 * m43 -
+			m42 * m13 * m34 +
+			m42 * m14 * m33
+
+		let inv5 = m11 * m33 * m44 -
+			m11 * m34 * m43 -
+			m31 * m13 * m44 +
+			m31 * m14 * m43 +
+			m41 * m13 * m34 -
+			m41 * m14 * m33
+
+		let inv9 = -m11 * m32 * m44 +
+			m11 * m34 * m42 +
+			m31 * m12 * m44 -
+			m31 * m14 * m42 -
+			m41 * m12 * m34 +
+			m41 * m14 * m32
+
+		let inv13 = m11 * m32 * m43 -
+			m11 * m33 * m42 -
+			m31 * m12 * m43 +
+			m31 * m13 * m42 +
+			m41 * m12 * m33 -
+			m41 * m13 * m32
+
+		let inv2 = m12 * m23 * m44 -
+			m12 * m24 * m43 -
+			m22 * m13 * m44 +
+			m22 * m14 * m43 +
+			m42 * m13 * m24 -
+			m42 * m14 * m23
+
+		let inv6 = -m11 * m23 * m44 +
+			m11 * m24 * m43 +
+			m21 * m13 * m44 -
+			m21 * m14 * m43 -
+			m41 * m13 * m24 +
+			m41 * m14 * m23
+
+		let inv10 = m11 * m22 * m44 -
+			m11 * m24 * m42 -
+			m21 * m12 * m44 +
+			m21 * m14 * m42 +
+			m41 * m12 * m24 -
+			m41 * m14 * m22
+
+		let inv14 = -m11 * m22 * m43 +
+			m11 * m23 * m42 +
+			m21 * m12 * m43 -
+			m21 * m13 * m42 -
+			m41 * m12 * m23 +
+			m41 * m13 * m22
+
+		let inv3 = -m12 * m23 * m34 +
+			m12 * m24 * m33 +
+			m22 * m13 * m34 -
+			m22 * m14 * m33 -
+			m32 * m13 * m24 +
+			m32 * m14 * m23
+
+		let inv7 = m11 * m23 * m34 -
+			m11 * m24 * m33 -
+			m21 * m13 * m34 +
+			m21 * m14 * m33 +
+			m31 * m13 * m24 -
+			m31 * m14 * m23
+
+		let inv11 = -m11 * m22 * m34 +
+			m11 * m24 * m32 +
+			m21 * m12 * m34 -
+			m21 * m14 * m32 -
+			m31 * m12 * m24 +
+			m31 * m14 * m22
+
+		let inv15 = m11 * m22 * m33 -
+			m11 * m23 * m32 -
+			m21 * m12 * m33 +
+			m21 * m13 * m32 +
+			m31 * m12 * m23 -
+			m31 * m13 * m22
+
+		let det = m11 * inv0 + m12 * inv4 + m13 * inv8 + m14 * inv12
+
+		precondition(det != 0)
+
+		let f = 1.0 / det
+
+		return EKMatrix(m11: inv0*f, m12: inv1*f, m13: inv2*f, m14: inv3*f,
+		                m21: inv4*f, m22: inv5*f, m23: inv6*f, m24: inv7*f,
+		                m31: inv8*f, m32: inv9*f, m33: inv10*f, m34: inv11*f,
+		                m41: inv12*f, m42: inv13*f, m43: inv14*f, m44: inv15*f)
+	}
 }
 
 extension EKMatrix {

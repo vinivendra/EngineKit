@@ -14,13 +14,13 @@ class MyEngine: EKSwiftEngine {
 
 		//
 		var ball = EKGLCube()
-		ball.color = EKColor.whiteColor()
+		ball.color = EKColor.grayColor()
 		ball.position = EKVector3(x: 0, y: 3, z: -10)
 		ball.name = "white cube"
 		ball.setupPhysicsComponent()
 
 		ball = EKGLCube()
-		ball.color = EKColor.whiteColor()
+		ball.color = EKColor.grayColor()
 		ball.position = EKVector3(x: 0.9, y: 6, z: -10)
 		ball.name = "white cube"
 		ball.setupPhysicsComponent()

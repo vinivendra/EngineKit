@@ -1,6 +1,6 @@
 import CBullet
 
-var ekPhysicsAddon: EKPhysicsAddon? = nil
+var ekPhysicsAddon: EKPhysicsAddon?
 
 public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 	public func setup(onEngine engine: EKEngine) {
@@ -31,8 +31,8 @@ public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 
 	//
 	public func timerHasUpdated(_ timer: EKTimer,
-	                     currentTime: Double,
-	                     deltaTime: Double) {
+	                            currentTime: Double,
+	                            deltaTime: Double) {
 		cBulletStep(deltaTime)
 
 		for object in EKGLObject.allObjects {

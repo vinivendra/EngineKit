@@ -20,6 +20,7 @@ public struct EKFunctionAction<ArgumentType, ReturnType>: EKAction {
 		if let typedArgument = argument as? ArgumentType {
 			return closure(typedArgument)
 		} else {
+			let argument = argument ?? "nil"
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
 			"\(type(of: argument))."
@@ -51,6 +52,7 @@ public struct EKMethodAction<ObjectType, ArgumentType, ReturnType>: EKAction {
 		if let typedArgument = argument as? ArgumentType {
 			return method(object)(typedArgument)
 		} else {
+			let argument = argument ?? "nil"
 			let message = "Expected argument of type \(ArgumentType.self) " +
 				"but received object \(argument) of type " +
 			"\(type(of: argument))."
@@ -83,9 +85,11 @@ public class EKEventCenter {
 		}
 	}
 
-	public func register<T>(forEventNamed name: String,
-	                     target: T,
-	                     method: @escaping(T) -> (EKEvent) -> Void) throws {
+	public func register<T>(
+		forEventNamed name: String,
+		target: T,
+		method: @escaping(T) -> (EKEvent) -> Void) throws
+	{
 		do {
 			let callback = EKMethodAction(object: target, method: method)
 			let className = eventName(forExternalName: name)
@@ -95,9 +99,11 @@ public class EKEventCenter {
 		}
 	}
 
-	public func register<Event: EKEvent, T>(forEvent type: Event.Type,
-	                     target: T,
-	                     method: @escaping(T) -> (Event) -> Void) throws {
+	public func register<Event: EKEvent, T>(
+		forEvent type: Event.Type,
+		target: T,
+		method: @escaping(T) -> (Event) -> Void) throws
+	{
 		do {
 			let callback = EKMethodAction(object: target, method: method)
 			let className = eventName(forEventOfType: type.self)
@@ -118,8 +124,10 @@ public class EKEventCenter {
 		}
 	}
 
-	public func register<Event: EKEvent>(forEvent type: Event.Type,
-	                     callback: @escaping(Event) -> Void) throws {
+	public func register<Event: EKEvent>(
+		forEvent type: Event.Type,
+		callback: @escaping(Event) -> Void) throws
+	{
 		do {
 			let callback = EKFunctionAction(closure: callback)
 			let className = eventName(forEventOfType: type.self)
