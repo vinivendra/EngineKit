@@ -72,6 +72,7 @@ public final class EKScreenInputHandler {
 	}
 
 	var longPressTriggered = false
+	var longPressTimer: EKTimer?
 
 	enum GestureRecognizerState {
 		case Standby
@@ -93,6 +94,8 @@ public final class EKScreenInputHandler {
 
 	public func mouseUp(atPosition position: EKVector2) {
 		let eventToFire: EKEvent
+
+		longPressTimer?.invalidate()
 
 		switch state {
 		case .PerformingLongGesture:
@@ -125,13 +128,10 @@ public final class EKScreenInputHandler {
 
 		longPressTriggered = false
 
-		// FIXME:
-		//		NSTimer.scheduledTimerWithTimeInterval(
-		//			0.5,
-		//			target: self,
-		//			selector: #selector(longPressDelayExpired),
-		//			userInfo: nil,
-		//			repeats: false)
+		longPressTimer = EKTimer(duration: 0.5) {
+			self.longPressDelayExpired()
+		}
+		longPressTimer!.start()
 	}
 
 	public func mouseDragged(atPosition position: EKVector2,
