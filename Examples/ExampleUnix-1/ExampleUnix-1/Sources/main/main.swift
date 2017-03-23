@@ -4,6 +4,7 @@
 import Foundation
 
 let ekEngine = EKEngine()
+var ball: EKGLCube!
 
 class MyEngine: EKSwiftEngine {
 	var openGL: EKOpenGLAddon! = nil
@@ -13,7 +14,7 @@ class MyEngine: EKSwiftEngine {
 		openGL = objects["OpenGL"] as! EKOpenGLAddon
 
 		//
-		var ball = EKGLCube()
+		ball = EKGLCube()
 		ball.color = EKColor.grayColor()
 		ball.position = EKVector3(x: 0, y: 0, z: 0)
 		ball.name = "white cube"
@@ -154,7 +155,7 @@ try! ekEngine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 			camera.yAxis.times(-resized.x))
 		let rot = EKRotation(axis: axis,
 		                     angle: resized.norm() * 30)
-		camera.rotate(rot.normalized(), around: EKVector3())
+		camera.rotate(rot.normalized(), around: EKVector3(x: 0, y: 10, z: 0))
 	}
 }
 

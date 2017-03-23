@@ -132,18 +132,7 @@ extension EKRotation {
 	}
 
 	public func rotate(_ v: EKVector3) -> EKVector3 {
-		let q = self
-		let p = EKVector4(
-			x: q.w * v.x + q.y * v.z - q.z * v.y,
-			y: q.w * v.y - q.x * v.z + q.z * v.x,
-			z: q.w * v.z + q.x * v.y - q.y * v.x,
-			w: -q.x * v.x - q.y * v.y - q.z * v.z)
-		let o = q.opposite() // FIXME: should this be quaternion opposite?
-		let result = EKVector3(
-			x: p.w * o.x + p.x * o.w + p.y * o.z - p.z * o.y,
-			y: p.w * o.y - p.x * o.z + p.y * o.w + p.z * o.x,
-			z: p.w * o.z + p.x * o.y - p.y * o.x + p.z * o.w)
-		return result
+		return self.conjugate(vector: v.toHomogeneousVector()).toEKVector3()
 	}
 
 	public func rotate(matrix: EKMatrix) -> EKMatrix {

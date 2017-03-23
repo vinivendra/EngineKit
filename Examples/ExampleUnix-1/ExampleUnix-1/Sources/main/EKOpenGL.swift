@@ -219,8 +219,7 @@ extension EKGLObject {
 		let newRotation = quaternion.times(rotation)
 
 		let relativePosition = position.minus(anchorPoint)
-		let rotatedPosition = quaternion.conjugate(vector:
-			relativePosition.toHomogeneousVector()).toEKVector3()
+		let rotatedPosition = quaternion.rotate(relativePosition)
 		let newPosition = rotatedPosition.plus(anchorPoint)
 
 		position = newPosition
