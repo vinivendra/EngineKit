@@ -1,24 +1,27 @@
 import SwiftGL
 
 public class EKGLObject: EKGLMatrixComposer {
-	public static var mvpMatrixID: GLint! = nil
+	public static var modelMatrixID: GLint! = nil
+	public static var viewProjectionMatrixID: GLint! = nil
+	public static var normalMatrixID: GLint! = nil
+	public static var cameraPositionID: GLint! = nil
 	public static var colorID: GLint! = nil
-	public static var projectionViewMatrix = EKMatrix()
+	public static var projectionViewMatrix = EKMatrix.identity
 
 	public static var allObjects = EKResourcePool<EKGLObject>()
 
-	fileprivate(set) public var objectID: Int? = nil
+	fileprivate(set) public var objectID: Int?
 
 	public var matrixComponent: EKGLMatrixComponent = EKGLMatrixComponent()
 	public var vertexComponent: EKGLVertexComponent?
-	public var physicsComponent: EKPhysicsComponent? = nil
+	public var physicsComponent: EKPhysicsComponent?
 
 	public var color: EKColor = EKColor.whiteColor()
 
-	public var name: String? = nil
+	public var name: String?
 
 	public var children = [EKGLObject]()
-	public var parent: EKGLObject? = nil
+	public var parent: EKGLObject?
 
 	//
 	internal init(vertexComponent: EKGLVertexComponent?) {
@@ -91,19 +94,12 @@ extension EKGLObject {
 }
 
 extension EKGLObject {
-	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix! = nil) {
+	private func configureShaderBuffers() {
 		guard let vertexComponent = vertexComponent else { return }
-
-		//
-		let completeMask: GLuint = 0xff
-		glStencilFunc(GL_ALWAYS, GLint(objectID!), completeMask)
-
-		let projectionViewMatrix = projectionViewMatrix ??
-			EKGLObject.projectionViewMatrix
 
 		glEnableVertexAttribArray(0)
 		glBindBuffer(target: GL_ARRAY_BUFFER,
-		             buffer: vertexComponent.bufferID)
+		             buffer: vertexComponent.vertexBufferID)
 		glVertexAttribPointer(
 			index: 0, // Matching shader
 			size: 3,
@@ -112,14 +108,48 @@ extension EKGLObject {
 			stride: 0,
 			pointer: NULL) // offset
 
-		//
-		let mvp = projectionViewMatrix.times(modelMatrix)
+		glEnableVertexAttribArray(1)
+		glBindBuffer(target: GL_ARRAY_BUFFER,
+		             buffer: vertexComponent.normalBufferID)
+		glVertexAttribPointer(
+			index: 1, // Matching shader
+			size: 3,
+			type: GL_FLOAT,
+			normalized: false,
+			stride: 0,
+			pointer: NULL) // offset
+	}
 
-		mvp.withGLFloatArray {
-			glUniformMatrix4fv(location: EKGLObject.mvpMatrixID,
+	private func configureShaderUniforms(
+		withViewProjectionMatrix viewProjectionMatrix: EKMatrix,
+		modelMatrix: EKMatrix)
+	{
+		viewProjectionMatrix.withGLFloatArray {
+			glUniformMatrix4fv(location: EKGLObject.viewProjectionMatrixID,
 			                   count: 1,
 			                   transpose: false,
 			                   value: $0)
+		}
+
+		modelMatrix.withGLFloatArray {
+			glUniformMatrix4fv(location: EKGLObject.modelMatrixID,
+			                   count: 1,
+			                   transpose: false,
+			                   value: $0)
+		}
+
+		let normalMat = modelMatrix.inverse().transpose()
+		normalMat.withGLFloatArray {
+			glUniformMatrix4fv(location: EKGLObject.normalMatrixID,
+			                   count: 1,
+			                   transpose: false,
+			                   value: $0)
+		}
+
+		EKGLCamera.mainCamera.position.withGLFloatArray {
+			glUniform3fv(location: EKGLObject.cameraPositionID,
+			             count: 1,
+			             value: $0)
 		}
 
 		color.withGLFloatArray {
@@ -127,6 +157,25 @@ extension EKGLObject {
 			             count: 1,
 			             value: $0)
 		}
+	}
+
+	func draw(withProjectionViewMatrix projectionViewMatrix: EKMatrix =
+		EKGLObject.projectionViewMatrix,
+	          superModelMatrix: EKMatrix = .identity)
+	{
+		guard let vertexComponent = vertexComponent else { return }
+
+		//
+		let completeMask: GLuint = 0xff
+		glStencilFunc(GL_ALWAYS, GLint(objectID!), completeMask)
+
+		//
+		configureShaderBuffers()
+
+		//
+		let compoundModelMatrix = superModelMatrix.times(modelMatrix)
+		configureShaderUniforms(withViewProjectionMatrix: projectionViewMatrix,
+		                        modelMatrix: compoundModelMatrix)
 
 		//
 		glDrawArrays(mode: GL_TRIANGLES,
@@ -136,7 +185,8 @@ extension EKGLObject {
 
 		//
 		for child in children {
-			child.draw(withProjectionViewMatrix: mvp)
+			child.draw(withProjectionViewMatrix: projectionViewMatrix,
+			           superModelMatrix: compoundModelMatrix)
 		}
 	}
 }
@@ -162,11 +212,10 @@ extension EKGLObject {
 }
 
 extension EKGLObject {
-	func rotate(_ rotationObject: Any,
-	            around anchorPoint: Any) {
+	func rotate(_ quaternion: EKRotation,
+	            around anchorPoint: EKVector3) {
 		// FIXME: This doesn't rotate around the anchor
-		let rotationOperation = EKRotation(fromValue: rotationObject)!
-		let quaternion = rotationOperation.normalized()
+		let quaternion = quaternion.normalized()
 
 		let newPosition = quaternion.conjugate(vector:
 			position.toHomogeneousVector())
@@ -176,9 +225,8 @@ extension EKGLObject {
 		rotation = newRotation
 	}
 
-	func rotate(_ rotationObject: Any) {
-		let rotationOperation = EKRotation(fromValue: rotationObject)!
-		let quaternion = rotationOperation.normalized()
+	func rotate(_ quaternion: EKRotation) {
+		let quaternion = quaternion.normalized()
 
 		let newRotation = quaternion.times(rotation)
 

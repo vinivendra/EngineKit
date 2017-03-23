@@ -44,10 +44,10 @@ public struct EKResourcePool<T>: Sequence {
 
 	public mutating func addResourceAndGetIndex(_ value: T) -> Int {
 		let newResource = EKResource(value: value, next: 0)
-		count = count + 1
+		count += 1
 		if isFull {
 			resources.append(newResource)
-			arrayCapacity = arrayCapacity + 1
+			arrayCapacity += 1
 			return count
 		} else {
 			let firstEmptySlot = resources[firstAvailableIndex]
@@ -72,7 +72,7 @@ public struct EKResourcePool<T>: Sequence {
 			for resource in resources {
 				if let value = resource.value {
 					newArray[j].value = value
-					j = j + 1
+					j += 1
 				}
 			}
 			for i in j..<(newCapacity - 1) {

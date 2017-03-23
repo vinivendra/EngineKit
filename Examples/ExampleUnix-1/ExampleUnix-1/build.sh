@@ -1,15 +1,4 @@
-##
-# Compile gyb files in EK core
-for f in ../EngineKitCore/*.gyb
-do
-	output=${f%.gyb}
-	./gyb --line-directive '' -o $output $f
-done
-
-# Copy EK core files to Sources folder
-cp ../EngineKitCore/* Sources/main/
-
-# Compile gyb files in Sources folder
+# Compile gyb files
 for f in Sources/main/*.gyb
 do
 	output=${f%.gyb}

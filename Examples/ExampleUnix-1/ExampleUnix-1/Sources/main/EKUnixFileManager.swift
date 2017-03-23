@@ -12,7 +12,7 @@ public class EKUnixFileManager: EKFileManager {
 		if fp != nil {
 			var buffer = [CChar](repeating: CChar(0), count: 1024)
 			while fgets(&buffer, Int32(1024), fp) != nil {
-				fileContents = fileContents + String(validatingUTF8: buffer)!
+				fileContents += String(validatingUTF8: buffer)!
 			}
 			fclose(fp)
 			return fileContents

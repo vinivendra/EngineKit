@@ -14,14 +14,15 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		zNear: 0.1,
 		zFar: 100)
 
+	private var inputAddon: EKUnixInputAddon! = nil
 	private var window: OpaquePointer! = nil
-	private var inputHandler: EKUnixInputAddon! = nil
 
 	public func setup(onEngine engine: EKEngine) {
 		setupOpenGL()
 		compileShaders()
 
-		engine.loadAddon(EKUnixInputAddon(window: window))
+		inputAddon = EKUnixInputAddon(window: window)
+		engine.loadAddon(inputAddon)
 
 		// swiftlint:disable:next force_try
 		try! engine.addObject(self, withName: "OpenGL")
@@ -65,20 +66,31 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 
 		//
 		guard let programID = loadShaders(
-		vertexFilePath: "../../vertex.glsl",
-		fragmentFilePath: "../../fragment.glsl")
-		else {
-		print("Error compiling shaders.")
-		return
+			vertexFilePath: "../../vertex.glsl",
+			fragmentFilePath: "../../fragment.glsl")
+			else
+		{
+			print("Error compiling shaders.")
+			return
 		}
 		glUseProgram(programID)
 
 		//
-		let matrixID = glGetUniformLocation(program: programID, name: "MVP")
-		let colorID = glGetUniformLocation(program: programID, name: "color")
-
-		EKGLObject.mvpMatrixID = matrixID
-		EKGLObject.colorID = colorID
+		EKGLObject.modelMatrixID = glGetUniformLocation(
+			program: programID,
+			name: "modelMatrix")
+		EKGLObject.viewProjectionMatrixID = glGetUniformLocation(
+			program: programID,
+			name: "viewProjectionMatrix")
+		EKGLObject.normalMatrixID = glGetUniformLocation(
+			program: programID,
+			name: "normalMatrix")
+		EKGLObject.cameraPositionID = glGetUniformLocation(
+			program: programID,
+			name: "cameraPosition")
+		EKGLObject.colorID = glGetUniformLocation(
+			program: programID,
+			name: "color")
 	}
 
 	private func checkCompilerStatus(forID shaderID: GLuint,
@@ -195,7 +207,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 			let newTime = glfwGetTime()
 			let deltaTime = newTime - oldTime
 			EKTimer.updateTimers(deltaTime: deltaTime)
-			inputHandler?.update()
+			inputAddon?.update()
 
 			EKGLObject.projectionViewMatrix = projection.times(
 				EKGLCamera.mainCamera.viewMatrix)

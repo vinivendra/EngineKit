@@ -31,9 +31,11 @@ public class EKEngine {
 		addons.append(addon)
 	}
 
-	public func register<T>(forEventNamed eventName: String,
-	                     target: T,
-	                     method: @escaping(T) -> (EKEvent) -> Void) throws {
+	public func register<T>(
+		forEventNamed eventName: String,
+		target: T,
+		method: @escaping(T) -> (EKEvent) -> Void) throws
+	{
 		do {
 			try eventCenter.register(forEventNamed: eventName,
 			                         target: target,
@@ -43,9 +45,11 @@ public class EKEngine {
 		}
 	}
 
-	public func register<Event: EKEvent, T>(forEvent type: Event.Type,
-	                     target: T,
-	                     method: @escaping(T) -> (Event) -> Void) throws {
+	public func register<Event: EKEvent, T>(
+		forEvent type: Event.Type,
+		target: T,
+		method: @escaping(T) -> (Event) -> Void) throws
+	{
 		do {
 			try eventCenter.register(forEvent: type,
 			                         target: target,
@@ -65,8 +69,10 @@ public class EKEngine {
 		}
 	}
 
-	public func register<Event: EKEvent>(forEvent type: Event.Type,
-	                     callback: @escaping(Event) -> Void) throws {
+	public func register<Event: EKEvent>(
+		forEvent type: Event.Type,
+		callback: @escaping(Event) -> Void) throws
+	{
 		do {
 			try eventCenter.register(forEvent: type, callback: callback)
 		} catch let error {
@@ -74,9 +80,11 @@ public class EKEngine {
 		}
 	}
 
-	public func addClass<T: EKLanguageCompatible>(_ class: T.Type,
-	                     withName className: String?,
-	                     constructor: @escaping(() -> (T)) ) {
+	public func addClass<T: EKLanguageCompatible>(
+		_ class: T.Type,
+		withName className: String?,
+		constructor: @escaping(() -> (T)) )
+	{
 		let className = className ?? "\(T.self)".toEKPrefixClassName()
 
 		languageEngine.addClass(T.self,
@@ -84,8 +92,10 @@ public class EKEngine {
 		                        constructor: constructor)
 	}
 
-	public func addObject<T: EKLanguageCompatible>(_ object: T,
-	                      withName name: String) throws {
+	public func addObject<T: EKLanguageCompatible>(
+		_ object: T,
+		withName name: String) throws
+	{
 		do {
 			try languageEngine.addObject(object, withName: name)
 		} catch let error {
@@ -106,6 +116,6 @@ extension EKEngine {
 		 withName className: String?)
 		where T: Initable {
 
-		addClass(T.self, withName: className, constructor: T.init)
+			addClass(T.self, withName: className, constructor: T.init)
 	}
 }

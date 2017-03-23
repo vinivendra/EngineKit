@@ -1,0 +1,18 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "CGLFW3",
+      "reason": null,
+      "repositoryURL": "/Users/vini/Development/EngineKit/Examples/ExampleUnix-1/CGLFW3",
+      "version": "1.0.3"
+    },
+    {
+      "package": "SwiftGL",
+      "reason": null,
+      "repositoryURL": "/Users/vini/Development/EngineKit/Examples/ExampleUnix-1/SwiftGL",
+      "version": "1.0.0"
+    }
+  ],
+  "version": 1
+}

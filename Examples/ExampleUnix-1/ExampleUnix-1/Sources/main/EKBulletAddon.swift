@@ -1,6 +1,6 @@
 import CBullet
 
-var ekPhysicsAddon: EKPhysicsAddon? = nil
+var ekPhysicsAddon: EKPhysicsAddon?
 
 public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 	public func setup(onEngine engine: EKEngine) {
@@ -31,8 +31,8 @@ public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 
 	//
 	public func timerHasUpdated(_ timer: EKTimer,
-	                     currentTime: Double,
-	                     deltaTime: Double) {
+	                            currentTime: Double,
+	                            deltaTime: Double) {
 		cBulletStep(deltaTime)
 
 		for object in EKGLObject.allObjects {
@@ -66,7 +66,7 @@ public class EKBulletComponent: EKPhysicsComponent {
 		let p = object.position
 		let r = object.rotation
 		self.cBody = cBulletCreateBody(p.x, p.y, p.z,
-		                               r.x, r.y, r.z, r.w)
+		                               r.x, r.y, r.z, -r.w)
 	}
 
 	public func fetchLatestInfo()
@@ -85,7 +85,7 @@ public class EKBulletComponent: EKPhysicsComponent {
 		                    &rx, &ry, &rz, &rw)
 
 		return (position: EKVector3(x: px, y: py, z: pz),
-		        rotation: EKRotation(x: rx, y: ry, z: rz, w: rw))
+		        rotation: EKRotation(x: rx, y: ry, z: rz, w: -rw))
 	}
 
 	//
