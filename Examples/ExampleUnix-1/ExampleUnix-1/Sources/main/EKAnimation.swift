@@ -51,39 +51,33 @@ extension EKVector4: Interpolable {
 }
 
 extension EKRotation: Interpolable {
-	// swiftlint:disable variable_name
-	public static func interpolate(start a: EKRotation,
-	                               end b: EKRotation,
-	                               interpolatedValue t: Double) -> EKRotation {
-		let cosHalfAngle = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w
+	public static func interpolate(
+		start: EKRotation,
+		end: EKRotation,
+		interpolatedValue ratio: Double) -> EKRotation
+	{
+		let cosHalfAngle =
+			start.x * end.x +
+			start.y * end.y +
+			start.z * end.z +
+			start.w * end.w
 
-		// if a=b or a=-b then angle=0 and we can return a
-		if abs(cosHalfAngle) >= 1.0 {
-			return a
+		let angleIsNotZero = ( abs(cosHalfAngle) < 1.0 )
+		guard angleIsNotZero else {
+			return start
 		}
 
 		let halfAngle = acos(cosHalfAngle)
 		let sinHalfAngle = sqrt(1.0 - cosHalfAngle * cosHalfAngle)
 
-		// if theta = 180 degrees then result is not fully defined
-		// we could rotate around any axis normal to a or b
-		// FIXME: not sure if this really is interpolated, it's independent in t
-		if abs(sinHalfAngle) < 0.001 {
-			return EKRotation(x: a.x/2 + b.x/2,
-			                  y: a.y/2 + b.y/2,
-			                  z: a.z/2 + b.z/2,
-			                  w: a.w/2 + b.w/2)
-		}
+		let ratioStart = sin((1 - ratio) * halfAngle) / sinHalfAngle
+		let ratioEnd = sin(ratio * halfAngle) / sinHalfAngle
 
-		let ratioA = sin((1 - t) * halfAngle) / sinHalfAngle
-		let ratioB = sin(t * halfAngle) / sinHalfAngle
-
-		return EKRotation(x: a.x * ratioA + b.x * ratioB,
-		                  y: a.y * ratioA + b.y * ratioB,
-		                  z: a.z * ratioA + b.z * ratioB,
-		                  w: a.w * ratioA + b.w * ratioB)
+		return EKRotation(x: start.x * ratioStart + end.x * ratioEnd,
+		                  y: start.y * ratioStart + end.y * ratioEnd,
+		                  z: start.z * ratioStart + end.z * ratioEnd,
+		                  w: start.w * ratioStart + end.w * ratioEnd)
 	}
-	// swiftlint:enable variable_name
 }
 
 extension EKColor: Interpolable {
@@ -268,8 +262,7 @@ public class EKAnimation
 		do {
 			let interpolatedValue = currentTime / duration
 			let reversedValue = isReversed ?
-				1.0 - interpolatedValue :
-			interpolatedValue
+				1.0 - interpolatedValue : interpolatedValue
 			let animationValue = timingFunction(reversedValue)
 			try action.callWithArgument(InterpolatedType.interpolate(
 				start: startValue,
