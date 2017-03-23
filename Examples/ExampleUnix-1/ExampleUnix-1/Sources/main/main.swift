@@ -15,21 +15,15 @@ class MyEngine: EKSwiftEngine {
 		//
 		var ball = EKGLCube()
 		ball.color = EKColor.grayColor()
-		ball.position = EKVector3(x: 0, y: 3, z: -10)
+		ball.position = EKVector3(x: 0, y: 0, z: 0)
 		ball.name = "white cube"
-		ball.setupPhysicsComponent()
+//		ball.setupPhysicsComponent()
 
 		ball = EKGLCube()
 		ball.color = EKColor.grayColor()
-		ball.position = EKVector3(x: 0.9, y: 6, z: -10)
+		ball.position = EKVector3(x: 3, y: 0, z: 0)
 		ball.name = "white cube"
-		ball.setupPhysicsComponent()
-
-		let ball2 = EKGLCube()
-		ball2.color = EKColor.grayColor()
-		ball2.position = EKVector3(x: 3, y: 0, z: 0)
-		ball2.name = "white cube"
-		ball.addChild(ball2)
+//		ball.setupPhysicsComponent()
 
 //		let ball2 = EKGLCube()
 //		ball2.color = EKColor.grayColor()
@@ -158,8 +152,8 @@ try! ekEngine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 
 		let axis = camera.xAxis.times(resized.y).plus(
 			camera.yAxis.times(-resized.x))
-		let rot = EKVector4(x: axis.x, y: axis.y, z: axis.z,
-		                    w: resized.normSquared())
+		let rot = EKRotation(axis: axis,
+		                     angle: resized.norm() * 30)
 		camera.rotate(rot.normalized(), around: EKVector3())
 	}
 }

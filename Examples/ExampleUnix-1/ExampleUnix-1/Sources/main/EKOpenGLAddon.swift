@@ -14,14 +14,15 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 		zNear: 0.1,
 		zFar: 100)
 
+	private var inputAddon: EKUnixInputAddon! = nil
 	private var window: OpaquePointer! = nil
-	private var inputHandler: EKUnixInputAddon! = nil
 
 	public func setup(onEngine engine: EKEngine) {
 		setupOpenGL()
 		compileShaders()
 
-		engine.loadAddon(EKUnixInputAddon(window: window))
+		inputAddon = EKUnixInputAddon(window: window)
+		engine.loadAddon(inputAddon)
 
 		// swiftlint:disable:next force_try
 		try! engine.addObject(self, withName: "OpenGL")
@@ -206,7 +207,7 @@ public class EKOpenGLAddon: EKAddon, EKLanguageCompatible {
 			let newTime = glfwGetTime()
 			let deltaTime = newTime - oldTime
 			EKTimer.updateTimers(deltaTime: deltaTime)
-			inputHandler?.update()
+			inputAddon?.update()
 
 			EKGLObject.projectionViewMatrix = projection.times(
 				EKGLCamera.mainCamera.viewMatrix)

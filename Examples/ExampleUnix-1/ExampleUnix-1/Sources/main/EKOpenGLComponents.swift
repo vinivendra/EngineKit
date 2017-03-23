@@ -107,8 +107,8 @@ public struct EKGLVertexComponent {
 		glGenBuffers(n: 1, buffers: &normalBufferID)
 		glBindBuffer(target: GL_ARRAY_BUFFER, buffer: normalBufferID)
 		glBufferData(target: GL_ARRAY_BUFFER,
-		             size: MemoryLayout<[GLfloat]>.size * vertices.count,
-		             data: vertices,
+		             size: MemoryLayout<[GLfloat]>.size * normals.count,
+		             data: normals,
 		             usage: GL_DYNAMIC_DRAW)
 		self.normalBufferID = normalBufferID
 	}
@@ -135,8 +135,9 @@ public struct EKGLVertexComponent {
 			                   GLfloat(match.getMatch(atIndex: 3)!)!])
 		}
 
-		let vertex = "([^/]+)/([^/]+)[^\\s]+"
-		for match in fileContents =~ "f \(vertex) \(vertex) \(vertex)" {
+		let vertex = "([^/]+)/[^/]+/([^/\\s]+)"
+		let facePattern = "f\\s+\(vertex)\\s+\(vertex)\\s+\(vertex)\\s+"
+		for match in fileContents =~ facePattern {
 			let vertex1 = Int(match.getMatch(atIndex: 1)!)! - 1
 			let normal1 = Int(match.getMatch(atIndex: 2)!)! - 1
 
