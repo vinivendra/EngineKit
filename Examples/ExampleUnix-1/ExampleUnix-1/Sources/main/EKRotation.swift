@@ -20,15 +20,45 @@ CustomStringConvertible, CustomDebugStringConvertible {
 	public var description: String {
 		return "x: \(x), y: \(y), z: \(z), w: \(w)"
 	}
+
+	init(x: Double, y: Double, z: Double, w: Double) {
+		let normSquared = x * x + y * y + z * z + w * w
+		let norm = sqrt(normSquared)
+		if norm == 0 {
+			self.x = x
+			self.y = y
+			self.z = z
+			self.w = w
+		} else {
+			self.x = x / norm
+			self.y = y / norm
+			self.z = z / norm
+			self.w = w / norm
+		}
+	}
 }
 
 extension EKRotation {
+	public init(literalX x: Double, y: Double, z: Double, w: Double) {
+		self.x = x
+		self.y = y
+		self.z = z
+		self.w = w
+	}
+
 	init() {
-		self.init(x: 0, y: 0, z: 0, w: 1)
+		self.init(literalX: 0, y: 0, z: 0, w: 1)
+	}
+
+	init(representing vector: EKVector4) {
+		self.init(literalX: vector.x,
+		          y: vector.y,
+		          z: vector.z,
+		          w: vector.w)
 	}
 
 	init(_ rotation: EKRotation) {
-		self.init(x: rotation.x,
+		self.init(literalX: rotation.x,
 		          y: rotation.y,
 		          z: rotation.z,
 		          w: rotation.w)
@@ -93,10 +123,11 @@ extension EKRotation {
 
 	public func times(_ q: EKRotation) -> EKRotation {
 		return EKRotation(
-			x: self.w * q.x + self.x * q.w + self.y * q.z - self.z * q.y,
-			y: self.w * q.y + self.y * q.w - self.x * q.z + self.z * q.x,
-			z: self.w * q.z + self.z * q.w + self.x * q.y - self.y * q.x,
-			w: self.w * q.w - self.x * q.x - self.y * q.y - self.z * q.z)
+			literalX:
+			self.w * q.x + self.x * q.w + self.y * q.z - self.z * q.y, y:
+			self.w * q.y + self.y * q.w - self.x * q.z + self.z * q.x, z:
+			self.w * q.z + self.z * q.w + self.x * q.y - self.y * q.x, w:
+			self.w * q.w - self.x * q.x - self.y * q.y - self.z * q.z)
 	}
 
 	public func normSquared() -> Double {
@@ -120,7 +151,7 @@ extension EKRotation {
 	}
 
 	public func opposite() -> EKRotation {
-		return EKRotation(x: -x, y: -y, z: -z, w: w)
+		return EKRotation(literalX: -x, y: -y, z: -z, w: w)
 	}
 
 	func conjugate(vector: EKVector4) -> EKRotation {
@@ -174,13 +205,8 @@ extension EKRotation {
 }
 
 public func == (lhs: EKRotation, rhs: EKRotation) -> Bool {
-	if lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.w == rhs.w {
-		return true
-	}
-	let lUnit = lhs.normalized()
-	let rUnit = rhs.normalized()
-	return lUnit.x == rUnit.x && lUnit.y == rUnit.y &&
-		lUnit.z == rUnit.z && lUnit.w == rUnit.w
+	return lhs.x == rhs.x && lhs.y == rhs.y &&
+		lhs.z == rhs.z && lhs.w == rhs.w
 }
 
 public func != (lhs: EKRotation, rhs: EKRotation) -> Bool {

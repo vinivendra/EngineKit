@@ -155,7 +155,7 @@ try! ekEngine.register(forEvent: EKEventPan.self) { (eventPan: EKEventPan) in
 			camera.yAxis.times(-resized.x))
 		let rot = EKRotation(axis: axis,
 		                     angle: resized.norm() * 30)
-		camera.rotate(rot.normalized(), around: EKVector3(x: 0, y: 10, z: 0))
+		camera.rotate(rot, around: EKVector3(x: 0, y: 10, z: 0))
 	}
 }
 

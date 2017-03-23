@@ -214,8 +214,6 @@ extension EKGLObject {
 extension EKGLObject {
 	func rotate(_ quaternion: EKRotation,
 	            around anchorPoint: EKVector3) {
-		let quaternion = quaternion.normalized()
-
 		let newRotation = quaternion.times(rotation)
 
 		let relativePosition = position.minus(anchorPoint)
@@ -227,8 +225,6 @@ extension EKGLObject {
 	}
 
 	func rotate(_ quaternion: EKRotation) {
-		let quaternion = quaternion.normalized()
-
 		let newRotation = quaternion.times(rotation)
 
 		rotation = newRotation
