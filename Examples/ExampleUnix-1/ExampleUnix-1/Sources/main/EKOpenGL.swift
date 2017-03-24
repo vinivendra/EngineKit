@@ -200,11 +200,11 @@ extension EKGLObject {
 	func removeFromParent() {
 		guard let parent = parent else { return }
 
-		for (index, sibling) in parent.children.enumerated() {
-			if sibling.objectID == self.objectID {
-				parent.children.remove(at: index)
-				break
-			}
+		for (index, sibling) in parent.children.enumerated()
+			where sibling.objectID == self.objectID
+		{
+			parent.children.remove(at: index)
+			break
 		}
 
 		self.parent = nil

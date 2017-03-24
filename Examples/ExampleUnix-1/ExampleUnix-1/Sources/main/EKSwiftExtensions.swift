@@ -131,10 +131,10 @@ extension String {
 			return false
 		}
 
-		for (a, b) in zip(self.unicodeScalars, prefix.unicodeScalars) {
-			if a != b {
-				return false
-			}
+		for (a, b) in zip(self.unicodeScalars, prefix.unicodeScalars)
+			where a != b
+		{
+			return false
 		}
 		return true
 	}

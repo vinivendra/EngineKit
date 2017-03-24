@@ -14,10 +14,10 @@ public class EKBulletAddon: EKAddon, EKPhysicsAddon, EKTimerDelegate {
 	}
 
 	deinit {
-		for object in EKGLObject.allObjects {
-			if object.physicsComponent is EKBulletComponent {
-				object.physicsComponent = nil
-			}
+		for object in EKGLObject.allObjects
+			where object.physicsComponent is EKBulletComponent
+		{
+			object.physicsComponent = nil
 		}
 
 		cBulletDestroy()

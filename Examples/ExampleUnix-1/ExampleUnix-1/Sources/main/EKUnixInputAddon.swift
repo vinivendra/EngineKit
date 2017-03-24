@@ -75,17 +75,17 @@ public final class EKScreenInputHandler {
 	var longPressTimer: EKTimer?
 
 	enum GestureRecognizerState {
-		case Standby
-		case Detected
-		case DetectedTolerance
-		case PerformingLongGesture
+		case standby
+		case detected
+		case detectedTolerance
+		case performingLongGesture
 	}
 
-	var state = GestureRecognizerState.Standby
+	var state = GestureRecognizerState.standby
 
 	private func longPressDelayExpired() {
 		switch state {
-		case .PerformingLongGesture:
+		case .performingLongGesture:
 			break
 		default:
 			longPressTriggered = true
@@ -98,19 +98,19 @@ public final class EKScreenInputHandler {
 		longPressTimer?.invalidate()
 
 		switch state {
-		case .PerformingLongGesture:
+		case .performingLongGesture:
 			if longPressTriggered {
 				eventToFire = EKEventLongPress(
 					position: position,
 					touches: 1,
 					displacement: EKVector2(),
-					state: .Ended)
+					state: .ended)
 			} else {
 				eventToFire = EKEventPan(
 					position: position,
 					touches: 1,
 					displacement: EKVector2(),
-					state: .Ended)
+					state: .ended)
 			}
 		default:
 			eventToFire = EKEventTap(
@@ -120,11 +120,11 @@ public final class EKScreenInputHandler {
 
 		eventCenter?.fireEvent(eventToFire)
 
-		state = .Standby
+		state = .standby
 	}
 
 	public func mouseDown(atPosition position: EKVector2) {
-		state = .Detected
+		state = .detected
 
 		longPressTriggered = false
 
@@ -139,13 +139,13 @@ public final class EKScreenInputHandler {
 		var stateOfEventToFire: EKEventInputState? = nil
 
 		switch state {
-		case .Detected:
-			state = .DetectedTolerance
-		case .DetectedTolerance:
-			state = .PerformingLongGesture
-			stateOfEventToFire = .Began
-		case .PerformingLongGesture:
-			stateOfEventToFire = .Changed
+		case .detected:
+			state = .detectedTolerance
+		case .detectedTolerance:
+			state = .performingLongGesture
+			stateOfEventToFire = .began
+		case .performingLongGesture:
+			stateOfEventToFire = .changed
 		default: break
 		}
 

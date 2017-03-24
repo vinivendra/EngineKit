@@ -86,11 +86,11 @@ public struct EKResourcePool<T>: Sequence {
 public extension EKResourcePool where T: Equatable {
 	public mutating func deleteResource(_ value: T) {
 		var index: Int! = nil
-		for (i, resource) in resources.enumerated() {
-			if resource.value == value {
-				index = i
-				break
-			}
+		for (i, resource) in resources.enumerated()
+			where resource.value == value
+		{
+			index = i
+			break
 		}
 		deleteResource(atIndex: index)
 	}
